@@ -303,7 +303,22 @@
     }
   }
 
-  function init() { injectStylesheet(); renderBar(); decorateResults(); }
+  function ensureExperience() {
+    injectStylesheet();
+    renderBar();
+    decorateResults();
+  }
+
+  function init() {
+    ensureExperience();
+    [120, 480, 1100, 2100].forEach(delay => window.setTimeout(ensureExperience, delay));
+    const root = document.querySelector('#root, .op-shell') || document.body;
+    const observer = new MutationObserver(() => {
+      if (!document.querySelector('.np-demo-bar')) ensureExperience();
+    });
+    observer.observe(root, { childList: true, subtree: true });
+    window.setTimeout(() => observer.disconnect(), 2800);
+  }
   window.NPDemo = { load, restore, decorateResults };
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init, { once: true }); else init();
 })();
