@@ -322,3 +322,4 @@
   window.NPDemo = { load, restore, decorateResults };
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init, { once: true }); else init();
 })();
+// Despliegue Git verificado por commit: 2026-08-24.
