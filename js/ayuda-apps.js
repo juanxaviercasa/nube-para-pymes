@@ -2,15 +2,22 @@
   "use strict";
 
   function loadDemoExperience() {
-    if (!document.body || !document.body.dataset.appId || document.querySelector("script[data-np-demo-experience]")) return;
+    if (!document.body || !document.body.dataset.appId) return false;
+    if (document.querySelector("script[data-np-demo-experience]")) return true;
     var script = document.createElement("script");
     script.src = "./js/demo-experience.js";
     script.async = false;
     script.dataset.npDemoExperience = "true";
     document.head.appendChild(script);
+    return true;
   }
 
-  loadDemoExperience();
+  if (!loadDemoExperience()) {
+    var demoAttempts = 0;
+    var demoTimer = window.setInterval(function () {
+      if (loadDemoExperience() || ++demoAttempts > 30) window.clearInterval(demoTimer);
+    }, 80);
+  }
 
   var config = window.NP_HELP_CONFIG;
   if (!config || !config.id) return;
