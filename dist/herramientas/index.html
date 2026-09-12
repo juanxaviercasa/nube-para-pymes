@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
@@ -22,9 +22,8 @@
         
         <div class="relative mx-auto max-w-7xl px-5 sm:px-8">
           <nav class="flex flex-col gap-4 py-5 sm:flex-row sm:items-center sm:justify-between">
-            <a href="/" class="flex items-center gap-2.5">
-              <img src="/herramientas/assets/logo-nube-para-pymes.png" alt="" aria-hidden="true" class="h-9 w-9 shrink-0 object-contain">
-              <span class="font-display text-xl font-bold tracking-tight">Nube<span class="text-brand-soft">ParaPymes</span></span>
+            <a href="/" class="flex items-center transition-opacity hover:opacity-90" aria-label="NubeParaPymes - Inicio">
+              <img src="/herramientas/assets/logo-nube-para-pymes-dark.webp" alt="NubeParaPymes" class="h-10 w-auto object-contain">
             </a>
             
             <div class="flex items-center gap-3">
@@ -920,14 +919,10 @@
       <!-- Footer -->
       <footer class="border-t border-line bg-surface">
         <div class="mx-auto flex max-w-7xl flex-col items-center justify-between gap-3 px-5 py-8 sm:flex-row sm:px-8">
-          <div class="flex items-center gap-2.5">
-            <span class="flex h-8 w-8 items-center justify-center rounded-lg bg-ink text-white">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-cloud h-4 w-4" aria-hidden="true">
-                <path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"></path>
-              </svg>
-            </span>
-            <span class="font-display font-bold text-fg">NubeParaPymes</span>
-          </div>
+          <a href="/" class="flex items-center transition-opacity hover:opacity-90" aria-label="NubeParaPymes - Inicio">
+            <img src="/herramientas/assets/logo-nube-para-pymes-light.webp" alt="NubeParaPymes" class="h-8 w-auto object-contain block dark:hidden">
+            <img src="/herramientas/assets/logo-nube-para-pymes-dark.webp" alt="NubeParaPymes" class="h-8 w-auto object-contain hidden dark:block">
+          </a>
           <div class="flex flex-col items-center gap-1 text-center sm:items-end sm:text-right"><a href="/herramientas/guia-uso/" class="text-sm font-semibold text-cta underline-offset-4 hover:underline">Guía completa de uso</a><p class="text-sm text-fg-muted">© 2026 NubeParaPymes · Herramientas gratuitas para tu negocio.</p></div>
         </div>
       </footer>

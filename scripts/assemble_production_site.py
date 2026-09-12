@@ -88,6 +88,7 @@ def setup_herramientas_assets():
     dest_assets = target_herramientas / "assets"
     if (ROOT / "assets").exists():
         shutil.copytree(ROOT / "assets", dest_assets, dirs_exist_ok=True)
+        shutil.copytree(ROOT / "assets", DIST / "assets", dirs_exist_ok=True)
 
     dest_css = target_herramientas / "css"
     if (ROOT / "css").exists():
