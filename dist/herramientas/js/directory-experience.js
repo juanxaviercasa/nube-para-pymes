@@ -3,12 +3,12 @@
   "use strict";
 
   var tools = [
-    { title: "Define tu precio final", text: "Calcula margen, IGV y precio de venta.", href: "./calculadora-precios-venta-igv.html", tag: "Precios" },
-    { title: "Prepara una cotización", text: "Convierte un servicio en una propuesta clara.", href: "./generador-cotizaciones.html", tag: "Ventas" },
-    { title: "Ordena tus oportunidades", text: "Visualiza contactos, etapas y próximos pasos.", href: "./crm-pymes.html", tag: "CRM" },
-    { title: "Controla tu caja", text: "Registra entradas, salidas y cobros pendientes.", href: "./flujo-caja-pymes.html", tag: "Finanzas" },
-    { title: "Revisa tu inventario", text: "Ve stock, reposición y costo de productos.", href: "./inventario-compras-pymes.html", tag: "Operación" },
-    { title: "Comparte tu WhatsApp", text: "Genera un código QR para iniciar conversaciones.", href: "./generador-codigos-qr.html", tag: "Visibilidad" }
+    { title: "Define tu precio final", text: "Calcula margen, IGV y precio de venta.", href: "/herramientas/finanzas/calculadora-precios-venta-igv/", tag: "Precios" },
+    { title: "Prepara una cotización", text: "Convierte un servicio en una propuesta clara.", href: "/herramientas/ventas/generador-cotizaciones/", tag: "Ventas" },
+    { title: "Ordena tus oportunidades", text: "Visualiza contactos, etapas y próximos pasos.", href: "/herramientas/ventas/crm-pymes/", tag: "CRM" },
+    { title: "Controla tu caja", text: "Registra entradas, salidas y cobros pendientes.", href: "/herramientas/finanzas/flujo-caja-pymes/", tag: "Finanzas" },
+    { title: "Revisa tu inventario", text: "Ve stock, reposición y costo de productos.", href: "/herramientas/operaciones/inventario-compras-pymes/", tag: "Operación" },
+    { title: "Comparte tu WhatsApp", text: "Genera un código QR para iniciar conversaciones.", href: "/herramientas/ventas/generador-codigos-qr/", tag: "Visibilidad" }
   ];
 
   function addStyles() {

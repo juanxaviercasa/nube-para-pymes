@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <title>Nube para Pymes — Portal de Herramientas</title>
-  <script type="module" crossorigin="" src="/herramientas/js/index.js?v=20260912"></script>
+  <script type="module" crossorigin="" src="/herramientas/js/index.js?v=20260912-3"></script>
   <link rel="stylesheet" crossorigin="" href="/herramientas/css/index.css">
 </head>
 <body>
@@ -921,14 +921,28 @@
       </main>
       <!-- Footer -->
       <footer class="border-t border-line bg-surface">
-        <div class="mx-auto flex max-w-7xl flex-col items-center justify-between gap-3 px-5 py-8 sm:flex-row sm:px-8">
-          <a href="/" class="flex items-center transition-opacity hover:opacity-90" aria-label="NubeParaPymes - Inicio">
-            <img src="/herramientas/assets/logo-nube-para-pymes-light.webp?v=20260912" alt="NubeParaPymes" class="h-8 w-auto object-contain block dark:hidden">
-            <img src="/herramientas/assets/logo-nube-para-pymes-dark.webp?v=20260912" alt="NubeParaPymes" class="h-8 w-auto object-contain hidden dark:block">
-          </a>
-          <div class="flex flex-col items-center gap-1 text-center sm:items-end sm:text-right">
-            <a href="/herramientas/guia-uso/" class="text-sm font-semibold text-cta underline-offset-4 hover:underline">Guía completa de uso</a>
-            <p class="text-sm text-fg-muted">© 2026 NubeParaPymes · Diseñado y Desarrollado por <a href="https://juan.cabellorosas.com" target="_blank" rel="noopener" class="font-semibold text-cta hover:underline">Xavier Cabello</a></p>
+        <div class="mx-auto max-w-7xl px-5 py-8 sm:px-8">
+          <div class="flex flex-col items-center justify-between gap-4 md:flex-row">
+            <div class="flex flex-col sm:flex-row items-center gap-3 text-center sm:text-left">
+              <a href="/" class="flex items-center transition-opacity hover:opacity-90" aria-label="NubeParaPymes - Inicio">
+                <img src="/herramientas/assets/logo-nube-para-pymes-light.webp?v=20260912" alt="NubeParaPymes" class="h-8 w-auto object-contain block dark:hidden">
+                <img src="/herramientas/assets/logo-nube-para-pymes-dark.webp?v=20260912" alt="NubeParaPymes" class="h-8 w-auto object-contain hidden dark:block">
+              </a>
+              <span class="hidden md:inline text-line">|</span>
+              <span class="text-xs sm:text-sm text-fg-muted">Herramientas gratuitas para tu negocio</span>
+            </div>
+            
+            <div class="flex flex-wrap items-center justify-center gap-5 text-sm font-medium">
+              <a href="/herramientas/guia-uso/" class="text-fg-muted hover:text-cta transition-colors">Guía de uso</a>
+              <a href="/" class="text-fg-muted hover:text-cta transition-colors">Inicio</a>
+              <a href="/sobre-nosotros/" class="text-fg-muted hover:text-cta transition-colors">Sobre Nosotros</a>
+              <a href="/blog/" class="text-fg-muted hover:text-cta transition-colors">Blog</a>
+            </div>
+
+            <div class="flex flex-col items-center md:items-end text-center md:text-right gap-1 pr-0 md:pr-14">
+              <p class="text-xs sm:text-sm text-fg-muted">© 2026 NubeParaPymes · Todos los derechos reservados</p>
+              <p class="text-xs sm:text-sm text-fg-muted">Diseñado y Desarrollado por <a href="https://juan.cabellorosas.com" target="_blank" rel="noopener" class="font-bold text-cta hover:underline">Xavier Cabello</a></p>
+            </div>
           </div>
         </div>
       </footer>

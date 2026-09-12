@@ -309,8 +309,15 @@ def update_redirects():
 
     for tool in TOOLS:
         target_path = f"/herramientas/{tool['cat']}/{tool['slug']}/"
+        # Redirecciones desde la raíz
         lines.append(f"/{tool['src']}    {target_path}    301")
         lines.append(f"/{tool['slug']}    {target_path}    301")
+        lines.append(f"/{tool['slug']}.html    {target_path}    301")
+        # Redirecciones desde /herramientas/
+        lines.append(f"/herramientas/{tool['src']}    {target_path}    301")
+        lines.append(f"/herramientas/{tool['slug']}    {target_path}    301")
+        lines.append(f"/herramientas/{tool['slug']}.html    {target_path}    301")
+
 
     lines.extend([
         "",
