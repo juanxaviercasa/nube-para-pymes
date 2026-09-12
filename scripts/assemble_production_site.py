@@ -284,6 +284,44 @@ def update_redirects():
     redirects_file.write_text("\n".join(lines), encoding="utf-8")
     log("dist/_redirects creado con reglas completas.")
 
+def update_headers():
+    log("Configurando reglas de caché y seguridad en dist/_headers...")
+    headers_file = DIST / "_headers"
+    lines = [
+        "# ==========================================",
+        "# Cloudflare Pages _headers: Cache & Security",
+        "# ==========================================",
+        "",
+        "# HTML de herramientas y portada siempre revalidados para reflejar cambios de inmediato",
+        "/*.html",
+        "  Cache-Control: public, max-age=0, must-revalidate",
+        "",
+        "/herramientas/",
+        "  Cache-Control: public, max-age=0, must-revalidate",
+        "",
+        "/herramientas/*",
+        "  Cache-Control: public, max-age=0, must-revalidate",
+        "",
+        "# Assets estáticos",
+        "/herramientas/assets/*",
+        "  Cache-Control: public, max-age=3600, must-revalidate",
+        "",
+        "/assets/*",
+        "  Cache-Control: public, max-age=3600, must-revalidate",
+        "",
+        "/wp-content/uploads/*",
+        "  Cache-Control: public, max-age=31536000, immutable",
+        "",
+        "/*",
+        "  X-Frame-Options: SAMEORIGIN",
+        "  X-Content-Type-Options: nosniff",
+        "  X-XSS-Protection: 1; mode=block",
+        "  Referrer-Policy: strict-origin-when-cross-origin",
+        ""
+    ]
+    headers_file.write_text("\n".join(lines), encoding="utf-8")
+    log("dist/_headers configurado con éxito.")
+
 def update_sitemap():
     log("Inyectando rutas de herramientas en dist/sitemap.xml y normalizando dominios...")
     sitemap_file = DIST / "sitemap.xml"
@@ -405,6 +443,7 @@ def main():
     build_all_tools()
     update_wp_directory_page()
     update_redirects()
+    update_headers()
     update_sitemap()
     update_robots_and_llms()
     update_search_index()
