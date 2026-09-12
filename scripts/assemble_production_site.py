@@ -217,6 +217,38 @@ def build_all_tools():
 
     log(f"Se procesaron {count} herramientas en sus directorios canónicos.")
 
+def create_legacy_redirect_stubs():
+    log("Creando archivos HTML de redirección para compatibilidad total con enlaces antiguos .html...")
+    target_herramientas = DIST / "herramientas"
+    target_herramientas.mkdir(parents=True, exist_ok=True)
+
+    count = 0
+    for tool in TOOLS:
+        canonical_url = f"/herramientas/{tool['cat']}/{tool['slug']}/"
+        tool_name = tool.get('name', tool['slug'])
+        stub_html = f"""<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="refresh" content="0; url={canonical_url}">
+  <link rel="canonical" href="https://nubeparapymes.online{canonical_url}">
+  <title>Redireccionando a {tool_name} — Nube para Pymes</title>
+  <script>window.location.replace("{canonical_url}");</script>
+</head>
+<body>
+  <p>Redireccionando a <a href="{canonical_url}">{tool_name}</a>...</p>
+</body>
+</html>
+"""
+        # Guardar en dist/herramientas/{tool['src']}
+        (target_herramientas / tool['src']).write_text(stub_html, encoding="utf-8")
+        # Guardar en dist/{tool['src']}
+        (DIST / tool['src']).write_text(stub_html, encoding="utf-8")
+        count += 1
+
+    log(f"Se crearon {count} archivos HTML de redirección en dist/herramientas/ y dist/.")
+
+
 def update_wp_directory_page():
     log("Actualizando enlaces en dist/directorio-herramientas/index.html...")
     wp_dir_file = DIST / "directorio-herramientas" / "index.html"
@@ -491,7 +523,9 @@ def main():
     build_tools_portal()
     build_usage_guide()
     build_all_tools()
+    create_legacy_redirect_stubs()
     update_wp_directory_page()
+
     update_global_footers()
     update_redirects()
     update_headers()
