@@ -1,0 +1,15 @@
+# Secretos y variables de entorno
+.env
+.env.*
+!.env.example
+
+# Archivos del sistema y logs
+.DS_Store
+Thumbs.db
+*.log
+
+# Respaldos locales
+wp_backups/
+
+# Archivos temporales locales
+powershell.cmd

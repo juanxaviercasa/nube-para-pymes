@@ -1,0 +1,304 @@
+/* =========================================================
+   NubeParaPymes — Design tokens (ver DESIGN.md activo)
+   ========================================================= */
+:root{
+  --npp-bg:#F0F5FA;
+  --npp-surface:#FFFFFF;
+  --npp-ink:#1e293b;
+  --npp-body:#334155;
+  --npp-accent:#046bd2;
+  --npp-accent-hover:#045cb4;
+  --npp-accent-soft:rgba(4,107,210,0.10);
+  --npp-border:#D1D5DB;
+  --npp-radius-sm:6px;
+  --npp-radius-md:10px;
+  --npp-space-sm:8px;
+  --npp-space-md:16px;
+  --npp-space-lg:32px;
+  --npp-space-xl:64px;
+}
+
+/* =========================================================
+   1) Sección "Cómo elegimos el software" (3 columnas EEAT)
+   Antes: solo texto plano, sin jerarquía visual.
+   Ahora: badge de icono circular + divisor superior sutil.
+   ========================================================= */
+.seccion-eeat{
+  padding-top: var(--npp-space-lg);
+  border-top: 1px solid var(--npp-border);
+  margin-top: var(--npp-space-lg);
+}
+
+.seccion-eeat .wp-block-column{
+  text-align:center;
+}
+
+.seccion-eeat h3{
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap: var(--npp-space-sm);
+  color: var(--npp-ink);
+}
+
+.seccion-eeat h3::before{
+  content:"";
+  display:block;
+  width:56px;
+  height:56px;
+  border-radius:50%;
+  background-color: var(--npp-accent-soft);
+  background-repeat:no-repeat;
+  background-position:center;
+  background-size:26px 26px;
+}
+
+/* Icono 1: lupa (Probamos cada herramienta) */
+#h-probamos-cada-herramienta::before{
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23046bd2' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><circle cx='11' cy='11' r='7'/><line x1='21' y1='21' x2='16.65' y2='16.65'/></svg>");
+}
+
+/* Icono 2: etiqueta de precio (Comparamos precios actualizados) */
+#h-comparamos-precios-actualizados::before{
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23046bd2' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M20.59 13.41 11 3.83A2 2 0 0 0 9.59 3.24L4 3a1 1 0 0 0-1 1l.24 5.59a2 2 0 0 0 .59 1.41l9.58 9.59a2 2 0 0 0 2.83 0l4.35-4.35a2 2 0 0 0 0-2.83Z'/><circle cx='7.5' cy='7.5' r='1.2' fill='%23046bd2' stroke='none'/></svg>");
+}
+
+/* Icono 3: escudo (Sin sesgos de afiliado) */
+#h-sin-sesgos-de-afiliado::before{
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23046bd2' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z'/><path d='m9 12 2 2 4-4'/></svg>");
+}
+
+.parrafo-metodologia{
+  text-align:center;
+  max-width:640px;
+  margin-left:auto;
+  margin-right:auto;
+  color: var(--npp-body);
+}
+
+.parrafo-metodologia a{
+  color: var(--npp-accent);
+  font-weight:600;
+}
+
+/* =========================================================
+   2) Caja CTA "Empieza por aquí si es tu primera vez"
+   Antes: bloque de texto suelto, sin borde ni peso visual.
+   ========================================================= */
+.seccion-cta{
+  background: var(--npp-surface);
+  border: 1px solid var(--npp-border);
+  border-radius: var(--npp-radius-md);
+  padding: var(--npp-space-xl) var(--npp-space-lg);
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+}
+
+.seccion-cta::before{
+  content:"";
+  position:absolute;
+  top:0; left:0; right:0;
+  height:4px;
+  background: var(--npp-accent);
+}
+
+.seccion-cta h2{
+  color: var(--npp-ink);
+}
+
+.seccion-cta p{
+  color: var(--npp-body);
+  max-width:560px;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+.seccion-cta .wp-block-button__link{
+  border-radius: var(--npp-radius-sm) !important;
+  background-color: var(--npp-accent) !important;
+}
+
+.seccion-cta .wp-block-button__link:hover{
+  background-color: var(--npp-accent-hover) !important;
+}
+
+/* =========================================================
+   3) Franja de confianza del hero (badge superior)
+   Pequeño ajuste de separación para que respire mejor.
+   ========================================================= */
+.franja-confianza{
+  display:flex;
+  flex-wrap:wrap;
+  gap: var(--npp-space-md);
+  margin-top: var(--npp-space-sm);
+}
+
+.franja-confianza span{
+  opacity:0.85;
+}
+
+.franja-confianza span:not(:last-child)::after{
+  content:"•";
+  margin-left: var(--npp-space-md);
+  opacity:0.6;
+}
+
+@media (max-width: 480px){
+  .seccion-eeat{ padding-top: var(--npp-space-md); }
+  .seccion-cta{ padding: var(--npp-space-lg) var(--npp-space-md); }
+}
+
+/* =========================================================
+   4) FIX urgente: tarjetas de categoria (CRM, Gestion de
+   Proyectos, etc.) tenian el SVG del icono sin ancho/alto
+   definido en ningun lado -> el navegador lo mostraba a su
+   tamano por defecto (enorme). Se agrega tamano + color.
+   ========================================================= */
+.caja-categoria{
+  text-align:center;
+  padding: var(--npp-space-md) var(--npp-space-sm);
+}
+.icono-categoria{
+  width:44px;
+  height:44px;
+  display:inline-block;
+  color: var(--npp-accent);
+  margin-bottom: var(--npp-space-sm);
+}
+.caja-categoria h3{
+  color: var(--npp-ink);
+  margin:0 0 4px 0;
+}
+.caja-categoria p{
+  color: var(--npp-body);
+  margin:0 0 8px 0;
+}
+.caja-categoria a{
+  color: var(--npp-accent);
+  font-weight:600;
+  text-decoration:none;
+}
+.caja-categoria a:hover{ text-decoration:underline; }
+
+/* =========================================================
+   5) FIX urgente: el parrafo del hero (sobre la imagen
+   oscura) heredaba el color de texto oscuro del sitio
+   (#334155) en vez de blanco, por lo que quedaba casi
+   ilegible sobre el fondo. Se fuerza blanco solo dentro
+   del cover del hero.
+   ========================================================= */
+.wp-block-cover .wp-block-cover__inner-container h1,
+.wp-block-cover .wp-block-cover__inner-container p{
+  color:#ffffff !important;
+}
+.wp-block-cover .wp-block-cover__inner-container p{
+  opacity:0.94;
+}
+
+/* =========================================================
+   5b) FIX urgente (vista movil): el parrafo del hero usaba
+   el preset de Gutenberg "large", que en este sitio es un
+   valor FIJO de 36px. En un celular de 390px de ancho eso
+   dejaba el parrafo del mismo tamano que el H1 (tambien
+   36px), destruyendo la jerarquia y desbordando la seccion.
+   Se reemplaza por un tamano fluido, solo dentro del cover
+   del hero (no afecta el resto del sitio ni los posts).
+   ========================================================= */
+.wp-block-cover .wp-block-cover__inner-container h1{
+  font-size:clamp(27px, 3.2vw + 15px, 36px) !important;
+  line-height:1.18 !important;
+  margin-bottom:.6em;
+}
+
+.wp-block-cover .wp-block-cover__inner-container p.has-large-font-size{
+  font-size:clamp(15.5px, 0.6vw + 13px, 22px) !important;
+  line-height:1.6 !important;
+}
+
+/* En movil el cover tenia min-height fijo de 640px (estilo en
+   linea del bloque). Con el texto ya reducido, se libera la
+   altura para que la seccion se ajuste a su contenido. */
+@media (max-width: 781px){
+  .wp-block-cover.alignfull{
+    min-height:auto !important;
+    padding-top:44px;
+    padding-bottom:44px;
+  }
+  .franja-confianza{
+    flex-direction:column;
+    gap:6px;
+    font-size:13.5px;
+  }
+  .franja-confianza span:not(:last-child)::after{ content:none; margin:0; }
+  .wp-block-cover .wp-block-buttons{ gap:10px; }
+  .wp-block-cover .wp-block-button{ width:100%; }
+  .wp-block-cover .wp-block-button__link{ display:block; text-align:center; }
+}
+
+/* =========================================================
+   6) Componentes compartidos para las herramientas nuevas:
+   tablas de items (proforma, prestamos, matriz) y salida
+   de texto generado (documentos legales, firma, contrato)
+   ========================================================= */
+table.npp-line-items{
+  width:100%;
+  border-collapse:collapse;
+  margin-top:8px;
+  font-size:14px;
+}
+table.npp-line-items th{
+  text-align:left;
+  color:var(--npp-body);
+  font-weight:600;
+  font-size:12px;
+  text-transform:uppercase;
+  letter-spacing:0.02em;
+  border-bottom:1px solid var(--npp-border);
+  padding:6px 8px;
+}
+table.npp-line-items td{
+  border-bottom:1px solid var(--npp-border);
+  padding:6px 8px;
+  vertical-align:middle;
+}
+table.npp-line-items input, table.npp-line-items textarea{
+  width:100%;
+  border:1px solid var(--npp-border);
+  border-radius:4px;
+  padding:5px 7px;
+  font-size:14px;
+  box-sizing:border-box;
+  font-family:inherit;
+}
+table.npp-line-items .npp-pf-quitar{
+  background:none;
+  border:none;
+  color:#b91c1c;
+  font-size:18px;
+  line-height:1;
+  cursor:pointer;
+  padding:0 4px;
+}
+
+.npp-textarea-output{
+  width:100%;
+  font-family:ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size:13px;
+  line-height:1.5;
+  border:1px solid var(--npp-border);
+  border-radius:8px;
+  padding:14px;
+  color:var(--npp-ink);
+  box-sizing:border-box;
+  resize:vertical;
+}
+
+/* Al imprimir una proforma, ocultar todo lo que no sea el contenido de la herramienta */
+@media print{
+  #wpadminbar, .site-header, .ast-mobile-header-wrap, header, .site-footer, footer,
+  .npp-tool-back, .npp-btn, #npp-pf-agregar { display:none !important; }
+  .npp-tool-wrap{ padding:0; max-width:none; }
+  .npp-tool-card-body{ border:none; padding:0; }
+}

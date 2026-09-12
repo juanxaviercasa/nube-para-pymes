@@ -1,0 +1,11 @@
+{
+  "name": "nube-para-pymes",
+  "version": "2.0.0",
+  "description": "Sitio estático unificado y serverless para Nube para Pymes: WordPress + 26 Herramientas",
+  "private": true,
+  "scripts": {
+    "build": "python scripts/assemble_production_site.py",
+    "serve": "npx -y serve dist -l 3000",
+    "test": "node scripts/verify_production_build.js"
+  }
+}

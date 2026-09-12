@@ -1,0 +1,563 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Guía completa de uso de las 26 herramientas gratuitas de NubeParaPymes.">
+  <title>Guía de uso · NubeParaPymes</title>
+  <style>
+    :root { color-scheme: dark; --bg:#071426; --panel:#0d2037; --line:#28415c; --text:#edf4ff; --muted:#aabbd0; --accent:#ff7a18; --link:#7db8ff; }
+    * { box-sizing:border-box; }
+    body { margin:0; background:var(--bg); color:var(--text); font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; line-height:1.65; }
+    header { border-bottom:1px solid var(--line); background:#091a2e; }
+    .top { max-width:1160px; margin:auto; padding:18px 24px; display:flex; justify-content:space-between; gap:16px; align-items:center; }
+    .brand { color:var(--text); font-weight:800; text-decoration:none; letter-spacing:.01em; }
+    .back { color:var(--link); text-decoration:none; font-size:.95rem; }
+    main { max-width:1160px; margin:0 auto; padding:42px 24px 72px; }
+    article { background:rgba(13,32,55,.72); border:1px solid var(--line); border-radius:18px; padding:34px clamp(22px,5vw,64px); box-shadow:0 18px 60px rgba(0,0,0,.2); }
+    h1,h2,h3 { line-height:1.2; color:#fff; margin-top:1.65em; }
+    h1 { margin-top:0; font-size:clamp(2rem,4vw,3.2rem); }
+    h2 { border-bottom:1px solid var(--line); padding-bottom:.4em; font-size:clamp(1.45rem,2.4vw,2rem); }
+    h3 { color:#dceaff; font-size:1.2rem; }
+    p,li { color:var(--muted); }
+    strong { color:#fff; }
+    a { color:var(--link); }
+    blockquote { margin:1.5em 0; padding:1em 1.2em; border-left:4px solid var(--accent); background:rgba(255,122,24,.09); border-radius:0 10px 10px 0; }
+    blockquote p { margin:.1em 0; color:#e8eef7; }
+    code { padding:.15em .35em; border-radius:5px; background:#06101e; color:#ffd5af; }
+    pre { overflow:auto; padding:16px; border-radius:10px; background:#06101e; }
+    pre code { padding:0; }
+    table { width:100%; border-collapse:collapse; display:block; overflow-x:auto; margin:1.4em 0; }
+    th,td { text-align:left; vertical-align:top; padding:10px 12px; border:1px solid var(--line); min-width:120px; }
+    th { color:#fff; background:#132d4b; }
+    td { color:var(--muted); }
+    hr { border:0; border-top:1px solid var(--line); margin:2.4em 0; }
+    footer { max-width:1160px; margin:0 auto; padding:0 24px 36px; color:var(--muted); font-size:.9rem; }
+  </style>
+</head>
+<body>
+  <header><div class="top"><a class="brand" href="/herramientas/">NubeParaPymes</a><a class="back" href="/herramientas/">Volver al directorio</a></div></header>
+  <main><article><h1 id="guia-completa-de-uso-de-nubeparapymes">Guía completa de uso de NubeParaPymes</h1>
+<h2 id="introduccion">Introducción</h2>
+<p>NubeParaPymes reúne <strong>26 herramientas gratuitas y locales</strong> para apoyar tareas de marketing, ventas, operaciones, finanzas, documentación y planificación de pequeñas empresas. Cada aplicación se ejecuta en el navegador y conserva sus datos localmente cuando dispone de historial o almacenamiento persistente. No es necesario crear una cuenta, entregar un correo electrónico ni contratar un plan para utilizar las funciones publicadas.</p>
+<p>La portada del proyecto está disponible en <a href="/herramientas/">NubeParaPymes</a>. Las aplicaciones se abren mediante archivos HTML independientes en la raíz, por lo que las rutas tienen el formato <code>./nombre-de-la-app.html</code>. La guía de despliegue técnico se encuentra en <a href="./GUIA_DESPLIEGUE_HOSTING.md">GUIA_DESPLIEGUE_HOSTING.md</a>.</p>
+<blockquote>
+<p><strong>Buenas prácticas generales.</strong> Introduce datos de prueba antes de trabajar con información real, revisa las unidades y monedas, descarga o copia los resultados importantes y utiliza una copia local de respaldo cuando una herramienta ofrezca exportación o importación. Las calculadoras financieras, laborales y legales son instrumentos de apoyo: sus resultados deben revisarse con la normativa, contratos y asesoría profesional aplicables a cada caso.</p>
+</blockquote>
+<h2 id="tabla-de-aplicaciones">Tabla de aplicaciones</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">Nº</th>
+<th>Aplicación</th>
+<th>Uso principal</th>
+<th>Acceso</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">1</td>
+<td>Analizador de Titulares</td>
+<td>Evaluar y mejorar titulares de contenido</td>
+<td><a href="/herramientas/marketing/analizador-titulares/">Abrir</a></td>
+</tr>
+<tr>
+<td style="text-align: right;">2</td>
+<td>Auditor Básico de SEO On-Page</td>
+<td>Revisar señales SEO de una página</td>
+<td><a href="/herramientas/marketing/auditor-seo-basico/">Abrir</a></td>
+</tr>
+<tr>
+<td style="text-align: right;">3</td>
+<td>Calculadora de Descuentos y Promociones</td>
+<td>Simular precios, márgenes y promociones</td>
+<td><a href="/herramientas/finanzas/calculadora-descuentos-promociones/">Abrir</a></td>
+</tr>
+<tr>
+<td style="text-align: right;">4</td>
+<td>Calculadora de Flete y Envío Local</td>
+<td>Cotizar despachos y rutas locales</td>
+<td><a href="/herramientas/operaciones/calculadora-flete-envio-local/">Abrir</a></td>
+</tr>
+<tr>
+<td style="text-align: right;">5</td>
+<td>Calculadora de Precios de Venta con IGV</td>
+<td>Calcular precio, margen e impuesto</td>
+<td><a href="/herramientas/finanzas/calculadora-precios-venta-igv/">Abrir</a></td>
+</tr>
+<tr>
+<td style="text-align: right;">6</td>
+<td>Calculadora de Préstamos y Amortizaciones</td>
+<td>Comparar créditos y cuotas</td>
+<td><a href="/herramientas/finanzas/calculadora-prestamos-amortizaciones/">Abrir</a></td>
+</tr>
+<tr>
+<td style="text-align: right;">7</td>
+<td>Calculadora de Sobrecostos Laborales</td>
+<td>Estimar el costo total de una plantilla</td>
+<td><a href="/herramientas/finanzas/calculadora-sobrecostos-laborales/">Abrir</a></td>
+</tr>
+<tr>
+<td style="text-align: right;">8</td>
+<td>Comparador Avanzado de Campañas</td>
+<td>Comparar campañas y escenarios</td>
+<td><a href="/herramientas/marketing/comparador-campanas-avanzado/">Abrir</a></td>
+</tr>
+<tr>
+<td style="text-align: right;">9</td>
+<td>Consola de Campañas</td>
+<td>Crear UTMs y organizar campañas</td>
+<td><a href="/herramientas/marketing/consola-campanas/">Abrir</a></td>
+</tr>
+<tr>
+<td style="text-align: right;">10</td>
+<td>WebP Forge</td>
+<td>Convertir y optimizar imágenes</td>
+<td><a href="/herramientas/productividad/conversor-optimizador-imagenes/">Abrir</a></td>
+</tr>
+<tr>
+<td style="text-align: right;">11</td>
+<td>Creador de Facturas Proforma</td>
+<td>Crear y descargar proformas</td>
+<td><a href="/herramientas/ventas/creador-facturas-proforma/">Abrir</a></td>
+</tr>
+<tr>
+<td style="text-align: right;">12</td>
+<td>Firma de Correo HTML</td>
+<td>Diseñar una firma HTML local</td>
+<td><a href="/herramientas/productividad/firma-correo-html/">Abrir</a></td>
+</tr>
+<tr>
+<td style="text-align: right;">13</td>
+<td>Generador de Códigos QR</td>
+<td>Crear QR para contenido y WhatsApp</td>
+<td><a href="/herramientas/ventas/generador-codigos-qr/">Abrir</a></td>
+</tr>
+<tr>
+<td style="text-align: right;">14</td>
+<td>SecuKey</td>
+<td>Generar contraseñas seguras</td>
+<td><a href="/herramientas/productividad/generador-contrasenas-pymes/">Abrir</a></td>
+</tr>
+<tr>
+<td style="text-align: right;">15</td>
+<td>Generador de Contratos de Servicios</td>
+<td>Crear un borrador de contrato</td>
+<td><a href="/herramientas/legal/generador-contratos-servicios/">Abrir</a></td>
+</tr>
+<tr>
+<td style="text-align: right;">16</td>
+<td>Generador de Cotizaciones</td>
+<td>Preparar cotizaciones multimoneda</td>
+<td><a href="/herramientas/ventas/generador-cotizaciones/">Abrir</a></td>
+</tr>
+<tr>
+<td style="text-align: right;">17</td>
+<td>Chroma</td>
+<td>Crear paletas corporativas</td>
+<td><a href="/herramientas/productividad/generador-paletas-corporativas/">Abrir</a></td>
+</tr>
+<tr>
+<td style="text-align: right;">18</td>
+<td>Generador de Políticas de Devolución</td>
+<td>Redactar una política de devoluciones</td>
+<td><a href="/herramientas/legal/generador-politicas-devolucion/">Abrir</a></td>
+</tr>
+<tr>
+<td style="text-align: right;">19</td>
+<td>LegalForge</td>
+<td>Generar políticas y términos</td>
+<td><a href="/herramientas/legal/generador-politicas-terminos/">Abrir</a></td>
+</tr>
+<tr>
+<td style="text-align: right;">20</td>
+<td>ObjeciónPro</td>
+<td>Practicar respuestas a objeciones</td>
+<td><a href="/herramientas/ventas/guiones-manejo-objeciones/">Abrir</a></td>
+</tr>
+<tr>
+<td style="text-align: right;">21</td>
+<td>Organizador de Matriz de Contenidos</td>
+<td>Planificar publicaciones y contenidos</td>
+<td><a href="/herramientas/marketing/organizador-matriz-contenidos/">Abrir</a></td>
+</tr>
+<tr>
+<td style="text-align: right;">26</td>
+<td>Simulador TCO: Físico vs. Nube</td>
+<td>Comparar costo total de infraestructura</td>
+<td><a href="/herramientas/operaciones/simulador-tco-fisico-nube/">Abrir</a></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="1-analizador-de-titulares">1. Analizador de Titulares</h2>
+<h3 id="para-que-sirve">Para qué sirve</h3>
+<p>Permite evaluar un titular y mejorarlo con criterios heurísticos de claridad, fuerza, tono y atractivo. Incluye sugerencias, clasificación de tono, vista previa de resultados de búsqueda y redes sociales, comparación A/B, historial local y exportación del informe.</p>
+<h3 id="como-utilizarlo">Cómo utilizarlo</h3>
+<ol>
+<li>Introduce el titular que quieres analizar y, si la interfaz lo permite, el contexto o palabra clave principal.</li>
+<li>Revisa la puntuación y las sugerencias. Observa especialmente la claridad, la longitud, la presencia de palabras concretas y el tono general.</li>
+<li>Edita el titular y vuelve a analizarlo para comparar la evolución.</li>
+<li>Utiliza la comparación A/B cuando tengas dos alternativas. Conserva la versión que comunique mejor el beneficio sin exagerar la promesa.</li>
+<li>Consulta la vista previa SERP y social para comprobar cómo se percibiría el texto en distintos espacios.</li>
+<li>Copia el informe o expórtalo a PDF si necesitas compartirlo con otra persona.</li>
+</ol>
+<h3 id="recomendaciones">Recomendaciones</h3>
+<p>No elijas automáticamente el titular con la puntuación más alta. Comprueba que sea fiel al contenido, comprensible para el público y compatible con la voz de la marca. La herramienta es una ayuda heurística, no una medición de rendimiento real.</p>
+<h2 id="2-auditor-basico-de-seo-on-page">2. Auditor Básico de SEO On-Page</h2>
+<h3 id="para-que-sirve_1">Para qué sirve</h3>
+<p>Analiza una URL o los datos introducidos sobre una página y muestra señales relacionadas con título, descripción, palabras clave, H1, vistas previas SERP y sociales, salud general, densidad de contenido y tareas de mejora. También permite conservar historial local y comparar revisiones.</p>
+<h3 id="como-utilizarlo_1">Cómo utilizarlo</h3>
+<ol>
+<li>Introduce la URL que deseas revisar. Si la página no puede analizarse directamente, completa los campos de título, descripción, palabra clave principal, H1 y contenido.</li>
+<li>Ejecuta el análisis y revisa el resumen de salud.</li>
+<li>Lee las recomendaciones de título, descripción, encabezados, contenido y palabras clave.</li>
+<li>Comprueba la vista previa de resultados de búsqueda y de redes sociales.</li>
+<li>Revisa la densidad y la lista de tareas; corrige primero problemas de claridad, relevancia y contenido insuficiente.</li>
+<li>Guarda una versión en el historial y vuelve a analizar después de editar la página para comparar.</li>
+</ol>
+<h3 id="recomendaciones_1">Recomendaciones</h3>
+<p>La herramienta no sustituye una revisión técnica del servidor, indexación, enlaces, rendimiento o datos de Search Console. Utiliza la auditoría como una lista de comprobación editorial y valida los cambios en el sitio real.</p>
+<h2 id="3-calculadora-de-descuentos-y-promociones">3. Calculadora de Descuentos y Promociones</h2>
+<h3 id="para-que-sirve_2">Para qué sirve</h3>
+<p>Reúne calculadoras de precio promocional, margen, punto de equilibrio, combos, valor de vida del cliente, copywriting persuasivo y campaña flash. Los cálculos se realizan con los datos introducidos en el navegador.</p>
+<h3 id="como-utilizarla">Cómo utilizarla</h3>
+<ol>
+<li>Selecciona la sección que corresponde a tu decisión: descuento, margen, equilibrio, combo, CLV, copy o campaña flash.</li>
+<li>Introduce precio base, costo, porcentaje de descuento, unidades y demás datos solicitados.</li>
+<li>Revisa el precio final, la ganancia, el margen y el punto de equilibrio cuando corresponda.</li>
+<li>En la sección de combos, compara la suma de productos, el precio conjunto y el margen resultante.</li>
+<li>En CLV, introduce frecuencia de compra, ticket y retención para observar una estimación del valor de vida.</li>
+<li>Usa las secciones de copy y campaña flash para convertir el resultado numérico en una propuesta comercial clara.</li>
+</ol>
+<h3 id="recomendaciones_2">Recomendaciones</h3>
+<p>Comprueba que el costo introducido incluya los costos variables relevantes. No confundas margen sobre venta con recargo sobre costo y redondea los precios al final, no antes de realizar el cálculo.</p>
+<h2 id="4-calculadora-de-flete-y-envio-local">4. Calculadora de Flete y Envío Local</h2>
+<h3 id="para-que-sirve_3">Para qué sirve</h3>
+<p>Calcula una cotización de despacho a partir del paquete, peso, vehículo sugerido, zona y paradas. Conserva estadísticas e historial local y permite generar un manifiesto o etiqueta de envío.</p>
+<h3 id="como-utilizarla_1">Cómo utilizarla</h3>
+<ol>
+<li>Introduce largo, ancho, alto y peso real del paquete.</li>
+<li>Selecciona el vehículo sugerido: moto, van o camión, según el tamaño y peso de la carga.</li>
+<li>Añade las paradas de la ruta y selecciona la zona de destino en el mapa.</li>
+<li>Revisa el peso cobrable, la tarifa base, los recargos y el total cotizado.</li>
+<li>Guarda la cotización si quieres consultarla en el historial.</li>
+<li>Genera el manifiesto o la etiqueta cuando tengas confirmada la ruta.</li>
+</ol>
+<h3 id="recomendaciones_3">Recomendaciones</h3>
+<p>Verifica las unidades y la tarifa estándar antes de presentar el precio a un cliente. La estimación no reemplaza la confirmación del transportista ni considera automáticamente restricciones de acceso, espera, seguros o mercancía especial.</p>
+<h2 id="5-calculadora-de-precios-de-venta-con-igv">5. Calculadora de Precios de Venta con IGV</h2>
+<h3 id="para-que-sirve_4">Para qué sirve</h3>
+<p>Calcula el precio final a partir del costo, margen neto y porcentaje de IGV. Muestra precio neto, ganancia, impuesto y escenarios forward, y permite conservar historial y descargar un PDF.</p>
+<h3 id="como-utilizarla_2">Cómo utilizarla</h3>
+<ol>
+<li>Introduce el costo de adquirir o producir el producto.</li>
+<li>Define el porcentaje de margen neto que deseas obtener.</li>
+<li>Confirma el porcentaje de IGV aplicable en tu caso.</li>
+<li>Revisa el precio neto, el impuesto y el precio final.</li>
+<li>Modifica los valores para comparar escenarios y guarda los resultados relevantes en el historial.</li>
+<li>Descarga el PDF si necesitas conservar o compartir el desglose.</li>
+</ol>
+<h3 id="recomendaciones_4">Recomendaciones</h3>
+<p>Confirma que el porcentaje de impuesto corresponda al régimen y operación aplicables. El resultado es una simulación comercial; no sustituye la revisión de un contador ni determina obligaciones tributarias por sí solo.</p>
+<h2 id="6-calculadora-de-prestamos-y-amortizaciones">6. Calculadora de Préstamos y Amortizaciones</h2>
+<h3 id="para-que-sirve_5">Para qué sirve</h3>
+<p>Calcula cuotas, total pagado e intereses, genera una tabla de amortización y permite evaluar abonos extraordinarios a capital y escenarios A/B.</p>
+<h3 id="como-utilizarla_3">Cómo utilizarla</h3>
+<ol>
+<li>Introduce el monto solicitado, la tasa anual y el plazo.</li>
+<li>Selecciona el periodo de gracia: ninguno, solo intereses o capitalización, cuando la opción esté disponible para tu caso.</li>
+<li>Revisa la cuota mensual, el total a pagar y los intereses totales.</li>
+<li>Consulta la tabla para observar cuánto se destina a capital e intereses en cada periodo.</li>
+<li>Simula un abono extraordinario a capital y compara el nuevo plazo o costo.</li>
+<li>Guarda la configuración actual como escenario A o B para contrastar dos alternativas.</li>
+</ol>
+<h3 id="recomendaciones_5">Recomendaciones</h3>
+<p>Introduce la tasa con la periodicidad correcta y comprueba si la entidad financiera utiliza tasa nominal, efectiva, comisiones, seguros o gastos adicionales. La calculadora no constituye una oferta de crédito.</p>
+<h2 id="7-calculadora-de-sobrecostos-laborales">7. Calculadora de Sobrecostos Laborales</h2>
+<h3 id="para-que-sirve_6">Para qué sirve</h3>
+<p>Estima el costo total del empleador a partir de una plantilla de empleados, salarios, departamentos y prestaciones. Ofrece vistas mensual y anual, gráficos comparativos, almacenamiento local y generación de PDF.</p>
+<h3 id="como-utilizarla_4">Cómo utilizarla</h3>
+<ol>
+<li>Selecciona la moneda y, si corresponde, introduce el tipo de cambio.</li>
+<li>Agrega cada empleado con nombre, cargo, departamento y remuneración.</li>
+<li>Completa los parámetros de beneficios, provisiones y retenciones disponibles.</li>
+<li>Revisa el costo total del empleador, los sueldos netos, las provisiones, el promedio por empleado y la renta de quinta categoría cuando aplique.</li>
+<li>Filtra por departamento para identificar qué áreas concentran el costo.</li>
+<li>Cambia entre vista mensual y anual y descarga el reporte PDF.</li>
+</ol>
+<h3 id="recomendaciones_6">Recomendaciones</h3>
+<p>Configura los porcentajes de acuerdo con la legislación y política laboral aplicables. Mantén separadas las simulaciones de presupuesto de la liquidación oficial de nómina.</p>
+<h2 id="8-comparador-avanzado-de-campanas">8. Comparador Avanzado de Campañas</h2>
+<h3 id="para-que-sirve_7">Para qué sirve</h3>
+<p>Permite registrar y editar campañas de Meta Ads, Google Ads, TikTok Ads, LinkedIn u otras plataformas, comparar presupuesto e ingresos, guardar escenarios localmente y exportar reportes PDF o CSV.</p>
+<h3 id="como-utilizarla_5">Cómo utilizarla</h3>
+<ol>
+<li>Crea una campaña y selecciona su plataforma.</li>
+<li>Introduce presupuesto, alcance, clics, conversiones, ingresos u otras métricas disponibles.</li>
+<li>Guarda la campaña y repite el proceso para las alternativas que quieras comparar.</li>
+<li>Utiliza los filtros por plataforma y consulta la tabla comparativa.</li>
+<li>Revisa el gráfico de presupuesto frente a ingresos y modifica los escenarios para ver su impacto.</li>
+<li>Exporta el reporte PDF o CSV para presentarlo o analizarlo en otra herramienta.</li>
+</ol>
+<h3 id="recomendaciones_7">Recomendaciones</h3>
+<p>Usa el mismo periodo y las mismas definiciones de conversión en todas las campañas. Los resultados dependen de la calidad de los datos introducidos y no representan una previsión automática de una plataforma publicitaria.</p>
+<h2 id="9-consola-de-campanas">9. Consola de Campañas</h2>
+<h3 id="para-que-sirve_8">Para qué sirve</h3>
+<p>Construye enlaces UTM, organiza fuentes y medios, simula ROI, muestra un heatmap y conserva un panel local de campañas con carpetas y enlaces simulados.</p>
+<h3 id="como-utilizarla_6">Cómo utilizarla</h3>
+<ol>
+<li>Introduce la URL de destino.</li>
+<li>Completa <code>utm_source</code>, <code>utm_medium</code>, <code>utm_campaign</code>, <code>utm_term</code> y <code>utm_content</code> con nombres consistentes.</li>
+<li>Copia la URL final generada y verifica que los parámetros estén correctamente codificados.</li>
+<li>Agrupa campañas en carpetas y guarda los enlaces en el panel local.</li>
+<li>Usa el simulador ROI introduciendo inversión, tráfico, conversiones y valor por conversión.</li>
+<li>Consulta el heatmap y elimina o reorganiza campañas desde la consola cuando sea necesario.</li>
+</ol>
+<h3 id="recomendaciones_8">Recomendaciones</h3>
+<p>Define una convención de nombres antes de crear muchas URLs. Evita mezclar mayúsculas, tildes y separadores distintos para la misma campaña, porque eso fragmenta los informes analíticos.</p>
+<h2 id="10-webp-forge-conversor-y-optimizador-de-imagenes">10. WebP Forge — Conversor y Optimizador de Imágenes</h2>
+<h3 id="para-que-sirve_9">Para qué sirve</h3>
+<p>Convierte y optimiza imágenes directamente en el navegador mediante Canvas. Admite procesamiento por lotes, descarga ZIP, formato WebP, calidad, redimensionado y marca de agua.</p>
+<h3 id="como-utilizarla_7">Cómo utilizarla</h3>
+<ol>
+<li>Arrastra las imágenes al área de trabajo o selecciónalas desde el explorador de archivos.</li>
+<li>Define el formato de salida, la calidad y las dimensiones máximas.</li>
+<li>Activa la marca de agua si necesitas identificar las imágenes y configura su posición.</li>
+<li>Procesa una imagen o un lote completo.</li>
+<li>Revisa la comparación de tamaño y descarga los archivos individuales o el ZIP.</li>
+</ol>
+<h3 id="recomendaciones_9">Recomendaciones</h3>
+<p>Conserva una copia de los originales. Para fotografías suele ser adecuado WebP con calidad media-alta; para gráficos con transparencia, comprueba que el formato elegido conserve el canal alfa y los colores importantes.</p>
+<h2 id="11-creador-de-facturas-proforma">11. Creador de Facturas Proforma</h2>
+<h3 id="para-que-sirve_10">Para qué sirve</h3>
+<p>Crea una factura proforma o recibo no fiscal con datos del emisor, cliente, productos, moneda, impuesto, conversión, método de pago y diseño. Permite guardar un catálogo, consultar historial, importar o exportar respaldo y descargar el documento.</p>
+<h3 id="como-utilizarla_8">Cómo utilizarla</h3>
+<ol>
+<li>Completa los datos de la empresa y, si quieres, sube un logotipo.</li>
+<li>Introduce los datos del cliente, número de proforma y fecha.</li>
+<li>Selecciona moneda, impuesto y segunda moneda si necesitas conversión.</li>
+<li>Añade conceptos, cantidades y precios unitarios. Guarda productos en el catálogo para reutilizarlos.</li>
+<li>Selecciona el método de pago y escribe la referencia correspondiente, como un número de Yape/Plin o enlace de PayPal, si procede.</li>
+<li>Elige el diseño, revisa el total y pulsa <strong>Descargar</strong>.</li>
+</ol>
+<h3 id="recomendaciones_10">Recomendaciones</h3>
+<p>Una proforma no equivale necesariamente a una factura fiscal. Revisa numeración, moneda, impuestos, datos de identificación y requisitos de tu país antes de enviarla.</p>
+<h2 id="12-firma-de-correo-html">12. Firma de Correo HTML</h2>
+<h3 id="para-que-sirve_11">Para qué sirve</h3>
+<p>Diseña una firma HTML personalizada con tus datos, cargo, empresa, colores, enlaces y estilos. Incluye vista previa y acciones para copiar o descargar el resultado.</p>
+<h3 id="como-utilizarla_9">Cómo utilizarla</h3>
+<ol>
+<li>Completa nombre, cargo, empresa, teléfono, enlaces y demás datos que quieras mostrar.</li>
+<li>Selecciona colores, tipografía y disposición visual.</li>
+<li>Comprueba la vista previa en escritorio y móvil.</li>
+<li>Copia el HTML generado o descarga el archivo.</li>
+<li>Pega el resultado en la configuración de firma de tu cliente de correo y envía un correo de prueba a distintas plataformas.</li>
+</ol>
+<h3 id="recomendaciones_11">Recomendaciones</h3>
+<p>Usa imágenes pequeñas y alojadas en una URL estable si el cliente de correo no admite imágenes embebidas. Evita información sensible y comprueba que los enlaces funcionen con y sin modo oscuro.</p>
+<h2 id="13-generador-de-codigos-qr">13. Generador de Códigos QR</h2>
+<h3 id="para-que-sirve_12">Para qué sirve</h3>
+<p>Genera códigos QR localmente para texto, URL, contacto, WhatsApp y otros contenidos disponibles en la interfaz. Permite seleccionar el país para construir un enlace de WhatsApp y descargar el código.</p>
+<h3 id="como-utilizarla_10">Cómo utilizarla</h3>
+<ol>
+<li>Selecciona el tipo de contenido.</li>
+<li>Introduce el texto, enlace o número solicitado.</li>
+<li>Para WhatsApp, elige el código de país e introduce el número sin duplicar el prefijo.</li>
+<li>Revisa la vista previa del QR.</li>
+<li>Descarga la imagen y prueba el escaneo con al menos dos teléfonos antes de imprimirla.</li>
+</ol>
+<h3 id="recomendaciones_12">Recomendaciones</h3>
+<p>Mantén buen contraste, deja un margen blanco alrededor del código y no lo reduzcas demasiado. Si el contenido cambia, genera un código nuevo y sustituye el anterior.</p>
+<h2 id="14-secukey-generador-de-contrasenas-para-pymes">14. SecuKey — Generador de Contraseñas para Pymes</h2>
+<h3 id="para-que-sirve_13">Para qué sirve</h3>
+<p>Genera contraseñas aleatorias con controles de longitud, minúsculas, mayúsculas, números, símbolos y exclusión de caracteres ambiguos. Incluye copia, indicador de fortaleza, modo corporativo, simulador 2FA/TOTP e historial de sesión.</p>
+<h3 id="como-utilizarla_11">Cómo utilizarla</h3>
+<ol>
+<li>Define la longitud deseada.</li>
+<li>Selecciona los grupos de caracteres que quieres incluir.</li>
+<li>Activa la exclusión de caracteres ambiguos si la contraseña se comunicará manualmente.</li>
+<li>Pulsa generar y revisa la fortaleza estimada.</li>
+<li>Copia la contraseña usando el botón correspondiente y guárdala en un gestor de contraseñas.</li>
+<li>Usa el modo corporativo para aplicar una configuración repetible y consulta el simulador TOTP únicamente como referencia de funcionamiento.</li>
+</ol>
+<h3 id="recomendaciones_13">Recomendaciones</h3>
+<p>No reutilices contraseñas entre servicios y no las guardes en documentos compartidos sin protección. El historial de sesión es local al navegador; no lo consideres un almacén seguro a largo plazo.</p>
+<h2 id="15-generador-de-contratos-de-servicios">15. Generador de Contratos de Servicios</h2>
+<h3 id="para-que-sirve_14">Para qué sirve</h3>
+<p>Genera un borrador editable de contrato de prestación de servicios con datos del contratista, cliente, objeto, contraprestación, plazo, obligaciones, confidencialidad y propiedad intelectual. Incluye vista previa y descarga.</p>
+<h3 id="como-utilizarla_12">Cómo utilizarla</h3>
+<ol>
+<li>Completa la jurisdicción o ciudad, fecha y datos de las partes.</li>
+<li>Describe el objeto y alcance del servicio.</li>
+<li>Introduce importe, moneda, forma de pago y fecha de entrega.</li>
+<li>Revisa las cláusulas y ajusta las obligaciones de cada parte.</li>
+<li>Comprueba la información de contacto y la vista previa.</li>
+<li>Descarga el borrador y somételo a revisión antes de firmarlo.</li>
+</ol>
+<h3 id="recomendaciones_14">Recomendaciones</h3>
+<p>La aplicación genera un documento de apoyo y no ofrece asesoría legal. Adapta la legislación, jurisdicción, impuestos, propiedad intelectual y mecanismos de resolución de conflictos con asesoría profesional.</p>
+<h2 id="16-generador-de-cotizaciones">16. Generador de Cotizaciones</h2>
+<h3 id="para-que-sirve_15">Para qué sirve</h3>
+<p>Crea cotizaciones con múltiples monedas, IGV, detracciones, logotipo, ítems o servicios, descuentos, catálogo, historial, previsualización y descarga.</p>
+<h3 id="como-utilizarla_13">Cómo utilizarla</h3>
+<ol>
+<li>Completa los datos de tu empresa, cliente y número de cotización.</li>
+<li>Selecciona soles o dólares y define la fecha de emisión y vencimiento.</li>
+<li>Añade cada ítem con descripción, cantidad, precio unitario y descuento.</li>
+<li>Guarda los productos frecuentes en el catálogo.</li>
+<li>Revisa subtotal, IGV, detracción y total general.</li>
+<li>Comprueba la previsualización y descarga la cotización.</li>
+</ol>
+<h3 id="recomendaciones_15">Recomendaciones</h3>
+<p>Usa una numeración consecutiva y revisa la vigencia, impuestos y condiciones comerciales. Si incluyes correo del cliente, verifica el enlace de contacto antes de compartir el documento.</p>
+<h2 id="17-chroma-generador-de-paletas-corporativas">17. Chroma — Generador de Paletas Corporativas</h2>
+<h3 id="para-que-sirve_16">Para qué sirve</h3>
+<p>Genera paletas armonizadas a partir de un color base y un ángulo de armonía. También permite extraer una paleta desde una imagen y copiar los valores HEX.</p>
+<h3 id="como-utilizarla_14">Cómo utilizarla</h3>
+<ol>
+<li>Introduce o selecciona el color base en formato HEX.</li>
+<li>Ajusta el ángulo de armonía o selecciona una relación como análoga, tríada o tétrada.</li>
+<li>Revisa los colores derivados y sus valores HEX, HSL y luminosidad.</li>
+<li>Copia individualmente los colores que quieras utilizar.</li>
+<li>Para extraer una paleta, sube una imagen JPG, PNG o WEBP y selecciona los colores resultantes.</li>
+</ol>
+<h3 id="recomendaciones_16">Recomendaciones</h3>
+<p>Comprueba el contraste entre texto y fondo antes de usar una combinación en una interfaz. Una paleta atractiva no garantiza por sí sola accesibilidad ni consistencia de marca.</p>
+<h2 id="18-generador-de-politicas-de-devolucion">18. Generador de Políticas de Devolución</h2>
+<h3 id="para-que-sirve_17">Para qué sirve</h3>
+<p>Genera un texto base de política de devoluciones a partir del tipo de negocio y las condiciones que selecciones. Permite copiar o descargar el resultado.</p>
+<h3 id="como-utilizarla_15">Cómo utilizarla</h3>
+<ol>
+<li>Selecciona la categoría más cercana a tu negocio: moda, electrónica, servicios digitales, alimentos u otra disponible.</li>
+<li>Define plazos, condiciones del producto, excepciones, costos de envío y mecanismo de reembolso.</li>
+<li>Revisa el texto completo generado.</li>
+<li>Ajusta el contenido a tu operación real y copia o descarga la política.</li>
+<li>Publica la versión final en tu web, checkout o documentación comercial.</li>
+</ol>
+<h3 id="recomendaciones_17">Recomendaciones</h3>
+<p>No publiques el texto sin verificar la normativa de protección al consumidor de tu país. Explica con claridad los plazos, canales, productos excluidos, costos y forma de devolución del dinero.</p>
+<h2 id="19-legalforge-generador-de-politicas-y-terminos">19. LegalForge — Generador de Políticas y Términos</h2>
+<h3 id="para-que-sirve_18">Para qué sirve</h3>
+<p>Genera documentos base de privacidad, términos, cookies y aviso legal a partir de los datos de la empresa y el tipo de sitio web. El documento se produce localmente y se puede descargar.</p>
+<h3 id="como-utilizarla_16">Cómo utilizarla</h3>
+<ol>
+<li>Introduce nombre de empresa, URL, país, identificación fiscal y domicilio cuando corresponda.</li>
+<li>Selecciona el tipo de sitio: corporativo, informativo o tienda online.</li>
+<li>Revisa las secciones de empresa, cumplimiento, datos y documentos.</li>
+<li>Comprueba la política de privacidad, cookies, finalidades, base legal, conservación, derechos y cambios.</li>
+<li>Descarga el documento y reemplaza los ejemplos por tus datos reales.</li>
+<li>Publica solo después de una revisión legal y técnica de tus cookies, analítica, formularios y proveedores.</li>
+</ol>
+<h3 id="recomendaciones_18">Recomendaciones</h3>
+<p>El generador produce una base editable, no una garantía de cumplimiento. La política debe corresponder a los tratamientos reales de datos y a la jurisdicción aplicable.</p>
+<h2 id="20-objecionpro-guiones-para-manejo-de-objeciones">20. ObjeciónPro — Guiones para Manejo de Objeciones</h2>
+<h3 id="para-que-sirve_19">Para qué sirve</h3>
+<p>Ofrece un catálogo público de guiones para responder objeciones comerciales según el tipo de cliente y la situación. Incluye filtros por objeción y perfil, favoritos, contribuciones y modo zen.</p>
+<h3 id="como-utilizarla_17">Cómo utilizarla</h3>
+<ol>
+<li>Explora los tipos de objeción, como “es muy caro”, “déjame pensarlo”, “no tengo tiempo”, “ya trabajo con otro” o “no me interesa”.</li>
+<li>Selecciona el perfil del cliente: analítico, escéptico, impulsivo u ocupado.</li>
+<li>Lee el guion y la técnica sugerida, por ejemplo aislar la objeción real, anclar la mejor opción o validar y girar.</li>
+<li>Guarda en favoritos los guiones que quieras practicar.</li>
+<li>Usa el modo zen para leer y practicar sin distracciones.</li>
+<li>Utiliza las contribuciones para registrar variantes propias y adaptarlas a tu producto.</li>
+</ol>
+<h3 id="recomendaciones_19">Recomendaciones</h3>
+<p>Usa los guiones como marco de conversación, no como texto que debas recitar. Escucha primero, confirma la necesidad real y evita presionar o hacer afirmaciones que no puedas demostrar.</p>
+<h2 id="21-organizador-de-matriz-de-contenidos">21. Organizador de Matriz de Contenidos</h2>
+<h3 id="para-que-sirve_20">Para qué sirve</h3>
+<p>Organiza ideas y publicaciones en una matriz de contenidos por fechas, plataformas y formatos. Incluye vistas de trabajo, filtros, salud semanal, balance por plataforma, edición, eliminación, deshacer/rehacer y persistencia local.</p>
+<h3 id="como-utilizarla_18">Cómo utilizarla</h3>
+<ol>
+<li>Navega entre semanas con los controles anterior, hoy y siguiente.</li>
+<li>Añade una idea en el día correspondiente.</li>
+<li>Selecciona la plataforma: Instagram, Facebook, Twitter/X, LinkedIn, TikTok o YouTube.</li>
+<li>Define el formato, por ejemplo post estático, video, artículo, reel o carrusel.</li>
+<li>Edita el título y los detalles de cada tarjeta; elimina las que ya no sean útiles.</li>
+<li>Usa filtros para revisar una plataforma o tipo de contenido y consulta la salud semanal y el balance.</li>
+<li>Utiliza deshacer y rehacer para corregir cambios recientes.</li>
+</ol>
+<h3 id="recomendaciones_20">Recomendaciones</h3>
+<p>Equilibra formatos y plataformas de acuerdo con tus recursos reales. La matriz sirve para planificar; no publica automáticamente en redes sociales, por lo que debes verificar cada contenido antes de programarlo en tu herramienta de publicación.</p>
+<h2 id="22-simulador-tco-fisico-vs-nube">22. Simulador TCO — Físico vs. Nube</h2>
+<h3 id="para-que-sirve_21">Para qué sirve</h3>
+<p>Compara el costo total de propiedad de una infraestructura física con una alternativa cloud durante 36 meses. Incluye escenarios de crecimiento, costos de hardware, energía, internet, mantenimiento, licencias, transferencia, suscripción, valor de rescate y punto de quiebre.</p>
+<h3 id="como-utilizarla_19">Cómo utilizarla</h3>
+<ol>
+<li>Configura el clúster físico: cantidad de nodos, hardware inicial, energía mensual, internet, mantenimiento, licencias, inactividad y valor de rescate.</li>
+<li>Configura el clúster cloud: cantidad de instancias, proveedor de referencia, suscripción mensual y transferencia.</li>
+<li>Selecciona el escenario de crecimiento: optimista, realista o pesimista.</li>
+<li>Revisa el TCO físico y cloud a tres años, el ahorro total y la recomendación heurística.</li>
+<li>Consulta la sensibilidad de crecimiento y el mes de punto de quiebre.</li>
+<li>Utiliza los gráficos de costo acumulado para preparar una decisión de infraestructura.</li>
+</ol>
+<h3 id="recomendaciones_21">Recomendaciones</h3>
+<p>Incluye costos que no estén representados automáticamente, como migración, soporte, seguridad, respaldo, contratación, disponibilidad y salida del proveedor. Compara ofertas reales antes de tomar una decisión de compra o migración.</p>
+<h2 id="23-crm-y-pipeline-comercial">23. CRM y Pipeline Comercial</h2>
+<h3>Para qué sirve</h3>
+<p>Centraliza empresas, personas, oportunidades, valor estimado, etapas y próximas acciones para que el seguimiento comercial no dependa de notas dispersas.</p>
+<h3>Cómo utilizarla</h3>
+<ol><li>Registra la empresa o persona con sus datos de contacto.</li><li>Crea una oportunidad, asigna valor, etapa y probabilidad.</li><li>Indica la próxima acción y su fecha.</li><li>Actualiza la etapa desde el pipeline y revisa los seguimientos vencidos.</li></ol>
+<h2 id="24-flujo-de-caja-y-cobranzas">24. Flujo de Caja y Cobranzas</h2>
+<h3>Para qué sirve</h3>
+<p>Registra ingresos, egresos, vencimientos y estados de pago para observar el saldo operativo y anticipar faltantes.</p>
+<h3>Cómo utilizarla</h3>
+<ol><li>Añade cada movimiento con tipo, monto, categoría y fecha.</li><li>Relaciona el movimiento con un cliente o proveedor cuando corresponda.</li><li>Marca como pagado o cobrado al recibir o desembolsar el dinero.</li><li>Usa el resumen por categoría para revisar la situación y no confundas este control gerencial con la contabilidad fiscal.</li></ol>
+<h2 id="25-inventario-proveedores-y-compras">25. Inventario, Proveedores y Compras</h2>
+<h3>Para qué sirve</h3>
+<p>Controla productos, costos, precios, existencias, stock mínimo, proveedores y compras de reposición en el navegador.</p>
+<h3>Cómo utilizarla</h3>
+<ol><li>Crea los productos con SKU, costo y stock mínimo.</li><li>Registra los proveedores y sus condiciones.</li><li>Aplica cada compra al inventario para aumentar existencias.</li><li>Registra salidas manuales y atiende las alertas de productos bajo mínimo.</li></ol>
+<h2 id="26-tareas-y-proyectos-operativos">26. Tareas y Proyectos Operativos</h2>
+<h3>Para qué sirve</h3>
+<p>Convierte compromisos comerciales en proyectos, tareas, responsables, prioridades y fechas de entrega.</p>
+<h3>Cómo utilizarla</h3>
+<ol><li>Crea el proyecto y define cliente, objetivo y fecha prevista.</li><li>Añade tareas con responsable, prioridad y fecha límite.</li><li>Mueve cada tarea por Pendiente, En curso, Bloqueada o Terminada.</li><li>Revisa vencidos y completados para mantener el control de la ejecución.</li></ol>
+<h2 id="flujo-recomendado-para-trabajar-con-varias-aplicaciones">Flujo recomendado para trabajar con varias aplicaciones</h2>
+<p>Una pyme puede combinar las herramientas en un flujo local. Primero define la propuesta comercial con la <strong>Calculadora de Precios de Venta</strong>, la <strong>Calculadora de Descuentos</strong> y el <strong>Generador de Cotizaciones</strong>. Después prepara la presencia digital con el <strong>Analizador de Titulares</strong>, el <strong>Auditor SEO</strong>, la <strong>Consola de Campañas</strong> y el <strong>Organizador de Matriz de Contenidos</strong>. Para operación y administración, utiliza el <strong>Creador de Facturas Proforma</strong>, la <strong>Calculadora de Flete</strong>, la <strong>Calculadora de Sobrecostos Laborales</strong> y el <strong>Simulador TCO</strong>. Finalmente, documenta la relación comercial con el <strong>Generador de Contratos</strong>, <strong>LegalForge</strong> y la <strong>Política de Devoluciones</strong>.</p>
+<h2 id="privacidad-almacenamiento-y-respaldo">Privacidad, almacenamiento y respaldo</h2>
+<p>Las herramientas están preparadas para operar localmente. Cuando una aplicación ofrece historial, catálogo, favoritos, campañas o matriz, esa información puede almacenarse en el navegador mediante almacenamiento local. Borrar los datos del sitio, utilizar navegación privada o cambiar de navegador puede eliminar ese contenido. Exporta documentos, PDF, CSV o respaldos cuando la herramienta lo permita y conserva los archivos en una ubicación segura.</p>
+<p>No introduzcas claves reales, datos financieros sensibles, información médica ni documentos personales en un equipo compartido. Para contraseñas, utiliza un gestor especializado; para documentos legales, tributarios y laborales, revisa el resultado con un profesional cuando tenga consecuencias contractuales o económicas.</p>
+<h2 id="solucion-rapida-de-problemas">Solución rápida de problemas</h2>
+<table>
+<thead>
+<tr>
+<th>Síntoma</th>
+<th>Comprobación recomendada</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Aparece un 404 al abrir una app</td>
+<td>Comprueba que la URL termine en el nombre exacto del archivo <code>.html</code> y que se haya publicado la raíz completa.</td>
+</tr>
+<tr>
+<td>Solo se ve el fondo de color</td>
+<td>Actualiza con <code>Ctrl + F5</code>, revisa la consola y confirma que el JS de <code>/js/</code> responde con HTTP 200.</td>
+</tr>
+<tr>
+<td>Las tildes aparecen como <code>Ã</code></td>
+<td>Verifica que el servidor entregue UTF‑8 y que el HTML incluya <code>&lt;meta charset="UTF-8"&gt;</code>.</td>
+</tr>
+<tr>
+<td>No aparece el CSS</td>
+<td>Comprueba que <code>/css/nombre-de-la-app.css</code> exista y que la referencia sea relativa a la raíz.</td>
+</tr>
+<tr>
+<td>Se perdieron datos del historial</td>
+<td>Revisa si cambiaste de navegador, borraste el almacenamiento del sitio o usaste una ventana privada.</td>
+</tr>
+<tr>
+<td>Un PDF o ZIP no descarga</td>
+<td>Permite las descargas del navegador y prueba con una ventana normal; el procesamiento se realiza localmente.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="referencias-del-proyecto">Referencias del proyecto</h2>
+<hr>
+<p><strong>NubeParaPymes · herramientas locales y gratuitas para pequeñas empresas.</strong></p>
+<p><em>Documento preparado para la versión publicada en <code>main</code>.</em></p></article></main>
+  <footer>Guía de uso de las 26 aplicaciones · NubeParaPymes</footer>
+</body>
+</html>
