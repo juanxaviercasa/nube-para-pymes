@@ -203,6 +203,15 @@ def build_all_tools():
             content
         )
 
+        # Inyectar atribución de Xavier Cabello en np-global-footer
+        author_badge = '<span class="np-global-author"> · Diseñado y Desarrollado por <a class="np-footer-author-link" href="https://juan.cabellorosas.com" target="_blank" rel="noopener" style="font-weight:700;color:#f97316;text-decoration:underline;">Xavier Cabello</a></span>'
+        if "np-global-brand" in content and "juan.cabellorosas.com" not in content:
+            content = re.sub(
+                r'(<span class="np-global-brand">.*?</span>)',
+                r'\1' + author_badge,
+                content
+            )
+
         target_file.write_text(content, encoding="utf-8")
         count += 1
 
@@ -238,6 +247,40 @@ def update_wp_directory_page():
 
     wp_dir_file.write_text(content, encoding="utf-8")
     log("Página de directorio de WordPress sincronizada con las nuevas rutas.")
+
+def update_global_footers():
+    log("Estandarizando la firma 'Desarrollado por Xavier Cabello' en todas las páginas de WordPress...")
+    author_link = '<a href="https://juan.cabellorosas.com" target="_blank" rel="noopener" style="font-weight:700;color:inherit;text-decoration:underline;">Xavier Cabello</a>'
+
+    patterns = [
+        r'<div class="ast-footer-copyright"><p>&copy; 2026 Nube para Pymes\. Todos los derechos reservados(\s*\|\s*(Diseñado y )?Desarrollado por <a [^>]+>[^<]+</a>)?\.</p>',
+        r'<div class="ast-footer-copyright"><p>&copy; 2026 Nube para Pymes\. Todos los derechos reservados\s*\|\s*(Diseñado y )?Desarrollado por <a [^>]+>[^<]+</a></p>',
+        r'<div class="ast-footer-copyright"><p>&copy; 2026 Nube para Pymes\. Todos los derechos reservados\.</p>'
+    ]
+
+    replacement = f'<div class="ast-footer-copyright"><p>&copy; 2026 Nube para Pymes. Todos los derechos reservados | Diseñado y Desarrollado por {author_link}</p>'
+
+    count = 0
+    for html_file in DIST.rglob("*.html"):
+        if "herramientas" in html_file.parts:
+            continue
+        try:
+            txt = html_file.read_text(encoding="utf-8")
+            modified = False
+            for pat in patterns:
+                if re.search(pat, txt):
+                    txt = re.sub(pat, replacement, txt)
+                    modified = True
+            if "juan.cabellosalirrosas.com" in txt:
+                txt = txt.replace("https://juan.cabellosalirrosas.com", "https://juan.cabellorosas.com")
+                txt = txt.replace("http://juan.cabellosalirrosas.com", "https://juan.cabellorosas.com")
+                modified = True
+            if modified:
+                html_file.write_text(txt, encoding="utf-8")
+                count += 1
+        except Exception as e:
+            pass
+    log(f"Firma de autor inyectada y normalizada en {count} páginas de WordPress.")
 
 def update_redirects():
     log("Generando reglas 301 en dist/_redirects...")
@@ -442,6 +485,7 @@ def main():
     build_usage_guide()
     build_all_tools()
     update_wp_directory_page()
+    update_global_footers()
     update_redirects()
     update_headers()
     update_sitemap()
