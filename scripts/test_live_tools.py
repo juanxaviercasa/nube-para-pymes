@@ -1,16 +1,21 @@
 import urllib.request
-import re
 
-req = urllib.request.Request('https://nubeparapymes.online/herramientas/js/index.js?v=20260912-3', headers={'User-Agent': 'Mozilla/5.0'})
-js = urllib.request.urlopen(req).read().decode('utf-8')
-slugs = re.findall(r'slug:"([^"]+)"', js)
-print(f"Total slugs in live JS: {len(slugs)}")
-for s in slugs[:10]:
-    print(" ", s)
+urls = [
+    'https://nubeparapymes.online/herramientas/tareas-proyectos-pymes.html',
+    'https://nubeparapymes.online/herramientas/inventario-compras-pymes.html',
+    'https://nubeparapymes.online/herramientas/productividad/tareas-proyectos-pymes/',
+    'https://nubeparapymes.online/herramientas/operaciones/inventario-compras-pymes/',
+    'https://nubeparapymes.online/herramientas/'
+]
 
-print("\nChecking live portal HTML:")
-req_html = urllib.request.Request('https://nubeparapymes.online/herramientas/', headers={'User-Agent': 'Mozilla/5.0'})
-html = urllib.request.urlopen(req_html).read().decode('utf-8')
-print("Has Xavier Cabello in live HTML footer:", "juan.cabellorosas.com" in html)
-print("Has Guía de uso in live HTML footer:", "Guía de uso" in html)
-print("Has new script version in live HTML:", "index.js?v=20260912-3" in html)
+for u in urls:
+    try:
+        req = urllib.request.Request(u, headers={'User-Agent': 'Mozilla/5.0'})
+        res = urllib.request.urlopen(req, timeout=10)
+        print(f"[{res.status}] -> {u}")
+        if ".html" in u:
+            content = res.read().decode('utf-8')
+            has_redirect = "window.location.replace" in content
+            print(f"       Contiene redirección JS: {has_redirect}")
+    except Exception as e:
+        print(f"[ERR {e}] -> {u}")

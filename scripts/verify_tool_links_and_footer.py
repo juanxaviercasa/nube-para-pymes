@@ -59,8 +59,10 @@ def check():
                 errors.append(f"dist/herramientas/index.html no contiene enlace canónico {expected}")
         if "juan.cabellorosas.com" not in txt:
             errors.append("dist/herramientas/index.html no contiene juan.cabellorosas.com")
-        if "Guía de uso" not in txt:
-            errors.append("dist/herramientas/index.html no contiene 'Guía de uso' en footer")
+        if "Guía completa de uso" not in txt:
+            errors.append("dist/herramientas/index.html no contiene 'Guía completa de uso' en footer")
+        if "InicioSobre" in txt or "usoInicio" in txt:
+            errors.append("dist/herramientas/index.html contiene enlaces pegados")
 
     # 2. Verificar js/index.js (React bundle)
     bundle_js = DIST / "herramientas" / "js" / "index.js"
@@ -74,6 +76,9 @@ def check():
                 errors.append(f"dist/herramientas/js/index.js no contiene slug {expected}")
         if "juan.cabellorosas.com" not in txt:
             errors.append("dist/herramientas/js/index.js no contiene juan.cabellorosas.com")
+        if "InicioSobre" in txt or "usoInicio" in txt:
+            errors.append("dist/herramientas/js/index.js contiene enlaces pegados")
+
 
     # 3. Verificar directory-experience.js
     dx_js = DIST / "herramientas" / "js" / "directory-experience.js"
