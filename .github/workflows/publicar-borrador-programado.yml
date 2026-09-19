@@ -44,7 +44,7 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Actions [Publicador Editorial]"
-          git add dist/ nubepymesexport/ borradores/ sitemap.xml search-index.json scripts/linkedin_queue.json
+          git add -A
           if git diff --staged --quiet; then
             echo "[INFO] No hubo nuevos borradores que publicar."
           else
