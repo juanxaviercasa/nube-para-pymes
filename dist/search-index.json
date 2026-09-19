@@ -1425,5 +1425,11 @@
     "url": "/geo-para-pymes-respuestas-inteligencia-artificial/",
     "description": "Guía completa de Generative Engine Optimization (GEO) para posicionar tu pyme en ChatGPT, Perplexity, Claude y los resúmenes de IA de Google en 2026.",
     "category": "Automatización y productividad con IA"
+  },
+  {
+    "title": "Digitalización de Procesos en Pymes: Cómo Automatizar Tareas sin Programar",
+    "url": "/digitalizacion-procesos-pyme-sin-programar/",
+    "description": "Guía técnica para eliminar cuellos de botella administrativos y automatizar flujos de trabajo en pequeñas empresas usando herramientas sin código.",
+    "category": "Automatización y productividad con IA"
   }
 ]

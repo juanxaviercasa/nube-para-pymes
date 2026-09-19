@@ -38,6 +38,26 @@
   },
   {
     "type": "article",
+    "slug": "digitalizacion-procesos-pyme-sin-programar",
+    "title": "Digitalización de Procesos en Pymes: Cómo Automatizar Tareas sin Programar",
+    "description": "Guía técnica para eliminar cuellos de botella administrativos y automatizar flujos de trabajo en pequeñas empresas usando herramientas sin código.",
+    "image": "https://nubeparapymes.online/wp-content/uploads/2026/09/digitalizacion-procesos-pyme-sin-programar-destacada.webp",
+    "key_points": [
+      "Identificación de tareas repetitivas de alto coste operativo",
+      "Criterios para elegir plataformas sin código (No-Code) seguras",
+      "Framework de 4 pasos para implementar automatizaciones sin fallos"
+    ],
+    "category": "automatizacion-ia",
+    "url": "https://nubeparapymes.online/digitalizacion-procesos-pyme-sin-programar/",
+    "published": false,
+    "published_at": null,
+    "post_id": null,
+    "pinterest_published": false,
+    "pinterest_published_at": null,
+    "pinterest_pin_id": null
+  },
+  {
+    "type": "article",
     "slug": "alternativas-excel-control-inventario",
     "title": "Alternativas a Excel para Control de Inventario en Pymes",
     "description": "alternativas Excel: revisa funciones, límites, precios y casos de uso antes de elegir una opción para tu negocio y evita pagar de más.",
