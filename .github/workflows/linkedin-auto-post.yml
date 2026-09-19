@@ -31,21 +31,34 @@ jobs:
         with:
           python-version: '3.11'
 
+      - name: Instalar dependencias
+        run: |
+          python -m pip install --upgrade pip
+          pip install Pillow
+
       - name: Verificar configuración de secretos
         env:
           HAS_TOKEN: ${{ secrets.LINKEDIN_ACCESS_TOKEN != '' }}
-          HAS_URN: ${{ secrets.LINKEDIN_PERSON_URN != '' }}
+          HAS_URN: ${{ secrets.LINKEDIN_ORGANIZATION_URN != '' || secrets.LINKEDIN_PERSON_URN != '' || secrets.LINKEDIN_TARGET_URN != '' }}
+          HAS_ORG: ${{ secrets.LINKEDIN_ORGANIZATION_URN != '' }}
         run: |
           if [ "$HAS_TOKEN" != "true" ] || [ "$HAS_URN" != "true" ]; then
-            echo "::error::Faltan los secretos en GitHub. Ve a Settings -> Secrets and variables -> Actions y agrega LINKEDIN_ACCESS_TOKEN y LINKEDIN_PERSON_URN."
+            echo "::error::Faltan los secretos en GitHub. Ve a Settings -> Secrets and variables -> Actions y agrega LINKEDIN_ACCESS_TOKEN y LINKEDIN_ORGANIZATION_URN (o LINKEDIN_PERSON_URN)."
             exit 1
           fi
-          echo "[OK] Secretos detectados correctamente."
+          if [ "$HAS_ORG" = "true" ]; then
+            echo "[OK] Secretos detectados. Destino configurado: PÁGINA DE EMPRESA (Nube para Pymes)."
+          else
+            echo "::warning::No se detectó LINKEDIN_ORGANIZATION_URN. Se publicará en tu feed personal. Para publicar en Nube para Pymes, agrega LINKEDIN_ORGANIZATION_URN en Secrets."
+          fi
 
       - name: Ejecutar motor de contenidos
         env:
           LINKEDIN_ACCESS_TOKEN: ${{ secrets.LINKEDIN_ACCESS_TOKEN }}
+          LINKEDIN_ORGANIZATION_URN: ${{ secrets.LINKEDIN_ORGANIZATION_URN }}
           LINKEDIN_PERSON_URN: ${{ secrets.LINKEDIN_PERSON_URN }}
+          LINKEDIN_TARGET_URN: ${{ secrets.LINKEDIN_TARGET_URN }}
+          LINKEDIN_REQUIRE_ORGANIZATION: ${{ secrets.LINKEDIN_REQUIRE_ORGANIZATION }}
         run: |
           if [ "${{ github.event.inputs.dry_run }}" = "true" ]; then
             echo "[INFO] Ejecutando en modo simulación (Dry Run)..."

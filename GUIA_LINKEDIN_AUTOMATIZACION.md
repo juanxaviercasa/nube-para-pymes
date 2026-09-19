@@ -56,54 +56,61 @@ Para que GitHub Actions pueda publicar en tu perfil en tu nombre, se utiliza la 
 
 ### Paso 3: Solicitar Acceso a los Productos de la API
 1. En el menú superior de tu app en el portal de desarrolladores, ve a la pestaña **"Products"** (Productos).
-2. Busca y solicita acceso (haz clic en **"Request access"** o **"Select"**) a los siguientes dos productos gratuitos:
-   - **Share on LinkedIn** (permite publicar contenido y enlaces en tu perfil).
-   - **Sign In with LinkedIn using OpenID Connect** (permite identificar tu ID de miembro `person URN`).
+2. Busca y solicita acceso (haz clic en **"Request access"** o **"Select"**) a:
+   - **Share on LinkedIn** (permite publicar contenido, enlaces e imágenes en tu perfil o página).
+   - **Sign In with LinkedIn using OpenID Connect** (permite identificar tu ID de miembro).
+   - Si vas a publicar en tu Página de Empresa, asocia tu página de LinkedIn en la pestaña **Settings** -> **LinkedIn Page** y verifica la vinculación.
 3. Ambos productos se aprueban automáticamente de forma instantánea.
 
 ### Paso 4: Generar tu Token de Acceso (Access Token)
 1. En el portal de desarrolladores, ve a la pestaña superior **"Tools"** -> **"Token Generator"** (Generador de tokens).
 2. Selecciona tu aplicación (`Nube para Pymes Auto-Poster`).
 3. Marca los siguientes permisos (*scopes*):
-   - `w_member_social` (escritura de publicaciones en el feed)
-   - `openid` (identificación del usuario)
-   - `profile` (lectura básica de perfil)
+   - `w_organization_social` (escritura en la Página de Empresa de Nube para Pymes - **Recomendado**)
+   - `w_member_social` (escritura en tu perfil personal)
+   - `openid` y `profile`
 4. Haz clic en **"Request access token"**.
-5. Se abrirá una ventana de autorización de LinkedIn pidiéndote permiso para que tu app publique en tu cuenta. Haz clic en **"Permitir"** (Allow).
-6. Copia el **Access Token** generado (es una cadena larga de texto). Guárdalo temporalmente en un bloc de notas seguro.
+5. Se abrirá la ventana de autorización. Haz clic en **"Permitir"** (Allow).
+6. Copia el **Access Token** generado.
 
-### Paso 5: Obtener tu `LINKEDIN_PERSON_URN`
-Tu `LINKEDIN_PERSON_URN` es el identificador único de tu perfil en la API de LinkedIn (tiene el formato `urn:li:person:XXXXXXXXXX`).
+### Paso 5: Obtener tu URN de Página de Empresa (Nube para Pymes)
+Para que las publicaciones vayan exclusivamente a tu **Página de Empresa** y **nunca a tu feed personal**:
 
-Para obtenerlo al instante con tu token:
-1. Abre tu terminal o PowerShell y ejecuta el siguiente comando reemplazando `TU_ACCESS_TOKEN_AQUI`:
-```bash
-python -c "import urllib.request, json; req = urllib.request.Request('https://api.linkedin.com/v2/userinfo', headers={'Authorization': 'Bearer TU_ACCESS_TOKEN_AQUI'}); res = urllib.request.urlopen(req); data = json.loads(res.read()); print('\n>>> TU PERSON URN ES:\nurn:li:person:' + data['sub'])"
-```
-2. El comando imprimirá en pantalla algo como:
-   `urn:li:person:a1b2c3d4e5`
-3. ¡Listo! Ya tienes tus 2 datos necesarios:
-   - `LINKEDIN_ACCESS_TOKEN`
-   - `LINKEDIN_PERSON_URN`
+1. **Obtener el ID de tu Organización:**
+   - Entra a LinkedIn y ve a administrar tu página de empresa ("Nube para Pymes").
+   - Revisa la URL en tu navegador: `https://www.linkedin.com/company/<NUMERO_ID>/admin/...`
+   - Ese número es el ID de tu empresa (ejemplo: si es `10594321`, tu URN es `urn:li:organization:10594321`).
+   - *(Si la URL muestra el nombre/slug como `/company/nube-para-pymes/admin/`, haz clic derecho en la página -> "Ver código fuente" y busca `urn:li:organization:`; el número que le sigue es el ID).*
+2. **Permisos del Token para Empresa:**
+   - Tu app en [LinkedIn Developers](https://www.linkedin.com/developers/) debe tener tu página asociada y verificada en la pestaña **Settings** -> **LinkedIn Page** -> **Verify**.
+   - En **Tools** -> **Token Generator**, debes generar el token marcando la casilla **`w_organization_social`** (que permite publicar en nombre de la empresa).
+3. **Verificación rápida en local:**
+   Puedes ejecutar en tu terminal:
+   ```bash
+   python scripts/obtener_linkedin_token.py
+   ```
+   El script consultará automáticamente la API de LinkedIn y te confirmará si tu token tiene acceso a la página de Nube para Pymes y su URN exacto.
 
 ---
 
-## ⚙️ Configuración en GitHub Secrets
+## ⚙️ Configuración en GitHub Secrets (Blindaje de Empresa)
 
-Para que el script se ejecute solo en la nube todos los días sin que tengas tu computadora encendida:
+Ve a tu repositorio en GitHub: `Settings` -> `Secrets and variables` -> `Actions` y configura:
 
-1. Ve a tu repositorio en GitHub: `https://github.com/juanxaviercasa/nube-para-pymes`
-2. Haz clic en la pestaña **Settings** (Configuración del repositorio).
-3. En el menú lateral izquierdo, haz clic en **Secrets and variables** -> **Actions**.
-4. Haz clic en el botón verde **New repository secret**:
-   - **Nombre:** `LINKEDIN_ACCESS_TOKEN`
-   - **Secret:** Pega tu token obtenido en el Paso 4.
-   - Haz clic en **Add secret**.
-5. Vuelve a hacer clic en **New repository secret**:
-   - **Nombre:** `LINKEDIN_PERSON_URN`
-   - **Secret:** Pega tu URN obtenido en el Paso 5 (ejemplo: `urn:li:person:XXXXX`).
-   - Haz clic en **Add secret**.
+1. **`LINKEDIN_ACCESS_TOKEN`**: Tu token de acceso con permiso `w_organization_social`.
+2. **`LINKEDIN_ORGANIZATION_URN`**: `urn:li:organization:<TU_ID_NUMÉRICO>`
+3. **`LINKEDIN_REQUIRE_ORGANIZATION`**: `true`
+   *(Al colocar este secreto en `true`, el sistema se blindará: si alguna vez falta el URN de empresa o el token caduca, la publicación se detendrá automáticamente con un error explícito, evitando que por accidente se publique en tu feed personal).*
 
+---
+
+## 🖼️ Galería de Mínimo 3 Imágenes por Post (Garantía Estricta)
+El motor ahora implementa la **API moderna de LinkedIn (`/rest/images` + `/rest/posts` con soporte nativo para `multiImage`)**:
+- **Artículos de blog:** Extrae de 3 a 4 capturas de pantalla, paneles y gráficos reales del artículo (convirtiéndolos a JPEG en memoria).
+- **Herramientas interactivas:** Genera automáticamente 3 tarjetas visuales cuadradas (1080x1080 px) con diseño profesional dark mode, destacando el problema de las Pymes, capacidades y privacidad.
+- **Subida binaria corregida:** La subida se realiza a la URL pre-firmada sin cabeceras de autorización conflictivas, garantizando la carga exitosa de las 3 imágenes.
+- **Validación estricta sin fallbacks silenciosos:** Si por cualquier motivo de red o de API no se logran subir al menos 3 imágenes, el sistema aborta de inmediato y emite un fallo visible en GitHub Actions en lugar de publicar un post incompleto sin imágenes.
+- **Resultado en LinkedIn:** La publicación se muestra como una **galería/mosaico visual interactivo de 3 imágenes** con el texto estratégico y el enlace a la web.
 ---
 
 ## 🎬 Cómo Probar y Disparar el Sistema
