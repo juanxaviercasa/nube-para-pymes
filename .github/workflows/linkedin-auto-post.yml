@@ -1,0 +1,57 @@
+name: Publicación Automatizada en LinkedIn
+
+on:
+  schedule:
+    # Lunes a Viernes a las 13:30 UTC (08:30 AM hora Lima/Bogotá - horario pico en LinkedIn)
+    - cron: '30 13 * * 1-5'
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: '¿Ejecutar en modo simulación (Dry Run)?'
+        required: true
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+jobs:
+  publish-to-linkedin:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout del repositorio
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Configurar Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Ejecutar motor de contenidos
+        env:
+          LINKEDIN_ACCESS_TOKEN: ${{ secrets.LINKEDIN_ACCESS_TOKEN }}
+          LINKEDIN_PERSON_URN: ${{ secrets.LINKEDIN_PERSON_URN }}
+        run: |
+          if [ "${{ github.event.inputs.dry_run }}" = "true" ]; then
+            echo "[INFO] Ejecutando en modo simulación (Dry Run)..."
+            python scripts/linkedin_content_engine.py --dry-run
+          else
+            echo "[INFO] Publicando post en LinkedIn..."
+            python scripts/linkedin_content_engine.py --publish
+          fi
+
+      - name: Guardar estado de la cola en Git
+        if: ${{ github.event.inputs.dry_run != 'true' }}
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Actions [LinkedIn Bot]"
+          git add scripts/linkedin_queue.json
+          if git diff --staged --quiet; then
+            echo "[INFO] No hay cambios en la cola de publicación."
+          else
+            git commit -m "[Auto] Actualizar cola de LinkedIn tras publicación [skip ci]"
+            git push origin main
+          fi
