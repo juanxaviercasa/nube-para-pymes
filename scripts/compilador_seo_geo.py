@@ -58,9 +58,17 @@ COLOR_BORDER = (51, 65, 85)         # Slate 700
 def get_font(size: int, bold: bool = False):
     """Obtiene tipografía del sistema o fallback estándar."""
     font_names = (
-        ["arialbd.ttf", "segoeuib.ttf", "calibrib.ttf", "DejaVuSans-Bold.ttf"]
+        [
+            "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf",
+            "/usr/share/fonts/truetype/liberation/LiberationSans-Bold.ttf",
+            "arialbd.ttf", "segoeuib.ttf", "calibrib.ttf", "DejaVuSans-Bold.ttf"
+        ]
         if bold
-        else ["arial.ttf", "segoeui.ttf", "calibri.ttf", "DejaVuSans.ttf"]
+        else [
+            "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf",
+            "/usr/share/fonts/truetype/liberation/LiberationSans-Regular.ttf",
+            "arial.ttf", "segoeui.ttf", "calibri.ttf", "DejaVuSans.ttf"
+        ]
     )
     for name in font_names:
         try:
