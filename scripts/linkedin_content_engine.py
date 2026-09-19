@@ -534,63 +534,44 @@ def generate_linkedin_post(item: dict, hook_index: int = 0) -> str:
     return generate_article_post(item, hook_index)
 
 
+OFFICIAL_ORGANIZATION_URN = "urn:li:organization:145201650"
+
+
 def get_author_urn() -> tuple[str, str]:
     """
     Determina el URN del autor y el modo (Página de Empresa o Perfil Personal).
-    Prioriza LINKEDIN_ORGANIZATION_URN para publicar en la Página de Empresa.
+    Por defecto publica siempre en la Página de Empresa oficial de Nube para Pymes (145201650).
     """
-    require_org = os.environ.get("LINKEDIN_REQUIRE_ORGANIZATION", "false").lower() in ("true", "1", "yes")
-
-    # 1. Verificar si se especificó URN de Organización / Página de Empresa
+    # 1. Verificar si se especificó un URN de Organización explícito en variables de entorno
     org_urn = os.environ.get("LINKEDIN_ORGANIZATION_URN") or os.environ.get("LINKEDIN_PAGE_URN")
     if org_urn:
         clean = org_urn.strip().strip('"').strip("'")
         if not clean.startswith("urn:li:organization:"):
             clean = f"urn:li:organization:{clean}"
-        return clean, "PÁGINA DE EMPRESA (Nube para Pymes)"
+        return clean, f"PÁGINA DE EMPRESA ({clean})"
 
-    # 2. Verificar URN General
+    # 2. Verificar si se forzó explícitamente un URN de destino diferente
     target_urn = os.environ.get("LINKEDIN_TARGET_URN")
     if target_urn:
         clean = target_urn.strip().strip('"').strip("'")
         if clean.startswith("urn:li:organization:") or clean.isdigit():
             if not clean.startswith("urn:li:organization:"):
                 clean = f"urn:li:organization:{clean}"
-            return clean, "PÁGINA DE EMPRESA (Nube para Pymes)"
-        if require_org:
-            raise ValueError(
-                f"Modo empresa obligatorio activo pero LINKEDIN_TARGET_URN ('{clean}') no es un URN de organización (urn:li:organization:XXXX)."
-            )
-        if not clean.startswith("urn:li:person:"):
-            clean = f"urn:li:person:{clean}"
-        return clean, "PERFIL PERSONAL"
+            return clean, f"PÁGINA DE EMPRESA ({clean})"
+        if clean.startswith("urn:li:person:"):
+            return clean, f"PERFIL PERSONAL ({clean})"
 
-    # Si se exige estrictamente organización y falta el secreto
-    if require_org:
-        raise ValueError(
-            "Configuración estricta de Página de Empresa: no se configuró LINKEDIN_ORGANIZATION_URN en GitHub Secrets. "
-            "Para evitar publicar en tu feed personal por error, la publicación ha sido cancelada."
-        )
-
-    # 3. Fallback a URN de persona (con advertencia visible)
+    # 3. Solo si se activa explícitamente LINKEDIN_FORCE_PERSON se permite perfil personal
+    force_person = os.environ.get("LINKEDIN_FORCE_PERSON", "false").lower() in ("true", "1", "yes")
     person_urn = os.environ.get("LINKEDIN_PERSON_URN")
-    if person_urn:
+    if force_person and person_urn:
         clean = person_urn.strip().strip('"').strip("'")
         if not clean.startswith("urn:li:person:"):
             clean = f"urn:li:person:{clean}"
-        print("\n" + "=" * 70)
-        print("⚠️  AVISO DE DESTINO: No se detectó LINKEDIN_ORGANIZATION_URN.")
-        print(f"   La publicación se enviará a tu PERFIL PERSONAL ({clean}).")
-        print("   Para publicar en la Página de Empresa de Nube para Pymes,")
-        print("   agrega el secreto LINKEDIN_ORGANIZATION_URN en GitHub Secrets.")
-        print("=" * 70 + "\n")
-        return clean, "PERFIL PERSONAL (Fallback)"
+        return clean, f"PERFIL PERSONAL ({clean})"
 
-    raise ValueError(
-        "No se encontró ningún URN configurado en las variables de entorno. "
-        "Configura LINKEDIN_ORGANIZATION_URN (para publicar en la página de empresa) "
-        "o LINKEDIN_PERSON_URN (para publicar en tu perfil personal)."
-    )
+    # 4. Predeterminado Oficial de la marca: Página de Empresa de Nube para Pymes
+    return OFFICIAL_ORGANIZATION_URN, f"PÁGINA DE EMPRESA OFICIAL (Nube para Pymes - {OFFICIAL_ORGANIZATION_URN})"
 
 
 def upload_single_image(image_bytes: bytes, author_urn: str, access_token: str) -> tuple[str, str]:

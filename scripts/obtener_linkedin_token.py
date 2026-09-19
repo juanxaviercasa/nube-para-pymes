@@ -100,43 +100,55 @@ def test_token(token: str):
     except Exception as e:
         print(f"  ℹ️ Error consultando organizaciones: {e}")
 
+    # 3. Verificar específicamente la página oficial de Nube para Pymes (145201650)
+    print("\n[INFO] 3. Verificando acceso a la Página Oficial Nube para Pymes (ID: 145201650)...")
+    target_org_id = "145201650"
+    target_org_urn = f"urn:li:organization:{target_org_id}"
+    can_publish_org = False
+
+    try:
+        test_req = urllib.request.Request(
+            f"https://api.linkedin.com/v2/organizations/{target_org_id}",
+            headers={
+                "Authorization": f"Bearer {token}",
+                "Content-Type": "application/json",
+                "X-Restli-Protocol-Version": "2.0.0",
+            },
+            method="GET"
+        )
+        with urllib.request.urlopen(test_req, timeout=10) as t_resp:
+            t_data = json.loads(t_resp.read().decode("utf-8"))
+            print(f"  ✓ Confirmado: Acceso a la organización «{t_data.get('localizedName', 'Nube para Pymes')}» (ID: {target_org_id})")
+            can_publish_org = True
+    except urllib.error.HTTPError as e:
+        if e.code == 403:
+            print(f"  ⚠️ Tu token no tiene permisos de lectura/administración sobre la organización {target_org_id}.")
+            print("     (Asegúrate de marcar 'w_organization_social' al generar el token).")
+        else:
+            print(f"  ℹ️ Estado de consulta para org {target_org_id}: HTTP {e.code}")
+    except Exception as e:
+        print(f"  ℹ️ Verificación de org: {e}")
+
     print("\n=======================================================")
-    print(" 🔑 RESUMEN DE SECRETOS PARA GITHUB ACTIONS")
+    print(" 🔑 RESUMEN DE CONFIGURACIÓN PARA GITHUB ACTIONS")
     print("=======================================================")
     print(f"1) LINKEDIN_ACCESS_TOKEN")
     print(f"   Valor: {token}\n")
 
-    if org_list:
-        print("🏢 PARA PUBLICAR EN TU PÁGINA DE EMPRESA (Nube para Pymes):")
-        for org_urn, role, org_name in org_list:
-            display = f" - «{org_name}»" if org_name else ""
-            print(f"2) LINKEDIN_ORGANIZATION_URN{display}")
-            print(f"   Valor: {org_urn}")
-            print(f"   (Rol de administrador: {role})")
-        print("\n3) LINKEDIN_REQUIRE_ORGANIZATION (Recomendado para blindar tu feed personal):")
-        print("   Valor: true")
-        print("   (Esto garantiza que si falta el URN de empresa, la acción se detendrá antes de tocar tu feed personal).")
+    print("2) LINKEDIN_ORGANIZATION_URN (Página Oficial Nube para Pymes)")
+    print(f"   Valor: {target_org_urn}\n")
+
+    if not has_org_permission and not can_publish_org:
+        print("⚠️  ATENCIÓN:")
+        print("   Este token NO tiene el permiso 'w_organization_social'.")
+        print("   Para que LinkedIn te permita publicar en la página de empresa (145201650):")
+        print("   1. Entra en https://www.linkedin.com/developers/ a tu app.")
+        print("   2. En Settings -> LinkedIn Page, asocia tu página 'https://www.linkedin.com/company/145201650/' y haz clic en Verify.")
+        print("   3. En Tools -> Token Generator, marca la casilla 'w_organization_social'.")
+        print("   4. Copia el token generado y guárdalo en GitHub Secrets como LINKEDIN_ACCESS_TOKEN.")
     else:
-        print("🏢 PARA PUBLICAR EN TU PÁGINA DE EMPRESA (Nube para Pymes):")
-        print("   Para que las publicaciones vayan a tu PÁGINA DE EMPRESA y NUNCA a tu feed personal:")
-        print("   a) Nombre del secreto: LINKEDIN_ORGANIZATION_URN")
-        print("      Valor:              urn:li:organization:<NUMERO_ID_DE_TU_PAGINA>")
-        print("   b) Nombre del secreto: LINKEDIN_REQUIRE_ORGANIZATION")
-        print("      Valor:              true")
-        print("")
-        print("   🔍 ¿Cómo obtener el ID numérico de tu página de Nube para Pymes?")
-        print("   1. Entra a LinkedIn y ve a administrar tu página 'Nube para Pymes'.")
-        print("   2. Revisa la URL en la barra del navegador:")
-        print("      https://www.linkedin.com/company/<NUMERO_ID>/admin/...")
-        print("      Ese número es el ID (ejemplo: si es 10594321, el URN es urn:li:organization:10594321).")
-        print("   3. Si tu URL muestra el nombre slug (ej: linkedin.com/company/nube-para-pymes/admin/):")
-        print("      Haz clic derecho en la página -> 'Ver código fuente' y busca 'urn:li:organization:'")
-        print("      El número que aparece a continuación es el ID de tu empresa.")
-        print("")
-        print("   🔐 IMPORTANTE SOBRE EL TOKEN:")
-        print("   Para publicar en una página de empresa, tu aplicación de LinkedIn Developers debe tener:")
-        print("   - Tu página vinculada en Settings -> LinkedIn Page -> Verify.")
-        print("   - En Tools -> Token Generator: marcar el permiso 'w_organization_social'.")
+        print("✅ ¡TODO LISTO PARA PUBLICAR EN NUBE PARA PYMES!")
+        print("   Guarda este token en GitHub Secrets para publicar directamente en la página de empresa.")
 
     if sub:
         print("\n👤 PERFIL PERSONAL DETECTADO:")
