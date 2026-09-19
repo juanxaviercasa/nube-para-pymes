@@ -540,9 +540,11 @@ OFFICIAL_ORGANIZATION_URN = "urn:li:organization:145201650"
 def get_author_urn() -> tuple[str, str]:
     """
     Determina el URN del autor y el modo (Página de Empresa o Perfil Personal).
-    Por defecto publica siempre en la Página de Empresa oficial de Nube para Pymes (145201650).
+    - Si se configuró LINKEDIN_ORGANIZATION_URN, publica en la Página de Empresa.
+    - Si se configuró LINKEDIN_PERSON_URN, publica en el Perfil Personal (Xavier Cabello).
+    - Si no se especifica ninguno, usa la Organización oficial de Nube para Pymes.
     """
-    # 1. Verificar si se especificó un URN de Organización explícito en variables de entorno
+    # 1. Verificar si se especificó un URN de Organización explícito
     org_urn = os.environ.get("LINKEDIN_ORGANIZATION_URN") or os.environ.get("LINKEDIN_PAGE_URN")
     if org_urn:
         clean = org_urn.strip().strip('"').strip("'")
@@ -550,7 +552,7 @@ def get_author_urn() -> tuple[str, str]:
             clean = f"urn:li:organization:{clean}"
         return clean, f"PÁGINA DE EMPRESA ({clean})"
 
-    # 2. Verificar si se forzó explícitamente un URN de destino diferente
+    # 2. Verificar URN General (LINKEDIN_TARGET_URN)
     target_urn = os.environ.get("LINKEDIN_TARGET_URN")
     if target_urn:
         clean = target_urn.strip().strip('"').strip("'")
@@ -558,17 +560,17 @@ def get_author_urn() -> tuple[str, str]:
             if not clean.startswith("urn:li:organization:"):
                 clean = f"urn:li:organization:{clean}"
             return clean, f"PÁGINA DE EMPRESA ({clean})"
-        if clean.startswith("urn:li:person:"):
-            return clean, f"PERFIL PERSONAL ({clean})"
-
-    # 3. Solo si se activa explícitamente LINKEDIN_FORCE_PERSON se permite perfil personal
-    force_person = os.environ.get("LINKEDIN_FORCE_PERSON", "false").lower() in ("true", "1", "yes")
-    person_urn = os.environ.get("LINKEDIN_PERSON_URN")
-    if force_person and person_urn:
-        clean = person_urn.strip().strip('"').strip("'")
         if not clean.startswith("urn:li:person:"):
             clean = f"urn:li:person:{clean}"
         return clean, f"PERFIL PERSONAL ({clean})"
+
+    # 3. Si se configuró URN de persona (Perfil Personal de Xavier Cabello)
+    person_urn = os.environ.get("LINKEDIN_PERSON_URN")
+    if person_urn:
+        clean = person_urn.strip().strip('"').strip("'")
+        if not clean.startswith("urn:li:person:"):
+            clean = f"urn:li:person:{clean}"
+        return clean, f"PERFIL PERSONAL (Xavier Cabello - {clean})"
 
     # 4. Predeterminado Oficial de la marca: Página de Empresa de Nube para Pymes
     return OFFICIAL_ORGANIZATION_URN, f"PÁGINA DE EMPRESA OFICIAL (Nube para Pymes - {OFFICIAL_ORGANIZATION_URN})"
