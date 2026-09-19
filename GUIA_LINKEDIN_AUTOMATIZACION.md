@@ -13,11 +13,29 @@ El sistema consta de dos componentes estratégicos:
    - **Formato:** Documento PDF vertical de 28 diapositivas (1080x1350 px, proporción 4:5 optimizada para móviles y feed de LinkedIn).
    - **Objetivo:** Generar alto tiempo de permanencia (*dwell time*) en el feed, mostrar la amplitud de las 26 herramientas gratuitas y posicionar a Xavier Cabello como creador.
    - **Archivo generado:** `Catalogo_26_Herramientas_NubeParaPymes.pdf`.
+   - **Publicación:** Manual mediante la opción "Añadir documento" en LinkedIn (los carruseles PDF requieren subida manual directa).
 
-2. **Componente 2: Motor de Publicación Automatizada de Artículos (API Oficial)**
-   - **Formato:** Publicaciones editoriales con gancho persuasivo, aprendizajes clave (3 puntos), enlace canónico al artículo y firma de autor.
-   - **Frecuencia recomendada:** 1 post diario de lunes a viernes a las 08:30 AM (hora Lima/Bogotá), horario pico de engagement B2B.
+2. **Componente 2: Motor de Publicación Automatizada (API Oficial)**
+   - **Formato Intercalado:** Alterna publicaciones editoriales de artículos con posts dedicados a las **26 herramientas interactivas gratuitas** (con su propuesta de valor, el problema que resuelven en una Pyme y enlace directo para probarlas).
+   - **Frecuencia programada:** 1 post diario de lunes a viernes a las 13:30 UTC (08:30 AM hora Lima/Bogotá), horario pico de engagement B2B.
    - **Tecnología:** GitHub Actions + Python + API Oficial de LinkedIn v2 (`ugcPosts`). Cero riesgo de bloqueos por no usar scraping ni bots de navegador.
+   - **Total de contenidos en rotación:** 94 publicaciones (68 artículos editoriales + 26 herramientas prácticas interactivas).
+
+---
+
+## 🔍 ¿Dónde ver los Posts Publicados en LinkedIn?
+
+Cuando ejecutas el workflow manualmente o por cron:
+1. **En el feed principal de LinkedIn:** LinkedIn **no** muestra tus propios posts recién creados en la parte superior de tu página de inicio (`/feed/`), porque su algoritmo ordena por defecto por publicaciones "Principales/Relevantes" de tu red con interacciones previas.
+2. **Para ver tus publicaciones inmediatamente:**
+   - Ve a tu **Perfil Personal** en LinkedIn.
+   - Baja a la sección **"Actividad" (Activity)** y haz clic en el filtro o pestaña **"Publicaciones" (Posts)**.
+   - O visita directamente tu panel de publicaciones: `https://www.linkedin.com/in/tu-usuario/recent-activity/all/`
+3. **En el resumen de GitHub Actions:**
+   - Ahora, cada vez que corras el workflow en GitHub Actions, la pantalla de resumen del paso mostrará una caja con el **enlace directo y cliqueable** a la publicación recién creada.
+4. **Publicaciones ya activas en tu perfil:**
+   - [Publicación #1: Cómo Ahorrar Horas de Trabajo Administrativo](https://www.linkedin.com/feed/update/urn:li:share:7507016780972711936/)
+   - [Publicación #2: Alternativas a Excel para Control de Inventario](https://www.linkedin.com/feed/update/urn:li:share:7507100894451359744/)
 
 ---
 

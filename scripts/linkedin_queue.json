@@ -1,5 +1,6 @@
 [
   {
+    "type": "article",
     "slug": "ahorrar-horas-trabajo-administrativo",
     "title": "Cómo Ahorrar Horas de Trabajo Administrativo con Automatización",
     "description": "ahorrar horas trabajo administrativo: revisa funciones, límites, precios y casos de uso antes de elegir una opción para tu negocio.",
@@ -16,6 +17,7 @@
     "post_id": "urn:li:share:7507016780972711936"
   },
   {
+    "type": "article",
     "slug": "alternativas-excel-control-inventario",
     "title": "Alternativas a Excel para Control de Inventario en Pymes",
     "description": "alternativas Excel: revisa funciones, límites, precios y casos de uso antes de elegir una opción para tu negocio y evita pagar de más.",
@@ -32,6 +34,31 @@
     "post_id": "urn:li:share:7507100894451359744"
   },
   {
+    "type": "tool",
+    "slug": "tool-analizador-titulares",
+    "tool_slug": "analizador-titulares",
+    "tool_number": 1,
+    "name": "Analizador de Titulares",
+    "title": "Herramienta #01: Analizador de Titulares",
+    "description": "Evalúa fuerza, tono, impacto emocional y claridad de tus copys para anuncios y artículos. El 80% de las personas solo lee el titular antes de decidir si hace clic o abandona.",
+    "icon": "📣",
+    "category": "marketing",
+    "cat_name": "MARKETING & ADQUISICIÓN",
+    "color": "#38BDF8",
+    "problem": "El 80% de las personas solo lee el titular antes de decidir si hace clic o abandona.",
+    "benefit": "Evalúa fuerza, tono, impacto emocional y claridad de tus copys para anuncios y artículos.",
+    "features": [
+      "Puntuación algorítmica de atracción",
+      "Detección de palabras de poder y emoción",
+      "Comparador A/B de variantes en tiempo real"
+    ],
+    "url": "https://nubeparapymes.online/herramientas/marketing/analizador-titulares/",
+    "published": false,
+    "published_at": null,
+    "post_id": null
+  },
+  {
+    "type": "article",
     "slug": "alternativas-gratuitas-asana",
     "title": "Alternativas Gratuitas a Asana para Startups",
     "description": "Compara alternativas gratuitas asana para startups y equipos pequeños según usuarios, tareas, vistas, límites y crecimiento del proyecto.",
@@ -48,6 +75,7 @@
     "post_id": null
   },
   {
+    "type": "article",
     "slug": "alternativas-gratuitas-notion",
     "title": "Mejores Alternativas Gratuitas a Notion en Español",
     "description": "alternativas gratuitas Notion: revisa funciones, límites, precios y casos de uso antes de elegir una opción para tu negocio.",
@@ -64,6 +92,31 @@
     "post_id": null
   },
   {
+    "type": "tool",
+    "slug": "tool-auditor-seo-basico",
+    "tool_slug": "auditor-seo-basico",
+    "tool_number": 2,
+    "name": "Auditor Básico de SEO On-Page",
+    "title": "Herramienta #02: Auditor Básico de SEO On-Page",
+    "description": "Audita etiquetas meta, jerarquía H1-H3, densidad de palabras clave y vista previa en Google. Tener una web invisible en Google cuesta miles de dólares en anuncios desperdiciados.",
+    "icon": "🔍",
+    "category": "marketing",
+    "cat_name": "MARKETING & ADQUISICIÓN",
+    "color": "#38BDF8",
+    "problem": "Tener una web invisible en Google cuesta miles de dólares en anuncios desperdiciados.",
+    "benefit": "Audita etiquetas meta, jerarquía H1-H3, densidad de palabras clave y vista previa en Google.",
+    "features": [
+      "Diagnóstico de salud SEO al instante",
+      "Previsualización real de snippet en SERP",
+      "Checklist accionable de correcciones"
+    ],
+    "url": "https://nubeparapymes.online/herramientas/marketing/auditor-seo-basico/",
+    "published": false,
+    "published_at": null,
+    "post_id": null
+  },
+  {
+    "type": "article",
     "slug": "alternativas-gratuitas-quickbooks",
     "title": "Alternativas Gratuitas a QuickBooks para Pequeños Negocios",
     "description": "Compara alternativas gratuitas quickbooks para facturación, gastos y reportes, revisando límites regionales y necesidades de tu negocio.",
@@ -80,6 +133,7 @@
     "post_id": null
   },
   {
+    "type": "article",
     "slug": "alternativas-gratuitas-slack",
     "title": "Alternativas Gratuitas a Slack para Equipos Pequeños",
     "description": "Compara alternativas gratuitas slack para equipos pequeños según canales, historial, usuarios, integraciones y límites del plan gratuito.",
@@ -96,6 +150,31 @@
     "post_id": null
   },
   {
+    "type": "tool",
+    "slug": "tool-comparador-campanas-avanzado",
+    "tool_slug": "comparador-campanas-avanzado",
+    "tool_number": 3,
+    "name": "Comparador Avanzado de Campañas",
+    "title": "Herramienta #03: Comparador Avanzado de Campañas",
+    "description": "Compara CPA, ROAS, CPC y conversión entre múltiples campañas y plataformas publicitarias. Invertir en Meta Ads o Google sin comparar retorno real conduce a quemar presupuesto.",
+    "icon": "📈",
+    "category": "marketing",
+    "cat_name": "MARKETING & ADQUISICIÓN",
+    "color": "#38BDF8",
+    "problem": "Invertir en Meta Ads o Google sin comparar retorno real conduce a quemar presupuesto.",
+    "benefit": "Compara CPA, ROAS, CPC y conversión entre múltiples campañas y plataformas publicitarias.",
+    "features": [
+      "Cálculo automático de ROAS y ROI",
+      "Simulación de escenarios de escala",
+      "Exportación de informes ejecutivos"
+    ],
+    "url": "https://nubeparapymes.online/herramientas/marketing/comparador-campanas-avanzado/",
+    "published": false,
+    "published_at": null,
+    "post_id": null
+  },
+  {
+    "type": "article",
     "slug": "apps-controlar-gastos-negocio",
     "title": "Mejores Apps para Controlar Gastos de un Negocio Pequeño",
     "description": "Compara apps controlar gastos según recibos, kilometraje, equipos, planes gratuitos, límites y necesidades de una pequeña empresa.",
@@ -112,6 +191,7 @@
     "post_id": null
   },
   {
+    "type": "article",
     "slug": "apps-gestion-tareas-freelancers",
     "title": "Apps de Gestión de Tareas: las Mejores para Freelancers",
     "description": "gestion tareas: revisa funciones, límites, precios y casos de uso antes de elegir una opción para tu negocio y evita pagar de más.",
@@ -128,6 +208,31 @@
     "post_id": null
   },
   {
+    "type": "tool",
+    "slug": "tool-consola-campanas",
+    "tool_slug": "consola-campanas",
+    "tool_number": 4,
+    "name": "Consola de Campañas y UTMs",
+    "title": "Herramienta #04: Consola de Campañas y UTMs",
+    "description": "Genera y organiza enlaces UTM con nomenclatura limpia y consistente para analítica web. No saber exactamente qué anuncio o enlace generó una venta impide tomar decisiones de inversión.",
+    "icon": "🎯",
+    "category": "marketing",
+    "cat_name": "MARKETING & ADQUISICIÓN",
+    "color": "#38BDF8",
+    "problem": "No saber exactamente qué anuncio o enlace generó una venta impide tomar decisiones de inversión.",
+    "benefit": "Genera y organiza enlaces UTM con nomenclatura limpia y consistente para analítica web.",
+    "features": [
+      "Constructor UTM para Google Analytics",
+      "Validador de parámetros en vivo",
+      "Historial de enlaces frecuentes"
+    ],
+    "url": "https://nubeparapymes.online/herramientas/marketing/consola-campanas/",
+    "published": false,
+    "published_at": null,
+    "post_id": null
+  },
+  {
+    "type": "article",
     "slug": "automatizacion-ia-pymes-criterios-decision",
     "title": "Automatización con IA para Pymes: 7 Criterios Antes de Elegir Software — Revisado",
     "description": "La automatización con IA funciona mejor cuando empieza por tareas repetitivas, reversibles y medibles. El objetivo no es automatizar todo, sino reducir",
@@ -144,6 +249,7 @@
     "post_id": null
   },
   {
+    "type": "article",
     "slug": "automatizacion-redes-sociales-ia",
     "title": "Automatización de Redes Sociales con IA: Mejores Herramientas",
     "description": "Compara herramientas de automatizacion redes sociales según programación, contenido, canales, colaboración y tamaño del equipo.",
@@ -160,6 +266,31 @@
     "post_id": null
   },
   {
+    "type": "tool",
+    "slug": "tool-organizador-matriz-contenidos",
+    "tool_slug": "organizador-matriz-contenidos",
+    "tool_number": 5,
+    "name": "Matriz de Contenidos Estratégica",
+    "title": "Herramienta #05: Matriz de Contenidos Estratégica",
+    "description": "Planifica temas por pilares de contenido, etapas de embudo (TOFU/MOFU/BOFU) y canales. Publicar sin rumbo en redes agota a tu equipo y no genera prospectos calificados.",
+    "icon": "🗓️",
+    "category": "marketing",
+    "cat_name": "MARKETING & ADQUISICIÓN",
+    "color": "#38BDF8",
+    "problem": "Publicar sin rumbo en redes agota a tu equipo y no genera prospectos calificados.",
+    "benefit": "Planifica temas por pilares de contenido, etapas de embudo (TOFU/MOFU/BOFU) y canales.",
+    "features": [
+      "Mapeo por etapas del cliente",
+      "Clasificación por formatos y canales",
+      "Calendario editorial exportable"
+    ],
+    "url": "https://nubeparapymes.online/herramientas/marketing/organizador-matriz-contenidos/",
+    "published": false,
+    "published_at": null,
+    "post_id": null
+  },
+  {
+    "type": "article",
     "slug": "automatizar-envio-facturas-recordatorios",
     "title": "Cómo Automatizar el Envío de Facturas y Recordatorios de Pago",
     "description": "facturas recordatorios: revisa funciones, límites, precios y casos de uso antes de elegir una opción para tu negocio y evita pagar de más.",
@@ -176,6 +307,7 @@
     "post_id": null
   },
   {
+    "type": "article",
     "slug": "automatizar-facturacion-recurrente",
     "title": "Cómo Automatizar la Facturación Recurrente de tu Negocio",
     "description": "automatizar facturacion: revisa funciones, límites, precios y casos de uso antes de elegir una opción para tu negocio y evita pagar de más.",
@@ -192,22 +324,31 @@
     "post_id": null
   },
   {
-    "slug": "blog",
-    "title": "Blog",
-    "description": "",
-    "image": "",
-    "key_points": [
-      "SEO y GEO para Pymes: Cómo Medir Visibilidad en Google y en Respuestas de IA — Revisado",
-      "Automatización con IA para Pymes: 7 Criterios Antes de Elegir Software — Revisado",
-      "CRM con IA para Pymes: Qué Automatizar Antes de Contratar — Revisado"
+    "type": "tool",
+    "slug": "tool-flujo-caja-pymes",
+    "tool_slug": "flujo-caja-pymes",
+    "tool_number": 6,
+    "name": "Flujo de Caja para Pymes",
+    "title": "Herramienta #06: Flujo de Caja para Pymes",
+    "description": "Proyecta entradas y salidas de dinero semanales y mensuales para anticipar déficits de caja. El 82% de las empresas que cierran lo hacen por falta de liquidez, no por falta de ventas.",
+    "icon": "💰",
+    "category": "finanzas",
+    "cat_name": "FINANZAS & RENTABILIDAD",
+    "color": "#10B981",
+    "problem": "El 82% de las empresas que cierran lo hacen por falta de liquidez, no por falta de ventas.",
+    "benefit": "Proyecta entradas y salidas de dinero semanales y mensuales para anticipar déficits de caja.",
+    "features": [
+      "Proyección de saldo disponible en tiempo real",
+      "Alertas visuales de quiebre de caja",
+      "100% privado: datos guardados en tu navegador"
     ],
-    "category": "default",
-    "url": "https://nubeparapymes.online/blog/",
+    "url": "https://nubeparapymes.online/herramientas/finanzas/flujo-caja-pymes/",
     "published": false,
     "published_at": null,
     "post_id": null
   },
   {
+    "type": "article",
     "slug": "chatbots-ia-pequenos-negocios",
     "title": "Mejores Chatbots con IA para Pequeños Negocios",
     "description": "chatbots IA: revisa funciones, límites, precios y casos de uso antes de elegir una opción para tu negocio y evita pagar de más.",
@@ -224,6 +365,7 @@
     "post_id": null
   },
   {
+    "type": "article",
     "slug": "chatgpt-atencion-al-cliente",
     "title": "Cómo Usar ChatGPT para Atención al Cliente Automatizada",
     "description": "Aprende a usar chatgpt atencion automatizada con límites claros, respuestas frecuentes, revisión humana y procesos seguros. Revisa funciones, lími...",
@@ -240,6 +382,31 @@
     "post_id": null
   },
   {
+    "type": "tool",
+    "slug": "tool-calculadora-descuentos-promociones",
+    "tool_slug": "calculadora-descuentos-promociones",
+    "tool_number": 7,
+    "name": "Calculadora de Descuentos y Promociones",
+    "title": "Herramienta #07: Calculadora de Descuentos y Promociones",
+    "description": "Calcula cuántas unidades extra necesitas vender para compensar una rebaja de precio. Hacer descuentos sin calcular el punto de equilibrio destruye el margen neto de tu negocio.",
+    "icon": "🏷️",
+    "category": "finanzas",
+    "cat_name": "FINANZAS & RENTABILIDAD",
+    "color": "#10B981",
+    "problem": "Hacer descuentos sin calcular el punto de equilibrio destruye el margen neto de tu negocio.",
+    "benefit": "Calcula cuántas unidades extra necesitas vender para compensar una rebaja de precio.",
+    "features": [
+      "Simulador de margen sobre ventas vs costo",
+      "Análisis de promociones 2x1 y combos",
+      "Cálculo de punto de equilibrio promocional"
+    ],
+    "url": "https://nubeparapymes.online/herramientas/finanzas/calculadora-descuentos-promociones/",
+    "published": false,
+    "published_at": null,
+    "post_id": null
+  },
+  {
+    "type": "article",
     "slug": "clickup-vs-monday",
     "title": "ClickUp vs Monday.com: Comparativa de Precios y Funciones",
     "description": "Compara ClickUp en funciones, precios, límites, facilidad de uso y escenarios para elegir la plataforma adecuada para tu equipo.",
@@ -256,6 +423,7 @@
     "post_id": null
   },
   {
+    "type": "article",
     "slug": "control-horarios-equipos-remotos",
     "title": "Software de Control de Horarios para Equipos Remotos",
     "description": "control horarios equipos remotos: revisa funciones, límites, precios y casos de uso antes de elegir una opción para tu negocio.",
@@ -272,6 +440,31 @@
     "post_id": null
   },
   {
+    "type": "tool",
+    "slug": "tool-calculadora-precios-venta-igv",
+    "tool_slug": "calculadora-precios-venta-igv",
+    "tool_number": 8,
+    "name": "Calculadora de Precios de Venta e IGV",
+    "title": "Herramienta #08: Calculadora de Precios de Venta e IGV",
+    "description": "Convierte costo, margen neto deseado e impuesto (IGV/IVA) en el precio de venta final exacto. Confundir margen con markup o no desglosar impuestos provoca pérdidas invisibles.",
+    "icon": "🧾",
+    "category": "finanzas",
+    "cat_name": "FINANZAS & RENTABILIDAD",
+    "color": "#10B981",
+    "problem": "Confundir margen con markup o no desglosar impuestos provoca pérdidas invisibles.",
+    "benefit": "Convierte costo, margen neto deseado e impuesto (IGV/IVA) en el precio de venta final exacto.",
+    "features": [
+      "Desglose claro de costo, ganancia e impuesto",
+      "Simulación de márgenes comerciales",
+      "Exportación de ficha de precios"
+    ],
+    "url": "https://nubeparapymes.online/herramientas/finanzas/calculadora-precios-venta-igv/",
+    "published": false,
+    "published_at": null,
+    "post_id": null
+  },
+  {
+    "type": "article",
     "slug": "crear-tablero-kanban-desde-cero",
     "title": "Cómo Crear un Tablero Kanban Desde Cero",
     "description": "crear tablero kanban: revisa funciones, límites, precios y casos de uso antes de elegir una opción para tu negocio y evita pagar de más.",
@@ -288,6 +481,7 @@
     "post_id": null
   },
   {
+    "type": "article",
     "slug": "crm-alternativas-gratuitas-salesforce",
     "title": "Alternativas Gratuitas a Salesforce para Pequeños Negocios",
     "description": "Compara alternativas gratuitas salesforce para pequeños negocios según contactos, ventas, automatización, límites y facilidad de adopción.",
@@ -304,6 +498,31 @@
     "post_id": null
   },
   {
+    "type": "tool",
+    "slug": "tool-calculadora-prestamos-amortizaciones",
+    "tool_slug": "calculadora-prestamos-amortizaciones",
+    "tool_number": 9,
+    "name": "Calculadora de Préstamos y Amortizaciones",
+    "title": "Herramienta #09: Calculadora de Préstamos y Amortizaciones",
+    "description": "Genera la tabla de amortización completa (método francés o alemán) y evalúa abonos de capital. Los bancos ocultan el impacto real de las cuotas y los intereses a largo plazo.",
+    "icon": "🏦",
+    "category": "finanzas",
+    "cat_name": "FINANZAS & RENTABILIDAD",
+    "color": "#10B981",
+    "problem": "Los bancos ocultan el impacto real de las cuotas y los intereses a largo plazo.",
+    "benefit": "Genera la tabla de amortización completa (método francés o alemán) y evalúa abonos de capital.",
+    "features": [
+      "Tabla detallada cuota por cuota",
+      "Simulador de abonos extraordinarios a capital",
+      "Comparador de créditos en paralelo"
+    ],
+    "url": "https://nubeparapymes.online/herramientas/finanzas/calculadora-prestamos-amortizaciones/",
+    "published": false,
+    "published_at": null,
+    "post_id": null
+  },
+  {
+    "type": "article",
     "slug": "crm-como-elegir-un-crm-segun-tamano-empresa",
     "title": "Cómo Elegir un CRM Según el Tamaño de tu Empresa",
     "description": "tamano empresa: revisa funciones, límites, precios y casos de uso antes de elegir una opción para tu negocio y evita pagar de más.",
@@ -320,6 +539,7 @@
     "post_id": null
   },
   {
+    "type": "article",
     "slug": "crm-con-ia-para-pymes-que-automatizar",
     "title": "CRM con IA para Pymes: Qué Automatizar Antes de Contratar — Revisado",
     "description": "Un CRM con IA puede ahorrar tiempo, pero no arregla por sí solo un proceso comercial desordenado. Antes de comparar plataformas, una pyme necesita saber qué",
@@ -336,6 +556,31 @@
     "post_id": null
   },
   {
+    "type": "tool",
+    "slug": "tool-calculadora-sobrecostos-laborales",
+    "tool_slug": "calculadora-sobrecostos-laborales",
+    "tool_number": 10,
+    "name": "Calculadora de Sobrecostos Laborales",
+    "title": "Herramienta #10: Calculadora de Sobrecostos Laborales",
+    "description": "Estima el costo total del empleador por puesto y departamento para presupuestar nómina sin sorpresas. Contratar un colaborador cuesta mucho más que su salario nominal (gratificaciones, CTS, seguro).",
+    "icon": "👥",
+    "category": "finanzas",
+    "cat_name": "FINANZAS & RENTABILIDAD",
+    "color": "#10B981",
+    "problem": "Contratar un colaborador cuesta mucho más que su salario nominal (gratificaciones, CTS, seguro).",
+    "benefit": "Estima el costo total del empleador por puesto y departamento para presupuestar nómina sin sorpresas.",
+    "features": [
+      "Desglose de aportes legales y provisiones",
+      "Cálculo mensual y anual consolidado",
+      "Filtros por departamento o área"
+    ],
+    "url": "https://nubeparapymes.online/herramientas/finanzas/calculadora-sobrecostos-laborales/",
+    "published": false,
+    "published_at": null,
+    "post_id": null
+  },
+  {
+    "type": "article",
     "slug": "crm-con-whatsapp-integrado",
     "title": "Mejores CRM con WhatsApp Integrado para Pymes (Ranking Comercial 2026)",
     "description": "Compara un whatsapp integrado para centralizar clientes, conversaciones y seguimiento comercial sin perder contexto en tu pyme.",
@@ -352,6 +597,7 @@
     "post_id": null
   },
   {
+    "type": "article",
     "slug": "crm-hubspot-vs-zoho-crm",
     "title": "HubSpot vs Zoho CRM (2026): ¿Cuál Conviene a tu Pyme?",
     "description": "zoho crm: revisa funciones, límites, precios y casos de uso antes de elegir una opción para tu negocio y evita pagar de más.",
@@ -368,6 +614,31 @@
     "post_id": null
   },
   {
+    "type": "tool",
+    "slug": "tool-crm-pymes",
+    "tool_slug": "crm-pymes",
+    "tool_number": 11,
+    "name": "CRM Ligero para Pymes",
+    "title": "Herramienta #11: CRM Ligero para Pymes",
+    "description": "Embudo comercial visual estilo Kanban para gestionar clientes, estados y montos de oportunidad. Los prospectos se pierden en chats de WhatsApp y hojas de cálculo desordenadas.",
+    "icon": "💼",
+    "category": "ventas",
+    "cat_name": "VENTAS & CONVERSIÓN",
+    "color": "#818CF8",
+    "problem": "Los prospectos se pierden en chats de WhatsApp y hojas de cálculo desordenadas.",
+    "benefit": "Embudo comercial visual estilo Kanban para gestionar clientes, estados y montos de oportunidad.",
+    "features": [
+      "Embudo arrastrable (Lead, Contactado, Ganado)",
+      "Historial de notas y llamadas por cliente",
+      "Cero suscripciones mensuales: corre en tu equipo"
+    ],
+    "url": "https://nubeparapymes.online/herramientas/ventas/crm-pymes/",
+    "published": false,
+    "published_at": null,
+    "post_id": null
+  },
+  {
+    "type": "article",
     "slug": "crm-integrado-whatsapp-business",
     "title": "Cómo Elegir un CRM que se Integre con WhatsApp Business — Revisado",
     "description": "Aprende a elegir un whatsapp business según tu equipo, historial de conversaciones, automatización y necesidades reales de una pyme.",
@@ -384,6 +655,7 @@
     "post_id": null
   },
   {
+    "type": "article",
     "slug": "crm-para-freelancers",
     "title": "CRM para Freelancers: ¿Vale la Pena o Es Excesivo?",
     "description": "Analiza si un freelancers aporta valor o exceso según clientes, seguimiento, tareas, alternativas simples y forma de trabajo.",
@@ -400,6 +672,31 @@
     "post_id": null
   },
   {
+    "type": "tool",
+    "slug": "tool-generador-cotizaciones",
+    "tool_slug": "generador-cotizaciones",
+    "tool_number": 12,
+    "name": "Generador Profesional de Cotizaciones",
+    "title": "Herramienta #12: Generador Profesional de Cotizaciones",
+    "description": "Crea cotizaciones elegantes y profesionales con logotipo, términos comerciales y descarga en PDF. Enviar propuestas en Word o texto plano proyecta informalidad y reduce la tasa de cierre.",
+    "icon": "📋",
+    "category": "ventas",
+    "cat_name": "VENTAS & CONVERSIÓN",
+    "color": "#818CF8",
+    "problem": "Enviar propuestas en Word o texto plano proyecta informalidad y reduce la tasa de cierre.",
+    "benefit": "Crea cotizaciones elegantes y profesionales con logotipo, términos comerciales y descarga en PDF.",
+    "features": [
+      "Cálculo automático de ítems, descuentos y total",
+      "Validez de la oferta y condiciones de pago",
+      "Descarga instantánea en PDF limpio y formal"
+    ],
+    "url": "https://nubeparapymes.online/herramientas/ventas/generador-cotizaciones/",
+    "published": false,
+    "published_at": null,
+    "post_id": null
+  },
+  {
+    "type": "article",
     "slug": "crm-para-inmobiliarias",
     "title": "Mejor CRM para Inmobiliarias Pequeñas",
     "description": "Compara un inmobiliarias pequeñas según propiedades, leads, visitas, seguimiento comercial e integración con el trabajo diario.",
@@ -416,6 +713,7 @@
     "post_id": null
   },
   {
+    "type": "article",
     "slug": "digitalizar-procesos-negocio-pequeno",
     "title": "Cómo Digitalizar Procesos de un Negocio Pequeño Paso a Paso",
     "description": "digitalizar procesos: revisa funciones, límites, precios y casos de uso antes de elegir una opción para tu negocio y evita pagar de más.",
@@ -432,6 +730,31 @@
     "post_id": null
   },
   {
+    "type": "tool",
+    "slug": "tool-creador-facturas-proforma",
+    "tool_slug": "creador-facturas-proforma",
+    "tool_number": 13,
+    "name": "Creador de Facturas Proforma",
+    "title": "Herramienta #13: Creador de Facturas Proforma",
+    "description": "Emite facturas proforma estandarizadas con desglose tributario y datos bancarios para pago. Los clientes corporativos exigen una proforma detallada antes de emitir la orden de compra.",
+    "icon": "📄",
+    "category": "ventas",
+    "cat_name": "VENTAS & CONVERSIÓN",
+    "color": "#818CF8",
+    "problem": "Los clientes corporativos exigen una proforma detallada antes de emitir la orden de compra.",
+    "benefit": "Emite facturas proforma estandarizadas con desglose tributario y datos bancarios para pago.",
+    "features": [
+      "Campos para emisor, cliente y cuenta de abono",
+      "Generación local segura sin subir datos a servidores",
+      "Formato listo para imprimir o enviar por correo"
+    ],
+    "url": "https://nubeparapymes.online/herramientas/ventas/creador-facturas-proforma/",
+    "published": false,
+    "published_at": null,
+    "post_id": null
+  },
+  {
+    "type": "article",
     "slug": "elegir-software-segun-numero-empleados",
     "title": "Cómo Elegir el Mejor Software Según el Número de Empleados",
     "description": "numero empleados: revisa funciones, límites, precios y casos de uso antes de elegir una opción para tu negocio y evita pagar de más.",
@@ -448,6 +771,7 @@
     "post_id": null
   },
   {
+    "type": "article",
     "slug": "elegir-software-segun-presupuesto",
     "title": "Cómo Elegir Software para tu Pyme Según Presupuesto",
     "description": "Aprende a presupuesto y prioridades, comparando planes gratuitos, opciones de entrada y funciones esenciales. Revisa funciones, límites y criteri...",
@@ -464,6 +788,31 @@
     "post_id": null
   },
   {
+    "type": "tool",
+    "slug": "tool-generador-codigos-qr",
+    "tool_slug": "generador-codigos-qr",
+    "tool_number": 14,
+    "name": "Generador de Códigos QR Empresariales",
+    "title": "Herramienta #14: Generador de Códigos QR Empresariales",
+    "description": "Genera códigos QR de alta resolución permanentes para URLs, WhatsApp directo, Wi-Fi o vCard. Los generadores de QR comerciales caducan o cobran mensualidades sorpresa tras pocas lecturas.",
+    "icon": "📱",
+    "category": "ventas",
+    "cat_name": "VENTAS & CONVERSIÓN",
+    "color": "#818CF8",
+    "problem": "Los generadores de QR comerciales caducan o cobran mensualidades sorpresa tras pocas lecturas.",
+    "benefit": "Genera códigos QR de alta resolución permanentes para URLs, WhatsApp directo, Wi-Fi o vCard.",
+    "features": [
+      "Sin vencimiento ni redirecciones de terceros",
+      "Exportación en formato PNG y SVG de alta nitidez",
+      "Personalización de color y niveles de corrección"
+    ],
+    "url": "https://nubeparapymes.online/herramientas/ventas/generador-codigos-qr/",
+    "published": false,
+    "published_at": null,
+    "post_id": null
+  },
+  {
+    "type": "article",
     "slug": "facturacion-electronica-freelancers",
     "title": "Mejor Software de Facturación Electrónica para Freelancers",
     "description": "Compara facturacion electronica freelancers según comprobantes, clientes, precios, funciones y cobertura de cada país. Revisa funciones, límites y criterios...",
@@ -480,6 +829,7 @@
     "post_id": null
   },
   {
+    "type": "article",
     "slug": "facturacion-electronica-mexico",
     "title": "Facturación Electrónica para Freelancers en México",
     "description": "Aprende cómo funciona la facturacion electronica mexico y revisa SAT, CFDI, requisitos, herramientas y límites de cada opción.",
@@ -496,6 +846,31 @@
     "post_id": null
   },
   {
+    "type": "tool",
+    "slug": "tool-guiones-manejo-objeciones",
+    "tool_slug": "guiones-manejo-objeciones",
+    "tool_number": 15,
+    "name": "ObjeciónPro: Guiones de Venta",
+    "title": "Herramienta #15: ObjeciónPro: Guiones de Venta",
+    "description": "Biblioteca interactiva con respuestas empáticas, tácticas de reencuadre y argumentos de valor. «Está muy caro», «Tengo que consultarlo», «La competencia es más barata»: objeciones que frenan ventas.",
+    "icon": "🛡️",
+    "category": "ventas",
+    "cat_name": "VENTAS & CONVERSIÓN",
+    "color": "#818CF8",
+    "problem": "«Está muy caro», «Tengo que consultarlo», «La competencia es más barata»: objeciones que frenan ventas.",
+    "benefit": "Biblioteca interactiva con respuestas empáticas, tácticas de reencuadre y argumentos de valor.",
+    "features": [
+      "Respuestas listas para copiar y personalizar",
+      "Clasificación por tipo de objeción",
+      "Modo práctica para entrenar a tu equipo"
+    ],
+    "url": "https://nubeparapymes.online/herramientas/ventas/guiones-manejo-objeciones/",
+    "published": false,
+    "published_at": null,
+    "post_id": null
+  },
+  {
+    "type": "article",
     "slug": "facturar-independiente-peru",
     "title": "Cómo Facturar como Independiente en Perú: Guía Paso a Paso",
     "description": "independiente peru: revisa funciones, límites, precios y casos de uso antes de elegir una opción para tu negocio y evita pagar de más.",
@@ -512,6 +887,7 @@
     "post_id": null
   },
   {
+    "type": "article",
     "slug": "firma-electronica-pequenas-empresas",
     "title": "Mejores Herramientas de Firma Electrónica para Pequeñas Empresas",
     "description": "Compara herramientas de firma electronica según documentos, usuarios, flujos, validez operativa y necesidades de una pyme.",
@@ -528,6 +904,31 @@
     "post_id": null
   },
   {
+    "type": "tool",
+    "slug": "tool-generador-contratos-servicios",
+    "tool_slug": "generador-contratos-servicios",
+    "tool_number": 16,
+    "name": "Generador de Contratos de Servicios",
+    "title": "Herramienta #16: Generador de Contratos de Servicios",
+    "description": "Redacta un contrato formal de prestación de servicios con cláusulas de alcance, hitos y pagos. Trabajar de palabra expone a tu negocio a impagos, entregables infinitos y litigios.",
+    "icon": "⚖️",
+    "category": "legal",
+    "cat_name": "LEGAL & BLINDAJE",
+    "color": "#F59E0B",
+    "problem": "Trabajar de palabra expone a tu negocio a impagos, entregables infinitos y litigios.",
+    "benefit": "Redacta un contrato formal de prestación de servicios con cláusulas de alcance, hitos y pagos.",
+    "features": [
+      "Definición de penalidades y propiedad intelectual",
+      "Cláusulas de confidencialidad y rescisión",
+      "Exportación en borrador editable"
+    ],
+    "url": "https://nubeparapymes.online/herramientas/legal/generador-contratos-servicios/",
+    "published": false,
+    "published_at": null,
+    "post_id": null
+  },
+  {
+    "type": "article",
     "slug": "gestion-academias-online",
     "title": "Herramientas de Gestión para Academias Online de Idiomas y Matemáticas",
     "description": "Compara herramientas de academias online de idiomas y matemáticas para alumnos, clases, pagos, materiales y seguimiento.",
@@ -544,6 +945,7 @@
     "post_id": null
   },
   {
+    "type": "article",
     "slug": "gestion-citas-profesionales-independientes",
     "title": "Software de Gestión de Citas para Profesionales Independientes",
     "description": "gestion citas: revisa funciones, límites, precios y casos de uso antes de elegir una opción para tu negocio y evita pagar de más.",
@@ -560,6 +962,31 @@
     "post_id": null
   },
   {
+    "type": "tool",
+    "slug": "tool-generador-politicas-devolucion",
+    "tool_slug": "generador-politicas-devolucion",
+    "tool_number": 17,
+    "name": "Generador de Políticas de Devolución",
+    "title": "Herramienta #17: Generador de Políticas de Devolución",
+    "description": "Genera una política de cambios, garantías y devoluciones alineada a la realidad de tu comercio. La falta de reglas claras de garantía causa reclamos y malas reseñas en redes sociales.",
+    "icon": "🔄",
+    "category": "legal",
+    "cat_name": "LEGAL & BLINDAJE",
+    "color": "#F59E0B",
+    "problem": "La falta de reglas claras de garantía causa reclamos y malas reseñas en redes sociales.",
+    "benefit": "Genera una política de cambios, garantías y devoluciones alineada a la realidad de tu comercio.",
+    "features": [
+      "Plazos y condiciones para cambio de producto",
+      "Gestión de costos de envío en devoluciones",
+      "Texto listo para insertar en tu tienda online"
+    ],
+    "url": "https://nubeparapymes.online/herramientas/legal/generador-politicas-devolucion/",
+    "published": false,
+    "published_at": null,
+    "post_id": null
+  },
+  {
+    "type": "article",
     "slug": "gestion-despachos-abogados",
     "title": "Herramientas de Gestión para Despachos de Abogados Pequeños",
     "description": "Revisa herramientas de gestion despachos abogados, expedientes, documentos, seguimiento de casos y confidencialidad antes de elegir.",
@@ -576,6 +1003,7 @@
     "post_id": null
   },
   {
+    "type": "article",
     "slug": "gestion-proyectos-agencias-creativas",
     "title": "Mejor Software de Gestión de Proyectos para Agencias de Marketing y Creativas",
     "description": "proyectos agencias: revisa funciones, límites, precios y casos de uso antes de elegir una opción para tu negocio y evita pagar de más.",
@@ -592,6 +1020,31 @@
     "post_id": null
   },
   {
+    "type": "tool",
+    "slug": "tool-generador-politicas-terminos",
+    "tool_slug": "generador-politicas-terminos",
+    "tool_number": 18,
+    "name": "LegalForge: Términos y Privacidad",
+    "title": "Herramienta #18: LegalForge: Términos y Privacidad",
+    "description": "Crea borradores de Términos de Servicio y Políticas de Privacidad adaptados a sitios Pyme. Operar una web sin política de privacidad y términos viola normativas de protección de datos.",
+    "icon": "📜",
+    "category": "legal",
+    "cat_name": "LEGAL & BLINDAJE",
+    "color": "#F59E0B",
+    "problem": "Operar una web sin política de privacidad y términos viola normativas de protección de datos.",
+    "benefit": "Crea borradores de Términos de Servicio y Políticas de Privacidad adaptados a sitios Pyme.",
+    "features": [
+      "Cobertura de cookies y tratamiento de datos",
+      "Limitación de responsabilidad y propiedad intelectual",
+      "Formato web estructurado"
+    ],
+    "url": "https://nubeparapymes.online/herramientas/legal/generador-politicas-terminos/",
+    "published": false,
+    "published_at": null,
+    "post_id": null
+  },
+  {
+    "type": "article",
     "slug": "gestion-proyectos-agencias-marketing",
     "title": "Mejor Software de Gestión de Proyectos para Agencias de Marketing y Creativas",
     "description": "proyectos agencias: revisa funciones, límites, precios y casos de uso antes de elegir una opción para tu negocio y evita pagar de más.",
@@ -608,6 +1061,7 @@
     "post_id": null
   },
   {
+    "type": "article",
     "slug": "gestion-proyectos-gratis-vs-pago",
     "title": "Software de Gestión de Proyectos Gratis vs de Pago: ¿Cuándo Pagar? — Revisado",
     "description": "proyectos gratis: revisa funciones, límites, precios y casos de uso antes de elegir una opción para tu negocio y evita pagar de más.",
@@ -624,6 +1078,31 @@
     "post_id": null
   },
   {
+    "type": "tool",
+    "slug": "tool-inventario-compras-pymes",
+    "tool_slug": "inventario-compras-pymes",
+    "tool_number": 19,
+    "name": "Gestión de Inventario y Compras",
+    "title": "Herramienta #19: Gestión de Inventario y Compras",
+    "description": "Control de stock mínimo, alertas tempranas de reposición y registro de proveedores. El desabastecimiento frena pedidos y el exceso de stock inmoviliza tu capital de trabajo.",
+    "icon": "📦",
+    "category": "operaciones",
+    "cat_name": "OPERACIONES & LOGÍSTICA",
+    "color": "#EC4899",
+    "problem": "El desabastecimiento frena pedidos y el exceso de stock inmoviliza tu capital de trabajo.",
+    "benefit": "Control de stock mínimo, alertas tempranas de reposición y registro de proveedores.",
+    "features": [
+      "Alerta automática de productos por agotarse",
+      "Historial de entradas y salidas de almacén",
+      "Filtros rápidos por categoría y proveedor"
+    ],
+    "url": "https://nubeparapymes.online/herramientas/operaciones/inventario-compras-pymes/",
+    "published": false,
+    "published_at": null,
+    "post_id": null
+  },
+  {
+    "type": "article",
     "slug": "gestion-tiendas-online",
     "title": "Herramientas de Gestión para Tiendas Online Pequeñas",
     "description": "tiendas online: revisa funciones, límites, precios y casos de uso antes de elegir una opción para tu negocio y evita pagar de más.",
@@ -640,6 +1119,7 @@
     "post_id": null
   },
   {
+    "type": "article",
     "slug": "google-sheets-vs-software-especializado",
     "title": "Google Sheets vs Software Especializado: ¿Cuándo Migrar?",
     "description": "Google Sheets: revisa funciones, límites, precios y casos de uso antes de elegir una opción para tu negocio y evita pagar de más.",
@@ -656,6 +1136,31 @@
     "post_id": null
   },
   {
+    "type": "tool",
+    "slug": "tool-calculadora-flete-envio-local",
+    "tool_slug": "calculadora-flete-envio-local",
+    "tool_number": 20,
+    "name": "Calculadora de Flete y Envíos",
+    "title": "Herramienta #20: Calculadora de Flete y Envíos",
+    "description": "Estima el flete por peso volumétrico, distancia, tipo de vehículo y paradas de entrega. Calcular mal el costo de despacho local termina absorbiendo la ganancia del producto.",
+    "icon": "🚚",
+    "category": "operaciones",
+    "cat_name": "OPERACIONES & LOGÍSTICA",
+    "color": "#EC4899",
+    "problem": "Calcular mal el costo de despacho local termina absorbiendo la ganancia del producto.",
+    "benefit": "Estima el flete por peso volumétrico, distancia, tipo de vehículo y paradas de entrega.",
+    "features": [
+      "Cálculo automático de peso volumétrico",
+      "Recargos por zonas difíciles o paradas extra",
+      "Generador de manifiesto de despacho"
+    ],
+    "url": "https://nubeparapymes.online/herramientas/operaciones/calculadora-flete-envio-local/",
+    "published": false,
+    "published_at": null,
+    "post_id": null
+  },
+  {
+    "type": "article",
     "slug": "google-workspace-vs-microsoft-365",
     "title": "Google Workspace vs Microsoft 365: Comparativa de Precios",
     "description": "microsoft 365: revisa funciones, límites, precios y casos de uso antes de elegir una opción para tu negocio y evita pagar de más.",
@@ -672,6 +1177,7 @@
     "post_id": null
   },
   {
+    "type": "article",
     "slug": "herramientas-encuestas-feedback-clientes",
     "title": "Mejores Herramientas de Encuestas y Feedback de Clientes",
     "description": "encuestas feedback clientes: revisa funciones, límites, precios y casos de uso antes de elegir una opción para tu negocio.",
@@ -688,6 +1194,31 @@
     "post_id": null
   },
   {
+    "type": "tool",
+    "slug": "tool-simulador-tco-fisico-nube",
+    "tool_slug": "simulador-tco-fisico-nube",
+    "tool_number": 21,
+    "name": "Simulador TCO: Servidor Físico vs Nube",
+    "title": "Herramienta #21: Simulador TCO: Servidor Físico vs Nube",
+    "description": "Compara el Costo Total de Propiedad a 3 y 5 años incluyendo hardware, energía, soporte y licencias. ¿Conviene comprar un servidor local o migrar a la nube (AWS/Azure/Google Cloud)?",
+    "icon": "☁️",
+    "category": "operaciones",
+    "cat_name": "OPERACIONES & LOGÍSTICA",
+    "color": "#EC4899",
+    "problem": "¿Conviene comprar un servidor local o migrar a la nube (AWS/Azure/Google Cloud)?",
+    "benefit": "Compara el Costo Total de Propiedad a 3 y 5 años incluyendo hardware, energía, soporte y licencias.",
+    "features": [
+      "Análisis de Capex vs Opex",
+      "Cálculo del punto de equilibrio financiero",
+      "Gráfico comparativo de costos acumulados"
+    ],
+    "url": "https://nubeparapymes.online/herramientas/operaciones/simulador-tco-fisico-nube/",
+    "published": false,
+    "published_at": null,
+    "post_id": null
+  },
+  {
+    "type": "article",
     "slug": "herramientas-ia-automatizar-tareas",
     "title": "Mejores Herramientas de IA para Automatizar Tareas Repetitivas",
     "description": "Compara herramientas de IA automatizar tareas según integraciones, límites, control humano, privacidad y facilidad de uso. Revisa funciones, límites...",
@@ -704,6 +1235,7 @@
     "post_id": null
   },
   {
+    "type": "article",
     "slug": "herramientas-profesores-particulares",
     "title": "Herramientas Digitales para Profesores Particulares: Guía Completa",
     "description": "profesores particulares: revisa funciones, límites, precios y casos de uso antes de elegir una opción para tu negocio y evita pagar de más.",
@@ -720,6 +1252,31 @@
     "post_id": null
   },
   {
+    "type": "tool",
+    "slug": "tool-tareas-proyectos-pymes",
+    "tool_slug": "tareas-proyectos-pymes",
+    "tool_number": 22,
+    "name": "Gestión de Tareas y Proyectos",
+    "title": "Herramienta #22: Gestión de Tareas y Proyectos",
+    "description": "Tablero Kanban ligero para mover tareas de «Pendiente» a «En Progreso» y «Terminado». Las tareas pendientes quedan en el olvido si el equipo no tiene visibilidad de las prioridades.",
+    "icon": "✅",
+    "category": "productividad",
+    "cat_name": "PRODUCTIVIDAD & EQUIPO",
+    "color": "#06B6D4",
+    "problem": "Las tareas pendientes quedan en el olvido si el equipo no tiene visibilidad de las prioridades.",
+    "benefit": "Tablero Kanban ligero para mover tareas de «Pendiente» a «En Progreso» y «Terminado».",
+    "features": [
+      "Etiquetas de prioridad (Urgente, Alta, Normal)",
+      "Asignación de responsables y fechas límite",
+      "Guardado local seguro en el navegador"
+    ],
+    "url": "https://nubeparapymes.online/herramientas/productividad/tareas-proyectos-pymes/",
+    "published": false,
+    "published_at": null,
+    "post_id": null
+  },
+  {
+    "type": "article",
     "slug": "herramientas-videollamadas-equipos-remotos",
     "title": "Mejores Herramientas de Videollamadas para Equipos Remotos",
     "description": "videollamadas equipos remotos: revisa funciones, límites, precios y casos de uso antes de elegir una opción para tu negocio.",
@@ -736,6 +1293,7 @@
     "post_id": null
   },
   {
+    "type": "article",
     "slug": "ia-contenido-marketing-pymes",
     "title": "Herramientas de IA para Crear Contenido de Marketing en Pymes",
     "description": "IA contenido marketing: revisa funciones, límites, precios y criterios antes de elegir una opción para tu negocio sin cambiar su URL publicada.",
@@ -752,6 +1310,31 @@
     "post_id": null
   },
   {
+    "type": "tool",
+    "slug": "tool-conversor-optimizador-imagenes",
+    "tool_slug": "conversor-optimizador-imagenes",
+    "tool_number": 23,
+    "name": "WebP Forge: Optimizador de Imágenes",
+    "title": "Herramienta #23: WebP Forge: Optimizador de Imágenes",
+    "description": "Convierte imágenes a formato WebP moderno y comprime su peso hasta un 80% sin pérdida perceptible. Imágenes pesadas hacen que tu página cargue lento y aumentan el porcentaje de rebote.",
+    "icon": "⚡",
+    "category": "productividad",
+    "cat_name": "PRODUCTIVIDAD & EQUIPO",
+    "color": "#06B6D4",
+    "problem": "Imágenes pesadas hacen que tu página cargue lento y aumentan el porcentaje de rebote.",
+    "benefit": "Convierte imágenes a formato WebP moderno y comprime su peso hasta un 80% sin pérdida perceptible.",
+    "features": [
+      "Procesamiento 100% en tu navegador (privado)",
+      "Ajuste manual de calidad y resolución",
+      "Soporta JPG, PNG y WebP"
+    ],
+    "url": "https://nubeparapymes.online/herramientas/productividad/conversor-optimizador-imagenes/",
+    "published": false,
+    "published_at": null,
+    "post_id": null
+  },
+  {
+    "type": "article",
     "slug": "ia-generar-informes-reportes",
     "title": "Mejores IA para Generar Informes y Reportes de Negocio",
     "description": "IA generar informes: revisa funciones, límites, precios y criterios antes de elegir una opción para tu negocio sin cambiar su URL publicada.",
@@ -768,6 +1351,7 @@
     "post_id": null
   },
   {
+    "type": "article",
     "slug": "mejores-crm-gratuitos-espanol",
     "title": "Mejores CRM Gratuitos en Español para Emprendedores (2026)",
     "description": "Compara crm gratuitos espanol para emprendedores según contactos, límites, funciones, facilidad de uso y necesidades del negocio.",
@@ -784,6 +1368,31 @@
     "post_id": null
   },
   {
+    "type": "tool",
+    "slug": "tool-firma-correo-html",
+    "tool_slug": "firma-correo-html",
+    "tool_number": 24,
+    "name": "Diseñador de Firmas de Correo HTML",
+    "title": "Herramienta #24: Diseñador de Firmas de Correo HTML",
+    "description": "Diseña una firma con foto, logo, redes sociales y teléfonos que se ve perfecta en Gmail y Outlook. Firmas mal diseñadas que se deforman en celulares dañan la imagen de seriedad de tu empresa.",
+    "icon": "✉️",
+    "category": "productividad",
+    "cat_name": "PRODUCTIVIDAD & EQUIPO",
+    "color": "#06B6D4",
+    "problem": "Firmas mal diseñadas que se deforman en celulares dañan la imagen de seriedad de tu empresa.",
+    "benefit": "Diseña una firma con foto, logo, redes sociales y teléfonos que se ve perfecta en Gmail y Outlook.",
+    "features": [
+      "Compatibilidad móvil garantizada",
+      "Copia en 1 clic para pegar en tu correo",
+      "Diseño corporativo minimalista"
+    ],
+    "url": "https://nubeparapymes.online/herramientas/productividad/firma-correo-html/",
+    "published": false,
+    "published_at": null,
+    "post_id": null
+  },
+  {
+    "type": "article",
     "slug": "migrar-de-excel-a-un-crm",
     "title": "Migrar de Excel a un CRM sin Perder Datos: Guía Paso a Paso",
     "description": "Aprende a migrar sin perder datos, auditando, limpiando, importando y comprobando los contactos antes de trabajar. Revisa funciones, límites y crit...",
@@ -800,6 +1409,7 @@
     "post_id": null
   },
   {
+    "type": "article",
     "slug": "monday-com-vale-la-pena",
     "title": "Monday.com: ¿Vale la Pena su Precio para Pymes?",
     "description": "Analiza si monday para pymes según tamaño del equipo, precio, funciones, alternativas y casos en los que sí conviene. Revisa funciones, límites y...",
@@ -816,6 +1426,31 @@
     "post_id": null
   },
   {
+    "type": "tool",
+    "slug": "tool-generador-contrasenas-pymes",
+    "tool_slug": "generador-contrasenas-pymes",
+    "tool_number": 25,
+    "name": "SecuKey: Contraseñas Seguras",
+    "title": "Herramienta #25: SecuKey: Contraseñas Seguras",
+    "description": "Genera contraseñas criptográficamente seguras con longitud y caracteres personalizados. Usar la misma contraseña en correos y bancos es la causa #1 de hackeos en pequeñas empresas.",
+    "icon": "🔐",
+    "category": "productividad",
+    "cat_name": "PRODUCTIVIDAD & EQUIPO",
+    "color": "#06B6D4",
+    "problem": "Usar la misma contraseña en correos y bancos es la causa #1 de hackeos en pequeñas empresas.",
+    "benefit": "Genera contraseñas criptográficamente seguras con longitud y caracteres personalizados.",
+    "features": [
+      "Medidor de entropía y fortaleza en tiempo real",
+      "Sin conexión: generadas en memoria RAM local",
+      "Generación en lote para equipos de trabajo"
+    ],
+    "url": "https://nubeparapymes.online/herramientas/productividad/generador-contrasenas-pymes/",
+    "published": false,
+    "published_at": null,
+    "post_id": null
+  },
+  {
+    "type": "article",
     "slug": "notion-vs-clickup",
     "title": "Notion vs ClickUp: Comparativa Completa (2026)",
     "description": "notion vs clickup: compara funciones, límites, precios y criterios para elegir la herramienta más adecuada para tu pyme sin cambiar la URL publicada.",
@@ -832,6 +1467,7 @@
     "post_id": null
   },
   {
+    "type": "article",
     "slug": "organizar-equipo-remoto-trello",
     "title": "Organizar Equipo Remoto con Trello: Guía Completa",
     "description": "trello: revisa funciones, límites, precios y casos de uso antes de elegir una opción para tu negocio y evita pagar de más.",
@@ -848,6 +1484,31 @@
     "post_id": null
   },
   {
+    "type": "tool",
+    "slug": "tool-generador-paletas-corporativas",
+    "tool_slug": "generador-paletas-corporativas",
+    "tool_number": 26,
+    "name": "Chroma: Paletas de Color Corporativas",
+    "title": "Herramienta #26: Chroma: Paletas de Color Corporativas",
+    "description": "Crea esquemas de color profesionales a partir de un color base con verificación de contraste WCAG. Elegir colores al azar produce marcas inconsistentes y textos ilegibles.",
+    "icon": "🎨",
+    "category": "productividad",
+    "cat_name": "PRODUCTIVIDAD & EQUIPO",
+    "color": "#06B6D4",
+    "problem": "Elegir colores al azar produce marcas inconsistentes y textos ilegibles.",
+    "benefit": "Crea esquemas de color profesionales a partir de un color base con verificación de contraste WCAG.",
+    "features": [
+      "Armonías cromáticas (análogas, complementarias)",
+      "Códigos HEX, RGB y HSL listos para copiar",
+      "Indicador de accesibilidad y contraste"
+    ],
+    "url": "https://nubeparapymes.online/herramientas/productividad/generador-paletas-corporativas/",
+    "published": false,
+    "published_at": null,
+    "post_id": null
+  },
+  {
+    "type": "article",
     "slug": "plataformas-elearning-vender-cursos",
     "title": "Mejores Plataformas de E-learning para Vender Cursos Online",
     "description": "plataformas elearning: revisa funciones, límites, precios y casos de uso antes de elegir una opción para tu negocio y evita pagar de más.",
@@ -864,6 +1525,7 @@
     "post_id": null
   },
   {
+    "type": "article",
     "slug": "punto-de-venta-restaurantes",
     "title": "Software de Punto de Venta para Restaurantes Pequeños",
     "description": "venta restaurantes: revisa funciones, límites, precios y criterios antes de elegir una opción para tu negocio sin cambiar su URL publicada.",
@@ -880,6 +1542,7 @@
     "post_id": null
   },
   {
+    "type": "article",
     "slug": "que-es-un-crm-para-que-sirve",
     "title": "Qué es un CRM y Para Qué Sirve: Guía para Pequeñas Empresas",
     "description": "Entiende que es un crm en una pequeña empresa, con ejemplos claros para saber cuándo necesitas organizar tus clientes. Revisa funciones, límites y criterios...",
@@ -896,6 +1559,7 @@
     "post_id": null
   },
   {
+    "type": "article",
     "slug": "reuniones-eficientes-equipos-distribuidos",
     "title": "Cómo Organizar Reuniones Eficientes con Equipos Distribuidos",
     "description": "Aprende a organizar equipos distribuidos con zonas horarias, agenda, acuerdos, seguimiento y reglas prácticas. Revisa funciones, límites y criterio...",
@@ -912,6 +1576,7 @@
     "post_id": null
   },
   {
+    "type": "article",
     "slug": "seo-geo-para-pymes-visibilidad-ia",
     "title": "SEO y GEO para Pymes: Cómo Medir Visibilidad en Google y en Respuestas de IA — Revisado",
     "description": "SEO y GEO no son dos atajos separados. Ambos parten de la misma base: páginas útiles, claras, comprobables y fáciles de rastrear. La diferencia es que el SEO",
@@ -928,6 +1593,7 @@
     "post_id": null
   },
   {
+    "type": "article",
     "slug": "slack-vs-microsoft-teams",
     "title": "Slack vs Microsoft Teams: ¿Cuál Conviene a tu Pyme?",
     "description": "microsoft teams: revisa funciones, límites, precios y casos de uso antes de elegir una opción para tu negocio y evita pagar de más.",
@@ -944,6 +1610,7 @@
     "post_id": null
   },
   {
+    "type": "article",
     "slug": "software-academias-idiomas",
     "title": "Software de Gestión para Academias de Idiomas",
     "description": "Compara academias idiomas según matrículas, grupos, horarios, pagos, clases online y seguimiento de alumnos. Revisa funciones, límites y criterios antes d...",
@@ -960,6 +1627,7 @@
     "post_id": null
   },
   {
+    "type": "article",
     "slug": "software-academias-matematicas",
     "title": "Mejor Software de Gestión para Academias de Matemáticas y Preparación de Exámenes",
     "description": "Compara academias matematicas y preparación de exámenes según alumnos, pagos, horarios, materiales y simulaciones. Revisa funciones, límites y criterios a...",
@@ -976,6 +1644,7 @@
     "post_id": null
   },
   {
+    "type": "article",
     "slug": "software-contabilidad-pymes",
     "title": "Software de Contabilidad para Pymes: Comparativa de Precios",
     "description": "software contabilidad pymes: revisa funciones, límites, precios y casos de uso antes de elegir una opción para tu negocio.",
@@ -992,6 +1661,7 @@
     "post_id": null
   },
   {
+    "type": "article",
     "slug": "software-gimnasios-estudios",
     "title": "Mejor Software para Gimnasios y Estudios Pequeños",
     "description": "software gimnasios estudios: revisa funciones, límites, precios y casos de uso antes de elegir una opción para tu negocio.",
@@ -1008,6 +1678,7 @@
     "post_id": null
   },
   {
+    "type": "article",
     "slug": "software-local-o-en-la-nube",
     "title": "Cómo Elegir Entre Software Local o en la Nube para tu Negocio",
     "description": "Compara software local según acceso, costes, copias de seguridad, seguridad, mantenimiento y forma de trabajo de tu negocio.",
@@ -1024,6 +1695,7 @@
     "post_id": null
   },
   {
+    "type": "article",
     "slug": "software-nomina-pymes-latam",
     "title": "Software de Nómina para Pequeñas Empresas en Latinoamérica",
     "description": "Compara nomina pymes latam en Latinoamérica y revisa funciones, cobertura, costes, límites y aspectos que debes confirmar. Revisa funciones, límites y criter...",
@@ -1040,6 +1712,7 @@
     "post_id": null
   },
   {
+    "type": "article",
     "slug": "software-reservas-clinicas",
     "title": "Mejor Software de Reservas para Clínicas y Consultorios",
     "description": "Compara reservas clinicas y consultorios según profesionales, agenda, recordatorios, pacientes, pagos y cobertura operativa.",
@@ -1056,6 +1729,7 @@
     "post_id": null
   },
   {
+    "type": "article",
     "slug": "trello-vs-asana",
     "title": "Trello vs Asana: ¿Cuál Elegir para Equipos Pequeños?",
     "description": "Compara asana según tableros, tareas, automatizaciones, vistas, límites y necesidades de un equipo pequeño. Revisa funciones, límites y criterios ante...",
@@ -1072,6 +1746,7 @@
     "post_id": null
   },
   {
+    "type": "article",
     "slug": "zapier-vs-make",
     "title": "Zapier vs Make: ¿Cuál Elegir para Automatizar Procesos?",
     "description": "Compara zapier según facilidad, flexibilidad, integraciones, automatizaciones, precios y necesidades técnicas de tu equipo.",
@@ -1088,6 +1763,7 @@
     "post_id": null
   },
   {
+    "type": "article",
     "slug": "zoom-vs-google-meet",
     "title": "Zoom vs Google Meet: ¿Cuál es Mejor para Reuniones de Trabajo?",
     "description": "Compara google meet según calidad, límites, funciones, integración y tipo de reunión para equipos y clientes. Revisa funciones, límites y criterios ante...",
