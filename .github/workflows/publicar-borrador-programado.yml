@@ -1,0 +1,53 @@
+name: Publicar Nuevo Artículo (SEO + GEO)
+
+on:
+  schedule:
+    # Martes y Jueves a las 14:00 UTC (09:00 AM hora Lima/Bogotá)
+    - cron: '0 14 * * 2,4'
+  workflow_dispatch:
+    inputs:
+      auto_publish:
+        description: '¿Publicar el siguiente borrador pendiente de /borradores?'
+        required: true
+        type: boolean
+        default: true
+
+permissions:
+  contents: write
+
+jobs:
+  publish-article:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout del repositorio
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
+
+      - name: Configurar Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Instalar dependencias
+        run: |
+          python -m pip install --upgrade pip
+          pip install Pillow
+
+      - name: Compilar y publicar borrador SEO + GEO
+        run: |
+          python scripts/compilador_seo_geo.py --publicar-siguiente
+
+      - name: Guardar nuevo artículo y cola en Git
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Actions [Publicador Editorial]"
+          git add dist/ nubepymesexport/ borradores/ sitemap.xml search-index.json scripts/linkedin_queue.json
+          if git diff --staged --quiet; then
+            echo "[INFO] No hubo nuevos borradores que publicar."
+          else
+            git commit -m "[Auto] Publicar nuevo artículo SEO+GEO y actualizar cola social [skip ci]"
+            git push origin main
+          fi
