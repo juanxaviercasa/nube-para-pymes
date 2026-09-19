@@ -24,11 +24,23 @@ jobs:
         uses: actions/checkout@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
 
       - name: Configurar Python 3.11
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
+
+      - name: Verificar configuración de secretos
+        env:
+          HAS_TOKEN: ${{ secrets.LINKEDIN_ACCESS_TOKEN != '' }}
+          HAS_URN: ${{ secrets.LINKEDIN_PERSON_URN != '' }}
+        run: |
+          if [ "$HAS_TOKEN" != "true" ] || [ "$HAS_URN" != "true" ]; then
+            echo "::error::Faltan los secretos en GitHub. Ve a Settings -> Secrets and variables -> Actions y agrega LINKEDIN_ACCESS_TOKEN y LINKEDIN_PERSON_URN."
+            exit 1
+          fi
+          echo "[OK] Secretos detectados correctamente."
 
       - name: Ejecutar motor de contenidos
         env:
@@ -53,5 +65,5 @@ jobs:
             echo "[INFO] No hay cambios en la cola de publicación."
           else
             git commit -m "[Auto] Actualizar cola de LinkedIn tras publicación [skip ci]"
-            git push origin main
+            git push origin main || echo "::warning::No se pudo hacer push a main. Revisa en Settings -> Actions -> General -> Workflow permissions que esté seleccionada la opción 'Read and write permissions'."
           fi
