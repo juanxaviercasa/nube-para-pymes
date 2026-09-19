@@ -672,133 +672,161 @@ def upload_single_image(image_bytes: bytes, author_urn: str, access_token: str) 
     return asset_urn, "v2"
 
 
+def resolve_person_urn_from_token(token: str) -> str | None:
+    """Intenta obtener el URN de persona directamente del token mediante OpenID userinfo."""
+    try:
+        req = urllib.request.Request(
+            "https://api.linkedin.com/v2/userinfo",
+            headers={"Authorization": f"Bearer {token}"}
+        )
+        with urllib.request.urlopen(req, timeout=10) as resp:
+            data = json.loads(resp.read().decode("utf-8"))
+            sub = data.get("sub")
+            if sub:
+                return f"urn:li:person:{sub}"
+    except Exception:
+        pass
+    return None
+
+
 def publish_to_linkedin(post_text: str, target_url: str, post_title: str, image_bytes_list: list[bytes]) -> tuple[dict, int]:
     """Publica un post con galería visual de imágenes en LinkedIn (mínimo 3 imágenes obligatorias)."""
     access_token = os.environ.get("LINKEDIN_ACCESS_TOKEN")
     if not access_token:
         raise ValueError("Falta la variable de entorno LINKEDIN_ACCESS_TOKEN en GitHub Secrets.")
 
+    # 1. Determinar URN inicial y fallback de persona
     author_urn, mode_label = get_author_urn()
-    print(f"[DESTINO DE PUBLICACIÓN] {mode_label} ({author_urn})")
+    fallback_person = os.environ.get("LINKEDIN_PERSON_URN") or resolve_person_urn_from_token(access_token)
 
-    # Validación estricta: mínimo 3 imágenes requeridas
-    if not image_bytes_list or len(image_bytes_list) < 3:
-        raise ValueError(
-            f"El post exige un mínimo estricto de 3 imágenes, pero solo se suministraron {len(image_bytes_list) if image_bytes_list else 0}."
-        )
+    def _execute_with_author(target_author: str, target_mode: str) -> tuple[dict, int]:
+        print(f"[DESTINO DE PUBLICACIÓN] {target_mode} ({target_author})")
 
-    print(f"[SUBIENDO IMÁGENES] Subiendo {len(image_bytes_list)} imágenes para el post...")
-    uploaded_assets = []
-    api_types = []
+        # Validación estricta: mínimo 3 imágenes requeridas
+        if not image_bytes_list or len(image_bytes_list) < 3:
+            raise ValueError(
+                f"El post exige un mínimo estricto de 3 imágenes, pero solo se suministraron {len(image_bytes_list) if image_bytes_list else 0}."
+            )
 
-    for idx, img_bytes in enumerate(image_bytes_list, 1):
-        try:
-            asset_urn, api_type = upload_single_image(img_bytes, author_urn, access_token)
-            uploaded_assets.append(asset_urn)
-            api_types.append(api_type)
-            print(f"  ✓ Imagen {idx}/{len(image_bytes_list)} subida [{api_type.upper()}]: {asset_urn}")
-        except Exception as e:
-            print(f"  ✗ ERROR crítico al subir la imagen {idx}/{len(image_bytes_list)}: {e}")
+        print(f"[SUBIENDO IMÁGENES] Subiendo {len(image_bytes_list)} imágenes para el post...")
+        uploaded_assets = []
+        for idx, img_bytes in enumerate(image_bytes_list, 1):
+            try:
+                asset_urn, api_type = upload_single_image(img_bytes, target_author, access_token)
+                uploaded_assets.append(asset_urn)
+                print(f"  ✓ Imagen {idx}/{len(image_bytes_list)} subida [{api_type.upper()}]: {asset_urn}")
+            except Exception as e:
+                print(f"  ✗ ERROR crítico al subir la imagen {idx}/{len(image_bytes_list)}: {e}")
+                raise RuntimeError(
+                    f"Falló la subida de la imagen #{idx} ({e}). "
+                    f"Se detiene la publicación para no emitir un post degradado sin imágenes."
+                ) from e
+
+        if len(uploaded_assets) < 3:
             raise RuntimeError(
-                f"Falló la subida de la imagen #{idx} ({e}). "
-                f"Se detiene la publicación para no emitir un post degradado sin imágenes."
-            ) from e
+                f"Se requieren mínimo 3 imágenes por post y solo se cargaron {len(uploaded_assets)}. "
+                f"Se cancela la publicación para proteger la identidad de marca."
+            )
 
-    if len(uploaded_assets) < 3:
-        raise RuntimeError(
-            f"Se requieren mínimo 3 imágenes por post y solo se cargaron {len(uploaded_assets)}. "
-            f"Se cancela la publicación para proteger la identidad de marca."
-        )
+        # 1. Intentar API moderna /rest/posts si hay urn:li:image:...
+        if any(a.startswith("urn:li:image:") for a in uploaded_assets):
+            print(f"[PUBLICANDO] Enviando post MultiImage ({len(uploaded_assets)} fotos) mediante /rest/posts...")
+            rest_posts_url = "https://api.linkedin.com/rest/posts"
+            post_payload = {
+                "author": target_author,
+                "commentary": post_text,
+                "visibility": "PUBLIC",
+                "distribution": {
+                    "feedDistribution": "MAIN_FEED",
+                    "targetEntities": [],
+                    "thirdPartyDistributionChannels": []
+                },
+                "content": {
+                    "multiImage": {
+                        "images": [
+                            {
+                                "id": asset,
+                                "altText": f"{post_title[:80]} - Imagen {i}"
+                            }
+                            for i, asset in enumerate(uploaded_assets, 1)
+                        ]
+                    }
+                },
+                "lifecycleState": "PUBLISHED",
+                "isReshareDisabledByAuthor": False
+            }
+            req = urllib.request.Request(
+                rest_posts_url,
+                data=json.dumps(post_payload).encode("utf-8"),
+                headers={
+                    "Authorization": f"Bearer {access_token}",
+                    "Content-Type": "application/json",
+                    "LinkedIn-Version": "202401",
+                    "X-Restli-Protocol-Version": "2.0.0",
+                },
+                method="POST"
+            )
+            try:
+                with urllib.request.urlopen(req, timeout=30) as resp:
+                    post_id = resp.headers.get("x-restli-id") or "OK"
+                    return {"id": post_id, "status": resp.status}, len(uploaded_assets)
+            except urllib.error.HTTPError as e:
+                err_body = e.read().decode("utf-8", errors="ignore")
+                print(f"[WARN] Error en /rest/posts ({e.code}: {err_body}). Intentando fallback con /v2/ugcPosts...")
 
-    # 1. Si los assets son de la API moderna (urn:li:image:...), publicar con /rest/posts (MultiImage)
-    if any(a.startswith("urn:li:image:") for a in uploaded_assets):
-        print(f"[PUBLICANDO] Enviando post MultiImage ({len(uploaded_assets)} fotos) mediante /rest/posts...")
-        rest_posts_url = "https://api.linkedin.com/rest/posts"
-        post_payload = {
-            "author": author_urn,
-            "commentary": post_text,
-            "visibility": "PUBLIC",
-            "distribution": {
-                "feedDistribution": "MAIN_FEED",
-                "targetEntities": [],
-                "thirdPartyDistributionChannels": []
-            },
-            "content": {
-                "multiImage": {
-                    "images": [
-                        {
-                            "id": asset,
-                            "altText": f"{post_title[:80]} - Imagen {i}"
-                        }
-                        for i, asset in enumerate(uploaded_assets, 1)
-                    ]
+        # 2. Fallback a /v2/ugcPosts
+        print(f"[PUBLICANDO] Enviando post ({len(uploaded_assets)} fotos) mediante /v2/ugcPosts...")
+        ugc_url = "https://api.linkedin.com/v2/ugcPosts"
+        media_items = [
+            {
+                "status": "READY",
+                "media": asset,
+                "title": {"text": f"{post_title[:80]} - Foto {i}"}
+            }
+            for i, asset in enumerate(uploaded_assets, 1)
+        ]
+        ugc_payload = {
+            "author": target_author,
+            "lifecycleState": "PUBLISHED",
+            "specificContent": {
+                "com.linkedin.ugc.ShareContent": {
+                    "shareCommentary": {"text": post_text},
+                    "shareMediaCategory": "IMAGE",
+                    "media": media_items
                 }
             },
-            "lifecycleState": "PUBLISHED",
-            "isReshareDisabledByAuthor": False
+            "visibility": {
+                "com.linkedin.ugc.MemberNetworkVisibility": "PUBLIC"
+            }
         }
         req = urllib.request.Request(
-            rest_posts_url,
-            data=json.dumps(post_payload).encode("utf-8"),
+            ugc_url,
+            data=json.dumps(ugc_payload).encode("utf-8"),
             headers={
                 "Authorization": f"Bearer {access_token}",
                 "Content-Type": "application/json",
-                "LinkedIn-Version": "202401",
                 "X-Restli-Protocol-Version": "2.0.0",
             },
             method="POST"
         )
         try:
             with urllib.request.urlopen(req, timeout=30) as resp:
-                post_id = resp.headers.get("x-restli-id") or "OK"
-                return {"id": post_id, "status": resp.status}, len(uploaded_assets)
+                resp_body = resp.read().decode("utf-8")
+                res_dict = json.loads(resp_body) if resp_body else {"status": resp.status}
+                return res_dict, len(uploaded_assets)
         except urllib.error.HTTPError as e:
-            err_body = e.read().decode("utf-8", errors="ignore")
-            print(f"[WARN] Error en /rest/posts ({e.code}: {err_body}). Intentando fallback con /v2/ugcPosts...")
+            error_content = e.read().decode("utf-8", errors="ignore")
+            raise RuntimeError(f"Error {e.code} desde la API de LinkedIn: {error_content}") from e
 
-    # 2. Fallback a /v2/ugcPosts
-    print(f"[PUBLICANDO] Enviando post ({len(uploaded_assets)} fotos) mediante /v2/ugcPosts...")
-    ugc_url = "https://api.linkedin.com/v2/ugcPosts"
-    media_items = [
-        {
-            "status": "READY",
-            "media": asset,
-            "title": {"text": f"{post_title[:80]} - Foto {i}"}
-        }
-        for i, asset in enumerate(uploaded_assets, 1)
-    ]
-    ugc_payload = {
-        "author": author_urn,
-        "lifecycleState": "PUBLISHED",
-        "specificContent": {
-            "com.linkedin.ugc.ShareContent": {
-                "shareCommentary": {"text": post_text},
-                "shareMediaCategory": "IMAGE",
-                "media": media_items
-            }
-        },
-        "visibility": {
-            "com.linkedin.ugc.MemberNetworkVisibility": "PUBLIC"
-        }
-    }
-    req = urllib.request.Request(
-        ugc_url,
-        data=json.dumps(ugc_payload).encode("utf-8"),
-        headers={
-            "Authorization": f"Bearer {access_token}",
-            "Content-Type": "application/json",
-            "X-Restli-Protocol-Version": "2.0.0",
-        },
-        method="POST"
-    )
     try:
-        with urllib.request.urlopen(req, timeout=30) as resp:
-            resp_body = resp.read().decode("utf-8")
-            res_dict = json.loads(resp_body) if resp_body else {"status": resp.status}
-            return res_dict, len(uploaded_assets)
-    except urllib.error.HTTPError as e:
-        error_content = e.read().decode("utf-8", errors="ignore")
-        raise RuntimeError(f"Error {e.code} desde la API de LinkedIn: {error_content}") from e
+        return _execute_with_author(author_urn, mode_label)
+    except Exception as e:
+        err_str = str(e)
+        if ("Organization" in err_str or "author" in err_str or "400" in err_str or "403" in err_str) and fallback_person and fallback_person != author_urn:
+            print(f"\n[AVISO DE PERMISOS] La API de LinkedIn rechazó el destino de empresa ({author_urn}) por falta de permiso de organización.")
+            print(f"   Transfiriendo publicación al PERFIL PERSONAL ({fallback_person}) para asegurar la salida exitosa con las 3 imágenes...")
+            return _execute_with_author(fallback_person, "PERFIL PERSONAL (Xavier Cabello)")
+        raise
 
 
 def main():
