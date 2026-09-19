@@ -1,4 +1,4 @@
-name: Publicación Automatizada en LinkedIn
+name: Publicación Automatizada (LinkedIn y Pinterest)
 
 on:
   schedule:
@@ -68,6 +68,19 @@ jobs:
           else
             echo "[INFO] Publicando post en LinkedIn..."
             python scripts/linkedin_content_engine.py --publish
+          fi
+
+      - name: Ejecutar motor de Pinterest
+        env:
+          PINTEREST_ACCESS_TOKEN: ${{ secrets.PINTEREST_ACCESS_TOKEN }}
+          PINTEREST_BOARD_ID: ${{ secrets.PINTEREST_BOARD_ID }}
+        run: |
+          if [ "${{ github.event.inputs.dry_run }}" = "true" ]; then
+            echo "[INFO] Simulación para Pinterest..."
+            python scripts/pinterest_content_engine.py --dry-run
+          else
+            echo "[INFO] Publicando Pin en Pinterest..."
+            python scripts/pinterest_content_engine.py --publish
           fi
 
       - name: Guardar estado de la cola en Git
