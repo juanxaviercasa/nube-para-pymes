@@ -514,6 +514,15 @@ def create_package_json():
     pkg_file.write_text(pkg_content, encoding="utf-8")
     log("package.json configurado.")
 
+def copy_en_structure():
+    log("Copiando versión en inglés (/en/) a dist/en/...")
+    src_en = ROOT / "en"
+    dest_en = DIST / "en"
+    if src_en.exists():
+        shutil.copytree(src_en, dest_en, dirs_exist_ok=True)
+        count = len(list(dest_en.rglob("*.html")))
+        log(f"Estructura /en/ copiada a producción ({count} archivos HTML).")
+
 def main():
     start_time = datetime.now()
     log("=== INICIO DE ENSAMBLADO DE PRODUCCIÓN ===")
@@ -524,6 +533,7 @@ def main():
     build_usage_guide()
     build_all_tools()
     create_legacy_redirect_stubs()
+    copy_en_structure()
     update_wp_directory_page()
 
     update_global_footers()
