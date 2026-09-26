@@ -1,0 +1,154 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script defer src="../js/datos-compartidos.js?v=20260824"></script><script defer src="../js/demo-experience.js?v=20260825" data-np-demo-experience></script>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/png" href="../assets/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <title>WebP Forge — Free Browser Image Converter & WebP Optimizer</title>
+  <meta name="description" content="Convert PNG, JPEG, and WebP images locally in your browser. Compress file sizes, adjust quality, resize dimensions, and boost webpage speed.">
+  <script type="module" crossorigin="" src="../js/conversor-optimizador-imagenes.js"></script>
+  <link rel="stylesheet" crossorigin="" href="../css/conversor-optimizador-imagenes.css">
+<!-- NUBEPYME_HELP_START -->
+<link rel="stylesheet" href="../css/ayuda-apps.css">
+<script>window.NP_HELP_CONFIG={"id": "conversor-optimizador-imagenes", "name": "WebP Forge — Image Converter & Optimizer", "purpose": "Convert and optimize images for the web locally in the browser, reducing file size and adjusting formats to accelerate page load times.", "quick": ["Drag and drop or select images from your computer.", "Select target format (WebP, PNG, JPG), compression quality, and maximum dimensions.", "Preview compression savings and download the optimized images."], "tip": "Keep original high-res masters safely archived, and ensure compression retains sufficient sharpness for your intended display scale.", "guide": "./user-guide.html#10-webp-forge-image-converter-and-optimizer", "steps": [{"title": "Upload Images", "text": "Select images from your device; processing is 100% local and private.", "selector": ["input[type=file]"]}, {"title": "Adjust Compression", "text": "Set target format, compression level, and dimension constraints.", "selector": ["input,select"]}, {"title": "Download Optimized Files", "text": "Review file size savings and download optimized assets.", "selector": ["button"]}]};</script>
+<script defer src="../js/ayuda-apps.js?v=20260824"></script>
+<!-- NUBEPYME_HELP_END -->
+</head>
+<body data-app-id="conversor-optimizador-imagenes" data-app-name="WebP Forge — Image Converter & Optimizer">
+  <div id="root">
+    <div class="min-h-screen bg-ink">
+      
+      <!-- Encabezado -->
+      <header class="mx-auto flex max-w-6xl items-center justify-between px-5 py-6">
+        <div class="flex items-center gap-2.5">
+          <div class="flex h-9 w-9 items-center justify-center rounded-lg bg-cta font-display text-lg font-bold text-white">
+            W
+          </div>
+          <span class="font-display text-lg font-semibold text-white">
+            <span class="text-cta">Forja</span> WebP
+          </span>
+        </div>
+        <a href="#curso" class="rounded-full border border-line px-4 py-2 text-sm font-medium text-sky transition-colors hover:border-brand hover:text-white">
+          Curso WPO gratis
+        </a>
+      </header>
+
+      <main class="bg-grid">
+        
+        <!-- Hero Section -->
+        <section class="mx-auto max-w-6xl px-5 pb-16 pt-10 sm:pt-16">
+          <div class="mx-auto max-w-3xl text-center animate-fade-up">
+            <span class="inline-flex items-center gap-2 rounded-full border border-line bg-ink-2/60 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-sky">
+              Conversor · Optimizador · WPO
+            </span>
+            <h1 class="mt-6 font-display text-4xl font-bold leading-[1.08] text-white sm:text-6xl">
+              Convert Images to <span class="text-cta">WebP</span> y aligera tu web
+            </h1>
+            <p class="mx-auto mt-5 max-w-xl text-lg text-sky/80">
+              Drag multiple JPG or PNG images, add a watermark, adjust compression quality, and download in WebP format — even bundled as a ZIP. Everything happens client-side in your browser.
+            </p>
+            <div class="mt-8 flex items-center justify-center gap-2 text-sm text-sky/60">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-down h-4 w-4 animate-bounce">
+                <path d="M12 5v14"></path>
+                <path d="m19 12-7 7-7-7"></path>
+              </svg>
+              Start by dropping your images here
+            </div>
+          </div>
+          
+          <!-- Dropzone -->
+          <div class="mt-10">
+            <div class="rounded-3xl border border-line bg-ink-2/40 p-4 shadow-2xl shadow-black/40 backdrop-blur sm:p-6">
+              <div role="button" tabindex="0" class="group relative flex cursor-pointer flex-col items-center justify-center overflow-hidden rounded-2xl border-2 border-dashed text-center transition-all duration-300 px-6 py-16 border-line bg-ink-2/60 hover:border-brand hover:bg-ink-3/50">
+                <input accept="image/jpeg,image/png" multiple="" class="hidden" type="file">
+                <div class="relative mb-5">
+                  <span class="absolute inset-0 rounded-full bg-cta/40"></span>
+                  <div class="relative flex items-center justify-center rounded-full transition-colors h-20 w-20 bg-brand/15 text-sky group-hover:bg-brand/25">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-cloud-upload h-9 w-9">
+                      <path d="M12 13v8"></path>
+                      <path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242"></path>
+                      <path d="m8 17 4-4 4 4"></path>
+                    </svg>
+                  </div>
+                </div>
+                <h3 class="font-display font-semibold text-white text-xl">Drag images here or click to browse</h3>
+                <p class="mt-2 max-w-sm text-sm text-sky/70">
+                  Upload batch files · JPG or PNG · up to 5 MB each · 100% processed in your browser
+                </p>
+                <div class="mt-6 inline-flex items-center gap-2 rounded-full bg-cta px-5 py-2.5 text-sm font-semibold text-white transition-transform group-hover:scale-105">
+                  Select Images
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Features -->
+        <section class="mx-auto max-w-6xl px-5 pb-20">
+          <div class="grid gap-5 md:grid-cols-3">
+            <div class="rounded-2xl border border-line bg-ink-2/40 p-6 transition-colors hover:border-brand/60">
+              <div class="flex h-11 w-11 items-center justify-center rounded-xl bg-brand/15 text-sky">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shield-check h-5 w-5">
+                  <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path>
+                  <path d="m9 12 2 2 4-4"></path>
+                </svg>
+              </div>
+              <h3 class="mt-4 font-display text-lg font-semibold text-white">100% In-Browser Privacy</h3>
+              <p class="mt-2 text-sm leading-relaxed text-sky/70">
+                Your images never leave your computer. Converted via HTML5 Canvas without remote server uploads.
+              </p>
+            </div>
+            
+            <div class="rounded-2xl border border-line bg-ink-2/40 p-6 transition-colors hover:border-brand/60">
+              <div class="flex h-11 w-11 items-center justify-center rounded-xl bg-brand/15 text-sky">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-layers h-5 w-5">
+                  <path d="M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83z"></path>
+                  <path d="M2 12a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 12"></path>
+                  <path d="M2 17a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 17"></path>
+                </svg>
+              </div>
+              <h3 class="mt-4 font-display text-lg font-semibold text-white">Batch Processing + ZIP</h3>
+              <p class="mt-2 text-sm leading-relaxed text-sky/70">
+                Drag multiple images at once, convert all of them simultaneously, and download as a single .zip archive.
+              </p>
+            </div>
+            
+            <div class="rounded-2xl border border-line bg-ink-2/40 p-6 transition-colors hover:border-brand/60">
+              <div class="flex h-11 w-11 items-center justify-center rounded-xl bg-brand/15 text-sky">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-stamp h-5 w-5">
+                  <path d="M5 22h14"></path>
+                  <path d="M19.27 13.73A2.5 2.5 0 0 0 17.5 13h-11A2.5 2.5 0 0 0 4 15.5V17a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-1.5c0-.66-.26-1.3-.73-1.77Z"></path>
+                  <path d="M14 13V8.5C14 7 15 7 15 5a3 3 0 0 0-3-3c-1.66 0-3 1-3 3s1 2 1 3.5V13"></path>
+                </svg>
+              </div>
+              <h3 class="mt-4 font-display text-lg font-semibold text-white">Marca de agua</h3>
+              <p class="mt-2 text-sm leading-relaxed text-sky/70">
+                Overlays custom text or logo at 50% opacity on every image prior to WebP export.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Lead Capture Section -->
+        <section class="mx-auto max-w-6xl px-5 pb-20">
+</section>
+      </main>
+
+      <!-- Footer -->
+      <footer class="border-t border-line">
+        <div class="mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 px-5 py-8 text-sm text-sky/50 sm:flex-row">
+          <span>WebP Forge — Modern Web Image Optimization.</span>
+          <span>Engineered for web performance enthusiasts.</span>
+        </div>
+      </footer>
+
+    </div>
+  </div>
+<footer class="np-global-footer"><span class="np-global-brand">SMB Cloud · Free local tool.</span><span class="np-global-disclaimer">Notice: Results are generated locally for informational purposes. Verify all figures, tax rates, and legal requirements with a licensed professional before making commercial, financial, or legal decisions.</span><span class="np-global-links"><a class="np-footer-link np-footer-lang" href="../conversor-optimizador-imagenes.html">Español (ES)</a><a class="np-footer-link np-footer-primary" href="https://apps.nubeparapymes.online/">Tools Portal</a><a class="np-footer-link np-footer-secondary" href="https://nubeparapymes.online/">Main Website</a></span></footer>
+</body>
+</html>
+
