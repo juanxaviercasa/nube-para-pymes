@@ -646,21 +646,21 @@ def inject_wordpress_language_switchers():
 
     def make_navbar_switcher(target_url, is_en=False):
         if is_en:
-            return f'''<li class="menu-item menu-item-lang-switcher" style="display:inline-flex;align-items:center;margin-left:12px;">
-  <a href="{target_url}" class="menu-link np-lang-toggle" style="display:inline-flex;align-items:center;gap:6px;padding:5px 12px;border-radius:20px;border:1px solid #cbd5e1;background:#ffffff;color:#1e293b;font-size:12px;font-weight:600;text-decoration:none;transition:all .18s ease;box-shadow:0 1px 2px rgba(0,0,0,0.04);" title="Cambiar a versión en español" aria-label="Cambiar a versión en español">
+            return f'''<li class="menu-item-lang-switcher" style="display:inline-flex!important;align-items:center!important;height:100%!important;margin:0 0 0 14px!important;padding:0!important;list-style:none!important;">
+  <a href="{target_url}" class="np-lang-toggle" style="display:inline-flex!important;align-items:center!important;gap:5px!important;height:28px!important;max-height:28px!important;line-height:26px!important;padding:0 10px!important;border-radius:9999px!important;border:1px solid #d1d5db!important;background:#ffffff!important;color:#374151!important;font-size:11.5px!important;font-weight:600!important;text-decoration:none!important;box-shadow:0 1px 2px rgba(0,0,0,0.05)!important;white-space:nowrap!important;box-sizing:border-box!important;vertical-align:middle!important;" title="Cambiar a versión en español" aria-label="Cambiar a versión en español">
     {globe_svg}
     <span style="color:#f97316;font-weight:700;">EN</span>
-    <span style="color:#cbd5e1;font-weight:300;">|</span>
-    <span style="color:#64748b;font-weight:500;">ES</span>
+    <span style="color:#cbd5e1;font-weight:400;margin:0 1px;">|</span>
+    <span style="color:#6b7280;font-weight:500;">ES</span>
   </a>
 </li>'''
         else:
-            return f'''<li class="menu-item menu-item-lang-switcher" style="display:inline-flex;align-items:center;margin-left:12px;">
-  <a href="{target_url}" class="menu-link np-lang-toggle" style="display:inline-flex;align-items:center;gap:6px;padding:5px 12px;border-radius:20px;border:1px solid #cbd5e1;background:#ffffff;color:#1e293b;font-size:12px;font-weight:600;text-decoration:none;transition:all .18s ease;box-shadow:0 1px 2px rgba(0,0,0,0.04);" title="Switch to English version" aria-label="Switch to English version">
+            return f'''<li class="menu-item-lang-switcher" style="display:inline-flex!important;align-items:center!important;height:100%!important;margin:0 0 0 14px!important;padding:0!important;list-style:none!important;">
+  <a href="{target_url}" class="np-lang-toggle" style="display:inline-flex!important;align-items:center!important;gap:5px!important;height:28px!important;max-height:28px!important;line-height:26px!important;padding:0 10px!important;border-radius:9999px!important;border:1px solid #d1d5db!important;background:#ffffff!important;color:#374151!important;font-size:11.5px!important;font-weight:600!important;text-decoration:none!important;box-shadow:0 1px 2px rgba(0,0,0,0.05)!important;white-space:nowrap!important;box-sizing:border-box!important;vertical-align:middle!important;" title="Switch to English version" aria-label="Switch to English version">
     {globe_svg}
     <span style="color:#f97316;font-weight:700;">ES</span>
-    <span style="color:#cbd5e1;font-weight:300;">|</span>
-    <span style="color:#64748b;font-weight:500;">EN</span>
+    <span style="color:#cbd5e1;font-weight:400;margin:0 1px;">|</span>
+    <span style="color:#6b7280;font-weight:500;">EN</span>
   </a>
 </li>'''
 
