@@ -67,6 +67,16 @@ check('dist/contacto/index.html existe', fs.existsSync(path.join(DIST, 'contacto
 check('dist/wp-content existe', fs.existsSync(path.join(DIST, 'wp-content')));
 check('dist/wp-includes existe', fs.existsSync(path.join(DIST, 'wp-includes')));
 
+// 1.1 Verificación de Paginación del Blog y Taxonomías
+console.log('\n1.1 Verificando Paginación del Blog (/blog/page/2/ a 7/)...');
+for (let p = 2; p <= 7; p++) {
+    check(`dist/blog/page/${p}/index.html existe`, fs.existsSync(path.join(DIST, 'blog', 'page', String(p), 'index.html')));
+}
+check('dist/author/xaviercabello/page/2/index.html existe', fs.existsSync(path.join(DIST, 'author', 'xaviercabello', 'page', '2', 'index.html')));
+check('dist/category/software-por-sector/page/2/index.html existe', fs.existsSync(path.join(DIST, 'category', 'software-por-sector', 'page', '2', 'index.html')));
+check('dist/category/gestion-proyectos/page/2/index.html existe', fs.existsSync(path.join(DIST, 'category', 'gestion-proyectos', 'page', '2', 'index.html')));
+check('dist/category/automatizacion-ia/page/2/index.html existe', fs.existsSync(path.join(DIST, 'category', 'automatizacion-ia', 'page', '2', 'index.html')));
+
 // 2. Verificación de Portal de Herramientas
 console.log('\n2. Verificando Portal Interactivo de Herramientas (/herramientas/)...');
 const portalPath = path.join(DIST, 'herramientas', 'index.html');

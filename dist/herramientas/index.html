@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+  <link rel="canonical" href="/">
+  <link rel="alternate" hreflang="es" href="/">
+  <link rel="alternate" hreflang="en" href="/en/index.html">
+  <link rel="alternate" hreflang="x-default" href="/">
   <meta charset="UTF-8">
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
   <meta http-equiv="Pragma" content="no-cache">
@@ -11,7 +15,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <title>Nube para Pymes — Portal de Herramientas</title>
-  <script type="module" crossorigin="" src="/herramientas/js/index.js?v=20260919-1"></script>
+  <script type="module" crossorigin="" src="/herramientas/js/index.js?v=20260926-1"></script>
+  <script defer src="/herramientas/js/portal-lang-switcher.js?v=20260926"></script>
+  <script defer src="/herramientas/js/geo-lang-detect.js?v=20260927"></script>
   <link rel="stylesheet" crossorigin="" href="/herramientas/css/index.css?v=20260919-1">
 </head>
 <body>
@@ -48,6 +54,11 @@
               </div>
               
 
+              <a href="./en/index.html" class="inline-flex items-center gap-1 rounded-full border border-white/15 bg-white/5 px-3 py-1.5 text-xs font-bold text-white transition hover:border-brand hover:bg-white/10" title="Switch to English version" aria-label="Switch to English version">
+                <span class="text-brand">ES</span>
+                <span class="text-white/30">|</span>
+                <span class="text-white/60 hover:text-white">EN</span>
+              </a>
               <button type="button" role="switch" aria-checked="false" aria-label="Alternar modo oscuro" class="relative inline-flex h-9 w-16 shrink-0 items-center rounded-full border border-white/15 bg-white/10 px-1 transition-colors">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sun absolute left-2 h-4 w-4 text-brand-soft" aria-hidden="true">
                   <circle cx="12" cy="12" r="4"></circle>
@@ -923,6 +934,12 @@
           </div>
           
           <div class="flex flex-col items-center gap-2 text-center sm:items-end sm:text-right np-portal-footer-right">
+            <div class="flex items-center gap-2 text-xs text-fg-muted my-1">
+              <span>Idioma / Language:</span>
+              <span class="font-bold text-brand">Español</span>
+              <span>·</span>
+              <a href="./en/index.html" class="font-semibold text-cta hover:underline">English</a>
+            </div>
             <a href="/herramientas/guia-uso/" class="text-sm font-semibold text-cta underline-offset-4 hover:underline">Guía completa de uso →</a>
             <p class="text-sm text-fg-muted">© 2026 NubeParaPymes · Diseñado y Desarrollado por <a href="https://juan.cabellorosas.com" target="_blank" rel="noopener" class="font-bold text-cta hover:underline" style="text-decoration: underline; font-weight: 700;">Xavier Cabello</a></p>
           </div>

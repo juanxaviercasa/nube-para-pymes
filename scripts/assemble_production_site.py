@@ -528,6 +528,16 @@ def main():
     log("=== INICIO DE ENSAMBLADO DE PRODUCCIÓN ===")
     clean_and_prepare_dist()
     copy_wp_export()
+    
+    # Generar todas las páginas de paginación para blog, autores y taxonomías
+    try:
+        import sys
+        sys.path.insert(0, str(ROOT / "scripts"))
+        from generate_all_paginations import main as generate_all_paginations_main
+        generate_all_paginations_main()
+    except Exception as e:
+        log(f"ADVERTENCIA al generar paginación: {e}")
+
     setup_herramientas_assets()
     build_tools_portal()
     build_usage_guide()
