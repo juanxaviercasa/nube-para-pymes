@@ -1,0 +1,23 @@
+/* Nube para Pymes — experiencia de demostración: se integra con el sistema navy/naranja existente, mantiene contraste alto y deja los datos reales bajo control del visitante. */
+:root { --np-demo-ink: #0a192f; --np-demo-accent: #f97316; --np-demo-sky: #eaf3ff; --np-demo-line: #cbdcf1; }
+.np-demo-bar { display:flex; align-items:center; justify-content:space-between; gap:1rem; margin:0 0 1.25rem; padding:1rem 1.125rem; border:1px solid var(--np-demo-line); border-left:5px solid var(--np-demo-accent); border-radius:14px; background:linear-gradient(100deg,#fff 0%,var(--np-demo-sky) 100%); box-shadow:0 10px 25px rgba(10,25,47,.07); color:var(--np-demo-ink); }
+.np-demo-copy { min-width:0; }
+.np-demo-eyebrow { display:block; margin-bottom:.2rem; color:#9a3412; font-size:.72rem; font-weight:800; letter-spacing:.08em; text-transform:uppercase; }
+.np-demo-copy strong { display:block; font-size:1rem; }
+.np-demo-copy p { margin:.2rem 0 0; color:#334155; font-size:.9rem; line-height:1.45; }
+.np-demo-actions { display:flex; flex-wrap:wrap; gap:.55rem; flex:none; }
+.np-demo-button { min-height:40px; padding:.6rem .85rem; border:1px solid #b9cde6; border-radius:9px; background:#fff; color:var(--np-demo-ink); font:inherit; font-weight:750; cursor:pointer; transition:transform .16s cubic-bezier(.23,1,.32,1), box-shadow .16s cubic-bezier(.23,1,.32,1), background .16s cubic-bezier(.23,1,.32,1); }
+.np-demo-button.primary { border-color:var(--np-demo-accent); background:var(--np-demo-accent); color:#fff; box-shadow:0 6px 14px rgba(249,115,22,.22); }
+.np-demo-button:hover { transform:translateY(-1px); box-shadow:0 8px 18px rgba(10,25,47,.14); }
+.np-demo-button:active { transform:scale(.97); }
+.np-demo-button:focus-visible, .np-demo-empty-tip a:focus-visible { outline:3px solid #2563eb; outline-offset:3px; }
+.np-demo-status { min-height:1.2em; margin:0 0 1rem; color:#334155; font-size:.9rem; }
+.np-demo-status[data-state="good"] { color:#166534; font-weight:700; }
+.np-demo-status[data-state="warning"] { color:#9a3412; font-weight:700; }
+.np-demo-result { position:relative; border-color:#9fc3f5 !important; box-shadow:0 10px 26px rgba(37,99,235,.10); }
+.np-demo-result::before { content:"Resultado"; position:absolute; z-index:1; top:-.73rem; left:1rem; padding:.18rem .55rem; border-radius:999px; background:#0a192f; color:#fff; font-size:.68rem; font-weight:800; letter-spacing:.07em; text-transform:uppercase; }
+.np-demo-empty-tip { margin:.75rem 0 0; padding:.7rem .8rem; border-radius:9px; background:#fff7ed; color:#7c2d12; font-size:.88rem; line-height:1.45; }
+.np-demo-empty-tip a { color:#9a3412; font-weight:800; text-decoration:underline; text-underline-offset:2px; }
+.np-demo-active [data-kpi], .np-demo-active .op-kpi strong { color:#0f4c81; }
+@media (max-width: 680px) { .np-demo-bar { align-items:flex-start; flex-direction:column; padding:.9rem; } .np-demo-actions { width:100%; } .np-demo-button { flex:1 1 10rem; } }
+@media (prefers-reduced-motion: reduce) { .np-demo-button { transition:none; } .np-demo-button:hover, .np-demo-button:active { transform:none; } }

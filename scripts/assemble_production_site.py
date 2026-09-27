@@ -59,7 +59,7 @@ TOOLS = [
 ]
 
 def log(msg):
-    print(f"[ASSEMBLE] {msg}")
+    print(f"[ASSEMBLE] {msg}", flush=True)
 
 def clean_and_prepare_dist():
     log("Preparando carpeta de salida dist/...")
@@ -81,7 +81,7 @@ def copy_wp_export():
     log(f"WordPress copiado: {len(list(DIST.iterdir()))} elementos en raíz de dist/.")
 
 def setup_herramientas_assets():
-    log("Instalando assets de herramientas en dist/herramientas/...")
+    log("Instalando assets de herramientas en dist/herramientas/ y dist/...")
     target_herramientas = DIST / "herramientas"
     target_herramientas.mkdir(parents=True, exist_ok=True)
 
@@ -93,10 +93,12 @@ def setup_herramientas_assets():
     dest_css = target_herramientas / "css"
     if (ROOT / "css").exists():
         shutil.copytree(ROOT / "css", dest_css, dirs_exist_ok=True)
+        shutil.copytree(ROOT / "css", DIST / "css", dirs_exist_ok=True)
 
     dest_js = target_herramientas / "js"
     if (ROOT / "js").exists():
         shutil.copytree(ROOT / "js", dest_js, dirs_exist_ok=True)
+        shutil.copytree(ROOT / "js", DIST / "js", dirs_exist_ok=True)
 
     datos_compartidos = dest_js / "datos-compartidos.js"
     if datos_compartidos.exists():
@@ -596,6 +598,135 @@ def sync_dynamic_metrics():
 
     log("Métricas dinámicas sincronizadas exitosamente en HTML, JSON y JavaScript.")
 
+def inject_wordpress_language_switchers():
+    log("Inyectando selector de idiomas universal (ES/EN) y hreflang en todas las páginas de WordPress...")
+    import json
+    
+    slug_map_file = ROOT / "scripts" / "posts_slug_map.json"
+    if not slug_map_file.exists():
+        log("ADVERTENCIA: No se encontró posts_slug_map.json")
+        return
+        
+    try:
+        es_to_en = json.loads(slug_map_file.read_text(encoding="utf-8"))
+    except Exception as e:
+        log(f"ERROR cargando posts_slug_map.json: {e}")
+        return
+        
+    en_to_es = {v: k for k, v in es_to_en.items()}
+    
+    def make_floating_switcher(target_url, is_en=False):
+        if is_en:
+            return f'''<aside class="np-lang-switch-floating" style="position:fixed;bottom:24px;right:24px;z-index:99999;background:rgba(15,23,42,0.92);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);color:#ffffff;border:1px solid #334155;border-radius:9999px;padding:8px 16px;box-shadow:0 10px 25px -5px rgba(0,0,0,0.3);font-family:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;font-size:13px;display:flex;align-items:center;gap:10px;">
+  <a href="{target_url}" style="color:#94a3b8;text-decoration:none;font-weight:600;transition:color 0.2s;" title="Cambiar a versión en español">ES</a>
+  <span style="color:#475569;font-weight:300;">|</span>
+  <span style="color:#2dd4bf;font-weight:700;">EN</span>
+</aside>'''
+        else:
+            return f'''<aside class="np-lang-switch-floating" style="position:fixed;bottom:24px;right:24px;z-index:99999;background:rgba(15,23,42,0.92);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);color:#ffffff;border:1px solid #334155;border-radius:9999px;padding:8px 16px;box-shadow:0 10px 25px -5px rgba(0,0,0,0.3);font-family:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;font-size:13px;display:flex;align-items:center;gap:10px;">
+  <span style="color:#f2994a;font-weight:800;">ES</span>
+  <span style="color:#475569;font-weight:300;">|</span>
+  <a href="{target_url}" style="color:#94a3b8;text-decoration:none;font-weight:600;transition:color 0.2s;" title="Switch to English version">EN</a>
+</aside>'''
+
+    def make_navbar_switcher(target_url, is_en=False):
+        if is_en:
+            return f'''<li class="menu-item menu-item-lang-switcher" style="display:inline-flex;align-items:center;margin-left:10px;">
+  <a href="{target_url}" class="menu-link" style="display:inline-flex;align-items:center;gap:6px;padding:4px 12px;border-radius:9999px;background:#f8fafc;border:1px solid #cbd5e1;color:#0f2c4c;font-size:12px;font-weight:700;text-decoration:none;box-shadow:0 1px 3px rgba(0,0,0,0.06);" title="Cambiar a versión en español">
+    <span>🌐</span> <span style="color:#2dd4bf;font-weight:800;">EN</span> <span style="opacity:0.35;">|</span> <span style="color:#64748b;font-weight:500;">ES</span>
+  </a>
+</li>'''
+        else:
+            return f'''<li class="menu-item menu-item-lang-switcher" style="display:inline-flex;align-items:center;margin-left:10px;">
+  <a href="{target_url}" class="menu-link" style="display:inline-flex;align-items:center;gap:6px;padding:4px 12px;border-radius:9999px;background:#f8fafc;border:1px solid #cbd5e1;color:#0f2c4c;font-size:12px;font-weight:700;text-decoration:none;box-shadow:0 1px 3px rgba(0,0,0,0.06);" title="Switch to English version">
+    <span>🌐</span> <span style="color:#f2994a;font-weight:800;">ES</span> <span style="opacity:0.35;">|</span> <span style="color:#64748b;font-weight:500;">EN</span>
+  </a>
+</li>'''
+
+    count = 0
+    for html_file in DIST.rglob("*.html"):
+        rel_parts = html_file.relative_to(DIST).parts
+        if "herramientas" in rel_parts:
+            continue
+            
+        try:
+            content = html_file.read_text(encoding="utf-8", errors="ignore")
+            is_en = "en" in rel_parts
+            
+            if len(rel_parts) == 1:
+                slug = ""
+            elif len(rel_parts) == 2 and rel_parts[0] == "en":
+                slug = ""
+            elif len(rel_parts) >= 2 and rel_parts[-1] == "index.html":
+                slug = rel_parts[-2]
+            else:
+                slug = ""
+
+            if is_en:
+                if slug in en_to_es:
+                    target_url = f"/{en_to_es[slug]}/"
+                else:
+                    target_url = "/"
+            else:
+                if slug in es_to_en:
+                    target_url = f"/en/{es_to_en[slug]}/"
+                else:
+                    target_url = "/en/"
+
+            modified = False
+
+            # Inyectar tags hreflang si no existen
+            if "hreflang" not in content and "</head>" in content:
+                if is_en:
+                    sp_equiv = f"https://nubeparapymes.online{target_url}"
+                    en_equiv = f"https://nubeparapymes.online/en/{slug}/" if slug else "https://nubeparapymes.online/en/"
+                else:
+                    sp_equiv = f"https://nubeparapymes.online/{slug}/" if slug else "https://nubeparapymes.online/"
+                    en_equiv = f"https://nubeparapymes.online{target_url}"
+
+                hreflangs = (
+                    f'\n  <link rel="alternate" hreflang="es" href="{sp_equiv}" />'
+                    f'\n  <link rel="alternate" hreflang="en" href="{en_equiv}" />'
+                    f'\n  <link rel="alternate" hreflang="x-default" href="{sp_equiv}" />\n</head>'
+                )
+                content = content.replace("</head>", hreflangs)
+                modified = True
+
+            # Inyectar en el menú de navegación Astra desktop y móvil si no existe
+            if "menu-item-lang-switcher" not in content:
+                nav_switcher = make_navbar_switcher(target_url, is_en)
+                # Inyectar inmediatamente después de "Sobre Nosotros" / "About Us" (menu-item-47)
+                sobre_nosotros_pattern = r'(<li[^>]*class="[^"]*menu-item-47[^"]*"[^>]*>[\s\S]*?</li>)'
+                if re.search(sobre_nosotros_pattern, content):
+                    content = re.sub(
+                        sobre_nosotros_pattern,
+                        rf'\g<1>\n{nav_switcher}',
+                        content
+                    )
+                    modified = True
+                elif 'id="ast-hf-menu-1"' in content:
+                    content = re.sub(
+                        r'(<nav[^>]*id="primary-site-navigation-desktop"[^>]*>[\s\S]*?)(</ul></div></nav>)',
+                        rf'\g<1>{nav_switcher}\g<2>',
+                        content,
+                        count=1
+                    )
+                    modified = True
+
+            # Inyectar selector flotante badge si no existe
+            if "np-lang-switch-floating" not in content and "</body>" in content:
+                floating_btn = make_floating_switcher(target_url, is_en)
+                content = content.replace("</body>", f"{floating_btn}\n</body>")
+                modified = True
+
+            if modified:
+                html_file.write_text(content, encoding="utf-8")
+                count += 1
+        except Exception as e:
+            pass
+
+    log(f"Selector de idioma universal inyectado exitosamente en {count} páginas de WordPress.")
+
 def create_package_json():
     log("Verificando / creando package.json para despliegue automatizado...")
     pkg_file = ROOT / "package.json"
@@ -647,6 +778,7 @@ def main():
     update_wp_directory_page()
 
     update_global_footers()
+    inject_wordpress_language_switchers()
     update_redirects()
     update_headers()
     update_sitemap()
