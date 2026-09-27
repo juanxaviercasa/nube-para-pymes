@@ -1,0 +1,35 @@
+# ==========================================
+# Cloudflare Pages _headers: Cache & Security
+# ==========================================
+
+# HTML de herramientas y portada siempre revalidados para reflejar cambios de inmediato
+/*.html
+  Cache-Control: public, max-age=0, must-revalidate
+
+/stats.json
+  Cache-Control: public, max-age=0, must-revalidate
+
+/api/stats.json
+  Cache-Control: public, max-age=0, must-revalidate
+
+/herramientas/
+  Cache-Control: public, max-age=0, must-revalidate
+
+/herramientas/*
+  Cache-Control: public, max-age=0, must-revalidate
+
+# Assets estáticos
+/herramientas/assets/*
+  Cache-Control: public, max-age=3600, must-revalidate
+
+/assets/*
+  Cache-Control: public, max-age=3600, must-revalidate
+
+/wp-content/uploads/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/*
+  X-Frame-Options: SAMEORIGIN
+  X-Content-Type-Options: nosniff
+  X-XSS-Protection: 1; mode=block
+  Referrer-Policy: strict-origin-when-cross-origin

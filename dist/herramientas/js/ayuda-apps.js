@@ -47,51 +47,7 @@
     return filename.replace(/\.html$/i, "");
   }
 
-  // --- 1. FLOATING LANGUAGE SWITCHER (ALWAYS INITIALIZED) ---
-  function initLanguageSwitcher() {
-    if (document.querySelector(".np-lang-switch-floating")) return;
-
-    var currentId = getBaseId();
-    var switcher = document.createElement("a");
-    switcher.className = "np-lang-switch-floating";
-
-    if (isEn) {
-      // Current is English -> Target is Spanish
-      var esSlug = SLUG_MAP_EN_TO_ES[currentId] || currentId;
-      switcher.href = "../" + esSlug + ".html";
-      switcher.title = "Cambiar a versión en Español";
-      switcher.setAttribute("aria-label", "Cambiar a versión en Español");
-      switcher.innerHTML = '<span class="np-lang-inactive">ES</span><span class="np-lang-sep">|</span><span class="np-lang-active">EN</span>';
-    } else {
-      // Current is Spanish -> Target is English
-      var enSlug = SLUG_MAP_ES_TO_EN[currentId] || currentId;
-      switcher.href = "./en/" + enSlug + ".html";
-      switcher.title = "Switch to English version";
-      switcher.setAttribute("aria-label", "Switch to English version");
-      switcher.innerHTML = '<span class="np-lang-active">ES</span><span class="np-lang-sep">|</span><span class="np-lang-inactive">EN</span>';
-    }
-
-    if (document.body) {
-      document.body.appendChild(switcher);
-    }
-  }
-
-  // Double-check persistence against React DOM replacements
-  function observeSwitcher() {
-    initLanguageSwitcher();
-    [100, 300, 700, 1500, 3000].forEach(function (ms) {
-      window.setTimeout(initLanguageSwitcher, ms);
-    });
-
-    if (window.MutationObserver && document.body) {
-      var bodyObserver = new MutationObserver(function () {
-        if (!document.querySelector(".np-lang-switch-floating")) {
-          initLanguageSwitcher();
-        }
-      });
-      bodyObserver.observe(document.body, { childList: true, subtree: false });
-    }
-  }
+  // Floating language switcher removed to prevent UI clutter and intrusive badges
 
   // --- 2. DEMO EXPERIENCE SCRIPT LOADER ---
   function loadDemoExperience() {
@@ -276,7 +232,6 @@
   }
 
   function start() {
-    observeSwitcher();
     if (!loadDemoExperience()) {
       var demoAttempts = 0;
       var demoTimer = window.setInterval(function () {

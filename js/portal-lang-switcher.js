@@ -13,7 +13,7 @@
     if (themeBtn && !document.getElementById("np-nav-lang-switcher")) {
       var a = document.createElement("a");
       a.id = "np-nav-lang-switcher";
-      a.href = isEn ? "/herramientas/" : "/en/";
+      a.href = isEn ? "/herramientas/" : "/en/tools/";
       a.className = "inline-flex items-center gap-1 rounded-full border border-white/15 bg-white/5 px-3 py-1.5 text-xs font-bold text-white transition hover:border-brand hover:bg-white/10";
       a.title = isEn ? "Cambiar a versión en Español" : "Switch to English version";
       a.setAttribute("aria-label", a.title);
@@ -33,7 +33,7 @@
       if (isEn) {
         fdiv.innerHTML = '<span>Language / Idioma:</span><a href="/herramientas/" class="font-semibold text-cta hover:underline">Español</a><span>·</span><span class="font-bold text-brand">English</span>';
       } else {
-        fdiv.innerHTML = '<span>Idioma / Language:</span><span class="font-bold text-brand">Español</span><span>·</span><a href="/en/" class="font-semibold text-cta hover:underline">English</a>';
+        fdiv.innerHTML = '<span>Idioma / Language:</span><span class="font-bold text-brand">Español</span><span>·</span><a href="/en/tools/" class="font-semibold text-cta hover:underline">English</a>';
       }
       footerRight.insertBefore(fdiv, footerRight.firstChild);
     }

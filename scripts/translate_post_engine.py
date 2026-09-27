@@ -326,21 +326,8 @@ def translate_post(spanish_slug, english_slug):
                 
     # 9. Adapt internal links
     adapt_post_links(soup, spanish_slug, english_slug)
-    
-    # 10. Add Floating Language Switcher
-    lang_switcher_html = f"""
-    <aside class="np-lang-switch-floating" style="position:fixed;bottom:24px;right:24px;z-index:99999;background:rgba(15,23,42,0.92);backdrop-filter:blur(8px);color:#ffffff;border:1px solid #334155;border-radius:9999px;padding:8px 16px;box-shadow:0 10px 25px -5px rgba(0,0,0,0.3);font-family:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;font-size:13px;display:flex;align-items:center;gap:10px;">
-      <a href="/{spanish_slug}/" style="color:#94a3b8;text-decoration:none;font-weight:600;transition:color 0.2s;" title="Cambiar a español">ES</a>
-      <span style="color:#475569;font-weight:300;">|</span>
-      <span style="color:#2dd4bf;font-weight:700;">EN</span>
-    </aside>
-    """
-    body = soup.find('body')
-    if body:
-        switcher_soup = BeautifulSoup(lang_switcher_html, 'html.parser')
-        body.append(switcher_soup)
         
-    # 11. Normalize Footer
+    # 10. Normalize Footer
     footer = soup.find('footer')
     if footer:
         for p in footer.find_all(['p', 'span']):

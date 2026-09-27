@@ -287,12 +287,13 @@ def update_global_footers():
     author_link = '<a href="https://juan.cabellorosas.com" target="_blank" rel="noopener" style="font-weight:700;color:inherit;text-decoration:underline;">Xavier Cabello</a>'
 
     patterns = [
+        r'<div class="ast-footer-copyright"><p>&copy; 2026 (Nube para Pymes|SMB Cloud)\. (Todos los derechos reservados|All rights reserved)(\s*\|\s*(Diseñado y )?(Desarrollado|Designed and Developed) por <a [^>]+>[^<]+</a>)?\.</p>',
+        r'<div class="ast-footer-copyright"><p>&copy; 2026 (Nube para Pymes|SMB Cloud)\. (Todos los derechos reservados|All rights reserved)\s*\|\s*(Diseñado y )?(Desarrollado|Designed and Developed) por <a [^>]+>[^<]+</a></p>',
+        r'<div class="ast-footer-copyright"><p>&copy; 2026 (Nube para Pymes|SMB Cloud)\. (Todos los derechos reservados|All rights reserved)\.</p>',
         r'<div class="ast-footer-copyright"><p>&copy; 2026 Nube para Pymes\. Todos los derechos reservados(\s*\|\s*(Diseñado y )?Desarrollado por <a [^>]+>[^<]+</a>)?\.</p>',
         r'<div class="ast-footer-copyright"><p>&copy; 2026 Nube para Pymes\. Todos los derechos reservados\s*\|\s*(Diseñado y )?Desarrollado por <a [^>]+>[^<]+</a></p>',
         r'<div class="ast-footer-copyright"><p>&copy; 2026 Nube para Pymes\. Todos los derechos reservados\.</p>'
     ]
-
-    replacement = f'<div class="ast-footer-copyright"><p>&copy; 2026 Nube para Pymes. Todos los derechos reservados | Diseñado y Desarrollado por {author_link}</p>'
 
     count = 0
     for html_file in DIST.rglob("*.html"):
@@ -300,7 +301,14 @@ def update_global_footers():
             continue
         try:
             txt = html_file.read_text(encoding="utf-8")
+            is_en = "en" in html_file.parts
             modified = False
+            
+            if is_en:
+                replacement = f'<div class="ast-footer-copyright"><p>&copy; 2026 SMB Cloud. All rights reserved | Designed &amp; Developed by {author_link}</p>'
+            else:
+                replacement = f'<div class="ast-footer-copyright"><p>&copy; 2026 Nube para Pymes. Todos los derechos reservados | Diseñado y Desarrollado por {author_link}</p>'
+
             for pat in patterns:
                 if re.search(pat, txt):
                     txt = re.sub(pat, replacement, txt)
@@ -330,6 +338,14 @@ def update_redirects():
         "/inicio/         /    301",
         "/home            /    301",
         "/home/           /    301",
+        "",
+        "# Rutas de versión en inglés",
+        "/en/herramientas         /en/tools/    301",
+        "/en/herramientas/        /en/tools/    301",
+        "/en/sobre-nosotros       /en/about-us/ 301",
+        "/en/sobre-nosotros/      /en/about-us/ 301",
+        "/en/guia-uso             /en/user-guide.html 301",
+        "/en/guia-uso/            /en/user-guide.html 301",
         "",
         "# Rutas de herramientas y guías",
         "/herramientas-gratis      /herramientas/    301",
@@ -599,7 +615,7 @@ def sync_dynamic_metrics():
     log("Métricas dinámicas sincronizadas exitosamente en HTML, JSON y JavaScript.")
 
 def inject_wordpress_language_switchers():
-    log("Inyectando selector de idiomas universal (ES/EN) y hreflang en todas las páginas de WordPress...")
+    log("Inyectando selector de idiomas universal elegante (ES/EN) en navbar y pie de página...")
     import json
     
     slug_map_file = ROOT / "scripts" / "posts_slug_map.json"
@@ -615,31 +631,36 @@ def inject_wordpress_language_switchers():
         
     en_to_es = {v: k for k, v in es_to_en.items()}
     
-    def make_floating_switcher(target_url, is_en=False):
-        if is_en:
-            return f'''<aside class="np-lang-switch-floating" style="position:fixed;bottom:24px;right:24px;z-index:99999;background:rgba(15,23,42,0.92);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);color:#ffffff;border:1px solid #334155;border-radius:9999px;padding:8px 16px;box-shadow:0 10px 25px -5px rgba(0,0,0,0.3);font-family:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;font-size:13px;display:flex;align-items:center;gap:10px;">
-  <a href="{target_url}" style="color:#94a3b8;text-decoration:none;font-weight:600;transition:color 0.2s;" title="Cambiar a versión en español">ES</a>
-  <span style="color:#475569;font-weight:300;">|</span>
-  <span style="color:#2dd4bf;font-weight:700;">EN</span>
-</aside>'''
-        else:
-            return f'''<aside class="np-lang-switch-floating" style="position:fixed;bottom:24px;right:24px;z-index:99999;background:rgba(15,23,42,0.92);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);color:#ffffff;border:1px solid #334155;border-radius:9999px;padding:8px 16px;box-shadow:0 10px 25px -5px rgba(0,0,0,0.3);font-family:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;font-size:13px;display:flex;align-items:center;gap:10px;">
-  <span style="color:#f2994a;font-weight:800;">ES</span>
-  <span style="color:#475569;font-weight:300;">|</span>
-  <a href="{target_url}" style="color:#94a3b8;text-decoration:none;font-weight:600;transition:color 0.2s;" title="Switch to English version">EN</a>
-</aside>'''
+    special_en_to_es = {
+        "about-us": "sobre-nosotros",
+        "tools": "herramientas",
+        "user-guide": "herramientas/guia-uso",
+    }
+    special_es_to_en = {
+        "sobre-nosotros": "about-us",
+        "herramientas": "tools",
+        "directorio-herramientas": "tools",
+    }
+
+    globe_svg = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.75;"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>'
 
     def make_navbar_switcher(target_url, is_en=False):
         if is_en:
-            return f'''<li class="menu-item menu-item-lang-switcher" style="display:inline-flex;align-items:center;margin-left:10px;">
-  <a href="{target_url}" class="menu-link" style="display:inline-flex;align-items:center;gap:6px;padding:4px 12px;border-radius:9999px;background:#f8fafc;border:1px solid #cbd5e1;color:#0f2c4c;font-size:12px;font-weight:700;text-decoration:none;box-shadow:0 1px 3px rgba(0,0,0,0.06);" title="Cambiar a versión en español">
-    <span>🌐</span> <span style="color:#2dd4bf;font-weight:800;">EN</span> <span style="opacity:0.35;">|</span> <span style="color:#64748b;font-weight:500;">ES</span>
+            return f'''<li class="menu-item menu-item-lang-switcher" style="display:inline-flex;align-items:center;margin-left:12px;">
+  <a href="{target_url}" class="menu-link np-lang-toggle" style="display:inline-flex;align-items:center;gap:6px;padding:5px 12px;border-radius:20px;border:1px solid #cbd5e1;background:#ffffff;color:#1e293b;font-size:12px;font-weight:600;text-decoration:none;transition:all .18s ease;box-shadow:0 1px 2px rgba(0,0,0,0.04);" title="Cambiar a versión en español" aria-label="Cambiar a versión en español">
+    {globe_svg}
+    <span style="color:#f97316;font-weight:700;">EN</span>
+    <span style="color:#cbd5e1;font-weight:300;">|</span>
+    <span style="color:#64748b;font-weight:500;">ES</span>
   </a>
 </li>'''
         else:
-            return f'''<li class="menu-item menu-item-lang-switcher" style="display:inline-flex;align-items:center;margin-left:10px;">
-  <a href="{target_url}" class="menu-link" style="display:inline-flex;align-items:center;gap:6px;padding:4px 12px;border-radius:9999px;background:#f8fafc;border:1px solid #cbd5e1;color:#0f2c4c;font-size:12px;font-weight:700;text-decoration:none;box-shadow:0 1px 3px rgba(0,0,0,0.06);" title="Switch to English version">
-    <span>🌐</span> <span style="color:#f2994a;font-weight:800;">ES</span> <span style="opacity:0.35;">|</span> <span style="color:#64748b;font-weight:500;">EN</span>
+            return f'''<li class="menu-item menu-item-lang-switcher" style="display:inline-flex;align-items:center;margin-left:12px;">
+  <a href="{target_url}" class="menu-link np-lang-toggle" style="display:inline-flex;align-items:center;gap:6px;padding:5px 12px;border-radius:20px;border:1px solid #cbd5e1;background:#ffffff;color:#1e293b;font-size:12px;font-weight:600;text-decoration:none;transition:all .18s ease;box-shadow:0 1px 2px rgba(0,0,0,0.04);" title="Switch to English version" aria-label="Switch to English version">
+    {globe_svg}
+    <span style="color:#f97316;font-weight:700;">ES</span>
+    <span style="color:#cbd5e1;font-weight:300;">|</span>
+    <span style="color:#64748b;font-weight:500;">EN</span>
   </a>
 </li>'''
 
@@ -665,15 +686,41 @@ def inject_wordpress_language_switchers():
             if is_en:
                 if slug in en_to_es:
                     target_url = f"/{en_to_es[slug]}/"
+                elif slug in special_en_to_es:
+                    target_url = f"/{special_en_to_es[slug]}/"
                 else:
                     target_url = "/"
             else:
                 if slug in es_to_en:
                     target_url = f"/en/{es_to_en[slug]}/"
+                elif slug in special_es_to_en:
+                    target_url = f"/en/{special_es_to_en[slug]}/"
                 else:
                     target_url = "/en/"
 
             modified = False
+
+            # Limpiar cualquier residuo de geo-lang-detect o aside flotante
+            if "np-lang-switch-floating" in content:
+                content = re.sub(r'<aside[^>]*class=["\']np-lang-switch-floating["\'][^>]*>[\s\S]*?</aside>', '', content)
+                modified = True
+            if "geo-lang-detect" in content:
+                content = re.sub(r'<script[^>]*geo-lang-detect[^>]*></script>', '', content)
+                modified = True
+
+            if is_en:
+                if 'href="/sobre-nosotros/"' in content:
+                    content = content.replace('href="/sobre-nosotros/"', 'href="/en/about-us/"')
+                    modified = True
+                if 'href="/directorio-herramientas/"' in content:
+                    content = content.replace('href="/directorio-herramientas/"', 'href="/en/tools/"')
+                    modified = True
+                if 'href="/herramientas/"' in content:
+                    content = content.replace('href="/herramientas/"', 'href="/en/tools/"')
+                    modified = True
+                if 'href="/en/" class="menu-link">Free Tools' in content:
+                    content = content.replace('href="/en/" class="menu-link">Free Tools', 'href="/en/tools/" class="menu-link">Free Tools')
+                    modified = True
 
             # Inyectar tags hreflang si no existen
             if "hreflang" not in content and "</head>" in content:
@@ -692,10 +739,16 @@ def inject_wordpress_language_switchers():
                 content = content.replace("</head>", hreflangs)
                 modified = True
 
-            # Inyectar en el menú de navegación Astra desktop y móvil si no existe
-            if "menu-item-lang-switcher" not in content:
-                nav_switcher = make_navbar_switcher(target_url, is_en)
-                # Inyectar inmediatamente después de "Sobre Nosotros" / "About Us" (menu-item-47)
+            # Inyectar / actualizar en el menú de navegación Astra desktop y móvil
+            nav_switcher = make_navbar_switcher(target_url, is_en)
+            if "menu-item-lang-switcher" in content:
+                content = re.sub(
+                    r'<li[^>]*class=["\'][^"\']*menu-item-lang-switcher[^"\']*["\'][^>]*>[\s\S]*?</li>',
+                    nav_switcher,
+                    content
+                )
+                modified = True
+            else:
                 sobre_nosotros_pattern = r'(<li[^>]*class="[^"]*menu-item-47[^"]*"[^>]*>[\s\S]*?</li>)'
                 if re.search(sobre_nosotros_pattern, content):
                     content = re.sub(
@@ -712,12 +765,6 @@ def inject_wordpress_language_switchers():
                         count=1
                     )
                     modified = True
-
-            # Inyectar selector flotante badge si no existe
-            if "np-lang-switch-floating" not in content and "</body>" in content:
-                floating_btn = make_floating_switcher(target_url, is_en)
-                content = content.replace("</body>", f"{floating_btn}\n</body>")
-                modified = True
 
             if modified:
                 html_file.write_text(content, encoding="utf-8")
@@ -774,6 +821,13 @@ def main():
     build_usage_guide()
     build_all_tools()
     create_legacy_redirect_stubs()
+    try:
+        from build_english_pages import build_english_tools_portal, build_english_about_us, build_english_homepage
+        build_english_tools_portal()
+        build_english_about_us()
+        build_english_homepage()
+    except Exception as e:
+        log(f"ADVERTENCIA construyendo páginas en inglés: {e}")
     copy_en_structure()
     update_wp_directory_page()
 

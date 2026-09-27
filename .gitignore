@@ -13,3 +13,5 @@ wp_backups/
 
 # Archivos temporales locales
 powershell.cmd
+__pycache__/
+*.pyc
