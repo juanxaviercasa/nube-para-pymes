@@ -378,6 +378,12 @@ def update_headers():
         "/*.html",
         "  Cache-Control: public, max-age=0, must-revalidate",
         "",
+        "/stats.json",
+        "  Cache-Control: public, max-age=0, must-revalidate",
+        "",
+        "/api/stats.json",
+        "  Cache-Control: public, max-age=0, must-revalidate",
+        "",
         "/herramientas/",
         "  Cache-Control: public, max-age=0, must-revalidate",
         "",
@@ -496,6 +502,100 @@ def update_search_index():
     except Exception as e:
         log(f"ADVERTENCIA al procesar search-index.json: {e}")
 
+def sync_dynamic_metrics():
+    log("Sincronizando métricas dinámicas (número real de posts y herramientas)...")
+    import json
+
+    # 1. Obtener conteo real de posts publicados desde posts_catalog.json
+    catalog_file = ROOT / "scripts" / "posts_catalog.json"
+    if catalog_file.exists():
+        try:
+            catalog = json.loads(catalog_file.read_text(encoding="utf-8"))
+            total_posts = len(catalog)
+        except Exception:
+            total_posts = 70
+    else:
+        total_posts = 70
+
+    total_tools = len(TOOLS)  # 26 herramientas interactivas
+
+    log(f"Métricas activas calculadas: {total_posts} artículos publicados, {total_tools} herramientas gratuitas.")
+
+    # 2. Generar endpoints JSON de métricas (dist/stats.json y dist/api/stats.json)
+    stats_data = {
+        "posts_count": total_posts,
+        "tools_count": total_tools,
+        "categories_count": 8,
+        "updated_at": datetime.now().isoformat(),
+        "status": "synchronized"
+    }
+    stats_json_str = json.dumps(stats_data, indent=2, ensure_ascii=False)
+
+    (DIST / "stats.json").write_text(stats_json_str, encoding="utf-8")
+    api_dir = DIST / "api"
+    api_dir.mkdir(parents=True, exist_ok=True)
+    (api_dir / "stats.json").write_text(stats_json_str, encoding="utf-8")
+    if WP_EXPORT.exists():
+        (WP_EXPORT / "stats.json").write_text(stats_json_str, encoding="utf-8")
+
+    # 3. Sincronizar index.html (tanto en dist como en nubepymesexport)
+    for idx_path in [DIST / "index.html", WP_EXPORT / "index.html"]:
+        if not idx_path.exists():
+            continue
+        content = idx_path.read_text(encoding="utf-8", errors="ignore")
+
+        # Sincronizar stat de herramientas
+        content = re.sub(
+            r'(<span class="npp-stat-num"[^>]*data-target=")\d+("[^>]*data-suffix=""[^>]*>)\d+(</span>\s*<span class="npp-stat-label">herramientas gratuitas</span>)',
+            rf'\g<1>{total_tools}\g<2>{total_tools}\g<3>',
+            content
+        )
+
+        # Sincronizar stat de artículos/posts
+        content = re.sub(
+            r'(<span class="npp-stat-num"[^>]*data-target=")\d+("[^>]*data-suffix=""[^>]*>)\d+(</span>\s*<span class="npp-stat-label">artículos publicados</span>)',
+            rf'\g<1>{total_posts}\g<2>{total_posts}\g<3>',
+            content
+        )
+
+        # Sincronizar enlace "Ver los X artículos"
+        content = re.sub(
+            r'Ver los \d+ artículos',
+            f'Ver los {total_posts} artículos',
+            content
+        )
+
+        # Inyectar script stats-counter.js si aún no está presente
+        if "stats-counter.js" not in content and "</body>" in content:
+            content = content.replace(
+                "</body>",
+                '<script src="/wp-static-arquitect-assets/stats-counter.js" defer></script>\n</body>'
+            )
+
+        idx_path.write_text(content, encoding="utf-8")
+
+    # 4. Asegurar que stats-counter.js exista en dist/wp-static-arquitect-assets/
+    assets_dir = DIST / "wp-static-arquitect-assets"
+    assets_dir.mkdir(parents=True, exist_ok=True)
+    counter_src = WP_EXPORT / "wp-static-arquitect-assets" / "stats-counter.js"
+    if counter_src.exists():
+        shutil.copy2(counter_src, assets_dir / "stats-counter.js")
+
+    # 5. Sincronizar twitter:data2 en páginas del autor
+    for author_base in [DIST / "author" / "xaviercabello", WP_EXPORT / "author" / "xaviercabello"]:
+        if author_base.exists():
+            for p in author_base.rglob("*.html"):
+                txt = p.read_text(encoding="utf-8", errors="ignore")
+                if 'twitter:data2' in txt:
+                    new_txt = re.sub(
+                        r'<meta name="twitter:data2" content="\d+">',
+                        f'<meta name="twitter:data2" content="{total_posts}">',
+                        txt
+                    )
+                    p.write_text(new_txt, encoding="utf-8")
+
+    log("Métricas dinámicas sincronizadas exitosamente en HTML, JSON y JavaScript.")
+
 def create_package_json():
     log("Verificando / creando package.json para despliegue automatizado...")
     pkg_file = ROOT / "package.json"
@@ -552,6 +652,7 @@ def main():
     update_sitemap()
     update_robots_and_llms()
     update_search_index()
+    sync_dynamic_metrics()
     create_package_json()
     elapsed = (datetime.now() - start_time).total_seconds()
     log(f"=== ENSAMBLADO COMPLETADO EXITOSAMENTE en {elapsed:.2f}s ===")

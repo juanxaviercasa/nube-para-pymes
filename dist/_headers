@@ -6,6 +6,12 @@
 /*.html
   Cache-Control: public, max-age=0, must-revalidate
 
+/stats.json
+  Cache-Control: public, max-age=0, must-revalidate
+
+/api/stats.json
+  Cache-Control: public, max-age=0, must-revalidate
+
 /herramientas/
   Cache-Control: public, max-age=0, must-revalidate
 

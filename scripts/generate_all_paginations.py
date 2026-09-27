@@ -298,6 +298,14 @@ def build_archive_series(name, template_file, base_url, posts_list, target_dirs)
         current_head = head_part
         current_tail = tail_part
 
+        # Actualizar twitter:data2 con el número real de entradas si existe
+        if "twitter:data2" in current_head:
+            current_head = re.sub(
+                r'<meta name="twitter:data2" content="\d+">',
+                f'<meta name="twitter:data2" content="{total_posts}">',
+                current_head
+            )
+
         # 1. Título
         if page_num > 1:
             title_pat = r'<title>(.*?)</title>'

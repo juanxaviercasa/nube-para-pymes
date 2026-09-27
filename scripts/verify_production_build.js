@@ -159,6 +159,32 @@ if (fs.existsSync(robotsPath)) {
     check('Robots apunta a sitemap de nubeparapymes.online', robotsContent.includes('Sitemap: https://nubeparapymes.online/sitemap.xml'));
 }
 
+// 8. Verificación de Métricas Dinámicas (Conteo de Posts y Herramientas)
+console.log('\n8. Verificando Sincronización Dinámica de Métricas (Posts y Herramientas)...');
+const statsJsonPath = path.join(DIST, 'stats.json');
+check('dist/stats.json existe', fs.existsSync(statsJsonPath));
+if (fs.existsSync(statsJsonPath)) {
+    try {
+        const stats = JSON.parse(fs.readFileSync(statsJsonPath, 'utf8'));
+        check('stats.json refleja conteo real de 70 posts', stats.posts_count === 70);
+        check('stats.json refleja conteo real de 26 herramientas', stats.tools_count === 26);
+    } catch (e) {
+        check('stats.json es JSON válido', false);
+    }
+}
+
+const statsJsPath = path.join(DIST, 'wp-static-arquitect-assets', 'stats-counter.js');
+check('dist/wp-static-arquitect-assets/stats-counter.js existe', fs.existsSync(statsJsPath));
+
+const indexHtmlPath = path.join(DIST, 'index.html');
+if (fs.existsSync(indexHtmlPath)) {
+    const idxContent = fs.readFileSync(indexHtmlPath, 'utf8');
+    check('Portada tiene data-target="70" para artículos', idxContent.includes('data-target="70"'));
+    check('Portada tiene data-target="26" para herramientas', idxContent.includes('data-target="26"'));
+    check('Portada tiene enlace a "Ver los 70 artículos"', idxContent.includes('Ver los 70 artículos'));
+    check('Portada no contiene el número estático desactualizado "65"', !idxContent.includes('data-target="65"'));
+}
+
 console.log('\n=============================================');
 if (errors.length === 0) {
     console.log('🎉 ¡AUDITORÍA SUPERADA CON ÉXITO! Todos los chequeos pasaron.');

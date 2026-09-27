@@ -1,0 +1,1600 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Catálogo 26 Herramientas - Nube para Pymes</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: #030712;
+      color: #F3F4F6;
+      -webkit-font-smoothing: antialiased;
+    }
+    
+    @page {
+      size: 1080px 1350px;
+      margin: 0;
+    }
+
+    .slide {
+      width: 1080px;
+      height: 1350px;
+      max-width: 1080px;
+      max-height: 1350px;
+      padding: 80px 70px;
+      position: relative;
+      page-break-after: always;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background: #0B0F19;
+      overflow: hidden;
+    }
+
+    /* PORTADA */
+    .cover-slide {
+      background: radial-gradient(circle at 80% 20%, #1E1B4B 0%, #0B0F19 70%);
+      justify-content: center;
+    }
+    .glow-bg {
+      position: absolute;
+      top: -150px;
+      right: -150px;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(56, 189, 248, 0.15) 0%, rgba(99, 102, 241, 0) 70%);
+      filter: blur(60px);
+      pointer-events: none;
+    }
+    .badge-tag {
+      display: inline-block;
+      padding: 8px 18px;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #38BDF8;
+      background: rgba(56, 189, 248, 0.12);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      border-radius: 9999px;
+      margin-bottom: 28px;
+      font-family: 'Outfit', sans-serif;
+    }
+    .cover-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 64px;
+      font-weight: 800;
+      line-height: 1.15;
+      color: #FFFFFF;
+      margin-bottom: 24px;
+      letter-spacing: -0.02em;
+    }
+    .cover-subtitle {
+      font-size: 22px;
+      line-height: 1.5;
+      color: #94A3B8;
+      margin-bottom: 48px;
+      max-width: 900px;
+    }
+    .cover-pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-bottom: 60px;
+    }
+    .pillar-box {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 16px;
+      padding: 22px;
+      font-size: 15px;
+      color: #94A3B8;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .pillar-box .icon {
+      font-size: 28px;
+      margin-bottom: 4px;
+    }
+    .pillar-box strong {
+      font-family: 'Outfit', sans-serif;
+      font-size: 18px;
+      color: #FFFFFF;
+    }
+    .cover-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 36px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .author-block .author-label {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #64748B;
+      margin-bottom: 4px;
+    }
+    .author-block .author-name {
+      font-family: 'Outfit', sans-serif;
+      font-size: 24px;
+      font-weight: 700;
+      color: #38BDF8;
+    }
+    .author-block .author-sub {
+      font-size: 14px;
+      color: #94A3B8;
+    }
+    .portal-badge {
+      font-family: 'Outfit', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: #F8FAFC;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      padding: 12px 24px;
+      border-radius: 12px;
+    }
+
+    /* SLIDE DE HERRAMIENTA */
+    .tool-slide {
+      background: linear-gradient(180deg, #0D121F 0%, #080C14 100%);
+    }
+    .slide-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 40px;
+    }
+    .tool-counter {
+      font-family: 'Outfit', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      color: #64748B;
+      letter-spacing: 1px;
+    }
+    .pillar-badge {
+      font-family: 'Outfit', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      padding: 8px 18px;
+      border-radius: 9999px;
+      border: 1px solid;
+    }
+    .slide-body {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .tool-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 50px;
+      font-weight: 800;
+      line-height: 1.15;
+      color: #FFFFFF;
+      margin-bottom: 36px;
+      letter-spacing: -0.02em;
+    }
+    .problem-card {
+      background: rgba(239, 68, 68, 0.06);
+      border: 1px solid rgba(239, 68, 68, 0.2);
+      border-radius: 18px;
+      padding: 24px 28px;
+      margin-bottom: 22px;
+    }
+    .solution-card {
+      background: rgba(56, 189, 248, 0.06);
+      border: 1px solid rgba(56, 189, 248, 0.2);
+      border-radius: 18px;
+      padding: 24px 28px;
+      margin-bottom: 30px;
+    }
+    .card-label {
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+      color: #E2E8F0;
+      font-family: 'Outfit', sans-serif;
+    }
+    .problem-card .card-label { color: #FCA5A5; }
+    .solution-card .card-label { color: #7DD3FC; }
+    .card-text {
+      font-size: 20px;
+      line-height: 1.5;
+      color: #F1F5F9;
+    }
+    .features-block {
+      margin-bottom: 36px;
+    }
+    .features-label {
+      font-family: 'Outfit', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #94A3B8;
+      margin-bottom: 16px;
+    }
+    .features-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .features-list li {
+      font-size: 18px;
+      color: #CBD5E1;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .features-list .check {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 26px;
+      height: 26px;
+      background: rgba(16, 185, 129, 0.15);
+      color: #10B981;
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      border-radius: 50%;
+      font-weight: 700;
+      font-size: 14px;
+    }
+    .url-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px dashed rgba(255, 255, 255, 0.15);
+      border-radius: 16px;
+      padding: 18px 24px;
+    }
+    .url-label {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #64748B;
+      margin-bottom: 4px;
+    }
+    .url-link {
+      font-family: 'Outfit', sans-serif;
+      font-size: 16px;
+      color: #38BDF8;
+      word-break: break-all;
+    }
+    .slide-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 24px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      font-size: 14px;
+      color: #64748B;
+    }
+    .slide-footer strong {
+      color: #CBD5E1;
+    }
+
+    /* CTA FINAL */
+    .cta-slide {
+      background: radial-gradient(circle at 50% 30%, #1E1B4B 0%, #0B0F19 75%);
+      justify-content: center;
+    }
+    .cta-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 54px;
+      font-weight: 800;
+      line-height: 1.2;
+      color: #FFFFFF;
+      margin-bottom: 24px;
+      letter-spacing: -0.02em;
+    }
+    .cta-text {
+      font-size: 22px;
+      line-height: 1.5;
+      color: #94A3B8;
+      margin-bottom: 44px;
+      max-width: 900px;
+    }
+    .cta-benefits {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      margin-bottom: 48px;
+    }
+    .benefit-item {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 20px 24px;
+      border-radius: 16px;
+      font-size: 17px;
+      color: #94A3B8;
+    }
+    .benefit-item .icon {
+      font-size: 32px;
+    }
+    .benefit-item strong {
+      display: block;
+      font-family: 'Outfit', sans-serif;
+      font-size: 19px;
+      color: #FFFFFF;
+      margin-bottom: 2px;
+    }
+    .cta-box {
+      background: linear-gradient(135deg, rgba(56, 189, 248, 0.15), rgba(99, 102, 241, 0.15));
+      border: 1px solid rgba(56, 189, 248, 0.4);
+      padding: 28px 36px;
+      border-radius: 20px;
+      text-align: center;
+    }
+    .cta-box-label {
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: #E2E8F0;
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+    .cta-box-url {
+      font-family: 'Outfit', sans-serif;
+      font-size: 36px;
+      font-weight: 800;
+      color: #38BDF8;
+      letter-spacing: -0.01em;
+    }
+  </style>
+</head>
+<body>
+  
+    <div class="slide cover-slide">
+      <div class="glow-bg"></div>
+      <div class="slide-content">
+        <div class="badge-tag">GUÍA VISUAL Y CATÁLOGO ESTRATÉGICO 2026</div>
+        <h1 class="cover-title">26 Herramientas Gratuitas de Gestión para Pymes</h1>
+        <p class="cover-subtitle">Sin suscripciones mensuales. Sin necesidad de registro. 100% privadas y ejecutadas localmente en tu navegador.</p>
+        
+        <div class="cover-pillars-grid">
+          <div class="pillar-box"><span class="icon">📣</span><strong>Marketing</strong>5 Herramientas</div>
+          <div class="pillar-box"><span class="icon">💰</span><strong>Finanzas</strong>5 Herramientas</div>
+          <div class="pillar-box"><span class="icon">💼</span><strong>Ventas</strong>5 Herramientas</div>
+          <div class="pillar-box"><span class="icon">⚖️</span><strong>Legal</strong>3 Herramientas</div>
+          <div class="pillar-box"><span class="icon">📦</span><strong>Operaciones</strong>3 Herramientas</div>
+          <div class="pillar-box"><span class="icon">⚡</span><strong>Productividad</strong>5 Herramientas</div>
+        </div>
+
+        <div class="cover-footer">
+          <div class="author-block">
+            <div class="author-label">Arquitectura y Desarrollo:</div>
+            <div class="author-name">Xavier Cabello</div>
+            <div class="author-sub">Especialista en Automatización y Software para Pymes</div>
+          </div>
+          <div class="portal-badge">nubeparapymes.online</div>
+        </div>
+      </div>
+    </div>
+    
+
+        <div class="slide tool-slide">
+          <div class="slide-header">
+            <div class="tool-counter">Herramienta #01 de 26</div>
+            <div class="pillar-badge" style="background-color: #38BDF822; color: #38BDF8; border-color: #38BDF855;">
+              📣 MARKETING & ADQUISICIÓN
+            </div>
+          </div>
+
+          <div class="slide-body">
+            <h2 class="tool-title">Analizador de Titulares</h2>
+            
+            <div class="problem-card">
+              <div class="card-label">🚨 El problema común en las Pymes:</div>
+              <div class="card-text">El 80% de las personas solo lee el titular antes de decidir si hace clic o abandona.</div>
+            </div>
+
+            <div class="solution-card">
+              <div class="card-label">💡 Cómo te ayuda esta herramienta:</div>
+              <div class="card-text">Evalúa fuerza, tono, impacto emocional y claridad de tus copys para anuncios y artículos.</div>
+            </div>
+
+            <div class="features-block">
+              <div class="features-label">Capacidades destacadas:</div>
+              <ul class="features-list">
+                <li><span class='check'>✓</span> Puntuación algorítmica de atracción</li><li><span class='check'>✓</span> Detección de palabras de poder y emoción</li><li><span class='check'>✓</span> Comparador A/B de variantes en tiempo real</li>
+              </ul>
+            </div>
+
+            <div class="url-card">
+              <div class="url-label">Acceso directo sin registro:</div>
+              <div class="url-link">🔗 https://nubeparapymes.online/herramientas/marketing/analizador-titulares/</div>
+            </div>
+          </div>
+
+          <div class="slide-footer">
+            <div class="footer-left">
+              <span>Desarrollado por <strong>Xavier Cabello</strong></span> · Nube para Pymes
+            </div>
+            <div class="footer-right">
+              <span>nubeparapymes.online</span>
+            </div>
+          </div>
+        </div>
+        
+
+        <div class="slide tool-slide">
+          <div class="slide-header">
+            <div class="tool-counter">Herramienta #02 de 26</div>
+            <div class="pillar-badge" style="background-color: #38BDF822; color: #38BDF8; border-color: #38BDF855;">
+              🔍 MARKETING & ADQUISICIÓN
+            </div>
+          </div>
+
+          <div class="slide-body">
+            <h2 class="tool-title">Auditor Básico de SEO On-Page</h2>
+            
+            <div class="problem-card">
+              <div class="card-label">🚨 El problema común en las Pymes:</div>
+              <div class="card-text">Tener una web invisible en Google cuesta miles de dólares en anuncios desperdiciados.</div>
+            </div>
+
+            <div class="solution-card">
+              <div class="card-label">💡 Cómo te ayuda esta herramienta:</div>
+              <div class="card-text">Audita etiquetas meta, jerarquía H1-H3, densidad de palabras clave y vista previa en Google.</div>
+            </div>
+
+            <div class="features-block">
+              <div class="features-label">Capacidades destacadas:</div>
+              <ul class="features-list">
+                <li><span class='check'>✓</span> Diagnóstico de salud SEO al instante</li><li><span class='check'>✓</span> Previsualización real de snippet en SERP</li><li><span class='check'>✓</span> Checklist accionable de correcciones</li>
+              </ul>
+            </div>
+
+            <div class="url-card">
+              <div class="url-label">Acceso directo sin registro:</div>
+              <div class="url-link">🔗 https://nubeparapymes.online/herramientas/marketing/auditor-seo-basico/</div>
+            </div>
+          </div>
+
+          <div class="slide-footer">
+            <div class="footer-left">
+              <span>Desarrollado por <strong>Xavier Cabello</strong></span> · Nube para Pymes
+            </div>
+            <div class="footer-right">
+              <span>nubeparapymes.online</span>
+            </div>
+          </div>
+        </div>
+        
+
+        <div class="slide tool-slide">
+          <div class="slide-header">
+            <div class="tool-counter">Herramienta #03 de 26</div>
+            <div class="pillar-badge" style="background-color: #38BDF822; color: #38BDF8; border-color: #38BDF855;">
+              📈 MARKETING & ADQUISICIÓN
+            </div>
+          </div>
+
+          <div class="slide-body">
+            <h2 class="tool-title">Comparador Avanzado de Campañas</h2>
+            
+            <div class="problem-card">
+              <div class="card-label">🚨 El problema común en las Pymes:</div>
+              <div class="card-text">Invertir en Meta Ads o Google sin comparar retorno real conduce a quemar presupuesto.</div>
+            </div>
+
+            <div class="solution-card">
+              <div class="card-label">💡 Cómo te ayuda esta herramienta:</div>
+              <div class="card-text">Compara CPA, ROAS, CPC y conversión entre múltiples campañas y plataformas publicitarias.</div>
+            </div>
+
+            <div class="features-block">
+              <div class="features-label">Capacidades destacadas:</div>
+              <ul class="features-list">
+                <li><span class='check'>✓</span> Cálculo automático de ROAS y ROI</li><li><span class='check'>✓</span> Simulación de escenarios de escala</li><li><span class='check'>✓</span> Exportación de informes ejecutivos</li>
+              </ul>
+            </div>
+
+            <div class="url-card">
+              <div class="url-label">Acceso directo sin registro:</div>
+              <div class="url-link">🔗 https://nubeparapymes.online/herramientas/marketing/comparador-campanas-avanzado/</div>
+            </div>
+          </div>
+
+          <div class="slide-footer">
+            <div class="footer-left">
+              <span>Desarrollado por <strong>Xavier Cabello</strong></span> · Nube para Pymes
+            </div>
+            <div class="footer-right">
+              <span>nubeparapymes.online</span>
+            </div>
+          </div>
+        </div>
+        
+
+        <div class="slide tool-slide">
+          <div class="slide-header">
+            <div class="tool-counter">Herramienta #04 de 26</div>
+            <div class="pillar-badge" style="background-color: #38BDF822; color: #38BDF8; border-color: #38BDF855;">
+              🎯 MARKETING & ADQUISICIÓN
+            </div>
+          </div>
+
+          <div class="slide-body">
+            <h2 class="tool-title">Consola de Campañas y UTMs</h2>
+            
+            <div class="problem-card">
+              <div class="card-label">🚨 El problema común en las Pymes:</div>
+              <div class="card-text">No saber exactamente qué anuncio o enlace generó una venta impide tomar decisiones de inversión.</div>
+            </div>
+
+            <div class="solution-card">
+              <div class="card-label">💡 Cómo te ayuda esta herramienta:</div>
+              <div class="card-text">Genera y organiza enlaces UTM con nomenclatura limpia y consistente para analítica web.</div>
+            </div>
+
+            <div class="features-block">
+              <div class="features-label">Capacidades destacadas:</div>
+              <ul class="features-list">
+                <li><span class='check'>✓</span> Constructor UTM para Google Analytics</li><li><span class='check'>✓</span> Validador de parámetros en vivo</li><li><span class='check'>✓</span> Historial de enlaces frecuentes</li>
+              </ul>
+            </div>
+
+            <div class="url-card">
+              <div class="url-label">Acceso directo sin registro:</div>
+              <div class="url-link">🔗 https://nubeparapymes.online/herramientas/marketing/consola-campanas/</div>
+            </div>
+          </div>
+
+          <div class="slide-footer">
+            <div class="footer-left">
+              <span>Desarrollado por <strong>Xavier Cabello</strong></span> · Nube para Pymes
+            </div>
+            <div class="footer-right">
+              <span>nubeparapymes.online</span>
+            </div>
+          </div>
+        </div>
+        
+
+        <div class="slide tool-slide">
+          <div class="slide-header">
+            <div class="tool-counter">Herramienta #05 de 26</div>
+            <div class="pillar-badge" style="background-color: #38BDF822; color: #38BDF8; border-color: #38BDF855;">
+              🗓️ MARKETING & ADQUISICIÓN
+            </div>
+          </div>
+
+          <div class="slide-body">
+            <h2 class="tool-title">Matriz de Contenidos Estratégica</h2>
+            
+            <div class="problem-card">
+              <div class="card-label">🚨 El problema común en las Pymes:</div>
+              <div class="card-text">Publicar sin rumbo en redes agota a tu equipo y no genera prospectos calificados.</div>
+            </div>
+
+            <div class="solution-card">
+              <div class="card-label">💡 Cómo te ayuda esta herramienta:</div>
+              <div class="card-text">Planifica temas por pilares de contenido, etapas de embudo (TOFU/MOFU/BOFU) y canales.</div>
+            </div>
+
+            <div class="features-block">
+              <div class="features-label">Capacidades destacadas:</div>
+              <ul class="features-list">
+                <li><span class='check'>✓</span> Mapeo por etapas del cliente</li><li><span class='check'>✓</span> Clasificación por formatos y canales</li><li><span class='check'>✓</span> Calendario editorial exportable</li>
+              </ul>
+            </div>
+
+            <div class="url-card">
+              <div class="url-label">Acceso directo sin registro:</div>
+              <div class="url-link">🔗 https://nubeparapymes.online/herramientas/marketing/organizador-matriz-contenidos/</div>
+            </div>
+          </div>
+
+          <div class="slide-footer">
+            <div class="footer-left">
+              <span>Desarrollado por <strong>Xavier Cabello</strong></span> · Nube para Pymes
+            </div>
+            <div class="footer-right">
+              <span>nubeparapymes.online</span>
+            </div>
+          </div>
+        </div>
+        
+
+        <div class="slide tool-slide">
+          <div class="slide-header">
+            <div class="tool-counter">Herramienta #06 de 26</div>
+            <div class="pillar-badge" style="background-color: #10B98122; color: #10B981; border-color: #10B98155;">
+              💰 FINANZAS & RENTABILIDAD
+            </div>
+          </div>
+
+          <div class="slide-body">
+            <h2 class="tool-title">Flujo de Caja para Pymes</h2>
+            
+            <div class="problem-card">
+              <div class="card-label">🚨 El problema común en las Pymes:</div>
+              <div class="card-text">El 82% de las empresas que cierran lo hacen por falta de liquidez, no por falta de ventas.</div>
+            </div>
+
+            <div class="solution-card">
+              <div class="card-label">💡 Cómo te ayuda esta herramienta:</div>
+              <div class="card-text">Proyecta entradas y salidas de dinero semanales y mensuales para anticipar déficits de caja.</div>
+            </div>
+
+            <div class="features-block">
+              <div class="features-label">Capacidades destacadas:</div>
+              <ul class="features-list">
+                <li><span class='check'>✓</span> Proyección de saldo disponible en tiempo real</li><li><span class='check'>✓</span> Alertas visuales de quiebre de caja</li><li><span class='check'>✓</span> 100% privado: datos guardados en tu navegador</li>
+              </ul>
+            </div>
+
+            <div class="url-card">
+              <div class="url-label">Acceso directo sin registro:</div>
+              <div class="url-link">🔗 https://nubeparapymes.online/herramientas/finanzas/flujo-caja-pymes/</div>
+            </div>
+          </div>
+
+          <div class="slide-footer">
+            <div class="footer-left">
+              <span>Desarrollado por <strong>Xavier Cabello</strong></span> · Nube para Pymes
+            </div>
+            <div class="footer-right">
+              <span>nubeparapymes.online</span>
+            </div>
+          </div>
+        </div>
+        
+
+        <div class="slide tool-slide">
+          <div class="slide-header">
+            <div class="tool-counter">Herramienta #07 de 26</div>
+            <div class="pillar-badge" style="background-color: #10B98122; color: #10B981; border-color: #10B98155;">
+              🏷️ FINANZAS & RENTABILIDAD
+            </div>
+          </div>
+
+          <div class="slide-body">
+            <h2 class="tool-title">Calculadora de Descuentos y Promociones</h2>
+            
+            <div class="problem-card">
+              <div class="card-label">🚨 El problema común en las Pymes:</div>
+              <div class="card-text">Hacer descuentos sin calcular el punto de equilibrio destruye el margen neto de tu negocio.</div>
+            </div>
+
+            <div class="solution-card">
+              <div class="card-label">💡 Cómo te ayuda esta herramienta:</div>
+              <div class="card-text">Calcula cuántas unidades extra necesitas vender para compensar una rebaja de precio.</div>
+            </div>
+
+            <div class="features-block">
+              <div class="features-label">Capacidades destacadas:</div>
+              <ul class="features-list">
+                <li><span class='check'>✓</span> Simulador de margen sobre ventas vs costo</li><li><span class='check'>✓</span> Análisis de promociones 2x1 y combos</li><li><span class='check'>✓</span> Cálculo de punto de equilibrio promocional</li>
+              </ul>
+            </div>
+
+            <div class="url-card">
+              <div class="url-label">Acceso directo sin registro:</div>
+              <div class="url-link">🔗 https://nubeparapymes.online/herramientas/finanzas/calculadora-descuentos-promociones/</div>
+            </div>
+          </div>
+
+          <div class="slide-footer">
+            <div class="footer-left">
+              <span>Desarrollado por <strong>Xavier Cabello</strong></span> · Nube para Pymes
+            </div>
+            <div class="footer-right">
+              <span>nubeparapymes.online</span>
+            </div>
+          </div>
+        </div>
+        
+
+        <div class="slide tool-slide">
+          <div class="slide-header">
+            <div class="tool-counter">Herramienta #08 de 26</div>
+            <div class="pillar-badge" style="background-color: #10B98122; color: #10B981; border-color: #10B98155;">
+              🧾 FINANZAS & RENTABILIDAD
+            </div>
+          </div>
+
+          <div class="slide-body">
+            <h2 class="tool-title">Calculadora de Precios de Venta e IGV</h2>
+            
+            <div class="problem-card">
+              <div class="card-label">🚨 El problema común en las Pymes:</div>
+              <div class="card-text">Confundir margen con markup o no desglosar impuestos provoca pérdidas invisibles.</div>
+            </div>
+
+            <div class="solution-card">
+              <div class="card-label">💡 Cómo te ayuda esta herramienta:</div>
+              <div class="card-text">Convierte costo, margen neto deseado e impuesto (IGV/IVA) en el precio de venta final exacto.</div>
+            </div>
+
+            <div class="features-block">
+              <div class="features-label">Capacidades destacadas:</div>
+              <ul class="features-list">
+                <li><span class='check'>✓</span> Desglose claro de costo, ganancia e impuesto</li><li><span class='check'>✓</span> Simulación de márgenes comerciales</li><li><span class='check'>✓</span> Exportación de ficha de precios</li>
+              </ul>
+            </div>
+
+            <div class="url-card">
+              <div class="url-label">Acceso directo sin registro:</div>
+              <div class="url-link">🔗 https://nubeparapymes.online/herramientas/finanzas/calculadora-precios-venta-igv/</div>
+            </div>
+          </div>
+
+          <div class="slide-footer">
+            <div class="footer-left">
+              <span>Desarrollado por <strong>Xavier Cabello</strong></span> · Nube para Pymes
+            </div>
+            <div class="footer-right">
+              <span>nubeparapymes.online</span>
+            </div>
+          </div>
+        </div>
+        
+
+        <div class="slide tool-slide">
+          <div class="slide-header">
+            <div class="tool-counter">Herramienta #09 de 26</div>
+            <div class="pillar-badge" style="background-color: #10B98122; color: #10B981; border-color: #10B98155;">
+              🏦 FINANZAS & RENTABILIDAD
+            </div>
+          </div>
+
+          <div class="slide-body">
+            <h2 class="tool-title">Calculadora de Préstamos y Amortizaciones</h2>
+            
+            <div class="problem-card">
+              <div class="card-label">🚨 El problema común en las Pymes:</div>
+              <div class="card-text">Los bancos ocultan el impacto real de las cuotas y los intereses a largo plazo.</div>
+            </div>
+
+            <div class="solution-card">
+              <div class="card-label">💡 Cómo te ayuda esta herramienta:</div>
+              <div class="card-text">Genera la tabla de amortización completa (método francés o alemán) y evalúa abonos de capital.</div>
+            </div>
+
+            <div class="features-block">
+              <div class="features-label">Capacidades destacadas:</div>
+              <ul class="features-list">
+                <li><span class='check'>✓</span> Tabla detallada cuota por cuota</li><li><span class='check'>✓</span> Simulador de abonos extraordinarios a capital</li><li><span class='check'>✓</span> Comparador de créditos en paralelo</li>
+              </ul>
+            </div>
+
+            <div class="url-card">
+              <div class="url-label">Acceso directo sin registro:</div>
+              <div class="url-link">🔗 https://nubeparapymes.online/herramientas/finanzas/calculadora-prestamos-amortizaciones/</div>
+            </div>
+          </div>
+
+          <div class="slide-footer">
+            <div class="footer-left">
+              <span>Desarrollado por <strong>Xavier Cabello</strong></span> · Nube para Pymes
+            </div>
+            <div class="footer-right">
+              <span>nubeparapymes.online</span>
+            </div>
+          </div>
+        </div>
+        
+
+        <div class="slide tool-slide">
+          <div class="slide-header">
+            <div class="tool-counter">Herramienta #10 de 26</div>
+            <div class="pillar-badge" style="background-color: #10B98122; color: #10B981; border-color: #10B98155;">
+              👥 FINANZAS & RENTABILIDAD
+            </div>
+          </div>
+
+          <div class="slide-body">
+            <h2 class="tool-title">Calculadora de Sobrecostos Laborales</h2>
+            
+            <div class="problem-card">
+              <div class="card-label">🚨 El problema común en las Pymes:</div>
+              <div class="card-text">Contratar un colaborador cuesta mucho más que su salario nominal (gratificaciones, CTS, seguro).</div>
+            </div>
+
+            <div class="solution-card">
+              <div class="card-label">💡 Cómo te ayuda esta herramienta:</div>
+              <div class="card-text">Estima el costo total del empleador por puesto y departamento para presupuestar nómina sin sorpresas.</div>
+            </div>
+
+            <div class="features-block">
+              <div class="features-label">Capacidades destacadas:</div>
+              <ul class="features-list">
+                <li><span class='check'>✓</span> Desglose de aportes legales y provisiones</li><li><span class='check'>✓</span> Cálculo mensual y anual consolidado</li><li><span class='check'>✓</span> Filtros por departamento o área</li>
+              </ul>
+            </div>
+
+            <div class="url-card">
+              <div class="url-label">Acceso directo sin registro:</div>
+              <div class="url-link">🔗 https://nubeparapymes.online/herramientas/finanzas/calculadora-sobrecostos-laborales/</div>
+            </div>
+          </div>
+
+          <div class="slide-footer">
+            <div class="footer-left">
+              <span>Desarrollado por <strong>Xavier Cabello</strong></span> · Nube para Pymes
+            </div>
+            <div class="footer-right">
+              <span>nubeparapymes.online</span>
+            </div>
+          </div>
+        </div>
+        
+
+        <div class="slide tool-slide">
+          <div class="slide-header">
+            <div class="tool-counter">Herramienta #11 de 26</div>
+            <div class="pillar-badge" style="background-color: #818CF822; color: #818CF8; border-color: #818CF855;">
+              💼 VENTAS & CONVERSIÓN
+            </div>
+          </div>
+
+          <div class="slide-body">
+            <h2 class="tool-title">CRM Ligero para Pymes</h2>
+            
+            <div class="problem-card">
+              <div class="card-label">🚨 El problema común en las Pymes:</div>
+              <div class="card-text">Los prospectos se pierden en chats de WhatsApp y hojas de cálculo desordenadas.</div>
+            </div>
+
+            <div class="solution-card">
+              <div class="card-label">💡 Cómo te ayuda esta herramienta:</div>
+              <div class="card-text">Embudo comercial visual estilo Kanban para gestionar clientes, estados y montos de oportunidad.</div>
+            </div>
+
+            <div class="features-block">
+              <div class="features-label">Capacidades destacadas:</div>
+              <ul class="features-list">
+                <li><span class='check'>✓</span> Embudo arrastrable (Lead, Contactado, Ganado)</li><li><span class='check'>✓</span> Historial de notas y llamadas por cliente</li><li><span class='check'>✓</span> Cero suscripciones mensuales: corre en tu equipo</li>
+              </ul>
+            </div>
+
+            <div class="url-card">
+              <div class="url-label">Acceso directo sin registro:</div>
+              <div class="url-link">🔗 https://nubeparapymes.online/herramientas/ventas/crm-pymes/</div>
+            </div>
+          </div>
+
+          <div class="slide-footer">
+            <div class="footer-left">
+              <span>Desarrollado por <strong>Xavier Cabello</strong></span> · Nube para Pymes
+            </div>
+            <div class="footer-right">
+              <span>nubeparapymes.online</span>
+            </div>
+          </div>
+        </div>
+        
+
+        <div class="slide tool-slide">
+          <div class="slide-header">
+            <div class="tool-counter">Herramienta #12 de 26</div>
+            <div class="pillar-badge" style="background-color: #818CF822; color: #818CF8; border-color: #818CF855;">
+              📋 VENTAS & CONVERSIÓN
+            </div>
+          </div>
+
+          <div class="slide-body">
+            <h2 class="tool-title">Generador Profesional de Cotizaciones</h2>
+            
+            <div class="problem-card">
+              <div class="card-label">🚨 El problema común en las Pymes:</div>
+              <div class="card-text">Enviar propuestas en Word o texto plano proyecta informalidad y reduce la tasa de cierre.</div>
+            </div>
+
+            <div class="solution-card">
+              <div class="card-label">💡 Cómo te ayuda esta herramienta:</div>
+              <div class="card-text">Crea cotizaciones elegantes y profesionales con logotipo, términos comerciales y descarga en PDF.</div>
+            </div>
+
+            <div class="features-block">
+              <div class="features-label">Capacidades destacadas:</div>
+              <ul class="features-list">
+                <li><span class='check'>✓</span> Cálculo automático de ítems, descuentos y total</li><li><span class='check'>✓</span> Validez de la oferta y condiciones de pago</li><li><span class='check'>✓</span> Descarga instantánea en PDF limpio y formal</li>
+              </ul>
+            </div>
+
+            <div class="url-card">
+              <div class="url-label">Acceso directo sin registro:</div>
+              <div class="url-link">🔗 https://nubeparapymes.online/herramientas/ventas/generador-cotizaciones/</div>
+            </div>
+          </div>
+
+          <div class="slide-footer">
+            <div class="footer-left">
+              <span>Desarrollado por <strong>Xavier Cabello</strong></span> · Nube para Pymes
+            </div>
+            <div class="footer-right">
+              <span>nubeparapymes.online</span>
+            </div>
+          </div>
+        </div>
+        
+
+        <div class="slide tool-slide">
+          <div class="slide-header">
+            <div class="tool-counter">Herramienta #13 de 26</div>
+            <div class="pillar-badge" style="background-color: #818CF822; color: #818CF8; border-color: #818CF855;">
+              📄 VENTAS & CONVERSIÓN
+            </div>
+          </div>
+
+          <div class="slide-body">
+            <h2 class="tool-title">Creador de Facturas Proforma</h2>
+            
+            <div class="problem-card">
+              <div class="card-label">🚨 El problema común en las Pymes:</div>
+              <div class="card-text">Los clientes corporativos exigen una proforma detallada antes de emitir la orden de compra.</div>
+            </div>
+
+            <div class="solution-card">
+              <div class="card-label">💡 Cómo te ayuda esta herramienta:</div>
+              <div class="card-text">Emite facturas proforma estandarizadas con desglose tributario y datos bancarios para pago.</div>
+            </div>
+
+            <div class="features-block">
+              <div class="features-label">Capacidades destacadas:</div>
+              <ul class="features-list">
+                <li><span class='check'>✓</span> Campos para emisor, cliente y cuenta de abono</li><li><span class='check'>✓</span> Generación local segura sin subir datos a servidores</li><li><span class='check'>✓</span> Formato listo para imprimir o enviar por correo</li>
+              </ul>
+            </div>
+
+            <div class="url-card">
+              <div class="url-label">Acceso directo sin registro:</div>
+              <div class="url-link">🔗 https://nubeparapymes.online/herramientas/ventas/creador-facturas-proforma/</div>
+            </div>
+          </div>
+
+          <div class="slide-footer">
+            <div class="footer-left">
+              <span>Desarrollado por <strong>Xavier Cabello</strong></span> · Nube para Pymes
+            </div>
+            <div class="footer-right">
+              <span>nubeparapymes.online</span>
+            </div>
+          </div>
+        </div>
+        
+
+        <div class="slide tool-slide">
+          <div class="slide-header">
+            <div class="tool-counter">Herramienta #14 de 26</div>
+            <div class="pillar-badge" style="background-color: #818CF822; color: #818CF8; border-color: #818CF855;">
+              📱 VENTAS & CONVERSIÓN
+            </div>
+          </div>
+
+          <div class="slide-body">
+            <h2 class="tool-title">Generador de Códigos QR Empresariales</h2>
+            
+            <div class="problem-card">
+              <div class="card-label">🚨 El problema común en las Pymes:</div>
+              <div class="card-text">Los generadores de QR comerciales caducan o cobran mensualidades sorpresa tras pocas lecturas.</div>
+            </div>
+
+            <div class="solution-card">
+              <div class="card-label">💡 Cómo te ayuda esta herramienta:</div>
+              <div class="card-text">Genera códigos QR de alta resolución permanentes para URLs, WhatsApp directo, Wi-Fi o vCard.</div>
+            </div>
+
+            <div class="features-block">
+              <div class="features-label">Capacidades destacadas:</div>
+              <ul class="features-list">
+                <li><span class='check'>✓</span> Sin vencimiento ni redirecciones de terceros</li><li><span class='check'>✓</span> Exportación en formato PNG y SVG de alta nitidez</li><li><span class='check'>✓</span> Personalización de color y niveles de corrección</li>
+              </ul>
+            </div>
+
+            <div class="url-card">
+              <div class="url-label">Acceso directo sin registro:</div>
+              <div class="url-link">🔗 https://nubeparapymes.online/herramientas/ventas/generador-codigos-qr/</div>
+            </div>
+          </div>
+
+          <div class="slide-footer">
+            <div class="footer-left">
+              <span>Desarrollado por <strong>Xavier Cabello</strong></span> · Nube para Pymes
+            </div>
+            <div class="footer-right">
+              <span>nubeparapymes.online</span>
+            </div>
+          </div>
+        </div>
+        
+
+        <div class="slide tool-slide">
+          <div class="slide-header">
+            <div class="tool-counter">Herramienta #15 de 26</div>
+            <div class="pillar-badge" style="background-color: #818CF822; color: #818CF8; border-color: #818CF855;">
+              🛡️ VENTAS & CONVERSIÓN
+            </div>
+          </div>
+
+          <div class="slide-body">
+            <h2 class="tool-title">ObjeciónPro: Guiones de Venta</h2>
+            
+            <div class="problem-card">
+              <div class="card-label">🚨 El problema común en las Pymes:</div>
+              <div class="card-text">«Está muy caro», «Tengo que consultarlo», «La competencia es más barata»: objeciones que frenan ventas.</div>
+            </div>
+
+            <div class="solution-card">
+              <div class="card-label">💡 Cómo te ayuda esta herramienta:</div>
+              <div class="card-text">Biblioteca interactiva con respuestas empáticas, tácticas de reencuadre y argumentos de valor.</div>
+            </div>
+
+            <div class="features-block">
+              <div class="features-label">Capacidades destacadas:</div>
+              <ul class="features-list">
+                <li><span class='check'>✓</span> Respuestas listas para copiar y personalizar</li><li><span class='check'>✓</span> Clasificación por tipo de objeción</li><li><span class='check'>✓</span> Modo práctica para entrenar a tu equipo</li>
+              </ul>
+            </div>
+
+            <div class="url-card">
+              <div class="url-label">Acceso directo sin registro:</div>
+              <div class="url-link">🔗 https://nubeparapymes.online/herramientas/ventas/guiones-manejo-objeciones/</div>
+            </div>
+          </div>
+
+          <div class="slide-footer">
+            <div class="footer-left">
+              <span>Desarrollado por <strong>Xavier Cabello</strong></span> · Nube para Pymes
+            </div>
+            <div class="footer-right">
+              <span>nubeparapymes.online</span>
+            </div>
+          </div>
+        </div>
+        
+
+        <div class="slide tool-slide">
+          <div class="slide-header">
+            <div class="tool-counter">Herramienta #16 de 26</div>
+            <div class="pillar-badge" style="background-color: #F59E0B22; color: #F59E0B; border-color: #F59E0B55;">
+              ⚖️ LEGAL & BLINDAJE
+            </div>
+          </div>
+
+          <div class="slide-body">
+            <h2 class="tool-title">Generador de Contratos de Servicios</h2>
+            
+            <div class="problem-card">
+              <div class="card-label">🚨 El problema común en las Pymes:</div>
+              <div class="card-text">Trabajar de palabra expone a tu negocio a impagos, entregables infinitos y litigios.</div>
+            </div>
+
+            <div class="solution-card">
+              <div class="card-label">💡 Cómo te ayuda esta herramienta:</div>
+              <div class="card-text">Redacta un contrato formal de prestación de servicios con cláusulas de alcance, hitos y pagos.</div>
+            </div>
+
+            <div class="features-block">
+              <div class="features-label">Capacidades destacadas:</div>
+              <ul class="features-list">
+                <li><span class='check'>✓</span> Definición de penalidades y propiedad intelectual</li><li><span class='check'>✓</span> Cláusulas de confidencialidad y rescisión</li><li><span class='check'>✓</span> Exportación en borrador editable</li>
+              </ul>
+            </div>
+
+            <div class="url-card">
+              <div class="url-label">Acceso directo sin registro:</div>
+              <div class="url-link">🔗 https://nubeparapymes.online/herramientas/legal/generador-contratos-servicios/</div>
+            </div>
+          </div>
+
+          <div class="slide-footer">
+            <div class="footer-left">
+              <span>Desarrollado por <strong>Xavier Cabello</strong></span> · Nube para Pymes
+            </div>
+            <div class="footer-right">
+              <span>nubeparapymes.online</span>
+            </div>
+          </div>
+        </div>
+        
+
+        <div class="slide tool-slide">
+          <div class="slide-header">
+            <div class="tool-counter">Herramienta #17 de 26</div>
+            <div class="pillar-badge" style="background-color: #F59E0B22; color: #F59E0B; border-color: #F59E0B55;">
+              🔄 LEGAL & BLINDAJE
+            </div>
+          </div>
+
+          <div class="slide-body">
+            <h2 class="tool-title">Generador de Políticas de Devolución</h2>
+            
+            <div class="problem-card">
+              <div class="card-label">🚨 El problema común en las Pymes:</div>
+              <div class="card-text">La falta de reglas claras de garantía causa reclamos y malas reseñas en redes sociales.</div>
+            </div>
+
+            <div class="solution-card">
+              <div class="card-label">💡 Cómo te ayuda esta herramienta:</div>
+              <div class="card-text">Genera una política de cambios, garantías y devoluciones alineada a la realidad de tu comercio.</div>
+            </div>
+
+            <div class="features-block">
+              <div class="features-label">Capacidades destacadas:</div>
+              <ul class="features-list">
+                <li><span class='check'>✓</span> Plazos y condiciones para cambio de producto</li><li><span class='check'>✓</span> Gestión de costos de envío en devoluciones</li><li><span class='check'>✓</span> Texto listo para insertar en tu tienda online</li>
+              </ul>
+            </div>
+
+            <div class="url-card">
+              <div class="url-label">Acceso directo sin registro:</div>
+              <div class="url-link">🔗 https://nubeparapymes.online/herramientas/legal/generador-politicas-devolucion/</div>
+            </div>
+          </div>
+
+          <div class="slide-footer">
+            <div class="footer-left">
+              <span>Desarrollado por <strong>Xavier Cabello</strong></span> · Nube para Pymes
+            </div>
+            <div class="footer-right">
+              <span>nubeparapymes.online</span>
+            </div>
+          </div>
+        </div>
+        
+
+        <div class="slide tool-slide">
+          <div class="slide-header">
+            <div class="tool-counter">Herramienta #18 de 26</div>
+            <div class="pillar-badge" style="background-color: #F59E0B22; color: #F59E0B; border-color: #F59E0B55;">
+              📜 LEGAL & BLINDAJE
+            </div>
+          </div>
+
+          <div class="slide-body">
+            <h2 class="tool-title">LegalForge: Términos y Privacidad</h2>
+            
+            <div class="problem-card">
+              <div class="card-label">🚨 El problema común en las Pymes:</div>
+              <div class="card-text">Operar una web sin política de privacidad y términos viola normativas de protección de datos.</div>
+            </div>
+
+            <div class="solution-card">
+              <div class="card-label">💡 Cómo te ayuda esta herramienta:</div>
+              <div class="card-text">Crea borradores de Términos de Servicio y Políticas de Privacidad adaptados a sitios Pyme.</div>
+            </div>
+
+            <div class="features-block">
+              <div class="features-label">Capacidades destacadas:</div>
+              <ul class="features-list">
+                <li><span class='check'>✓</span> Cobertura de cookies y tratamiento de datos</li><li><span class='check'>✓</span> Limitación de responsabilidad y propiedad intelectual</li><li><span class='check'>✓</span> Formato web estructurado</li>
+              </ul>
+            </div>
+
+            <div class="url-card">
+              <div class="url-label">Acceso directo sin registro:</div>
+              <div class="url-link">🔗 https://nubeparapymes.online/herramientas/legal/generador-politicas-terminos/</div>
+            </div>
+          </div>
+
+          <div class="slide-footer">
+            <div class="footer-left">
+              <span>Desarrollado por <strong>Xavier Cabello</strong></span> · Nube para Pymes
+            </div>
+            <div class="footer-right">
+              <span>nubeparapymes.online</span>
+            </div>
+          </div>
+        </div>
+        
+
+        <div class="slide tool-slide">
+          <div class="slide-header">
+            <div class="tool-counter">Herramienta #19 de 26</div>
+            <div class="pillar-badge" style="background-color: #EC489922; color: #EC4899; border-color: #EC489955;">
+              📦 OPERACIONES & LOGÍSTICA
+            </div>
+          </div>
+
+          <div class="slide-body">
+            <h2 class="tool-title">Gestión de Inventario y Compras</h2>
+            
+            <div class="problem-card">
+              <div class="card-label">🚨 El problema común en las Pymes:</div>
+              <div class="card-text">El desabastecimiento frena pedidos y el exceso de stock inmoviliza tu capital de trabajo.</div>
+            </div>
+
+            <div class="solution-card">
+              <div class="card-label">💡 Cómo te ayuda esta herramienta:</div>
+              <div class="card-text">Control de stock mínimo, alertas tempranas de reposición y registro de proveedores.</div>
+            </div>
+
+            <div class="features-block">
+              <div class="features-label">Capacidades destacadas:</div>
+              <ul class="features-list">
+                <li><span class='check'>✓</span> Alerta automática de productos por agotarse</li><li><span class='check'>✓</span> Historial de entradas y salidas de almacén</li><li><span class='check'>✓</span> Filtros rápidos por categoría y proveedor</li>
+              </ul>
+            </div>
+
+            <div class="url-card">
+              <div class="url-label">Acceso directo sin registro:</div>
+              <div class="url-link">🔗 https://nubeparapymes.online/herramientas/operaciones/inventario-compras-pymes/</div>
+            </div>
+          </div>
+
+          <div class="slide-footer">
+            <div class="footer-left">
+              <span>Desarrollado por <strong>Xavier Cabello</strong></span> · Nube para Pymes
+            </div>
+            <div class="footer-right">
+              <span>nubeparapymes.online</span>
+            </div>
+          </div>
+        </div>
+        
+
+        <div class="slide tool-slide">
+          <div class="slide-header">
+            <div class="tool-counter">Herramienta #20 de 26</div>
+            <div class="pillar-badge" style="background-color: #EC489922; color: #EC4899; border-color: #EC489955;">
+              🚚 OPERACIONES & LOGÍSTICA
+            </div>
+          </div>
+
+          <div class="slide-body">
+            <h2 class="tool-title">Calculadora de Flete y Envíos</h2>
+            
+            <div class="problem-card">
+              <div class="card-label">🚨 El problema común en las Pymes:</div>
+              <div class="card-text">Calcular mal el costo de despacho local termina absorbiendo la ganancia del producto.</div>
+            </div>
+
+            <div class="solution-card">
+              <div class="card-label">💡 Cómo te ayuda esta herramienta:</div>
+              <div class="card-text">Estima el flete por peso volumétrico, distancia, tipo de vehículo y paradas de entrega.</div>
+            </div>
+
+            <div class="features-block">
+              <div class="features-label">Capacidades destacadas:</div>
+              <ul class="features-list">
+                <li><span class='check'>✓</span> Cálculo automático de peso volumétrico</li><li><span class='check'>✓</span> Recargos por zonas difíciles o paradas extra</li><li><span class='check'>✓</span> Generador de manifiesto de despacho</li>
+              </ul>
+            </div>
+
+            <div class="url-card">
+              <div class="url-label">Acceso directo sin registro:</div>
+              <div class="url-link">🔗 https://nubeparapymes.online/herramientas/operaciones/calculadora-flete-envio-local/</div>
+            </div>
+          </div>
+
+          <div class="slide-footer">
+            <div class="footer-left">
+              <span>Desarrollado por <strong>Xavier Cabello</strong></span> · Nube para Pymes
+            </div>
+            <div class="footer-right">
+              <span>nubeparapymes.online</span>
+            </div>
+          </div>
+        </div>
+        
+
+        <div class="slide tool-slide">
+          <div class="slide-header">
+            <div class="tool-counter">Herramienta #21 de 26</div>
+            <div class="pillar-badge" style="background-color: #EC489922; color: #EC4899; border-color: #EC489955;">
+              ☁️ OPERACIONES & LOGÍSTICA
+            </div>
+          </div>
+
+          <div class="slide-body">
+            <h2 class="tool-title">Simulador TCO: Servidor Físico vs Nube</h2>
+            
+            <div class="problem-card">
+              <div class="card-label">🚨 El problema común en las Pymes:</div>
+              <div class="card-text">¿Conviene comprar un servidor local o migrar a la nube (AWS/Azure/Google Cloud)?</div>
+            </div>
+
+            <div class="solution-card">
+              <div class="card-label">💡 Cómo te ayuda esta herramienta:</div>
+              <div class="card-text">Compara el Costo Total de Propiedad a 3 y 5 años incluyendo hardware, energía, soporte y licencias.</div>
+            </div>
+
+            <div class="features-block">
+              <div class="features-label">Capacidades destacadas:</div>
+              <ul class="features-list">
+                <li><span class='check'>✓</span> Análisis de Capex vs Opex</li><li><span class='check'>✓</span> Cálculo del punto de equilibrio financiero</li><li><span class='check'>✓</span> Gráfico comparativo de costos acumulados</li>
+              </ul>
+            </div>
+
+            <div class="url-card">
+              <div class="url-label">Acceso directo sin registro:</div>
+              <div class="url-link">🔗 https://nubeparapymes.online/herramientas/operaciones/simulador-tco-fisico-nube/</div>
+            </div>
+          </div>
+
+          <div class="slide-footer">
+            <div class="footer-left">
+              <span>Desarrollado por <strong>Xavier Cabello</strong></span> · Nube para Pymes
+            </div>
+            <div class="footer-right">
+              <span>nubeparapymes.online</span>
+            </div>
+          </div>
+        </div>
+        
+
+        <div class="slide tool-slide">
+          <div class="slide-header">
+            <div class="tool-counter">Herramienta #22 de 26</div>
+            <div class="pillar-badge" style="background-color: #06B6D422; color: #06B6D4; border-color: #06B6D455;">
+              ✅ PRODUCTIVIDAD & EQUIPO
+            </div>
+          </div>
+
+          <div class="slide-body">
+            <h2 class="tool-title">Gestión de Tareas y Proyectos</h2>
+            
+            <div class="problem-card">
+              <div class="card-label">🚨 El problema común en las Pymes:</div>
+              <div class="card-text">Las tareas pendientes quedan en el olvido si el equipo no tiene visibilidad de las prioridades.</div>
+            </div>
+
+            <div class="solution-card">
+              <div class="card-label">💡 Cómo te ayuda esta herramienta:</div>
+              <div class="card-text">Tablero Kanban ligero para mover tareas de «Pendiente» a «En Progreso» y «Terminado».</div>
+            </div>
+
+            <div class="features-block">
+              <div class="features-label">Capacidades destacadas:</div>
+              <ul class="features-list">
+                <li><span class='check'>✓</span> Etiquetas de prioridad (Urgente, Alta, Normal)</li><li><span class='check'>✓</span> Asignación de responsables y fechas límite</li><li><span class='check'>✓</span> Guardado local seguro en el navegador</li>
+              </ul>
+            </div>
+
+            <div class="url-card">
+              <div class="url-label">Acceso directo sin registro:</div>
+              <div class="url-link">🔗 https://nubeparapymes.online/herramientas/productividad/tareas-proyectos-pymes/</div>
+            </div>
+          </div>
+
+          <div class="slide-footer">
+            <div class="footer-left">
+              <span>Desarrollado por <strong>Xavier Cabello</strong></span> · Nube para Pymes
+            </div>
+            <div class="footer-right">
+              <span>nubeparapymes.online</span>
+            </div>
+          </div>
+        </div>
+        
+
+        <div class="slide tool-slide">
+          <div class="slide-header">
+            <div class="tool-counter">Herramienta #23 de 26</div>
+            <div class="pillar-badge" style="background-color: #06B6D422; color: #06B6D4; border-color: #06B6D455;">
+              ⚡ PRODUCTIVIDAD & EQUIPO
+            </div>
+          </div>
+
+          <div class="slide-body">
+            <h2 class="tool-title">WebP Forge: Optimizador de Imágenes</h2>
+            
+            <div class="problem-card">
+              <div class="card-label">🚨 El problema común en las Pymes:</div>
+              <div class="card-text">Imágenes pesadas hacen que tu página cargue lento y aumentan el porcentaje de rebote.</div>
+            </div>
+
+            <div class="solution-card">
+              <div class="card-label">💡 Cómo te ayuda esta herramienta:</div>
+              <div class="card-text">Convierte imágenes a formato WebP moderno y comprime su peso hasta un 80% sin pérdida perceptible.</div>
+            </div>
+
+            <div class="features-block">
+              <div class="features-label">Capacidades destacadas:</div>
+              <ul class="features-list">
+                <li><span class='check'>✓</span> Procesamiento 100% en tu navegador (privado)</li><li><span class='check'>✓</span> Ajuste manual de calidad y resolución</li><li><span class='check'>✓</span> Soporta JPG, PNG y WebP</li>
+              </ul>
+            </div>
+
+            <div class="url-card">
+              <div class="url-label">Acceso directo sin registro:</div>
+              <div class="url-link">🔗 https://nubeparapymes.online/herramientas/productividad/conversor-optimizador-imagenes/</div>
+            </div>
+          </div>
+
+          <div class="slide-footer">
+            <div class="footer-left">
+              <span>Desarrollado por <strong>Xavier Cabello</strong></span> · Nube para Pymes
+            </div>
+            <div class="footer-right">
+              <span>nubeparapymes.online</span>
+            </div>
+          </div>
+        </div>
+        
+
+        <div class="slide tool-slide">
+          <div class="slide-header">
+            <div class="tool-counter">Herramienta #24 de 26</div>
+            <div class="pillar-badge" style="background-color: #06B6D422; color: #06B6D4; border-color: #06B6D455;">
+              ✉️ PRODUCTIVIDAD & EQUIPO
+            </div>
+          </div>
+
+          <div class="slide-body">
+            <h2 class="tool-title">Diseñador de Firmas de Correo HTML</h2>
+            
+            <div class="problem-card">
+              <div class="card-label">🚨 El problema común en las Pymes:</div>
+              <div class="card-text">Firmas mal diseñadas que se deforman en celulares dañan la imagen de seriedad de tu empresa.</div>
+            </div>
+
+            <div class="solution-card">
+              <div class="card-label">💡 Cómo te ayuda esta herramienta:</div>
+              <div class="card-text">Diseña una firma con foto, logo, redes sociales y teléfonos que se ve perfecta en Gmail y Outlook.</div>
+            </div>
+
+            <div class="features-block">
+              <div class="features-label">Capacidades destacadas:</div>
+              <ul class="features-list">
+                <li><span class='check'>✓</span> Compatibilidad móvil garantizada</li><li><span class='check'>✓</span> Copia en 1 clic para pegar en tu correo</li><li><span class='check'>✓</span> Diseño corporativo minimalista</li>
+              </ul>
+            </div>
+
+            <div class="url-card">
+              <div class="url-label">Acceso directo sin registro:</div>
+              <div class="url-link">🔗 https://nubeparapymes.online/herramientas/productividad/firma-correo-html/</div>
+            </div>
+          </div>
+
+          <div class="slide-footer">
+            <div class="footer-left">
+              <span>Desarrollado por <strong>Xavier Cabello</strong></span> · Nube para Pymes
+            </div>
+            <div class="footer-right">
+              <span>nubeparapymes.online</span>
+            </div>
+          </div>
+        </div>
+        
+
+        <div class="slide tool-slide">
+          <div class="slide-header">
+            <div class="tool-counter">Herramienta #25 de 26</div>
+            <div class="pillar-badge" style="background-color: #06B6D422; color: #06B6D4; border-color: #06B6D455;">
+              🔐 PRODUCTIVIDAD & EQUIPO
+            </div>
+          </div>
+
+          <div class="slide-body">
+            <h2 class="tool-title">SecuKey: Contraseñas Seguras</h2>
+            
+            <div class="problem-card">
+              <div class="card-label">🚨 El problema común en las Pymes:</div>
+              <div class="card-text">Usar la misma contraseña en correos y bancos es la causa #1 de hackeos en pequeñas empresas.</div>
+            </div>
+
+            <div class="solution-card">
+              <div class="card-label">💡 Cómo te ayuda esta herramienta:</div>
+              <div class="card-text">Genera contraseñas criptográficamente seguras con longitud y caracteres personalizados.</div>
+            </div>
+
+            <div class="features-block">
+              <div class="features-label">Capacidades destacadas:</div>
+              <ul class="features-list">
+                <li><span class='check'>✓</span> Medidor de entropía y fortaleza en tiempo real</li><li><span class='check'>✓</span> Sin conexión: generadas en memoria RAM local</li><li><span class='check'>✓</span> Generación en lote para equipos de trabajo</li>
+              </ul>
+            </div>
+
+            <div class="url-card">
+              <div class="url-label">Acceso directo sin registro:</div>
+              <div class="url-link">🔗 https://nubeparapymes.online/herramientas/productividad/generador-contrasenas-pymes/</div>
+            </div>
+          </div>
+
+          <div class="slide-footer">
+            <div class="footer-left">
+              <span>Desarrollado por <strong>Xavier Cabello</strong></span> · Nube para Pymes
+            </div>
+            <div class="footer-right">
+              <span>nubeparapymes.online</span>
+            </div>
+          </div>
+        </div>
+        
+
+        <div class="slide tool-slide">
+          <div class="slide-header">
+            <div class="tool-counter">Herramienta #26 de 26</div>
+            <div class="pillar-badge" style="background-color: #06B6D422; color: #06B6D4; border-color: #06B6D455;">
+              🎨 PRODUCTIVIDAD & EQUIPO
+            </div>
+          </div>
+
+          <div class="slide-body">
+            <h2 class="tool-title">Chroma: Paletas de Color Corporativas</h2>
+            
+            <div class="problem-card">
+              <div class="card-label">🚨 El problema común en las Pymes:</div>
+              <div class="card-text">Elegir colores al azar produce marcas inconsistentes y textos ilegibles.</div>
+            </div>
+
+            <div class="solution-card">
+              <div class="card-label">💡 Cómo te ayuda esta herramienta:</div>
+              <div class="card-text">Crea esquemas de color profesionales a partir de un color base con verificación de contraste WCAG.</div>
+            </div>
+
+            <div class="features-block">
+              <div class="features-label">Capacidades destacadas:</div>
+              <ul class="features-list">
+                <li><span class='check'>✓</span> Armonías cromáticas (análogas, complementarias)</li><li><span class='check'>✓</span> Códigos HEX, RGB y HSL listos para copiar</li><li><span class='check'>✓</span> Indicador de accesibilidad y contraste</li>
+              </ul>
+            </div>
+
+            <div class="url-card">
+              <div class="url-label">Acceso directo sin registro:</div>
+              <div class="url-link">🔗 https://nubeparapymes.online/herramientas/productividad/generador-paletas-corporativas/</div>
+            </div>
+          </div>
+
+          <div class="slide-footer">
+            <div class="footer-left">
+              <span>Desarrollado por <strong>Xavier Cabello</strong></span> · Nube para Pymes
+            </div>
+            <div class="footer-right">
+              <span>nubeparapymes.online</span>
+            </div>
+          </div>
+        </div>
+        
+
+    <div class="slide cta-slide">
+      <div class="glow-bg"></div>
+      <div class="slide-content">
+        <div class="badge-tag">EMPIEZA HOY MISMO</div>
+        <h2 class="cta-title">Digitaliza tu negocio sin gastar en software complejo</h2>
+        <p class="cta-text">Todas las 26 herramientas están disponibles gratis de manera indefinida. Diseñadas para que dueños de pequeñas empresas y equipos tomen el control de sus finanzas, ventas y operaciones.</p>
+
+        <div class="cta-benefits">
+          <div class="benefit-item">
+            <span class="icon">🔒</span>
+            <div><strong>100% Privacidad</strong>Tus datos contables y clientes no se envían a ningún servidor externo.</div>
+          </div>
+          <div class="benefit-item">
+            <span class="icon">⚡</span>
+            <div><strong>Cero Instalaciones</strong>Funcionan directamente desde tu navegador en PC o móvil.</div>
+          </div>
+          <div class="benefit-item">
+            <span class="icon">🎁</span>
+            <div><strong>Sin Registro Obligatorio</strong>Accede y utilízalas en segundos sin formularios innecesarios.</div>
+          </div>
+        </div>
+
+        <div class="cta-box">
+          <div class="cta-box-label">Explora el catálogo completo en línea:</div>
+          <div class="cta-box-url">nubeparapymes.online/herramientas/</div>
+        </div>
+
+        <div class="cover-footer" style="margin-top: 40px;">
+          <div class="author-block">
+            <div class="author-label">Conectemos en LinkedIn:</div>
+            <div class="author-name">Xavier Cabello</div>
+            <div class="author-sub">Comparte este carrusel con otro emprendedor que lo necesite</div>
+          </div>
+          <div class="portal-badge">#NubeParaPymes</div>
+        </div>
+      </div>
+    </div>
+    
+</body>
+</html>
