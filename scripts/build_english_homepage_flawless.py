@@ -281,6 +281,8 @@ def build_perfect_english_homepage():
     )
 
     # Save to both dist/en/index.html and en/index.html
+    (ROOT / "en").mkdir(parents=True, exist_ok=True)
+    (ROOT / "dist" / "en").mkdir(parents=True, exist_ok=True)
     (ROOT / "en" / "index.html").write_text(content, encoding="utf-8")
     (ROOT / "dist" / "en" / "index.html").write_text(content, encoding="utf-8")
     print("dist/en/index.html and en/index.html successfully updated with full English translation!")

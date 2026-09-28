@@ -598,6 +598,9 @@ def sync_dynamic_metrics():
     counter_src = WP_EXPORT / "wp-static-arquitect-assets" / "stats-counter.js"
     if counter_src.exists():
         shutil.copy2(counter_src, assets_dir / "stats-counter.js")
+    lang_mgr_src = ROOT / "wp-static-arquitect-assets" / "npp-lang-manager.js"
+    if lang_mgr_src.exists():
+        shutil.copy2(lang_mgr_src, assets_dir / "npp-lang-manager.js")
 
     # 5. Sincronizar twitter:data2 en páginas del autor
     for author_base in [DIST / "author" / "xaviercabello", WP_EXPORT / "author" / "xaviercabello"]:
@@ -635,11 +638,13 @@ def inject_wordpress_language_switchers():
         "about-us": "sobre-nosotros",
         "tools": "herramientas",
         "user-guide": "herramientas/guia-uso",
+        "blog": "blog",
     }
     special_es_to_en = {
         "sobre-nosotros": "about-us",
         "herramientas": "tools",
         "directorio-herramientas": "tools",
+        "blog": "blog",
     }
 
     globe_svg = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.75;"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>'
@@ -688,6 +693,8 @@ def inject_wordpress_language_switchers():
                     target_url = f"/{en_to_es[slug]}/"
                 elif slug in special_en_to_es:
                     target_url = f"/{special_en_to_es[slug]}/"
+                elif "category" in rel_parts:
+                    target_url = f"/category/{slug}/"
                 else:
                     target_url = "/"
             else:
@@ -695,10 +702,17 @@ def inject_wordpress_language_switchers():
                     target_url = f"/en/{es_to_en[slug]}/"
                 elif slug in special_es_to_en:
                     target_url = f"/en/{special_es_to_en[slug]}/"
+                elif "category" in rel_parts:
+                    target_url = f"/en/category/{slug}/"
                 else:
                     target_url = "/en/"
 
             modified = False
+
+            # Inyectar gestor universal de persistencia de idioma
+            if "npp-lang-manager.js" not in content and "</head>" in content:
+                content = content.replace("</head>", '  <script defer src="/wp-static-arquitect-assets/npp-lang-manager.js"></script>\n</head>')
+                modified = True
 
             # Limpiar cualquier residuo de geo-lang-detect o aside flotante
             if "np-lang-switch-floating" in content:
@@ -828,6 +842,16 @@ def main():
         build_english_homepage()
     except Exception as e:
         log(f"ADVERTENCIA construyendo páginas en inglés: {e}")
+    try:
+        from generate_english_blog_and_categories import main as generate_en_archives_main
+        generate_en_archives_main()
+    except Exception as e:
+        log(f"ADVERTENCIA generando blog y categorías en inglés: {e}")
+    try:
+        from fix_all_english_links import fix_links as fix_all_english_links_main
+        fix_all_english_links_main()
+    except Exception as e:
+        log(f"ADVERTENCIA corrigiendo enlaces en inglés: {e}")
     copy_en_structure()
     update_wp_directory_page()
 
