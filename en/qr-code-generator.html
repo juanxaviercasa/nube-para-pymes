@@ -5,9 +5,9 @@
   <link rel="alternate" hreflang="es" href="https://nubeparapymes.online/generador-codigos-qr.html">
   <link rel="alternate" hreflang="en" href="https://nubeparapymes.online/en/qr-code-generator.html">
   <link rel="alternate" hreflang="x-default" href="https://nubeparapymes.online/generador-codigos-qr.html">
-    <script defer src="../js/datos-compartidos.js?v=20260824"></script><script defer src="../js/demo-experience.js?v=20260825" data-np-demo-experience></script>
+    <script defer src="/js/datos-compartidos.js?v=20260824"></script><script defer src="/js/demo-experience.js?v=20260825" data-np-demo-experience></script>
   <meta charset="UTF-8">
-  <link rel="icon" type="image/png" href="../assets/favicon.png">
+  <link rel="icon" type="image/png" href="/assets/favicon.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
@@ -19,8 +19,8 @@
   
   
 
-  <script type="module" crossorigin="" src="../js/generador-codigos-qr.js"></script>
-  <link rel="stylesheet" crossorigin="" href="../css/generador-codigos-qr.css">
+  <script type="module" crossorigin="" src="/js/generador-codigos-qr.js"></script>
+  <link rel="stylesheet" crossorigin="" href="/css/generador-codigos-qr.css">
 
   <script>
     (() => {
@@ -236,10 +236,12 @@
   <script>window.__SG_PREVIEW_ROUTES = {"isSPA":true,"routes":["/"]};</script>
   <script>(function(){var e=`sg-preview`;function t(e){"@babel/helpers - typeof";return t=typeof Symbol==`function`&&typeof Symbol.iterator==`symbol`?function(e){return typeof e}:function(e){return e&&typeof Symbol==`function`&&e.constructor===Symbol&&e!==Symbol.prototype?`symbol`:typeof e},t(e)}function n(e,n){if(t(e)!=`object`||!e)return e;var r=e[Symbol.toPrimitive];if(r!==void 0){var i=r.call(e,n||`default`);if(t(i)!=`object`)return i;throw TypeError(`@@toPrimitive must return a primitive value.`)}return(n===`string`?String:Number)(e)}function r(e){var r=n(e,`string`);return t(r)==`symbol`?r:r+``}function i(e,t,n){return(t=r(t))in e?Object.defineProperty(e,t,{value:n,enumerable:!0,configurable:!0,writable:!0}):e[t]=n,e}var a=class{constructor(e){if(i(this,`source`,void 0),i(this,`allowedOrigins`,void 0),i(this,`targetOrigin`,void 0),i(this,`debug`,void 0),i(this,`messageHandlers`,new Map),!e.allowedOrigins?.length)throw Error(`[EventCommunicator] allowedOrigins is required`);this.source=e.source,this.allowedOrigins=e.allowedOrigins,this.targetOrigin=e.targetOrigin||`*`,this.debug=e.debug||!1,e.messageHandlers&&this.registerMessageHandlers(e.messageHandlers),e.domEvents&&this.registerDOMEvents(e.domEvents),this.initMessageListener()}log(...e){this.debug&&console.log(`[EventCommunicator]`,...e)}formatEventType(t){return`${e}:${t}`}parseEventType(t){let n=`${e}:`;return t.startsWith(n)?t.slice(n.length):null}isOriginAllowed(e){return this.allowedOrigins.some(t=>t===`*`?!0:e===t||e.endsWith(t))}initMessageListener(){window.addEventListener(`message`,e=>{if(this.log(`Message received from:`,e.origin),!this.isOriginAllowed(e.origin)){console.warn(`[EventCommunicator] Wrong origin:`,e.origin);return}let t=e.data;if(!t?.type)return;let n=this.parseEventType(t.type);if(!n)return;this.log(`Parsed event type:`,n);let r=this.messageHandlers.get(n);r?r(t.payload):this.log(`No handler for:`,n)})}registerMessageHandlers(e){Object.entries(e).forEach(([e,t])=>{this.messageHandlers.set(e,t)})}registerDOMEvents(e){e.forEach(({event:e,handler:t,options:n})=>{window.addEventListener(e,t,n)})}getTargetWindow(){try{if(window.parent&&window.parent!==window)return window.parent;if(window.top&&window.top!==window)return window.top;if(window.opener)return window.opener}catch{if(window.parent&&window.parent!==window)return window.parent}return null}send(e,t){let n=this.getTargetWindow();if(!n)return;let r={type:this.formatEventType(e),source:this.source,payload:t??null,timestamp:new Date().toISOString()};n.postMessage(r,this.targetOrigin)}},o=`sg-preview-plugin`,s={ROUTES_DISCOVERED:`ROUTES_DISCOVERED`,NAVIGATE_TO:`NAVIGATE_TO`,ROUTE_CHANGED:`ROUTE_CHANGED`},c=e=>{let t=window.history.pushState;window.history.pushState=function(...n){t.apply(this,n),e()};let n=window.history.replaceState;window.history.replaceState=function(...t){n.apply(this,t),e()},window.addEventListener(`popstate`,e),window.addEventListener(`hashchange`,e)},l=(e,t,n=!1)=>{let r=e;try{let t=new URL(e,window.location.origin);new URLSearchParams(window.location.search).forEach((e,n)=>{t.searchParams.has(n)||t.searchParams.set(n,e)}),r=`${t.pathname}${t.search}${t.hash}`}catch(e){console.warn(`[route-manager] Failed to merge URL parameters:`,e)}t&&!n?(window.history.pushState(null,``,r),window.dispatchEvent(new Event(`popstate`))):window.location.assign(r)},u=(e,t)=>{let n=e?.route,r=e?.hardReload;if(!n){console.error(`[route-manager] Invalid navigation payload received:`,e);return}l(n,t,r)},d=!1;(async e=>{if(!d){d=!0;try{let t=window.__SG_PREVIEW_ROUTES,n=!!t?.isSPA,r=t?.routes||[],i=new a({source:o,allowedOrigins:e,messageHandlers:{[s.NAVIGATE_TO]:e=>u(e,n)}});i.send(s.ROUTES_DISCOVERED,r);let l=()=>{i.send(s.ROUTE_CHANGED,{route:window.location.pathname})};l(),c(l)}catch(e){console.error(`[route-manager] Failed to fetch routes or initialize communicator:`,e)}}})([`.siteground.ai`,`.sgdev.eu`])})();</script>
 <!-- NUBEPYME_HELP_START -->
-<link rel="stylesheet" href="../css/ayuda-apps.css">
+<link rel="stylesheet" href="/css/ayuda-apps.css">
 <script>window.NP_HELP_CONFIG={"id": "generador-codigos-qr", "name": "QR Code & WhatsApp Direct Generator", "purpose": "Generate scannable QR codes for web links, pre-filled WhatsApp messages, contact cards, and text, with customization and direct image downloads.", "quick": ["Select content type: Web URL, WhatsApp direct chat, or custom text.", "Input destination URL or phone number with international country code.", "Generate, test by scanning with a smartphone, and download high-resolution graphics."], "tip": "A QR code cannot fix a broken link: always scan-test the live code on multiple devices before sending to print.", "guide": "./user-guide.html#15-qr-code-and-whatsapp-direct-generator", "steps": [{"title": "Select Code Type", "text": "Choose Web URL, WhatsApp chat link, or text message.", "selector": ["button,[role=tab]"]}, {"title": "Enter Destination Data", "text": "Fill in link or phone number with country prefix.", "selector": ["input,textarea"]}, {"title": "Generate & Download", "text": "Review rendering, test scan with your camera, and save the image.", "selector": ["button,canvas"]}]};</script>
-<script defer src="../js/ayuda-apps.js?v=20260824"></script>
+<script defer src="/js/ayuda-apps.js?v=20260824"></script>
 <!-- NUBEPYME_HELP_END -->
+  <script defer src="/wp-static-arquitect-assets/npp-lang-manager.js"></script>
+  <script defer src="/wp-static-arquitect-assets/react-translate-guard.js"></script>
   <script defer src="/wp-static-arquitect-assets/npp-lang-manager.js"></script>
 </head>
 <body data-app-id="generador-codigos-qr" data-app-name="QR Code & WhatsApp Direct Generator">
@@ -537,7 +539,7 @@
     </div>
     <div class="fixed inset-x-0 top-5 z-50 flex flex-col items-center gap-2 px-4" data-visual-edit-loc="src/components/ui/Toast.tsx:36:6" data-visual-edit-component="div" data-visual-edit-editable="false"></div>
   </div>
-<footer class="np-global-footer"><span class="np-global-brand">SMB Cloud · Free local tool.</span><span class="np-global-disclaimer">Notice: Results are generated locally for informational purposes. Verify all figures, tax rates, and legal requirements with a licensed professional before making commercial, financial, or legal decisions.</span><span class="np-global-links"><a class="np-footer-link np-footer-lang" href="../generador-codigos-qr.html">Español (ES)</a><a class="np-footer-link np-footer-primary" href="https://apps.nubeparapymes.online/">Tools Portal</a><a class="np-footer-link np-footer-secondary" href="https://nubeparapymes.online/">Main Website</a></span></footer>
+<footer class="np-global-footer"><span class="np-global-brand">SMB Cloud · Free local tool.</span><span class="np-global-disclaimer">Notice: Results are generated locally for informational purposes. Verify all figures, tax rates, and legal requirements with a licensed professional before making commercial, financial, or legal decisions.</span><span class="np-global-links"><a class="np-footer-link np-footer-lang" href="/herramientas/ventas/generador-codigos-qr/">Español (ES)</a><a class="np-footer-link np-footer-primary" href="https://apps.nubeparapymes.online/">Tools Portal</a><a class="np-footer-link np-footer-secondary" href="https://nubeparapymes.online/">Main Website</a></span></footer>
 </body>
 </html>
 

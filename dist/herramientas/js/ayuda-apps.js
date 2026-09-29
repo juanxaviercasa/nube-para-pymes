@@ -54,7 +54,7 @@
     if (!document.body || !document.body.dataset.appId) return false;
     if (document.querySelector("script[data-np-demo-experience]")) return true;
     var script = document.createElement("script");
-    script.src = isEn ? "./herramientas/js/demo-experience.js" : "/herramientas/js/demo-experience.js";
+    script.src = "/herramientas/js/demo-experience.js";
     script.async = false;
     script.dataset.npDemoExperience = "true";
     document.head.appendChild(script);

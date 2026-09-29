@@ -58,6 +58,18 @@ TOOLS = [
     {"slug": "tareas-proyectos-pymes", "cat": "productividad", "src": "tareas-proyectos-pymes.html", "name": "Tareas y Proyectos Operativos"},
 ]
 
+
+def safe_write_text(file_path, content, encoding="utf-8"):
+    import time
+    for attempt in range(5):
+        try:
+            file_path.write_text(content, encoding=encoding)
+            return
+        except OSError:
+            time.sleep(0.2)
+    with open(str(file_path), "w", encoding=encoding) as f:
+        f.write(content)
+
 def log(msg):
     print(f"[ASSEMBLE] {msg}", flush=True)
 
@@ -158,6 +170,7 @@ def build_tools_portal():
     content = transform_html_asset_links(content)
 
     content = content.replace('href="./"', 'href="/"')
+    content = content.replace('href="./en/index.html"', 'href="/en/tools/"')
     for tool in TOOLS:
         target_href = f"/herramientas/{tool['cat']}/{tool['slug']}/"
         content = content.replace(f'href="./{tool["src"]}"', f'href="{target_href}"')
@@ -279,7 +292,7 @@ def update_wp_directory_page():
         'Cada enlace lleva a la herramienta correspondiente en nuestro <a href="/herramientas/">Portal de Herramientas</a>'
     )
 
-    wp_dir_file.write_text(content, encoding="utf-8")
+    safe_write_text(wp_dir_file, content, encoding="utf-8")
     log("Página de directorio de WordPress sincronizada con las nuevas rutas.")
 
 def update_global_footers():
@@ -368,6 +381,14 @@ def update_redirects():
         lines.append(f"/herramientas/{tool['slug']}    {target_path}    301")
         lines.append(f"/herramientas/{tool['slug']}.html    {target_path}    301")
 
+
+    
+    # Reglas para herramientas en inglés (/en/)
+    from fix_multilingual_issues import TOOLS_MAP
+    for slug, info in TOOLS_MAP.items():
+        lines.append(f"/en/{info['en_slug']}    /en/{info['en_slug']}.html    301")
+        lines.append(f"/en/{slug}    /en/{info['en_slug']}.html    301")
+        lines.append(f"/en/{info['src']}    /en/{info['en_slug']}.html    301")
 
     lines.extend([
         "",

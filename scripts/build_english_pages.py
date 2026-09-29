@@ -11,25 +11,12 @@ ROOT = Path(__file__).resolve().parent.parent
 
 def build_english_tools_portal():
     print("Building en/tools/index.html...")
-    src_portal = ROOT / "dist" / "herramientas" / "index.html"
-    dest_dir = ROOT / "en" / "tools"
-    dest_dir.mkdir(parents=True, exist_ok=True)
-    dest_file = dest_dir / "index.html"
+    try:
+        from fix_multilingual_issues import build_clean_en_tools_portal
+        build_clean_en_tools_portal()
+    except Exception as e:
+        print(f"Error in build_clean_en_tools_portal: {e}")
 
-    if not src_portal.exists():
-        src_portal = ROOT / "index.html"
-
-    if src_portal.exists():
-        txt = src_portal.read_text(encoding="utf-8")
-        txt = txt.replace('href="../assets/', 'href="/assets/')
-        txt = txt.replace('src="../assets/', 'src="/assets/')
-        txt = txt.replace('src="../js/', 'src="/herramientas/js/')
-        txt = txt.replace('href="../css/', 'href="/css/')
-        txt = txt.replace('href="../index.html"', 'href="/herramientas/"')
-        txt = txt.replace('href="/"', 'href="/en/"')
-        txt = re.sub(r'<script[^>]*geo-lang-detect[^>]*></script>', '', txt)
-        dest_file.write_text(txt, encoding="utf-8")
-        print("en/tools/index.html built.")
 
 def build_english_about_us():
     print("Building en/about-us/index.html...")

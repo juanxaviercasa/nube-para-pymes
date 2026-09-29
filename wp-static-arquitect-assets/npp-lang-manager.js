@@ -80,10 +80,44 @@
   "zapier-vs-make": "zapier-vs-make-comparison",
   "zoom-vs-google-meet": "zoom-vs-google-meet-comparison"
 };
+  var TOOLS_ES_TO_EN = {
+  "analizador-titulares": "headline-analyzer",
+  "auditor-seo-basico": "basic-on-page-seo-auditor",
+  "calculadora-descuentos-promociones": "discount-promotions-calculator",
+  "calculadora-flete-envio-local": "local-shipping-calculator",
+  "calculadora-precios-venta-igv": "sales-pricing-tax-calculator",
+  "calculadora-prestamos-amortizaciones": "loan-amortization-calculator",
+  "calculadora-sobrecostos-laborales": "labor-cost-payroll-burden-calculator",
+  "comparador-campanas-avanzado": "advanced-campaign-comparator",
+  "consola-campanas": "campaign-utm-console",
+  "conversor-optimizador-imagenes": "image-converter-optimizer",
+  "creador-facturas-proforma": "proforma-invoice-generator",
+  "crm-pymes": "smb-crm",
+  "firma-correo-html": "html-email-signature",
+  "flujo-caja-pymes": "cash-flow-tracker",
+  "generador-codigos-qr": "qr-code-generator",
+  "generador-contrasenas-pymes": "smb-password-generator",
+  "generador-contratos-servicios": "service-contracts-generator",
+  "generador-cotizaciones": "quote-estimate-generator",
+  "generador-paletas-corporativas": "brand-palette-generator",
+  "generador-politicas-devolucion": "return-policy-generator",
+  "generador-politicas-terminos": "terms-privacy-generator",
+  "guia-uso-22-apps": "user-guide",
+  "guiones-manejo-objeciones": "objection-handling-scripts",
+  "inventario-compras-pymes": "inventory-purchasing",
+  "organizador-matriz-contenidos": "content-matrix-planner",
+  "simulador-tco-fisico-nube": "cloud-vs-onprem-tco-simulator",
+  "tareas-proyectos-pymes": "tasks-projects-tracker"
+};
   
   var EN_TO_ES = {};
   for (var k in ES_TO_EN) {
     EN_TO_ES[ES_TO_EN[k]] = k;
+  }
+
+  var TOOLS_EN_TO_ES = {};
+  for (var tk in TOOLS_ES_TO_EN) {
+    TOOLS_EN_TO_ES[TOOLS_ES_TO_EN[tk]] = tk;
   }
 
   var SPECIAL_ES_TO_EN = {
@@ -137,10 +171,9 @@
       }
     }
   } else {
-    // 2. Si el usuario TIENE preferencia activa 'en', mantenerlo fijo en inglés
+    // 2. Si el usuario TIENE preferencia activa 'en', enrutar a la página en inglés correspondiente
     if (currentPref === 'en' && !isEn) {
-      // Usuario está en una ruta en español pero su preferencia es inglés
-      var target = '/en/';
+      var target = null;
       if (parts.length === 0 || parts[0] === 'index.html') {
         target = '/en/';
       } else if (parts[0] in ES_TO_EN) {
@@ -151,21 +184,98 @@
         target = '/en/category/' + parts[1] + '/';
       } else if (parts[0] === 'blog') {
         target = '/en/blog/';
+      } else if (parts[0] === 'herramientas') {
+        if (parts.length >= 3 && parts[2] in TOOLS_ES_TO_EN) {
+          target = '/en/' + TOOLS_ES_TO_EN[parts[2]] + '.html';
+        } else if (parts.length >= 2 && parts[1] === 'guia-uso') {
+          target = '/en/user-guide.html';
+        } else {
+          target = '/en/tools/';
+        }
+      } else if (parts[0].endsWith('.html')) {
+        var baseSlug = parts[0].replace(/\.html$/, '');
+        if (baseSlug in TOOLS_ES_TO_EN) {
+          target = '/en/' + TOOLS_ES_TO_EN[baseSlug] + '.html';
+        } else if (baseSlug === 'guia-uso-22-apps') {
+          target = '/en/user-guide.html';
+        }
       }
       
-      if (window.location.pathname !== target) {
+      // Solo redirigir si encontramos un target válido y es diferente de la URL actual
+      if (target && window.location.pathname !== target) {
         window.location.replace(target);
         return;
       }
     }
   }
 
+  // 4. Inyectar pill de idioma en herramientas si no existe en el header
+  function renderToolHeaderPill() {
+    var isToolPage = !!document.querySelector('body[data-app-id]') || !!document.querySelector('.np-global-footer') || parts[0] === 'herramientas' || (parts.length > 0 && parts[0].endsWith('.html')) || (isEn && parts.length > 1 && parts[1].endsWith('.html'));
+    if (!isToolPage) return;
+
+    var existingPill = document.querySelector('.np-lang-toggle');
+    if (existingPill) return;
+
+    var footerLang = document.querySelector('.np-footer-lang');
+    var targetUrl = footerLang ? footerLang.getAttribute('href') : null;
+    
+    if (!targetUrl) {
+      var appId = document.body.getAttribute('data-app-id');
+      if (isEn) {
+        targetUrl = '/herramientas/';
+      } else {
+        if (appId && appId in TOOLS_ES_TO_EN) {
+          targetUrl = '/en/' + TOOLS_ES_TO_EN[appId] + '.html';
+        } else {
+          targetUrl = '/en/tools/';
+        }
+      }
+    }
+
+    // Si tiene .op-nav (herramientas operativas)
+    var nav = document.querySelector('.op-nav');
+    if (nav && !nav.querySelector('.np-lang-toggle')) {
+      var a = document.createElement('a');
+      a.className = 'np-lang-toggle';
+      a.href = targetUrl;
+      a.style.cssText = 'display:inline-flex;align-items:center;gap:4px;border:1px solid rgba(255,255,255,0.3);border-radius:9px;padding:6px 10px;font-size:12px;font-weight:700;color:#fff;text-decoration:none;margin-left:4px;background:rgba(255,255,255,0.1);';
+      a.title = isEn ? 'Cambiar a español' : 'Switch to English';
+      a.innerHTML = isEn ? '<span style="color:#f97316;">EN</span> | ES' : 'EN | <span style="color:#f97316;">ES</span>';
+      nav.appendChild(a);
+      return;
+    }
+
+    // Para el resto de herramientas (React / Vite)
+    if (!document.getElementById('np-floating-lang')) {
+      var aside = document.createElement('aside');
+      aside.id = 'np-floating-lang';
+      aside.setAttribute('aria-label', isEn ? 'Language selector' : 'Selector de idioma');
+      aside.style.cssText = 'position:fixed;top:14px;right:18px;z-index:99999;display:inline-flex;align-items:center;pointer-events:auto;';
+      var a = document.createElement('a');
+      a.className = 'np-lang-toggle';
+      a.href = targetUrl;
+      a.style.cssText = 'display:inline-flex;align-items:center;gap:6px;height:32px;line-height:30px;padding:0 12px;border-radius:16px;border:1px solid rgba(255,255,255,0.25);background:rgba(15,23,42,0.88);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);color:#f8fafc;font-size:12px;font-weight:700;text-decoration:none;box-shadow:0 4px 16px rgba(0,0,0,0.3);transition:all 0.2s ease;';
+      a.title = isEn ? 'Cambiar a español' : 'Switch to English';
+      a.setAttribute('aria-label', isEn ? 'Cambiar a español' : 'Switch to English');
+      var globe = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.85;flex-shrink:0;"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>';
+      var labels = isEn 
+        ? '<span style="color:#f97316;font-weight:800;">EN</span><span style="color:rgba(255,255,255,0.3);margin:0 2px;">|</span><span style="color:#94a3b8;font-weight:500;">ES</span>' 
+        : '<span style="color:#94a3b8;font-weight:500;">EN</span><span style="color:rgba(255,255,255,0.3);margin:0 2px;">|</span><span style="color:#f97316;font-weight:800;">ES</span>';
+      a.innerHTML = globe + labels;
+      aside.appendChild(a);
+      document.body.appendChild(aside);
+    }
+  }
+
   // 3. Capturar clics en selectores de idioma y en enlaces de navegación
   function bindInteractions() {
-    document.querySelectorAll('a.np-lang-toggle').forEach(function(btn) {
+    renderToolHeaderPill();
+
+    document.querySelectorAll('a.np-lang-toggle, a.np-footer-lang').forEach(function(btn) {
       btn.addEventListener('click', function(e) {
         var href = btn.getAttribute('href') || '';
-        if (href.startsWith('/en/') || href === '/en') {
+        if (href.startsWith('/en/') || href === '/en' || href.indexOf('/en/') !== -1) {
           setStoredLang('en');
         } else {
           setStoredLang('es');
@@ -173,29 +283,44 @@
       });
     });
 
-    // Si estamos en versión en inglés, proteger que los clics internos no salgan a español
+    // Si estamos en versión en inglés, proteger que los clics internos no salgan accidentalmente a español
     if (isEn) {
       document.addEventListener('click', function(e) {
         var a = e.target.closest('a');
         if (!a) return;
-        if (a.classList.contains('np-lang-toggle')) return; // Permitir que el botón cambie a español
+        if (a.classList.contains('np-lang-toggle') || a.classList.contains('np-footer-lang')) return;
         
         var href = a.getAttribute('href');
-        if (!href || href.startsWith('#') || href.startsWith('http') || href.startsWith('mailto:') || href.startsWith('tel:')) return;
+        if (!href || href.startsWith('#') || href.startsWith('http') || href.startsWith('mailto:') || href.startsWith('tel:') || href.startsWith('javascript:')) return;
         
-        // Si el enlace apunta a /blog/ o /sobre-nosotros/ sin prefijo /en/
         if (href === '/blog/' || href === '/blog') {
           e.preventDefault();
           window.location.href = '/en/blog/';
         } else if (href === '/sobre-nosotros/' || href === '/sobre-nosotros') {
           e.preventDefault();
           window.location.href = '/en/about-us/';
-        } else if (href === '/herramientas/' || href === '/directorio-herramientas/') {
+        } else if (href === '/herramientas/' || href === '/directorio-herramientas/' || href === '/herramientas') {
           e.preventDefault();
           window.location.href = '/en/tools/';
         } else if (href.startsWith('/category/')) {
           e.preventDefault();
           window.location.href = '/en' + href;
+        } else if (href.startsWith('/herramientas/')) {
+          var hParts = href.replace(/^\/+|\/+$/g, '').split('/');
+          if (hParts.length >= 3 && hParts[2] in TOOLS_ES_TO_EN) {
+            e.preventDefault();
+            window.location.href = '/en/' + TOOLS_ES_TO_EN[hParts[2]] + '.html';
+          } else if (hParts.length >= 2 && hParts[1] === 'guia-uso') {
+            e.preventDefault();
+            window.location.href = '/en/user-guide.html';
+          }
+        } else {
+          // Manejo de enlaces relativos como ./crm-pymes.html o crm-pymes.html
+          var cleanName = href.replace(/^\.\//, '').replace(/\.html$/, '');
+          if (cleanName in TOOLS_ES_TO_EN) {
+            e.preventDefault();
+            window.location.href = '/en/' + TOOLS_ES_TO_EN[cleanName] + '.html';
+          }
         }
       }, true);
     }

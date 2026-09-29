@@ -263,6 +263,18 @@ def build_perfect_english_homepage():
     content = content.replace('href="/alternativas-gratuitas-a-notion/"', 'href="/en/free-notion-alternatives/"')
     content = content.replace('href="/crm-para-pymes/"', 'href="/en/best-free-crm-platforms/"')
 
+    # Reemplazo de enlaces de herramientas interactivas
+    from fix_multilingual_issues import TOOLS_MAP
+    for slug, info in TOOLS_MAP.items():
+        canonical_es = f"/herramientas/{info['cat']}/{info['slug']}/"
+        canonical_en = f"/en/{info['en_slug']}.html"
+        content = content.replace(f'href="{canonical_es}"', f'href="{canonical_en}"')
+        content = content.replace(f"href='{canonical_es}'", f"href='{canonical_en}'")
+
+    content = content.replace('href="/herramientas/auditor-basico-de-seo-on-page/"', 'href="/en/basic-on-page-seo-auditor.html"')
+    content = content.replace('href="/herramientas/calculadora-de-precios-de-venta-con-igv/"', 'href="/en/sales-pricing-tax-calculator.html"')
+
+
     # 5. Fix switcher inside English homepage to link back to Spanish home '/'
     en_pill = '''<li class="menu-item-lang-switcher" style="display:inline-flex!important;align-items:center!important;height:100%!important;margin-left:14px!important;padding:0!important;list-style:none!important;">
   <a href="/" class="np-lang-toggle" style="display:inline-flex!important;align-items:center!important;gap:5px!important;height:28px!important;line-height:26px!important;padding:0 10px!important;border-radius:14px!important;border:1px solid #d1d5db!important;background:#ffffff!important;color:#374151!important;font-size:12px!important;font-weight:600!important;text-decoration:none!important;box-shadow:0 1px 2px rgba(0,0,0,0.05)!important;white-space:nowrap!important;box-sizing:border-box!important;" title="Cambiar a español" aria-label="Cambiar a español">

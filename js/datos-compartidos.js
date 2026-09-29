@@ -4,7 +4,7 @@
   function loadDemoExperience() {
     if (!document.body || !document.body.dataset.appId || document.querySelector("script[data-np-demo-experience]")) return false;
     var script = document.createElement("script");
-    script.src = "./js/demo-experience.js";
+    script.src = "/herramientas/js/demo-experience.js";
     script.async = false;
     script.dataset.npDemoExperience = "true";
     document.head.appendChild(script);
