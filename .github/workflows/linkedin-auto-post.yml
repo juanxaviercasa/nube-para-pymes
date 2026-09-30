@@ -19,6 +19,8 @@ permissions:
 
 jobs:
   publish-to-linkedin:
+    # LinkedIn y Pinterest pausados temporalmente: solo se permiten simulaciones manuales.
+    if: ${{ github.event_name == 'workflow_dispatch' && inputs.dry_run == true }}
     runs-on: ubuntu-latest
     env:
       # Pausa temporal solicitada por calidad de imagen. Cambiar a 'false' para reactivar.
