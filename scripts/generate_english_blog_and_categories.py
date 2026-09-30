@@ -11,6 +11,7 @@ import json
 import shutil
 from pathlib import Path
 from bs4 import BeautifulSoup
+from functools import lru_cache
 
 ROOT = Path(__file__).resolve().parents[1]
 DIST = ROOT / "dist"
@@ -30,6 +31,7 @@ CATEGORY_MAP_EN = {
 def log(msg):
     print(f"[EN-ARCHIVES] {msg}", flush=True)
 
+@lru_cache(maxsize=1)
 def load_english_posts():
     slug_map = json.loads((ROOT / "scripts" / "posts_slug_map.json").read_text(encoding="utf-8"))
     catalog = json.loads((ROOT / "scripts" / "posts_catalog.json").read_text(encoding="utf-8"))
@@ -59,8 +61,10 @@ def load_english_posts():
                 desc = meta_desc["content"]
             
             # Buscar categoría en clases o links
+            article = soup.find('article')
+            article_classes = article.get('class', []) if article else []
             for cat_k in CATEGORY_MAP_EN:
-                if f"category/{cat_k}" in str(soup) or f"category-{cat_k}" in str(soup):
+                if f"category-{cat_k}" in article_classes:
                     category_slug = cat_k
                     break
             

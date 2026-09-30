@@ -25,13 +25,23 @@ HTML, CSS, JavaScript, diseño responsive, generación de documentos desde el na
 
 ## Ejecutar localmente
 
+Requisitos: Python 3.12 y Node.js 22 o superior.
+
 ```bash
-git clone https://github.com/juanxaviercasa/nube-para-pymes.git
-cd nube-para-pymes
-python -m http.server 8000
+python -m pip install -r requirements.txt
+npm ci
+npm run build
+npm test
+node scripts/preview_server.js
 ```
 
-Después abre `http://localhost:8000` en el navegador. Algunas herramientas pueden funcionar sin servidor; el catálogo y la web editorial se publican por separado.
+Abre `http://127.0.0.1:3000`. La web editorial y las 26 herramientas se publican juntas desde **`dist/`**, nunca desde la raíz del repositorio. La raíz contiene las fuentes del portal español, no la portada editorial.
+
+La compilación genera las páginas informativas en inglés, los archivos de blog y las correspondencias de idioma. `scripts/site_routes.py` define las rutas; `content/en/` contiene las traducciones de las páginas informativas. No edites `dist/` directamente: se reconstruye en cada compilación.
+
+Para las pruebas con navegador: `npx playwright install chromium` y `node scripts/test_browser_localization.js`. En Windows se utiliza Chrome instalado si está disponible. También puedes indicar su ruta mediante `PLAYWRIGHT_CHROMIUM_EXECUTABLE`.
+
+Consulta [la guía de publicación](GUIA_DESPLIEGUE_HOSTING.md) para configurar Cloudflare Pages.
 
 ## Decisiones de producto
 

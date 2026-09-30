@@ -121,7 +121,7 @@
   function injectStylesheet() {
     if (document.querySelector('link[data-np-demo-style]')) return;
     const link = document.createElement('link');
-    link.rel = 'stylesheet'; link.href = '/herramientas/css/demo-experience.css'; link.dataset.npDemoStyle = 'true';
+    link.rel = 'stylesheet'; link.href = '/css/demo-experience.css'; link.dataset.npDemoStyle = 'true';
     document.head.append(link);
   }
 

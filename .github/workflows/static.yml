@@ -24,12 +24,32 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install build dependencies
+        run: |
+          python -m pip install -r requirements.txt
+          npm ci
+      - name: Build and verify both languages
+        run: |
+          npm run build
+          npm test
+      - name: Verify navigation in Chromium
+        run: |
+          npx playwright install --with-deps chromium
+          npm run test:browser
       - name: Setup Pages
         uses: actions/configure-pages@v5
-      - name: Upload static site root
+      - name: Upload verified production site
         uses: actions/upload-pages-artifact@v3
         with:
-          path: "."
+          path: "dist"
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v5

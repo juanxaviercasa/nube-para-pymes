@@ -75,6 +75,8 @@ def log(msg):
 
 def clean_and_prepare_dist():
     log("Preparando carpeta de salida dist/...")
+    if DIST.resolve() != (ROOT.resolve() / 'dist') or DIST.is_symlink():
+        raise RuntimeError('Unsafe build output directory')
     if DIST.exists():
         shutil.rmtree(DIST)
     DIST.mkdir(parents=True, exist_ok=True)
@@ -85,6 +87,8 @@ def copy_wp_export():
         raise SystemExit(f"ERROR: No se encontró la carpeta {WP_EXPORT}")
 
     for item in WP_EXPORT.iterdir():
+        if item.name in ('astra-advanced-hook', 'en'):
+            continue
         dest = DIST / item.name
         if item.is_dir():
             shutil.copytree(item, dest)
@@ -574,11 +578,9 @@ def sync_dynamic_metrics():
     api_dir = DIST / "api"
     api_dir.mkdir(parents=True, exist_ok=True)
     (api_dir / "stats.json").write_text(stats_json_str, encoding="utf-8")
-    if WP_EXPORT.exists():
-        (WP_EXPORT / "stats.json").write_text(stats_json_str, encoding="utf-8")
 
     # 3. Sincronizar index.html (tanto en dist como en nubepymesexport)
-    for idx_path in [DIST / "index.html", WP_EXPORT / "index.html"]:
+    for idx_path in [DIST / "index.html"]:
         if not idx_path.exists():
             continue
         content = idx_path.read_text(encoding="utf-8", errors="ignore")
@@ -624,7 +626,7 @@ def sync_dynamic_metrics():
         shutil.copy2(lang_mgr_src, assets_dir / "npp-lang-manager.js")
 
     # 5. Sincronizar twitter:data2 en páginas del autor
-    for author_base in [DIST / "author" / "xaviercabello", WP_EXPORT / "author" / "xaviercabello"]:
+    for author_base in [DIST / "author" / "xaviercabello"]:
         if author_base.exists():
             for p in author_base.rglob("*.html"):
                 txt = p.read_text(encoding="utf-8", errors="ignore")
@@ -832,7 +834,8 @@ def copy_en_structure():
     src_en = ROOT / "en"
     dest_en = DIST / "en"
     if src_en.exists():
-        shutil.copytree(src_en, dest_en, dirs_exist_ok=True)
+        shutil.copytree(src_en, dest_en, dirs_exist_ok=True,
+                        ignore=lambda directory, names: [name for name in names if Path(directory) == src_en and name in ('category', 'blog', 'author', 'tag')])
         count = len(list(dest_en.rglob("*.html")))
         log(f"Estructura /en/ copiada a producción ({count} archivos HTML).")
 
@@ -843,48 +846,28 @@ def main():
     copy_wp_export()
     
     # Generar todas las páginas de paginación para blog, autores y taxonomías
-    try:
-        import sys
-        sys.path.insert(0, str(ROOT / "scripts"))
-        from generate_all_paginations import main as generate_all_paginations_main
-        generate_all_paginations_main()
-    except Exception as e:
-        log(f"ADVERTENCIA al generar paginación: {e}")
+    from generate_all_paginations import main as generate_all_paginations_main
+    generate_all_paginations_main()
 
     setup_herramientas_assets()
     build_tools_portal()
     build_usage_guide()
     build_all_tools()
     create_legacy_redirect_stubs()
-    try:
-        from build_english_pages import build_english_tools_portal, build_english_about_us, build_english_homepage
-        build_english_tools_portal()
-        build_english_about_us()
-        build_english_homepage()
-    except Exception as e:
-        log(f"ADVERTENCIA construyendo páginas en inglés: {e}")
-    try:
-        from generate_english_blog_and_categories import main as generate_en_archives_main
-        generate_en_archives_main()
-    except Exception as e:
-        log(f"ADVERTENCIA generando blog y categorías en inglés: {e}")
-    try:
-        from fix_all_english_links import fix_links as fix_all_english_links_main
-        fix_all_english_links_main()
-    except Exception as e:
-        log(f"ADVERTENCIA corrigiendo enlaces en inglés: {e}")
     copy_en_structure()
+    from build_bilingual_archives import build as build_bilingual_archives
+    build_bilingual_archives(DIST)
     update_wp_directory_page()
 
-    update_global_footers()
-    inject_wordpress_language_switchers()
+    # Navigation, footers and alternates are normalized together in finalize().
     update_redirects()
     update_headers()
     update_sitemap()
     update_robots_and_llms()
     update_search_index()
     sync_dynamic_metrics()
-    create_package_json()
+    from finalize_localization import finalize
+    finalize(DIST)
     elapsed = (datetime.now() - start_time).total_seconds()
     log(f"=== ENSAMBLADO COMPLETADO EXITOSAMENTE en {elapsed:.2f}s ===")
 

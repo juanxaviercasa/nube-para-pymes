@@ -125,8 +125,8 @@ check('dist/directorio-herramientas/index.html existe', fs.existsSync(dirWpPath)
 if (fs.existsSync(dirWpPath)) {
     const dirHtml = fs.readFileSync(dirWpPath, 'utf8');
     check('Directorio WP no tiene enlaces a apps.nubeparapymes.online', !dirHtml.includes('https://apps.nubeparapymes.online/'));
-    check('Directorio WP enlaza a /herramientas/marketing/analizador-titulares/', dirHtml.includes('/herramientas/marketing/analizador-titulares/'));
-    check('Directorio WP enlaza a /herramientas/finanzas/calculadora-descuentos-promociones/', dirHtml.includes('/herramientas/finanzas/calculadora-descuentos-promociones/'));
+    check('Directorio WP antiguo redirige al portal único /herramientas/', /http-equiv="refresh"[^>]*url=\/herramientas\//.test(dirHtml));
+    check('Directorio WP conserva un enlace accesible al portal', dirHtml.includes('href="/herramientas/"'));
 }
 
 // 6. Verificación de _redirects
@@ -138,7 +138,8 @@ if (fs.existsSync(redPath)) {
     check('Redirección para /analizador-titulares.html presente', redContent.includes('/analizador-titulares.html    /herramientas/marketing/analizador-titulares/    301'));
     check('Redirección para /crm-pymes.html presente', redContent.includes('/crm-pymes.html    /herramientas/ventas/crm-pymes/    301'));
     check('Reglas de protección WP (/wp-admin/*) presentes', redContent.includes('/wp-admin/*'));
-    check('Regla fallback 404 presente', redContent.includes('/*    /404.html    404'));
+    check('Página 404 estática presente (Cloudflare Pages)', fs.existsSync(path.join(DIST, '404.html')));
+    check('Sin reglas 404 no soportadas por Cloudflare', !/^\S+\s+\S+\s+404\s*$/m.test(redContent));
 }
 
 // 7. Verificación de Sitemap y Robots

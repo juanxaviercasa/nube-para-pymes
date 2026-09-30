@@ -1,334 +1,82 @@
-/**
- * Nube para Pymes - Universal Language Persistence & Auto-Router
- * Preserves user language preference (EN/ES) across page reloads, tabs, and visits.
- */
-(function() {
+window.NPP_ROUTES = {"pairs": {"/": "/en/", "/herramientas/": "/en/tools/", "/herramientas/guia-uso/": "/en/user-guide/", "/politica-de-privacidad/": "/en/privacy-policy/", "/sobre-nosotros/": "/en/about-us/", "/metodologia-de-resenas/": "/en/review-methodology/", "/contacto/": "/en/contact/", "/terminos-y-condiciones/": "/en/terms-and-conditions/", "/politica-de-cookies/": "/en/cookie-policy/", "/descargo-de-responsabilidad/": "/en/disclaimer/", "/aviso-legal/": "/en/legal-notice/", "/ahorrar-horas-trabajo-administrativo/": "/en/save-hours-administrative-work/", "/alternativas-excel-control-inventario/": "/en/excel-alternatives-inventory-control/", "/alternativas-gratuitas-asana/": "/en/free-asana-alternatives/", "/alternativas-gratuitas-notion/": "/en/free-notion-alternatives/", "/alternativas-gratuitas-quickbooks/": "/en/free-quickbooks-alternatives/", "/alternativas-gratuitas-slack/": "/en/free-slack-alternatives/", "/apps-controlar-gastos-negocio/": "/en/best-business-expense-tracker-apps/", "/apps-gestion-tareas-freelancers/": "/en/task-management-apps-freelancers/", "/automatizacion-ia-pymes-criterios-decision/": "/en/ai-automation-smbs-decision-criteria/", "/automatizacion-redes-sociales-ia/": "/en/social-media-automation-ai/", "/automatizar-envio-facturas-recordatorios/": "/en/automate-invoice-delivery-reminders/", "/automatizar-facturacion-recurrente/": "/en/automate-recurring-invoicing/", "/chatbots-ia-pequenos-negocios/": "/en/ai-chatbots-small-businesses/", "/chatgpt-atencion-al-cliente/": "/en/chatgpt-customer-support-guide/", "/clickup-vs-monday/": "/en/clickup-vs-monday-comparison/", "/control-horarios-equipos-remotos/": "/en/time-tracking-remote-teams/", "/crear-tablero-kanban-desde-cero/": "/en/build-kanban-board-from-scratch/", "/crm-alternativas-gratuitas-salesforce/": "/en/free-salesforce-crm-alternatives/", "/crm-como-elegir-un-crm-segun-tamano-empresa/": "/en/how-to-choose-crm-by-company-size/", "/crm-con-ia-para-pymes-que-automatizar/": "/en/ai-crm-for-smbs-what-to-automate/", "/crm-con-whatsapp-integrado/": "/en/crm-with-whatsapp-integration/", "/crm-hubspot-vs-zoho-crm/": "/en/crm-hubspot-vs-zoho-comparison/", "/crm-integrado-whatsapp-business/": "/en/crm-integrated-whatsapp-business/", "/crm-para-freelancers/": "/en/crm-for-freelancers/", "/crm-para-inmobiliarias/": "/en/crm-for-real-estate/", "/digitalizacion-procesos-pyme-sin-programar/": "/en/smb-process-digitization-no-code/", "/digitalizar-procesos-negocio-pequeno/": "/en/digitize-small-business-processes/", "/elegir-software-segun-numero-empleados/": "/en/choose-software-by-team-size/", "/elegir-software-segun-presupuesto/": "/en/choose-software-by-budget/", "/facturacion-electronica-freelancers/": "/en/electronic-invoicing-freelancers/", "/facturacion-electronica-mexico/": "/en/electronic-invoicing-mexico-guide/", "/facturar-independiente-peru/": "/en/freelance-invoicing-peru-guide/", "/firma-electronica-pequenas-empresas/": "/en/electronic-signature-small-businesses/", "/geo-para-pymes-respuestas-inteligencia-artificial/": "/en/geo-for-smbs-ai-recommendations/", "/gestion-academias-online/": "/en/online-academy-management-software/", "/gestion-citas-profesionales-independientes/": "/en/appointment-scheduling-independent-professionals/", "/gestion-despachos-abogados/": "/en/law-firm-management-software/", "/gestion-proyectos-agencias-creativas/": "/en/project-management-creative-agencies/", "/gestion-proyectos-agencias-marketing/": "/en/project-management-marketing-agencies/", "/gestion-proyectos-gratis-vs-pago/": "/en/free-vs-paid-project-management/", "/gestion-tiendas-online/": "/en/ecommerce-store-management-software/", "/google-sheets-vs-software-especializado/": "/en/google-sheets-vs-dedicated-software/", "/google-workspace-vs-microsoft-365/": "/en/google-workspace-vs-microsoft-365-comparison/", "/herramientas-encuestas-feedback-clientes/": "/en/customer-feedback-survey-tools/", "/herramientas-ia-automatizar-tareas/": "/en/ai-tools-automate-business-tasks/", "/herramientas-profesores-particulares/": "/en/management-tools-private-tutors/", "/herramientas-videollamadas-equipos-remotos/": "/en/video-conferencing-remote-teams/", "/ia-contenido-marketing-pymes/": "/en/ai-content-creation-smb-marketing/", "/ia-generar-informes-reportes/": "/en/ai-business-reports-generation/", "/mejores-crm-gratuitos-espanol/": "/en/best-free-crm-platforms/", "/migrar-de-excel-a-un-crm/": "/en/how-to-migrate-excel-to-crm/", "/monday-com-vale-la-pena/": "/en/monday-com-review-is-it-worth-it/", "/notion-vs-clickup/": "/en/notion-vs-clickup-comparison/", "/organizar-equipo-remoto-trello/": "/en/manage-remote-teams-trello/", "/plataformas-elearning-vender-cursos/": "/en/elearning-platforms-sell-courses/", "/punto-de-venta-restaurantes/": "/en/pos-systems-restaurants/", "/que-es-un-crm-para-que-sirve/": "/en/what-is-a-crm-guide/", "/reuniones-eficientes-equipos-distribuidos/": "/en/efficient-meetings-distributed-teams/", "/seo-geo-para-pymes-visibilidad-ia/": "/en/seo-geo-smb-ai-visibility/", "/slack-vs-microsoft-teams/": "/en/slack-vs-microsoft-teams-comparison/", "/software-academias-idiomas/": "/en/language-school-management-software/", "/software-academias-matematicas/": "/en/math-tutoring-center-software/", "/software-contabilidad-pymes/": "/en/accounting-software-smbs/", "/software-gimnasios-estudios/": "/en/gym-fitness-studio-software/", "/software-local-o-en-la-nube/": "/en/on-premise-vs-cloud-software/", "/software-nomina-pymes-latam/": "/en/payroll-software-smbs-guide/", "/software-reservas-clinicas/": "/en/clinic-appointment-booking-software/", "/trello-vs-asana/": "/en/trello-vs-asana-comparison/", "/zapier-vs-make/": "/en/zapier-vs-make-comparison/", "/zoom-vs-google-meet/": "/en/zoom-vs-google-meet-comparison/", "/herramientas/marketing/analizador-titulares/": "/en/headline-analyzer/", "/herramientas/marketing/auditor-seo-basico/": "/en/basic-on-page-seo-auditor/", "/herramientas/marketing/comparador-campanas-avanzado/": "/en/advanced-campaign-comparator/", "/herramientas/marketing/consola-campanas/": "/en/campaign-utm-console/", "/herramientas/marketing/organizador-matriz-contenidos/": "/en/content-matrix-planner/", "/herramientas/finanzas/calculadora-descuentos-promociones/": "/en/discount-promotions-calculator/", "/herramientas/finanzas/calculadora-precios-venta-igv/": "/en/sales-pricing-tax-calculator/", "/herramientas/finanzas/calculadora-prestamos-amortizaciones/": "/en/loan-amortization-calculator/", "/herramientas/finanzas/calculadora-sobrecostos-laborales/": "/en/labor-cost-payroll-burden-calculator/", "/herramientas/finanzas/flujo-caja-pymes/": "/en/cash-flow-tracker/", "/herramientas/ventas/creador-facturas-proforma/": "/en/proforma-invoice-generator/", "/herramientas/ventas/generador-codigos-qr/": "/en/qr-code-generator/", "/herramientas/ventas/generador-cotizaciones/": "/en/quote-estimate-generator/", "/herramientas/ventas/guiones-manejo-objeciones/": "/en/objection-handling-scripts/", "/herramientas/ventas/crm-pymes/": "/en/smb-crm/", "/herramientas/legal/generador-contratos-servicios/": "/en/service-contracts-generator/", "/herramientas/legal/generador-politicas-devolucion/": "/en/return-policy-generator/", "/herramientas/legal/generador-politicas-terminos/": "/en/terms-privacy-generator/", "/herramientas/operaciones/calculadora-flete-envio-local/": "/en/local-shipping-calculator/", "/herramientas/operaciones/simulador-tco-fisico-nube/": "/en/cloud-vs-onprem-tco-simulator/", "/herramientas/operaciones/inventario-compras-pymes/": "/en/inventory-purchasing/", "/herramientas/productividad/conversor-optimizador-imagenes/": "/en/image-converter-optimizer/", "/herramientas/productividad/firma-correo-html/": "/en/html-email-signature/", "/herramientas/productividad/generador-contrasenas-pymes/": "/en/smb-password-generator/", "/herramientas/productividad/generador-paletas-corporativas/": "/en/brand-palette-generator/", "/herramientas/productividad/tareas-proyectos-pymes/": "/en/tasks-projects-tracker/", "/2026/07/": "/en/2026/07/", "/2026/07/page/2/": "/en/2026/07/page/2/", "/2026/07/page/3/": "/en/2026/07/page/3/", "/2026/07/page/4/": "/en/2026/07/page/4/", "/2026/07/page/5/": "/en/2026/07/page/5/", "/2026/07/page/6/": "/en/2026/07/page/6/", "/2026/08/": "/en/2026/08/", "/2026/08/page/2/": "/en/2026/08/page/2/", "/author/xaviercabello/": "/en/author/xaviercabello/", "/author/xaviercabello/page/2/": "/en/author/xaviercabello/page/2/", "/author/xaviercabello/page/3/": "/en/author/xaviercabello/page/3/", "/author/xaviercabello/page/4/": "/en/author/xaviercabello/page/4/", "/author/xaviercabello/page/5/": "/en/author/xaviercabello/page/5/", "/author/xaviercabello/page/6/": "/en/author/xaviercabello/page/6/", "/author/xaviercabello/page/7/": "/en/author/xaviercabello/page/7/", "/blog/": "/en/blog/", "/blog/page/2/": "/en/blog/page/2/", "/blog/page/3/": "/en/blog/page/3/", "/blog/page/4/": "/en/blog/page/4/", "/blog/page/5/": "/en/blog/page/5/", "/blog/page/6/": "/en/blog/page/6/", "/blog/page/7/": "/en/blog/page/7/", "/category/automatizacion-ia/": "/en/category/automatizacion-ia/", "/category/automatizacion-ia/page/2/": "/en/category/automatizacion-ia/page/2/", "/category/comunicacion-equipos/": "/en/category/comunicacion-equipos/", "/category/crm/": "/en/category/crm/", "/category/facturacion-contabilidad/": "/en/category/facturacion-contabilidad/", "/category/gestion-proyectos/": "/en/category/gestion-proyectos/", "/category/gestion-proyectos/page/2/": "/en/category/gestion-proyectos/page/2/", "/category/software-por-sector/": "/en/category/software-por-sector/", "/category/software-por-sector/page/2/": "/en/category/software-por-sector/page/2/", "/tag/abogados/": "/en/tag/abogados/", "/tag/academias-online/": "/en/tag/academias-online/", "/tag/academias/": "/en/tag/academias/", "/tag/agencias-creativas/": "/en/tag/agencias-creativas/", "/tag/agencias-de-marketing/": "/en/tag/agencias-de-marketing/", "/tag/apps-gratuitas/": "/en/tag/apps-gratuitas/", "/tag/asana/": "/en/tag/asana/", "/tag/atencion-al-cliente/": "/en/tag/atencion-al-cliente/", "/tag/automatizacion-ia/": "/en/tag/automatizacion-ia/", "/tag/automatizacion/": "/en/tag/automatizacion/", "/tag/bitrix24/": "/en/tag/bitrix24/", "/tag/chatbots/": "/en/tag/chatbots/", "/tag/chatgpt/": "/en/tag/chatgpt/", "/tag/clickup/": "/en/tag/clickup/", "/tag/clinicas/": "/en/tag/clinicas/", "/tag/comparativas/": "/en/tag/comparativas/", "/tag/computacion-en-la-nube/": "/en/tag/computacion-en-la-nube/", "/tag/comunicacion/": "/en/tag/comunicacion/", "/tag/contabilidad/": "/en/tag/contabilidad/", "/tag/control-de-gastos/": "/en/tag/control-de-gastos/", "/tag/control-de-horarios/": "/en/tag/control-de-horarios/", "/tag/crm-gratis/": "/en/tag/crm-gratis/", "/tag/crm-para-pymes/": "/en/tag/crm-para-pymes/", "/tag/crm/": "/en/tag/crm/", "/tag/digitalizacion/": "/en/tag/digitalizacion/", "/tag/ecommerce/": "/en/tag/ecommerce/", "/tag/educacion/": "/en/tag/educacion/", "/tag/elearning/": "/en/tag/elearning/", "/tag/encuestas/": "/en/tag/encuestas/", "/tag/equipos-remotos/": "/en/tag/equipos-remotos/", "/tag/excel/": "/en/tag/excel/", "/tag/facturacion-contabilidad/": "/en/tag/facturacion-contabilidad/", "/tag/facturacion-electronica/": "/en/tag/facturacion-electronica/", "/tag/feedback/": "/en/tag/feedback/", "/tag/firma-electronica/": "/en/tag/firma-electronica/", "/tag/freelancers/": "/en/tag/freelancers/", "/tag/gestion-de-citas/": "/en/tag/gestion-de-citas/", "/tag/gestion-de-clientes/": "/en/tag/gestion-de-clientes/", "/tag/gestion-de-proyectos/": "/en/tag/gestion-de-proyectos/", "/tag/gestion-de-proyectos/page/2/": "/en/tag/gestion-de-proyectos/page/2/", "/tag/gestion-de-tareas/": "/en/tag/gestion-de-tareas/", "/tag/gimnasios/": "/en/tag/gimnasios/", "/tag/google-meet/": "/en/tag/google-meet/", "/tag/google-sheets/": "/en/tag/google-sheets/", "/tag/google-workspace/": "/en/tag/google-workspace/", "/tag/guia-de-compra/": "/en/tag/guia-de-compra/", "/tag/guia-practica/": "/en/tag/guia-practica/", "/tag/herramientas-gratuitas/": "/en/tag/herramientas-gratuitas/", "/tag/hubspot/": "/en/tag/hubspot/", "/tag/independientes/": "/en/tag/independientes/", "/tag/inmobiliarias/": "/en/tag/inmobiliarias/", "/tag/inteligencia-artificial/": "/en/tag/inteligencia-artificial/", "/tag/inventario/": "/en/tag/inventario/", "/tag/kanban/": "/en/tag/kanban/", "/tag/latinoamerica/": "/en/tag/latinoamerica/", "/tag/make/": "/en/tag/make/", "/tag/marketing/": "/en/tag/marketing/", "/tag/matematicas/": "/en/tag/matematicas/", "/tag/mexico/": "/en/tag/mexico/", "/tag/microsoft-365/": "/en/tag/microsoft-365/", "/tag/microsoft-teams/": "/en/tag/microsoft-teams/", "/tag/migracion-de-datos/": "/en/tag/migracion-de-datos/", "/tag/monday/": "/en/tag/monday/", "/tag/nomina/": "/en/tag/nomina/", "/tag/notion/": "/en/tag/notion/", "/tag/peru/": "/en/tag/peru/", "/tag/presupuesto/": "/en/tag/presupuesto/", "/tag/productividad/": "/en/tag/productividad/", "/tag/profesores-particulares/": "/en/tag/profesores-particulares/", "/tag/punto-de-venta/": "/en/tag/punto-de-venta/", "/tag/quickbooks/": "/en/tag/quickbooks/", "/tag/redes-sociales/": "/en/tag/redes-sociales/", "/tag/reportes/": "/en/tag/reportes/", "/tag/reservas/": "/en/tag/reservas/", "/tag/restaurantes/": "/en/tag/restaurantes/", "/tag/reuniones/": "/en/tag/reuniones/", "/tag/salesforce/": "/en/tag/salesforce/", "/tag/slack/": "/en/tag/slack/", "/tag/software-por-sector/": "/en/tag/software-por-sector/", "/tag/software-por-sector/page/2/": "/en/tag/software-por-sector/page/2/", "/tag/startups/": "/en/tag/startups/", "/tag/tiendas-online/": "/en/tag/tiendas-online/", "/tag/trabajo-administrativo/": "/en/tag/trabajo-administrativo/", "/tag/trello/": "/en/tag/trello/", "/tag/videollamadas/": "/en/tag/videollamadas/", "/tag/whatsapp-business/": "/en/tag/whatsapp-business/", "/tag/whatsapp/": "/en/tag/whatsapp/", "/tag/zapier/": "/en/tag/zapier/", "/tag/zoho/": "/en/tag/zoho/", "/tag/zoom/": "/en/tag/zoom/"}, "aliases": {"/directorio-herramientas/": "/herramientas/", "/herramientas-gratis/": "/herramientas/", "/en/herramientas/": "/en/tools/", "/en/tools/en/index.html": "/en/tools/", "/herramientas/en/index.html": "/en/tools/", "/en/guia-uso/": "/en/user-guide/", "/en/user-guide.html": "/en/user-guide/", "/guia-uso/": "/herramientas/guia-uso/", "/guia-uso-22-apps.html": "/herramientas/guia-uso/", "/author/": "/author/xaviercabello/", "/crm/": "/category/crm/", "/software-segun-numero-empleados/": "/elegir-software-segun-numero-empleados/", "/herramientas/guia-uso/en/user-guide.html": "/en/user-guide/", "/herramientas/guia-uso/GUIA_DESPLIEGUE_HOSTING.md": "/herramientas/guia-uso/", "/en/cash-flow-simulator.html": "/en/cash-flow-tracker/", "/en/cloud-vs-onprem-tco-calculator.html": "/en/cloud-vs-onprem-tco-simulator/", "/en/inventory-purchasing-manager.html": "/en/inventory-purchasing/", "/en/payroll-cost-calculator.html": "/en/labor-cost-payroll-burden-calculator/", "/en/proforma-invoice-maker.html": "/en/proforma-invoice-generator/", "/en/sales-crm-pipeline.html": "/en/smb-crm/", "/en/sales-objection-scripts.html": "/en/objection-handling-scripts/", "/en/service-contract-generator.html": "/en/service-contracts-generator/", "/en/team-task-project-tracker.html": "/en/tasks-projects-tracker/", "/en/guia-uso-22-apps.html": "/en/user-guide/", "/herramientas/auditor-basico-de-seo-on-page/": "/herramientas/marketing/auditor-seo-basico/", "/herramientas/calculadora-de-precios-de-venta-con-igv/": "/herramientas/finanzas/calculadora-precios-venta-igv/", "/software-por-sector/": "/category/software-por-sector/", "/en/politica-de-privacidad/": "/en/privacy-policy/", "/en/sobre-nosotros/": "/en/about-us/", "/en/metodologia-de-resenas/": "/en/review-methodology/", "/en/contacto/": "/en/contact/", "/en/terminos-y-condiciones/": "/en/terms-and-conditions/", "/en/politica-de-cookies/": "/en/cookie-policy/", "/en/descargo-de-responsabilidad/": "/en/disclaimer/", "/en/aviso-legal/": "/en/legal-notice/", "/en/ahorrar-horas-trabajo-administrativo/": "/en/save-hours-administrative-work/", "/en/alternativas-excel-control-inventario/": "/en/excel-alternatives-inventory-control/", "/en/alternativas-gratuitas-asana/": "/en/free-asana-alternatives/", "/en/alternativas-gratuitas-notion/": "/en/free-notion-alternatives/", "/en/alternativas-gratuitas-quickbooks/": "/en/free-quickbooks-alternatives/", "/en/alternativas-gratuitas-slack/": "/en/free-slack-alternatives/", "/en/apps-controlar-gastos-negocio/": "/en/best-business-expense-tracker-apps/", "/en/apps-gestion-tareas-freelancers/": "/en/task-management-apps-freelancers/", "/en/automatizacion-ia-pymes-criterios-decision/": "/en/ai-automation-smbs-decision-criteria/", "/en/automatizacion-redes-sociales-ia/": "/en/social-media-automation-ai/", "/en/automatizar-envio-facturas-recordatorios/": "/en/automate-invoice-delivery-reminders/", "/en/automatizar-facturacion-recurrente/": "/en/automate-recurring-invoicing/", "/en/chatbots-ia-pequenos-negocios/": "/en/ai-chatbots-small-businesses/", "/en/chatgpt-atencion-al-cliente/": "/en/chatgpt-customer-support-guide/", "/en/clickup-vs-monday/": "/en/clickup-vs-monday-comparison/", "/en/control-horarios-equipos-remotos/": "/en/time-tracking-remote-teams/", "/en/crear-tablero-kanban-desde-cero/": "/en/build-kanban-board-from-scratch/", "/en/crm-alternativas-gratuitas-salesforce/": "/en/free-salesforce-crm-alternatives/", "/en/crm-como-elegir-un-crm-segun-tamano-empresa/": "/en/how-to-choose-crm-by-company-size/", "/en/crm-con-ia-para-pymes-que-automatizar/": "/en/ai-crm-for-smbs-what-to-automate/", "/en/crm-con-whatsapp-integrado/": "/en/crm-with-whatsapp-integration/", "/en/crm-hubspot-vs-zoho-crm/": "/en/crm-hubspot-vs-zoho-comparison/", "/en/crm-integrado-whatsapp-business/": "/en/crm-integrated-whatsapp-business/", "/en/crm-para-freelancers/": "/en/crm-for-freelancers/", "/en/crm-para-inmobiliarias/": "/en/crm-for-real-estate/", "/en/digitalizacion-procesos-pyme-sin-programar/": "/en/smb-process-digitization-no-code/", "/en/digitalizar-procesos-negocio-pequeno/": "/en/digitize-small-business-processes/", "/en/elegir-software-segun-numero-empleados/": "/en/choose-software-by-team-size/", "/en/elegir-software-segun-presupuesto/": "/en/choose-software-by-budget/", "/en/facturacion-electronica-freelancers/": "/en/electronic-invoicing-freelancers/", "/en/facturacion-electronica-mexico/": "/en/electronic-invoicing-mexico-guide/", "/en/facturar-independiente-peru/": "/en/freelance-invoicing-peru-guide/", "/en/firma-electronica-pequenas-empresas/": "/en/electronic-signature-small-businesses/", "/en/geo-para-pymes-respuestas-inteligencia-artificial/": "/en/geo-for-smbs-ai-recommendations/", "/en/gestion-academias-online/": "/en/online-academy-management-software/", "/en/gestion-citas-profesionales-independientes/": "/en/appointment-scheduling-independent-professionals/", "/en/gestion-despachos-abogados/": "/en/law-firm-management-software/", "/en/gestion-proyectos-agencias-creativas/": "/en/project-management-creative-agencies/", "/en/gestion-proyectos-agencias-marketing/": "/en/project-management-marketing-agencies/", "/en/gestion-proyectos-gratis-vs-pago/": "/en/free-vs-paid-project-management/", "/en/gestion-tiendas-online/": "/en/ecommerce-store-management-software/", "/en/google-sheets-vs-software-especializado/": "/en/google-sheets-vs-dedicated-software/", "/en/google-workspace-vs-microsoft-365/": "/en/google-workspace-vs-microsoft-365-comparison/", "/en/herramientas-encuestas-feedback-clientes/": "/en/customer-feedback-survey-tools/", "/en/herramientas-ia-automatizar-tareas/": "/en/ai-tools-automate-business-tasks/", "/en/herramientas-profesores-particulares/": "/en/management-tools-private-tutors/", "/en/herramientas-videollamadas-equipos-remotos/": "/en/video-conferencing-remote-teams/", "/en/ia-contenido-marketing-pymes/": "/en/ai-content-creation-smb-marketing/", "/en/ia-generar-informes-reportes/": "/en/ai-business-reports-generation/", "/en/mejores-crm-gratuitos-espanol/": "/en/best-free-crm-platforms/", "/en/migrar-de-excel-a-un-crm/": "/en/how-to-migrate-excel-to-crm/", "/en/monday-com-vale-la-pena/": "/en/monday-com-review-is-it-worth-it/", "/en/notion-vs-clickup/": "/en/notion-vs-clickup-comparison/", "/en/organizar-equipo-remoto-trello/": "/en/manage-remote-teams-trello/", "/en/plataformas-elearning-vender-cursos/": "/en/elearning-platforms-sell-courses/", "/en/punto-de-venta-restaurantes/": "/en/pos-systems-restaurants/", "/en/que-es-un-crm-para-que-sirve/": "/en/what-is-a-crm-guide/", "/en/reuniones-eficientes-equipos-distribuidos/": "/en/efficient-meetings-distributed-teams/", "/en/seo-geo-para-pymes-visibilidad-ia/": "/en/seo-geo-smb-ai-visibility/", "/en/slack-vs-microsoft-teams/": "/en/slack-vs-microsoft-teams-comparison/", "/en/software-academias-idiomas/": "/en/language-school-management-software/", "/en/software-academias-matematicas/": "/en/math-tutoring-center-software/", "/en/software-contabilidad-pymes/": "/en/accounting-software-smbs/", "/en/software-gimnasios-estudios/": "/en/gym-fitness-studio-software/", "/en/software-local-o-en-la-nube/": "/en/on-premise-vs-cloud-software/", "/en/software-nomina-pymes-latam/": "/en/payroll-software-smbs-guide/", "/en/software-reservas-clinicas/": "/en/clinic-appointment-booking-software/", "/en/trello-vs-asana/": "/en/trello-vs-asana-comparison/", "/en/zapier-vs-make/": "/en/zapier-vs-make-comparison/", "/en/zoom-vs-google-meet/": "/en/zoom-vs-google-meet-comparison/", "/analizador-titulares.html": "/herramientas/marketing/analizador-titulares/", "/analizador-titulares/": "/herramientas/marketing/analizador-titulares/", "/herramientas/analizador-titulares.html": "/herramientas/marketing/analizador-titulares/", "/herramientas/analizador-titulares/": "/herramientas/marketing/analizador-titulares/", "/en/analizador-titulares.html": "/en/headline-analyzer/", "/en/headline-analyzer.html": "/en/headline-analyzer/", "/en/analizador-titulares/": "/en/headline-analyzer/", "/en/tools/analizador-titulares.html": "/en/headline-analyzer/", "/en/tools/headline-analyzer.html": "/en/headline-analyzer/", "/en/tools/analizador-titulares/": "/en/headline-analyzer/", "/en/tools/headline-analyzer/": "/en/headline-analyzer/", "/en/herramientas/marketing/analizador-titulares/": "/en/headline-analyzer/", "/auditor-seo-basico.html": "/herramientas/marketing/auditor-seo-basico/", "/auditor-seo-basico/": "/herramientas/marketing/auditor-seo-basico/", "/herramientas/auditor-seo-basico.html": "/herramientas/marketing/auditor-seo-basico/", "/herramientas/auditor-seo-basico/": "/herramientas/marketing/auditor-seo-basico/", "/en/auditor-seo-basico.html": "/en/basic-on-page-seo-auditor/", "/en/basic-on-page-seo-auditor.html": "/en/basic-on-page-seo-auditor/", "/en/auditor-seo-basico/": "/en/basic-on-page-seo-auditor/", "/en/tools/auditor-seo-basico.html": "/en/basic-on-page-seo-auditor/", "/en/tools/basic-on-page-seo-auditor.html": "/en/basic-on-page-seo-auditor/", "/en/tools/auditor-seo-basico/": "/en/basic-on-page-seo-auditor/", "/en/tools/basic-on-page-seo-auditor/": "/en/basic-on-page-seo-auditor/", "/en/herramientas/marketing/auditor-seo-basico/": "/en/basic-on-page-seo-auditor/", "/comparador-campanas-avanzado.html": "/herramientas/marketing/comparador-campanas-avanzado/", "/comparador-campanas-avanzado/": "/herramientas/marketing/comparador-campanas-avanzado/", "/herramientas/comparador-campanas-avanzado.html": "/herramientas/marketing/comparador-campanas-avanzado/", "/herramientas/comparador-campanas-avanzado/": "/herramientas/marketing/comparador-campanas-avanzado/", "/en/comparador-campanas-avanzado.html": "/en/advanced-campaign-comparator/", "/en/advanced-campaign-comparator.html": "/en/advanced-campaign-comparator/", "/en/comparador-campanas-avanzado/": "/en/advanced-campaign-comparator/", "/en/tools/comparador-campanas-avanzado.html": "/en/advanced-campaign-comparator/", "/en/tools/advanced-campaign-comparator.html": "/en/advanced-campaign-comparator/", "/en/tools/comparador-campanas-avanzado/": "/en/advanced-campaign-comparator/", "/en/tools/advanced-campaign-comparator/": "/en/advanced-campaign-comparator/", "/en/herramientas/marketing/comparador-campanas-avanzado/": "/en/advanced-campaign-comparator/", "/consola-campanas.html": "/herramientas/marketing/consola-campanas/", "/consola-campanas/": "/herramientas/marketing/consola-campanas/", "/herramientas/consola-campanas.html": "/herramientas/marketing/consola-campanas/", "/herramientas/consola-campanas/": "/herramientas/marketing/consola-campanas/", "/en/consola-campanas.html": "/en/campaign-utm-console/", "/en/campaign-utm-console.html": "/en/campaign-utm-console/", "/en/consola-campanas/": "/en/campaign-utm-console/", "/en/tools/consola-campanas.html": "/en/campaign-utm-console/", "/en/tools/campaign-utm-console.html": "/en/campaign-utm-console/", "/en/tools/consola-campanas/": "/en/campaign-utm-console/", "/en/tools/campaign-utm-console/": "/en/campaign-utm-console/", "/en/herramientas/marketing/consola-campanas/": "/en/campaign-utm-console/", "/organizador-matriz-contenidos.html": "/herramientas/marketing/organizador-matriz-contenidos/", "/organizador-matriz-contenidos/": "/herramientas/marketing/organizador-matriz-contenidos/", "/herramientas/organizador-matriz-contenidos.html": "/herramientas/marketing/organizador-matriz-contenidos/", "/herramientas/organizador-matriz-contenidos/": "/herramientas/marketing/organizador-matriz-contenidos/", "/en/organizador-matriz-contenidos.html": "/en/content-matrix-planner/", "/en/content-matrix-planner.html": "/en/content-matrix-planner/", "/en/organizador-matriz-contenidos/": "/en/content-matrix-planner/", "/en/tools/organizador-matriz-contenidos.html": "/en/content-matrix-planner/", "/en/tools/content-matrix-planner.html": "/en/content-matrix-planner/", "/en/tools/organizador-matriz-contenidos/": "/en/content-matrix-planner/", "/en/tools/content-matrix-planner/": "/en/content-matrix-planner/", "/en/herramientas/marketing/organizador-matriz-contenidos/": "/en/content-matrix-planner/", "/calculadora-descuentos-promociones.html": "/herramientas/finanzas/calculadora-descuentos-promociones/", "/calculadora-descuentos-promociones/": "/herramientas/finanzas/calculadora-descuentos-promociones/", "/herramientas/calculadora-descuentos-promociones.html": "/herramientas/finanzas/calculadora-descuentos-promociones/", "/herramientas/calculadora-descuentos-promociones/": "/herramientas/finanzas/calculadora-descuentos-promociones/", "/en/calculadora-descuentos-promociones.html": "/en/discount-promotions-calculator/", "/en/discount-promotions-calculator.html": "/en/discount-promotions-calculator/", "/en/calculadora-descuentos-promociones/": "/en/discount-promotions-calculator/", "/en/tools/calculadora-descuentos-promociones.html": "/en/discount-promotions-calculator/", "/en/tools/discount-promotions-calculator.html": "/en/discount-promotions-calculator/", "/en/tools/calculadora-descuentos-promociones/": "/en/discount-promotions-calculator/", "/en/tools/discount-promotions-calculator/": "/en/discount-promotions-calculator/", "/en/herramientas/finanzas/calculadora-descuentos-promociones/": "/en/discount-promotions-calculator/", "/calculadora-precios-venta-igv.html": "/herramientas/finanzas/calculadora-precios-venta-igv/", "/calculadora-precios-venta-igv/": "/herramientas/finanzas/calculadora-precios-venta-igv/", "/herramientas/calculadora-precios-venta-igv.html": "/herramientas/finanzas/calculadora-precios-venta-igv/", "/herramientas/calculadora-precios-venta-igv/": "/herramientas/finanzas/calculadora-precios-venta-igv/", "/en/calculadora-precios-venta-igv.html": "/en/sales-pricing-tax-calculator/", "/en/sales-pricing-tax-calculator.html": "/en/sales-pricing-tax-calculator/", "/en/calculadora-precios-venta-igv/": "/en/sales-pricing-tax-calculator/", "/en/tools/calculadora-precios-venta-igv.html": "/en/sales-pricing-tax-calculator/", "/en/tools/sales-pricing-tax-calculator.html": "/en/sales-pricing-tax-calculator/", "/en/tools/calculadora-precios-venta-igv/": "/en/sales-pricing-tax-calculator/", "/en/tools/sales-pricing-tax-calculator/": "/en/sales-pricing-tax-calculator/", "/en/herramientas/finanzas/calculadora-precios-venta-igv/": "/en/sales-pricing-tax-calculator/", "/calculadora-prestamos-amortizaciones.html": "/herramientas/finanzas/calculadora-prestamos-amortizaciones/", "/calculadora-prestamos-amortizaciones/": "/herramientas/finanzas/calculadora-prestamos-amortizaciones/", "/herramientas/calculadora-prestamos-amortizaciones.html": "/herramientas/finanzas/calculadora-prestamos-amortizaciones/", "/herramientas/calculadora-prestamos-amortizaciones/": "/herramientas/finanzas/calculadora-prestamos-amortizaciones/", "/en/calculadora-prestamos-amortizaciones.html": "/en/loan-amortization-calculator/", "/en/loan-amortization-calculator.html": "/en/loan-amortization-calculator/", "/en/calculadora-prestamos-amortizaciones/": "/en/loan-amortization-calculator/", "/en/tools/calculadora-prestamos-amortizaciones.html": "/en/loan-amortization-calculator/", "/en/tools/loan-amortization-calculator.html": "/en/loan-amortization-calculator/", "/en/tools/calculadora-prestamos-amortizaciones/": "/en/loan-amortization-calculator/", "/en/tools/loan-amortization-calculator/": "/en/loan-amortization-calculator/", "/en/herramientas/finanzas/calculadora-prestamos-amortizaciones/": "/en/loan-amortization-calculator/", "/calculadora-sobrecostos-laborales.html": "/herramientas/finanzas/calculadora-sobrecostos-laborales/", "/calculadora-sobrecostos-laborales/": "/herramientas/finanzas/calculadora-sobrecostos-laborales/", "/herramientas/calculadora-sobrecostos-laborales.html": "/herramientas/finanzas/calculadora-sobrecostos-laborales/", "/herramientas/calculadora-sobrecostos-laborales/": "/herramientas/finanzas/calculadora-sobrecostos-laborales/", "/en/calculadora-sobrecostos-laborales.html": "/en/labor-cost-payroll-burden-calculator/", "/en/labor-cost-payroll-burden-calculator.html": "/en/labor-cost-payroll-burden-calculator/", "/en/calculadora-sobrecostos-laborales/": "/en/labor-cost-payroll-burden-calculator/", "/en/tools/calculadora-sobrecostos-laborales.html": "/en/labor-cost-payroll-burden-calculator/", "/en/tools/labor-cost-payroll-burden-calculator.html": "/en/labor-cost-payroll-burden-calculator/", "/en/tools/calculadora-sobrecostos-laborales/": "/en/labor-cost-payroll-burden-calculator/", "/en/tools/labor-cost-payroll-burden-calculator/": "/en/labor-cost-payroll-burden-calculator/", "/en/herramientas/finanzas/calculadora-sobrecostos-laborales/": "/en/labor-cost-payroll-burden-calculator/", "/flujo-caja-pymes.html": "/herramientas/finanzas/flujo-caja-pymes/", "/flujo-caja-pymes/": "/herramientas/finanzas/flujo-caja-pymes/", "/herramientas/flujo-caja-pymes.html": "/herramientas/finanzas/flujo-caja-pymes/", "/herramientas/flujo-caja-pymes/": "/herramientas/finanzas/flujo-caja-pymes/", "/en/flujo-caja-pymes.html": "/en/cash-flow-tracker/", "/en/cash-flow-tracker.html": "/en/cash-flow-tracker/", "/en/flujo-caja-pymes/": "/en/cash-flow-tracker/", "/en/tools/flujo-caja-pymes.html": "/en/cash-flow-tracker/", "/en/tools/cash-flow-tracker.html": "/en/cash-flow-tracker/", "/en/tools/flujo-caja-pymes/": "/en/cash-flow-tracker/", "/en/tools/cash-flow-tracker/": "/en/cash-flow-tracker/", "/en/herramientas/finanzas/flujo-caja-pymes/": "/en/cash-flow-tracker/", "/creador-facturas-proforma.html": "/herramientas/ventas/creador-facturas-proforma/", "/creador-facturas-proforma/": "/herramientas/ventas/creador-facturas-proforma/", "/herramientas/creador-facturas-proforma.html": "/herramientas/ventas/creador-facturas-proforma/", "/herramientas/creador-facturas-proforma/": "/herramientas/ventas/creador-facturas-proforma/", "/en/creador-facturas-proforma.html": "/en/proforma-invoice-generator/", "/en/proforma-invoice-generator.html": "/en/proforma-invoice-generator/", "/en/creador-facturas-proforma/": "/en/proforma-invoice-generator/", "/en/tools/creador-facturas-proforma.html": "/en/proforma-invoice-generator/", "/en/tools/proforma-invoice-generator.html": "/en/proforma-invoice-generator/", "/en/tools/creador-facturas-proforma/": "/en/proforma-invoice-generator/", "/en/tools/proforma-invoice-generator/": "/en/proforma-invoice-generator/", "/en/herramientas/ventas/creador-facturas-proforma/": "/en/proforma-invoice-generator/", "/generador-codigos-qr.html": "/herramientas/ventas/generador-codigos-qr/", "/generador-codigos-qr/": "/herramientas/ventas/generador-codigos-qr/", "/herramientas/generador-codigos-qr.html": "/herramientas/ventas/generador-codigos-qr/", "/herramientas/generador-codigos-qr/": "/herramientas/ventas/generador-codigos-qr/", "/en/generador-codigos-qr.html": "/en/qr-code-generator/", "/en/qr-code-generator.html": "/en/qr-code-generator/", "/en/generador-codigos-qr/": "/en/qr-code-generator/", "/en/tools/generador-codigos-qr.html": "/en/qr-code-generator/", "/en/tools/qr-code-generator.html": "/en/qr-code-generator/", "/en/tools/generador-codigos-qr/": "/en/qr-code-generator/", "/en/tools/qr-code-generator/": "/en/qr-code-generator/", "/en/herramientas/ventas/generador-codigos-qr/": "/en/qr-code-generator/", "/generador-cotizaciones.html": "/herramientas/ventas/generador-cotizaciones/", "/generador-cotizaciones/": "/herramientas/ventas/generador-cotizaciones/", "/herramientas/generador-cotizaciones.html": "/herramientas/ventas/generador-cotizaciones/", "/herramientas/generador-cotizaciones/": "/herramientas/ventas/generador-cotizaciones/", "/en/generador-cotizaciones.html": "/en/quote-estimate-generator/", "/en/quote-estimate-generator.html": "/en/quote-estimate-generator/", "/en/generador-cotizaciones/": "/en/quote-estimate-generator/", "/en/tools/generador-cotizaciones.html": "/en/quote-estimate-generator/", "/en/tools/quote-estimate-generator.html": "/en/quote-estimate-generator/", "/en/tools/generador-cotizaciones/": "/en/quote-estimate-generator/", "/en/tools/quote-estimate-generator/": "/en/quote-estimate-generator/", "/en/herramientas/ventas/generador-cotizaciones/": "/en/quote-estimate-generator/", "/guiones-manejo-objeciones.html": "/herramientas/ventas/guiones-manejo-objeciones/", "/guiones-manejo-objeciones/": "/herramientas/ventas/guiones-manejo-objeciones/", "/herramientas/guiones-manejo-objeciones.html": "/herramientas/ventas/guiones-manejo-objeciones/", "/herramientas/guiones-manejo-objeciones/": "/herramientas/ventas/guiones-manejo-objeciones/", "/en/guiones-manejo-objeciones.html": "/en/objection-handling-scripts/", "/en/objection-handling-scripts.html": "/en/objection-handling-scripts/", "/en/guiones-manejo-objeciones/": "/en/objection-handling-scripts/", "/en/tools/guiones-manejo-objeciones.html": "/en/objection-handling-scripts/", "/en/tools/objection-handling-scripts.html": "/en/objection-handling-scripts/", "/en/tools/guiones-manejo-objeciones/": "/en/objection-handling-scripts/", "/en/tools/objection-handling-scripts/": "/en/objection-handling-scripts/", "/en/herramientas/ventas/guiones-manejo-objeciones/": "/en/objection-handling-scripts/", "/crm-pymes.html": "/herramientas/ventas/crm-pymes/", "/crm-pymes/": "/herramientas/ventas/crm-pymes/", "/herramientas/crm-pymes.html": "/herramientas/ventas/crm-pymes/", "/herramientas/crm-pymes/": "/herramientas/ventas/crm-pymes/", "/en/crm-pymes.html": "/en/smb-crm/", "/en/smb-crm.html": "/en/smb-crm/", "/en/crm-pymes/": "/en/smb-crm/", "/en/tools/crm-pymes.html": "/en/smb-crm/", "/en/tools/smb-crm.html": "/en/smb-crm/", "/en/tools/crm-pymes/": "/en/smb-crm/", "/en/tools/smb-crm/": "/en/smb-crm/", "/en/herramientas/ventas/crm-pymes/": "/en/smb-crm/", "/generador-contratos-servicios.html": "/herramientas/legal/generador-contratos-servicios/", "/generador-contratos-servicios/": "/herramientas/legal/generador-contratos-servicios/", "/herramientas/generador-contratos-servicios.html": "/herramientas/legal/generador-contratos-servicios/", "/herramientas/generador-contratos-servicios/": "/herramientas/legal/generador-contratos-servicios/", "/en/generador-contratos-servicios.html": "/en/service-contracts-generator/", "/en/service-contracts-generator.html": "/en/service-contracts-generator/", "/en/generador-contratos-servicios/": "/en/service-contracts-generator/", "/en/tools/generador-contratos-servicios.html": "/en/service-contracts-generator/", "/en/tools/service-contracts-generator.html": "/en/service-contracts-generator/", "/en/tools/generador-contratos-servicios/": "/en/service-contracts-generator/", "/en/tools/service-contracts-generator/": "/en/service-contracts-generator/", "/en/herramientas/legal/generador-contratos-servicios/": "/en/service-contracts-generator/", "/generador-politicas-devolucion.html": "/herramientas/legal/generador-politicas-devolucion/", "/generador-politicas-devolucion/": "/herramientas/legal/generador-politicas-devolucion/", "/herramientas/generador-politicas-devolucion.html": "/herramientas/legal/generador-politicas-devolucion/", "/herramientas/generador-politicas-devolucion/": "/herramientas/legal/generador-politicas-devolucion/", "/en/generador-politicas-devolucion.html": "/en/return-policy-generator/", "/en/return-policy-generator.html": "/en/return-policy-generator/", "/en/generador-politicas-devolucion/": "/en/return-policy-generator/", "/en/tools/generador-politicas-devolucion.html": "/en/return-policy-generator/", "/en/tools/return-policy-generator.html": "/en/return-policy-generator/", "/en/tools/generador-politicas-devolucion/": "/en/return-policy-generator/", "/en/tools/return-policy-generator/": "/en/return-policy-generator/", "/en/herramientas/legal/generador-politicas-devolucion/": "/en/return-policy-generator/", "/generador-politicas-terminos.html": "/herramientas/legal/generador-politicas-terminos/", "/generador-politicas-terminos/": "/herramientas/legal/generador-politicas-terminos/", "/herramientas/generador-politicas-terminos.html": "/herramientas/legal/generador-politicas-terminos/", "/herramientas/generador-politicas-terminos/": "/herramientas/legal/generador-politicas-terminos/", "/en/generador-politicas-terminos.html": "/en/terms-privacy-generator/", "/en/terms-privacy-generator.html": "/en/terms-privacy-generator/", "/en/generador-politicas-terminos/": "/en/terms-privacy-generator/", "/en/tools/generador-politicas-terminos.html": "/en/terms-privacy-generator/", "/en/tools/terms-privacy-generator.html": "/en/terms-privacy-generator/", "/en/tools/generador-politicas-terminos/": "/en/terms-privacy-generator/", "/en/tools/terms-privacy-generator/": "/en/terms-privacy-generator/", "/en/herramientas/legal/generador-politicas-terminos/": "/en/terms-privacy-generator/", "/calculadora-flete-envio-local.html": "/herramientas/operaciones/calculadora-flete-envio-local/", "/calculadora-flete-envio-local/": "/herramientas/operaciones/calculadora-flete-envio-local/", "/herramientas/calculadora-flete-envio-local.html": "/herramientas/operaciones/calculadora-flete-envio-local/", "/herramientas/calculadora-flete-envio-local/": "/herramientas/operaciones/calculadora-flete-envio-local/", "/en/calculadora-flete-envio-local.html": "/en/local-shipping-calculator/", "/en/local-shipping-calculator.html": "/en/local-shipping-calculator/", "/en/calculadora-flete-envio-local/": "/en/local-shipping-calculator/", "/en/tools/calculadora-flete-envio-local.html": "/en/local-shipping-calculator/", "/en/tools/local-shipping-calculator.html": "/en/local-shipping-calculator/", "/en/tools/calculadora-flete-envio-local/": "/en/local-shipping-calculator/", "/en/tools/local-shipping-calculator/": "/en/local-shipping-calculator/", "/en/herramientas/operaciones/calculadora-flete-envio-local/": "/en/local-shipping-calculator/", "/simulador-tco-fisico-nube.html": "/herramientas/operaciones/simulador-tco-fisico-nube/", "/simulador-tco-fisico-nube/": "/herramientas/operaciones/simulador-tco-fisico-nube/", "/herramientas/simulador-tco-fisico-nube.html": "/herramientas/operaciones/simulador-tco-fisico-nube/", "/herramientas/simulador-tco-fisico-nube/": "/herramientas/operaciones/simulador-tco-fisico-nube/", "/en/simulador-tco-fisico-nube.html": "/en/cloud-vs-onprem-tco-simulator/", "/en/cloud-vs-onprem-tco-simulator.html": "/en/cloud-vs-onprem-tco-simulator/", "/en/simulador-tco-fisico-nube/": "/en/cloud-vs-onprem-tco-simulator/", "/en/tools/simulador-tco-fisico-nube.html": "/en/cloud-vs-onprem-tco-simulator/", "/en/tools/cloud-vs-onprem-tco-simulator.html": "/en/cloud-vs-onprem-tco-simulator/", "/en/tools/simulador-tco-fisico-nube/": "/en/cloud-vs-onprem-tco-simulator/", "/en/tools/cloud-vs-onprem-tco-simulator/": "/en/cloud-vs-onprem-tco-simulator/", "/en/herramientas/operaciones/simulador-tco-fisico-nube/": "/en/cloud-vs-onprem-tco-simulator/", "/inventario-compras-pymes.html": "/herramientas/operaciones/inventario-compras-pymes/", "/inventario-compras-pymes/": "/herramientas/operaciones/inventario-compras-pymes/", "/herramientas/inventario-compras-pymes.html": "/herramientas/operaciones/inventario-compras-pymes/", "/herramientas/inventario-compras-pymes/": "/herramientas/operaciones/inventario-compras-pymes/", "/en/inventario-compras-pymes.html": "/en/inventory-purchasing/", "/en/inventory-purchasing.html": "/en/inventory-purchasing/", "/en/inventario-compras-pymes/": "/en/inventory-purchasing/", "/en/tools/inventario-compras-pymes.html": "/en/inventory-purchasing/", "/en/tools/inventory-purchasing.html": "/en/inventory-purchasing/", "/en/tools/inventario-compras-pymes/": "/en/inventory-purchasing/", "/en/tools/inventory-purchasing/": "/en/inventory-purchasing/", "/en/herramientas/operaciones/inventario-compras-pymes/": "/en/inventory-purchasing/", "/conversor-optimizador-imagenes.html": "/herramientas/productividad/conversor-optimizador-imagenes/", "/conversor-optimizador-imagenes/": "/herramientas/productividad/conversor-optimizador-imagenes/", "/herramientas/conversor-optimizador-imagenes.html": "/herramientas/productividad/conversor-optimizador-imagenes/", "/herramientas/conversor-optimizador-imagenes/": "/herramientas/productividad/conversor-optimizador-imagenes/", "/en/conversor-optimizador-imagenes.html": "/en/image-converter-optimizer/", "/en/image-converter-optimizer.html": "/en/image-converter-optimizer/", "/en/conversor-optimizador-imagenes/": "/en/image-converter-optimizer/", "/en/tools/conversor-optimizador-imagenes.html": "/en/image-converter-optimizer/", "/en/tools/image-converter-optimizer.html": "/en/image-converter-optimizer/", "/en/tools/conversor-optimizador-imagenes/": "/en/image-converter-optimizer/", "/en/tools/image-converter-optimizer/": "/en/image-converter-optimizer/", "/en/herramientas/productividad/conversor-optimizador-imagenes/": "/en/image-converter-optimizer/", "/firma-correo-html.html": "/herramientas/productividad/firma-correo-html/", "/firma-correo-html/": "/herramientas/productividad/firma-correo-html/", "/herramientas/firma-correo-html.html": "/herramientas/productividad/firma-correo-html/", "/herramientas/firma-correo-html/": "/herramientas/productividad/firma-correo-html/", "/en/firma-correo-html.html": "/en/html-email-signature/", "/en/html-email-signature.html": "/en/html-email-signature/", "/en/firma-correo-html/": "/en/html-email-signature/", "/en/tools/firma-correo-html.html": "/en/html-email-signature/", "/en/tools/html-email-signature.html": "/en/html-email-signature/", "/en/tools/firma-correo-html/": "/en/html-email-signature/", "/en/tools/html-email-signature/": "/en/html-email-signature/", "/en/herramientas/productividad/firma-correo-html/": "/en/html-email-signature/", "/generador-contrasenas-pymes.html": "/herramientas/productividad/generador-contrasenas-pymes/", "/generador-contrasenas-pymes/": "/herramientas/productividad/generador-contrasenas-pymes/", "/herramientas/generador-contrasenas-pymes.html": "/herramientas/productividad/generador-contrasenas-pymes/", "/herramientas/generador-contrasenas-pymes/": "/herramientas/productividad/generador-contrasenas-pymes/", "/en/generador-contrasenas-pymes.html": "/en/smb-password-generator/", "/en/smb-password-generator.html": "/en/smb-password-generator/", "/en/generador-contrasenas-pymes/": "/en/smb-password-generator/", "/en/tools/generador-contrasenas-pymes.html": "/en/smb-password-generator/", "/en/tools/smb-password-generator.html": "/en/smb-password-generator/", "/en/tools/generador-contrasenas-pymes/": "/en/smb-password-generator/", "/en/tools/smb-password-generator/": "/en/smb-password-generator/", "/en/herramientas/productividad/generador-contrasenas-pymes/": "/en/smb-password-generator/", "/generador-paletas-corporativas.html": "/herramientas/productividad/generador-paletas-corporativas/", "/generador-paletas-corporativas/": "/herramientas/productividad/generador-paletas-corporativas/", "/herramientas/generador-paletas-corporativas.html": "/herramientas/productividad/generador-paletas-corporativas/", "/herramientas/generador-paletas-corporativas/": "/herramientas/productividad/generador-paletas-corporativas/", "/en/generador-paletas-corporativas.html": "/en/brand-palette-generator/", "/en/brand-palette-generator.html": "/en/brand-palette-generator/", "/en/generador-paletas-corporativas/": "/en/brand-palette-generator/", "/en/tools/generador-paletas-corporativas.html": "/en/brand-palette-generator/", "/en/tools/brand-palette-generator.html": "/en/brand-palette-generator/", "/en/tools/generador-paletas-corporativas/": "/en/brand-palette-generator/", "/en/tools/brand-palette-generator/": "/en/brand-palette-generator/", "/en/herramientas/productividad/generador-paletas-corporativas/": "/en/brand-palette-generator/", "/tareas-proyectos-pymes.html": "/herramientas/productividad/tareas-proyectos-pymes/", "/tareas-proyectos-pymes/": "/herramientas/productividad/tareas-proyectos-pymes/", "/herramientas/tareas-proyectos-pymes.html": "/herramientas/productividad/tareas-proyectos-pymes/", "/herramientas/tareas-proyectos-pymes/": "/herramientas/productividad/tareas-proyectos-pymes/", "/en/tareas-proyectos-pymes.html": "/en/tasks-projects-tracker/", "/en/tasks-projects-tracker.html": "/en/tasks-projects-tracker/", "/en/tareas-proyectos-pymes/": "/en/tasks-projects-tracker/", "/en/tools/tareas-proyectos-pymes.html": "/en/tasks-projects-tracker/", "/en/tools/tasks-projects-tracker.html": "/en/tasks-projects-tracker/", "/en/tools/tareas-proyectos-pymes/": "/en/tasks-projects-tracker/", "/en/tools/tasks-projects-tracker/": "/en/tasks-projects-tracker/", "/en/herramientas/productividad/tareas-proyectos-pymes/": "/en/tasks-projects-tracker/"}};
+/* Generated route data is prepended by the production build. */
+(function () {
   'use strict';
-
-  var STORAGE_KEY = 'npp_user_lang';
-  var COOKIE_KEY = 'npp_user_lang';
-  
-  var ES_TO_EN = {
-  "ahorrar-horas-trabajo-administrativo": "save-hours-administrative-work",
-  "alternativas-excel-control-inventario": "excel-alternatives-inventory-control",
-  "alternativas-gratuitas-asana": "free-asana-alternatives",
-  "alternativas-gratuitas-notion": "free-notion-alternatives",
-  "alternativas-gratuitas-quickbooks": "free-quickbooks-alternatives",
-  "alternativas-gratuitas-slack": "free-slack-alternatives",
-  "apps-controlar-gastos-negocio": "best-business-expense-tracker-apps",
-  "apps-gestion-tareas-freelancers": "task-management-apps-freelancers",
-  "automatizacion-ia-pymes-criterios-decision": "ai-automation-smbs-decision-criteria",
-  "automatizacion-redes-sociales-ia": "social-media-automation-ai",
-  "automatizar-envio-facturas-recordatorios": "automate-invoice-delivery-reminders",
-  "automatizar-facturacion-recurrente": "automate-recurring-invoicing",
-  "chatbots-ia-pequenos-negocios": "ai-chatbots-small-businesses",
-  "chatgpt-atencion-al-cliente": "chatgpt-customer-support-guide",
-  "clickup-vs-monday": "clickup-vs-monday-comparison",
-  "control-horarios-equipos-remotos": "time-tracking-remote-teams",
-  "crear-tablero-kanban-desde-cero": "build-kanban-board-from-scratch",
-  "crm-alternativas-gratuitas-salesforce": "free-salesforce-crm-alternatives",
-  "crm-como-elegir-un-crm-segun-tamano-empresa": "how-to-choose-crm-by-company-size",
-  "crm-con-ia-para-pymes-que-automatizar": "ai-crm-for-smbs-what-to-automate",
-  "crm-con-whatsapp-integrado": "crm-with-whatsapp-integration",
-  "crm-hubspot-vs-zoho-crm": "crm-hubspot-vs-zoho-comparison",
-  "crm-integrado-whatsapp-business": "crm-integrated-whatsapp-business",
-  "crm-para-freelancers": "crm-for-freelancers",
-  "crm-para-inmobiliarias": "crm-for-real-estate",
-  "digitalizacion-procesos-pyme-sin-programar": "smb-process-digitization-no-code",
-  "digitalizar-procesos-negocio-pequeno": "digitize-small-business-processes",
-  "elegir-software-segun-numero-empleados": "choose-software-by-team-size",
-  "elegir-software-segun-presupuesto": "choose-software-by-budget",
-  "facturacion-electronica-freelancers": "electronic-invoicing-freelancers",
-  "facturacion-electronica-mexico": "electronic-invoicing-mexico-guide",
-  "facturar-independiente-peru": "freelance-invoicing-peru-guide",
-  "firma-electronica-pequenas-empresas": "electronic-signature-small-businesses",
-  "geo-para-pymes-respuestas-inteligencia-artificial": "geo-for-smbs-ai-recommendations",
-  "gestion-academias-online": "online-academy-management-software",
-  "gestion-citas-profesionales-independientes": "appointment-scheduling-independent-professionals",
-  "gestion-despachos-abogados": "law-firm-management-software",
-  "gestion-proyectos-agencias-creativas": "project-management-creative-agencies",
-  "gestion-proyectos-agencias-marketing": "project-management-marketing-agencies",
-  "gestion-proyectos-gratis-vs-pago": "free-vs-paid-project-management",
-  "gestion-tiendas-online": "ecommerce-store-management-software",
-  "google-sheets-vs-software-especializado": "google-sheets-vs-dedicated-software",
-  "google-workspace-vs-microsoft-365": "google-workspace-vs-microsoft-365-comparison",
-  "herramientas-encuestas-feedback-clientes": "customer-feedback-survey-tools",
-  "herramientas-ia-automatizar-tareas": "ai-tools-automate-business-tasks",
-  "herramientas-profesores-particulares": "management-tools-private-tutors",
-  "herramientas-videollamadas-equipos-remotos": "video-conferencing-remote-teams",
-  "ia-contenido-marketing-pymes": "ai-content-creation-smb-marketing",
-  "ia-generar-informes-reportes": "ai-business-reports-generation",
-  "mejores-crm-gratuitos-espanol": "best-free-crm-platforms",
-  "migrar-de-excel-a-un-crm": "how-to-migrate-excel-to-crm",
-  "monday-com-vale-la-pena": "monday-com-review-is-it-worth-it",
-  "notion-vs-clickup": "notion-vs-clickup-comparison",
-  "organizar-equipo-remoto-trello": "manage-remote-teams-trello",
-  "plataformas-elearning-vender-cursos": "elearning-platforms-sell-courses",
-  "punto-de-venta-restaurantes": "pos-systems-restaurants",
-  "que-es-un-crm-para-que-sirve": "what-is-a-crm-guide",
-  "reuniones-eficientes-equipos-distribuidos": "efficient-meetings-distributed-teams",
-  "seo-geo-para-pymes-visibilidad-ia": "seo-geo-smb-ai-visibility",
-  "slack-vs-microsoft-teams": "slack-vs-microsoft-teams-comparison",
-  "software-academias-idiomas": "language-school-management-software",
-  "software-academias-matematicas": "math-tutoring-center-software",
-  "software-contabilidad-pymes": "accounting-software-smbs",
-  "software-gimnasios-estudios": "gym-fitness-studio-software",
-  "software-local-o-en-la-nube": "on-premise-vs-cloud-software",
-  "software-nomina-pymes-latam": "payroll-software-smbs-guide",
-  "software-reservas-clinicas": "clinic-appointment-booking-software",
-  "trello-vs-asana": "trello-vs-asana-comparison",
-  "zapier-vs-make": "zapier-vs-make-comparison",
-  "zoom-vs-google-meet": "zoom-vs-google-meet-comparison"
-};
-  var TOOLS_ES_TO_EN = {
-  "analizador-titulares": "headline-analyzer",
-  "auditor-seo-basico": "basic-on-page-seo-auditor",
-  "calculadora-descuentos-promociones": "discount-promotions-calculator",
-  "calculadora-flete-envio-local": "local-shipping-calculator",
-  "calculadora-precios-venta-igv": "sales-pricing-tax-calculator",
-  "calculadora-prestamos-amortizaciones": "loan-amortization-calculator",
-  "calculadora-sobrecostos-laborales": "labor-cost-payroll-burden-calculator",
-  "comparador-campanas-avanzado": "advanced-campaign-comparator",
-  "consola-campanas": "campaign-utm-console",
-  "conversor-optimizador-imagenes": "image-converter-optimizer",
-  "creador-facturas-proforma": "proforma-invoice-generator",
-  "crm-pymes": "smb-crm",
-  "firma-correo-html": "html-email-signature",
-  "flujo-caja-pymes": "cash-flow-tracker",
-  "generador-codigos-qr": "qr-code-generator",
-  "generador-contrasenas-pymes": "smb-password-generator",
-  "generador-contratos-servicios": "service-contracts-generator",
-  "generador-cotizaciones": "quote-estimate-generator",
-  "generador-paletas-corporativas": "brand-palette-generator",
-  "generador-politicas-devolucion": "return-policy-generator",
-  "generador-politicas-terminos": "terms-privacy-generator",
-  "guia-uso-22-apps": "user-guide",
-  "guiones-manejo-objeciones": "objection-handling-scripts",
-  "inventario-compras-pymes": "inventory-purchasing",
-  "organizador-matriz-contenidos": "content-matrix-planner",
-  "simulador-tco-fisico-nube": "cloud-vs-onprem-tco-simulator",
-  "tareas-proyectos-pymes": "tasks-projects-tracker"
-};
-  
-  var EN_TO_ES = {};
-  for (var k in ES_TO_EN) {
-    EN_TO_ES[ES_TO_EN[k]] = k;
+  var routes = window.NPP_ROUTES;
+  if (!routes) return;
+  var pairs = routes.pairs;
+  var reverse = {};
+  Object.keys(pairs).forEach(function (key) { reverse[pairs[key]] = key; });
+  function normalize(path) {
+    if (routes.aliases[path]) return routes.aliases[path];
+    path = path.replace(/\/index\.html$/, '/');
+    if (!/\.[^/]+$/.test(path) && !path.endsWith('/')) path += '/';
+    return routes.aliases[path] || path;
   }
-
-  var TOOLS_EN_TO_ES = {};
-  for (var tk in TOOLS_ES_TO_EN) {
-    TOOLS_EN_TO_ES[TOOLS_ES_TO_EN[tk]] = tk;
+  var path = normalize(location.pathname);
+  var isEn = path.indexOf('/en/') === 0;
+  var opposite = isEn ? reverse[path] : pairs[path];
+  // An explicit URL always wins over an old cookie. A Spanish switch must never
+  // be redirected back to English on arrival by a previous preference.
+  function remember(lang) {
+    try { localStorage.setItem('npp_user_lang', lang); } catch (_) {}
+    try { document.cookie = 'npp_user_lang=' + lang + '; path=/; max-age=31536000; SameSite=Lax'; } catch (_) {}
   }
-
-  var SPECIAL_ES_TO_EN = {
-    'sobre-nosotros': 'about-us',
-    'herramientas': 'tools',
-    'directorio-herramientas': 'tools',
-    'blog': 'blog'
-  };
-
-  var SPECIAL_EN_TO_ES = {
-    'about-us': 'sobre-nosotros',
-    'tools': 'herramientas',
-    'user-guide': 'herramientas/guia-uso',
-    'blog': 'blog'
-  };
-
-  function getStoredLang() {
-    try {
-      var cookieMatch = document.cookie.match(new RegExp('(?:^|; )' + COOKIE_KEY + '=([^;]*)'));
-      if (cookieMatch && cookieMatch[1]) {
-        return decodeURIComponent(cookieMatch[1]);
-      }
-      return localStorage.getItem(STORAGE_KEY);
-    } catch (e) {
-      return null;
+  remember(isEn ? 'en' : 'es');
+  var selector = '.np-lang-toggle, .np-footer-lang, #np-nav-lang-switcher, #np-footer-lang-switcher a, .menu-item-lang-switcher a';
+  function fixLink(a) {
+    var raw = a.getAttribute('href');
+    if (!raw || /^(#|mailto:|tel:|javascript:|data:)/i.test(raw)) return;
+    var url;
+    try { url = new URL(raw, location.href); } catch (_) { return; }
+    if (url.origin !== location.origin && url.hostname !== 'nubeparapymes.online' && url.hostname !== 'apps.nubeparapymes.online') return;
+    var switcher = a.matches(selector) || raw === './en/index.html';
+    var target;
+    if (switcher && opposite) {
+      target = opposite;
+      a.setAttribute('data-language-switch', 'true');
+    } else {
+      target = normalize(url.pathname);
+      if (url.hostname === 'apps.nubeparapymes.online') target = routes.aliases[target] || (target === '/' ? '/herramientas/' : target);
+      if (isEn && pairs[target]) target = pairs[target];
     }
+    var next = target + url.search + url.hash;
+    if (raw !== next) a.setAttribute('href', next);
   }
-
-  function setStoredLang(lang) {
-    try {
-      localStorage.setItem(STORAGE_KEY, lang);
-      document.cookie = COOKIE_KEY + '=' + encodeURIComponent(lang) + '; path=/; max-age=31536000; SameSite=Lax';
-    } catch (e) {}
+  function fixLinks(root) {
+    if (root.matches && root.matches('a[href]')) fixLink(root);
+    if (root.querySelectorAll) root.querySelectorAll('a[href]').forEach(fixLink);
   }
-
-  var path = window.location.pathname.replace(/^\/+|\/+$/g, '');
-  var parts = path ? path.split('/') : [];
-  var isEn = (parts.length > 0 && parts[0] === 'en');
-
-  var currentPref = getStoredLang();
-
-  // 1. Detección automática en primera visita (sin preferencia previa guardada)
-  if (!currentPref) {
-    var userNavLang = (navigator.language || navigator.userLanguage || '').toLowerCase();
-    if (userNavLang.startsWith('en')) {
-      // Si el navegador es inglés y visita la portada raíz, enrutar a /en/
-      if (parts.length === 0 || parts[0] === 'index.html') {
-        setStoredLang('en');
-        window.location.replace('/en/');
-        return;
-      }
+  function start() {
+    function ensureSwitch() {
+      if (!opposite || document.querySelector('.np-lang-toggle, #np-nav-lang-switcher')) return;
+      var header = document.querySelector('.op-nav, header nav, header');
+      if (!header) return;
+      var link = document.createElement('a');
+      link.className = 'np-lang-toggle';
+      link.href = opposite;
+      link.textContent = isEn ? 'EN | ES' : 'ES | EN';
+      link.setAttribute('aria-label', isEn ? 'Cambiar a español' : 'Switch to English');
+      link.style.cssText = 'display:inline-flex;align-items:center;white-space:nowrap;margin:8px;padding:6px 12px;border:1px solid currentColor;border-radius:999px;font-size:12px;font-weight:600;';
+      header.appendChild(link);
     }
-  } else {
-    // 2. Si el usuario TIENE preferencia activa 'en', enrutar a la página en inglés correspondiente
-    if (currentPref === 'en' && !isEn) {
-      var target = null;
-      if (parts.length === 0 || parts[0] === 'index.html') {
-        target = '/en/';
-      } else if (parts[0] in ES_TO_EN) {
-        target = '/en/' + ES_TO_EN[parts[0]] + '/';
-      } else if (parts[0] in SPECIAL_ES_TO_EN) {
-        target = '/en/' + SPECIAL_ES_TO_EN[parts[0]] + '/';
-      } else if (parts[0] === 'category' && parts.length > 1) {
-        target = '/en/category/' + parts[1] + '/';
-      } else if (parts[0] === 'blog') {
-        target = '/en/blog/';
-      } else if (parts[0] === 'herramientas') {
-        if (parts.length >= 3 && parts[2] in TOOLS_ES_TO_EN) {
-          target = '/en/' + TOOLS_ES_TO_EN[parts[2]] + '.html';
-        } else if (parts.length >= 2 && parts[1] === 'guia-uso') {
-          target = '/en/user-guide.html';
-        } else {
-          target = '/en/tools/';
-        }
-      } else if (parts[0].endsWith('.html')) {
-        var baseSlug = parts[0].replace(/\.html$/, '');
-        if (baseSlug in TOOLS_ES_TO_EN) {
-          target = '/en/' + TOOLS_ES_TO_EN[baseSlug] + '.html';
-        } else if (baseSlug === 'guia-uso-22-apps') {
-          target = '/en/user-guide.html';
-        }
-      }
-      
-      // Solo redirigir si encontramos un target válido y es diferente de la URL actual
-      if (target && window.location.pathname !== target) {
-        window.location.replace(target);
-        return;
-      }
-    }
-  }
-
-  // 4. Inyectar pill de idioma en herramientas si no existe en el header
-  function renderToolHeaderPill() {
-    var isToolPage = !!document.querySelector('body[data-app-id]') || !!document.querySelector('.np-global-footer') || parts[0] === 'herramientas' || (parts.length > 0 && parts[0].endsWith('.html')) || (isEn && parts.length > 1 && parts[1].endsWith('.html'));
-    if (!isToolPage) return;
-
-    var existingPill = document.querySelector('.np-lang-toggle');
-    if (existingPill) return;
-
-    var footerLang = document.querySelector('.np-footer-lang');
-    var targetUrl = footerLang ? footerLang.getAttribute('href') : null;
-    
-    if (!targetUrl) {
-      var appId = document.body.getAttribute('data-app-id');
-      if (isEn) {
-        targetUrl = '/herramientas/';
-      } else {
-        if (appId && appId in TOOLS_ES_TO_EN) {
-          targetUrl = '/en/' + TOOLS_ES_TO_EN[appId] + '.html';
-        } else {
-          targetUrl = '/en/tools/';
-        }
-      }
-    }
-
-    // Si tiene .op-nav (herramientas operativas)
-    var nav = document.querySelector('.op-nav');
-    if (nav && !nav.querySelector('.np-lang-toggle')) {
-      var a = document.createElement('a');
-      a.className = 'np-lang-toggle';
-      a.href = targetUrl;
-      a.style.cssText = 'display:inline-flex;align-items:center;gap:4px;border:1px solid rgba(255,255,255,0.3);border-radius:9px;padding:6px 10px;font-size:12px;font-weight:700;color:#fff;text-decoration:none;margin-left:4px;background:rgba(255,255,255,0.1);';
-      a.title = isEn ? 'Cambiar a español' : 'Switch to English';
-      a.innerHTML = isEn ? '<span style="color:#f97316;">EN</span> | ES' : 'EN | <span style="color:#f97316;">ES</span>';
-      nav.appendChild(a);
-      return;
-    }
-
-    // Para el resto de herramientas (React / Vite)
-    if (!document.getElementById('np-floating-lang')) {
-      var aside = document.createElement('aside');
-      aside.id = 'np-floating-lang';
-      aside.setAttribute('aria-label', isEn ? 'Language selector' : 'Selector de idioma');
-      aside.style.cssText = 'position:fixed;top:14px;right:18px;z-index:99999;display:inline-flex;align-items:center;pointer-events:auto;';
-      var a = document.createElement('a');
-      a.className = 'np-lang-toggle';
-      a.href = targetUrl;
-      a.style.cssText = 'display:inline-flex;align-items:center;gap:6px;height:32px;line-height:30px;padding:0 12px;border-radius:16px;border:1px solid rgba(255,255,255,0.25);background:rgba(15,23,42,0.88);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);color:#f8fafc;font-size:12px;font-weight:700;text-decoration:none;box-shadow:0 4px 16px rgba(0,0,0,0.3);transition:all 0.2s ease;';
-      a.title = isEn ? 'Cambiar a español' : 'Switch to English';
-      a.setAttribute('aria-label', isEn ? 'Cambiar a español' : 'Switch to English');
-      var globe = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="opacity:0.85;flex-shrink:0;"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>';
-      var labels = isEn 
-        ? '<span style="color:#f97316;font-weight:800;">EN</span><span style="color:rgba(255,255,255,0.3);margin:0 2px;">|</span><span style="color:#94a3b8;font-weight:500;">ES</span>' 
-        : '<span style="color:#94a3b8;font-weight:500;">EN</span><span style="color:rgba(255,255,255,0.3);margin:0 2px;">|</span><span style="color:#f97316;font-weight:800;">ES</span>';
-      a.innerHTML = globe + labels;
-      aside.appendChild(a);
-      document.body.appendChild(aside);
-    }
-  }
-
-  // 3. Capturar clics en selectores de idioma y en enlaces de navegación
-  function bindInteractions() {
-    renderToolHeaderPill();
-
-    document.querySelectorAll('a.np-lang-toggle, a.np-footer-lang').forEach(function(btn) {
-      btn.addEventListener('click', function(e) {
-        var href = btn.getAttribute('href') || '';
-        if (href.startsWith('/en/') || href === '/en' || href.indexOf('/en/') !== -1) {
-          setStoredLang('en');
-        } else {
-          setStoredLang('es');
-        }
+    ensureSwitch();
+    fixLinks(document);
+    new MutationObserver(function (records) {
+      ensureSwitch();
+      records.forEach(function (record) {
+        if (record.type === 'attributes') fixLink(record.target);
+        else record.addedNodes.forEach(fixLinks);
       });
-    });
-
-    // Si estamos en versión en inglés, proteger que los clics internos no salgan accidentalmente a español
-    if (isEn) {
-      document.addEventListener('click', function(e) {
-        var a = e.target.closest('a');
-        if (!a) return;
-        if (a.classList.contains('np-lang-toggle') || a.classList.contains('np-footer-lang')) return;
-        
-        var href = a.getAttribute('href');
-        if (!href || href.startsWith('#') || href.startsWith('http') || href.startsWith('mailto:') || href.startsWith('tel:') || href.startsWith('javascript:')) return;
-        
-        if (href === '/blog/' || href === '/blog') {
-          e.preventDefault();
-          window.location.href = '/en/blog/';
-        } else if (href === '/sobre-nosotros/' || href === '/sobre-nosotros') {
-          e.preventDefault();
-          window.location.href = '/en/about-us/';
-        } else if (href === '/herramientas/' || href === '/directorio-herramientas/' || href === '/herramientas') {
-          e.preventDefault();
-          window.location.href = '/en/tools/';
-        } else if (href.startsWith('/category/')) {
-          e.preventDefault();
-          window.location.href = '/en' + href;
-        } else if (href.startsWith('/herramientas/')) {
-          var hParts = href.replace(/^\/+|\/+$/g, '').split('/');
-          if (hParts.length >= 3 && hParts[2] in TOOLS_ES_TO_EN) {
-            e.preventDefault();
-            window.location.href = '/en/' + TOOLS_ES_TO_EN[hParts[2]] + '.html';
-          } else if (hParts.length >= 2 && hParts[1] === 'guia-uso') {
-            e.preventDefault();
-            window.location.href = '/en/user-guide.html';
-          }
-        } else {
-          // Manejo de enlaces relativos como ./crm-pymes.html o crm-pymes.html
-          var cleanName = href.replace(/^\.\//, '').replace(/\.html$/, '');
-          if (cleanName in TOOLS_ES_TO_EN) {
-            e.preventDefault();
-            window.location.href = '/en/' + TOOLS_ES_TO_EN[cleanName] + '.html';
-          }
-        }
-      }, true);
-    }
+    }).observe(document.body, {childList: true, subtree: true, attributes: true, attributeFilter: ['href']});
+    document.addEventListener('click', function (event) {
+      var a = event.target.closest && event.target.closest('a[href]');
+      if (!a) return;
+      fixLink(a);
+      if (a.getAttribute('data-language-switch') === 'true') remember(isEn ? 'es' : 'en');
+    }, true);
   }
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', bindInteractions);
-  } else {
-    bindInteractions();
-  }
+  window.NPP_LANGUAGE = {normalize: normalize, opposite: opposite};
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start);
+  else start();
 })();

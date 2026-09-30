@@ -10,6 +10,17 @@
     { title: "Revisa tu inventario", text: "Ve stock, reposición y costo de productos.", href: "/herramientas/operaciones/inventario-compras-pymes/", tag: "Operación" },
     { title: "Comparte tu WhatsApp", text: "Genera un código QR para iniciar conversaciones.", href: "/herramientas/ventas/generador-codigos-qr/", tag: "Visibilidad" }
   ];
+  var isEn = document.documentElement.lang.indexOf('en') === 0;
+  if (isEn) {
+    tools = [
+      {title: 'Set your selling price', text: 'Calculate margin, tax, and selling price.', href: '/en/sales-pricing-tax-calculator/', tag: 'Pricing'},
+      {title: 'Prepare a quote', text: 'Turn a service into a clear proposal.', href: '/en/quote-estimate-generator/', tag: 'Sales'},
+      {title: 'Organize opportunities', text: 'Track contacts, stages, and next steps.', href: '/en/smb-crm/', tag: 'CRM'},
+      {title: 'Track your cash flow', text: 'Record income, expenses, and outstanding payments.', href: '/en/cash-flow-tracker/', tag: 'Finance'},
+      {title: 'Review your inventory', text: 'Track stock, replenishment, and product costs.', href: '/en/inventory-purchasing/', tag: 'Operations'},
+      {title: 'Share your WhatsApp', text: 'Generate a QR code to start conversations.', href: '/en/qr-code-generator/', tag: 'Visibility'}
+    ];
+  }
 
   function addStyles() {
     if (document.getElementById("np-directory-experience-style")) return;
@@ -27,6 +38,11 @@
     section.className = "np-start-results";
     section.setAttribute("aria-labelledby", "np-start-results-title");
     section.innerHTML = "<div class=\"np-start-results__head\"><div><p class=\"np-start-results__eyebrow\">Empieza por un resultado</p><h2 id=\"np-start-results-title\">Una necesidad concreta, una herramienta lista para usar.</h2></div><p class=\"np-start-results__note\">Cada acceso abre una herramienta gratuita y local. Puedes cargar un ejemplo antes de ingresar información propia.</p></div><div class=\"np-start-results__grid\">" + tools.map(function (tool) { return "<a class=\"np-start-results__card\" href=\"" + tool.href + "\"><span class=\"np-start-results__tag\">" + tool.tag + "</span><strong>" + tool.title + "</strong><span>" + tool.text + "</span></a>"; }).join("") + "</div>";
+    if (isEn) {
+      section.querySelector('.np-start-results__eyebrow').textContent = 'Start with a result';
+      section.querySelector('h2').textContent = 'One specific need, one tool ready to use.';
+      section.querySelector('.np-start-results__note').textContent = 'Each link opens a free tool that runs locally. Load an example before entering your own information.';
+    }
     main.insertBefore(section, main.firstChild);
     return true;
   }

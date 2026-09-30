@@ -13,6 +13,7 @@ import json
 import shutil
 from pathlib import Path
 from datetime import datetime
+from functools import lru_cache
 
 ROOT = Path(__file__).resolve().parents[1]
 DIST = ROOT / "dist"
@@ -24,6 +25,7 @@ SITE_URL = "https://nubeparapymes.online"
 def log(msg):
     print(f"[PAGINATION] {msg}", flush=True)
 
+@lru_cache(maxsize=1)
 def load_all_posts():
     log("Cargando catálogo y metadatos de los 70 artículos...")
     catalog_path = ROOT / "scripts" / "posts_catalog.json"
@@ -257,6 +259,8 @@ def generate_pagination_html(current_page, total_pages, base_url):
     return "\n".join(lines)
 
 def build_archive_series(name, template_file, base_url, posts_list, target_dirs):
+    # Production builds must never overwrite the WordPress export or sources.
+    target_dirs = [target for target in target_dirs if target.resolve().is_relative_to(DIST.resolve())]
     """
     Construye las páginas paginadas a partir de una plantilla dada.
     """

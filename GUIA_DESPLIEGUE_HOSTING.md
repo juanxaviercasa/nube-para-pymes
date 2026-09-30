@@ -1,289 +1,73 @@
-# Guía de despliegue e instalación de NubeParaPymes
+﻿# Publicación del sitio bilingüe
 
-**Versión:** estructura estática consolidada en `main`  
-**Autor:** Manus AI  
-**Tipo de proyecto:** sitio estático HTML, CSS y JavaScript; no requiere Node.js, PHP, base de datos ni variables de entorno para ejecutarse en producción.
+El sitio combina la exportación editorial de WordPress, 26 herramientas y sus versiones inglesas. El único directorio de publicación es **dist/**. La raíz del repositorio contiene fuentes y no debe publicarse como sitio final.
 
-## 1. Objetivo de esta guía
+## Compilar y comprobar
 
-Esta guía documenta la forma correcta de instalar y publicar las 22 aplicaciones de NubeParaPymes en GitHub Pages, cPanel, Apache, Nginx, Netlify, Cloudflare Pages u otro hosting estático. El objetivo es evitar los dos problemas que aparecieron durante las primeras publicaciones: errores **404 por rutas o carpetas incorrectas** y pantallas vacías o azules producidas por recursos JavaScript/CSS que no se cargan o por errores de ejecución.
-
-La versión publicada es completamente local y estática. Las aplicaciones no deben instalarse ejecutando cada carpeta por separado. Debe publicarse el **contenido completo de la raíz del repositorio** como un único sitio.
-
-> **Regla principal:** el archivo `index.html`, los 22 HTML de aplicaciones, `css/`, `js/` y `assets/` deben quedar en el mismo nivel raíz del directorio público del hosting.
-
-## 2. Estructura que debe publicarse
-
-La estructura pública correcta es la siguiente:
-
-```text
-DIRECTORIO_PUBLICO/
-├── index.html
-├── auditor-seo-basico.html
-├── analizador-titulares.html
-├── calculadora-descuentos-promociones.html
-├── calculadora-flete-envio-local.html
-├── calculadora-precios-venta-igv.html
-├── calculadora-prestamos-amortizaciones.html
-├── calculadora-sobrecostos-laborales.html
-├── comparador-campanas-avanzado.html
-├── consola-campanas.html
-├── conversor-optimizador-imagenes.html
-├── creador-facturas-proforma.html
-├── firma-correo-html.html
-├── generador-codigos-qr.html
-├── generador-contrasenas-pymes.html
-├── generador-contratos-servicios.html
-├── generador-cotizaciones.html
-├── generador-paletas-corporativas.html
-├── generador-politicas-devolucion.html
-├── generador-politicas-terminos.html
-├── guiones-manejo-objeciones.html
-├── organizador-matriz-contenidos.html
-├── simulador-tco-fisico-nube.html
-├── css/
-│   ├── index.css
-│   └── *.css
-├── js/
-│   ├── index.js
-│   └── *.js
-└── assets/
-    └── favicon.png
-```
-
-La carpeta `apps/` corresponde al historial de desarrollo y no debe convertirse en un segundo nivel de publicación. Tampoco deben utilizarse las rutas antiguas `/apps/...` ni `/html/...`. Las URLs públicas correctas tienen esta forma:
-
-```text
-https://DOMINIO/auditor-seo-basico.html
-https://DOMINIO/analizador-titulares.html
-```
-
-En GitHub Pages del repositorio actual, el prefijo del proyecto forma parte de la URL:
-
-```text
-https://juanxaviercasa.github.io/apps-pymes/auditor-seo-basico.html
-```
-
-## 3. Instalación en un hosting mediante ZIP o administrador de archivos
-
-Descarga o copia los archivos de la raíz del repositorio. No subas solamente la carpeta `apps/`, una carpeta `html/` antigua ni el directorio que contiene al proyecto completo como una carpeta adicional.
-
-Si el hosting utiliza cPanel, el contenido debe quedar directamente en `public_html`:
-
-```text
-public_html/index.html
-public_html/auditor-seo-basico.html
-public_html/css/auditor-seo-basico.css
-public_html/js/auditor-seo-basico.js
-public_html/assets/favicon.png
-```
-
-La instalación incorrecta crea una carpeta adicional y produce una URL como esta:
-
-```text
-public_html/apps-pymes/index.html
-```
-
-En ese caso, el sitio real queda en `/apps-pymes/`, mientras que el dominio busca `/index.html`; el resultado habitual es un 404. Si se sube un ZIP, ábrelo y comprueba que al entrar en la carpeta pública se vea `index.html` inmediatamente, no otra carpeta intermedia.
-
-Después de copiar los archivos, conserva exactamente las mayúsculas, minúsculas, guiones y extensiones. En servidores Linux, `Auditor-SEO-Basico.html` y `auditor-seo-basico.html` son nombres diferentes.
-
-## 4. Publicación recomendada en GitHub Pages
-
-La configuración recomendada para este repositorio es publicar mediante **GitHub Actions**, usando la rama `main` y cargando la raíz completa del repositorio. GitHub Pages permite publicar desde una rama y la raíz o `/docs`; cuando se necesita un flujo más controlado, GitHub recomienda un workflow personalizado de Pages [1].
-
-En **Settings → Pages**, selecciona:
-
-| Campo | Valor correcto |
-|---|---|
-| Source | `GitHub Actions` |
-| Rama de trabajo | `main` |
-| Directorio que se publica | `.` — raíz del repositorio |
-| Índice | `index.html` en la raíz |
-| Workflow | `.github/workflows/static.yml` |
-
-El workflow actual utiliza `actions/configure-pages`, `actions/upload-pages-artifact` y `actions/deploy-pages`. Estos componentes son el flujo oficial para empaquetar y desplegar un sitio estático mediante Pages [2]. No cambies el `path: "."` por `apps/`, `html/` u otra carpeta: hacerlo volvería a introducir la discrepancia de rutas.
-
-Después de cada despliegue, revisa la ejecución en la pestaña **Actions**. El resultado debe ser `success` y el job debe completar los pasos **Checkout**, **Setup Pages**, **Upload static site root** y **Deploy to GitHub Pages**.
-
-## 5. Configuración para Apache y cPanel
-
-La configuración básica no necesita un framework. El servidor debe servir los archivos estáticos con sus tipos MIME correctos. Si se desean URLs sin `.html`, crea un archivo `.htaccess` en el mismo directorio que `index.html`:
-
-```apache
-Options -MultiViews
-RewriteEngine On
-
-# No reescribir archivos y carpetas que existen.
-RewriteCond %{REQUEST_FILENAME} -f [OR]
-RewriteCond %{REQUEST_FILENAME} -d
-RewriteRule ^ - [L]
-
-# Permitir /nombre-app como alias de /nombre-app.html.
-RewriteCond %{REQUEST_FILENAME}.html -f
-RewriteRule ^(.+?)/?$ $1.html [L]
-```
-
-Esta regla no mueve ni renombra los archivos. Solo permite que una solicitud a `/auditor-seo-basico` encuentre `auditor-seo-basico.html`. La URL con `.html` continúa siendo válida y es la forma más portable entre hostings.
-
-Si no tienes permiso para usar `.htaccess`, utiliza siempre las URLs con `.html`. No intentes resolver el problema mediante una redirección HTML automática: un `meta refresh` puede generar bucles, demora y una nueva ruta que el servidor tampoco sabe resolver [4].
-
-## 6. Configuración para Nginx
-
-En un servidor Nginx, define como raíz el directorio que contiene `index.html` y utiliza `try_files` para las URLs limpias:
-
-```nginx
-server {
-    listen 80;
-    server_name ejemplo.com;
-    root /var/www/nubeparapymes;
-    index index.html;
-
-    location / {
-        try_files $uri $uri.html $uri/ =404;
-    }
-
-    location ~* \.css$ {
-        add_header Content-Type "text/css; charset=utf-8";
-    }
-
-    location ~* \.js$ {
-        add_header Content-Type "text/javascript; charset=utf-8";
-    }
-}
-```
-
-Después de cambiar Nginx, valida la configuración con `nginx -t` y recarga el servicio. Si el hosting administrado no permite cambiar Nginx, usa las URLs con `.html` y no dependas de rutas limpias.
-
-## 7. Codificación UTF-8 y tipos MIME
-
-Todos los HTML, CSS y JavaScript deben conservarse como archivos UTF-8. Cada documento HTML debe declarar la codificación al principio del `<head>`:
-
-```html
-<meta charset="UTF-8">
-```
-
-La declaración debe estar dentro de los primeros 1024 bytes del documento; UTF-8 es la codificación válida para documentos HTML5 [4]. Evita guardar nuevamente los archivos desde un editor configurado en ANSI, Windows-1252 o Latin-1. Esa conversión produce títulos como `Auditor BÃ¡sico` y daña la ñ, los signos de apertura y otros caracteres.
-
-El servidor debe entregar los tipos MIME adecuados. Los navegadores utilizan el encabezado `Content-Type` para decidir cómo procesar un recurso; un MIME incorrecto puede hacer que CSS sea ignorado o que JavaScript no se ejecute [3]. La tabla mínima es:
-
-| Extensión | `Content-Type` recomendado |
-|---|---|
-| `.html` | `text/html; charset=utf-8` |
-| `.css` | `text/css; charset=utf-8` |
-| `.js` | `text/javascript; charset=utf-8` |
-| `.json` | `application/json; charset=utf-8` |
-| `.png` | `image/png` |
-| `.jpg` / `.jpeg` | `image/jpeg` |
-| `.svg` | `image/svg+xml` |
-
-Si una solicitud a `js/auditor-seo-basico.js` devuelve el HTML de una página 404 con estado 200, el navegador no ejecutará el bundle y la aplicación puede mostrar solamente su fondo. Comprueba siempre la respuesta real del archivo, no solo el código HTTP.
-
-## 8. Diagnóstico de una pantalla azul o aplicación vacía
-
-Una pantalla azul no significa necesariamente que falte el HTML. En esta colección, el HTML puede cargar el fondo y el contenedor `#root`, mientras que el bundle JavaScript falla al montarse. Sigue este orden:
-
-Primero abre directamente la aplicación con su nombre completo, por ejemplo `/auditor-seo-basico.html`, y después prueba la variante sin extensión si el hosting tiene la regla de reescritura configurada. En ambos casos, la respuesta del documento debe ser `200`.
-
-Después abre las herramientas de desarrollador del navegador y revisa **Console** y **Network**. El HTML, su CSS y su JS deben responder correctamente, y el JS debe venir como JavaScript, no como HTML. En Console no debe aparecer `ReferenceError`, `SyntaxError`, `MIME type`, `Unexpected token` ni un error de módulo.
-
-Usa estas comprobaciones desde una terminal:
+Requisitos: Python 3.12 y Node.js 22 o superior.
 
 ```bash
-BASE="https://tu-dominio.example"
-
-curl -I "$BASE/"
-curl -I "$BASE/auditor-seo-basico.html"
-curl -I "$BASE/css/auditor-seo-basico.css"
-curl -I "$BASE/js/auditor-seo-basico.js"
-curl -I "$BASE/assets/favicon.png"
+python -m pip install -r requirements.txt
+npm ci
+npm run build
+npm test
+node scripts/preview_server.js
 ```
 
-Para comprobar que un recurso JavaScript no está devolviendo una página 404 disfrazada de éxito:
+Abre http://127.0.0.1:3000. Este servidor interpreta las redirecciones del proyecto, a diferencia de un servidor de archivos básico.
+
+Para probar Chrome/Chromium:
 
 ```bash
-curl -fsSL "$BASE/js/auditor-seo-basico.js" | head -c 120
+npx playwright install chromium
+node scripts/test_browser_localization.js
 ```
 
-La salida debe comenzar con código JavaScript minificado, no con `<!DOCTYPE html>`, `404`, `Not Found` o un documento de error del proveedor.
+En Windows se utiliza Chrome instalado si está disponible. La variable PLAYWRIGHT_CHROMIUM_EXECUTABLE permite indicar otro ejecutable. Las pruebas no envían formularios ni publican comentarios; bloquean publicidad y servicios externos.
 
-Si la consola muestra que una variable o tabla legítima del bundle está indefinida, no ocultes el error con CSS ni reemplaces la aplicación por una pantalla estática. Restaura la definición funcional, ejecuta `node --check js/nombre-app.js`, abre la aplicación localmente y solo después vuelve a desplegar.
+## Cloudflare Pages
 
-## 9. Lista de comprobación antes de entregar el sitio
+Configura el proyecto Git conectado al repositorio:
 
-| Comprobación | Resultado esperado |
-|---|---|
-| `index.html` está en el directorio público | Sí |
-| Las 22 páginas HTML están junto a `index.html` | Sí |
-| Las carpetas `css/`, `js/` y `assets/` están junto a los HTML | Sí |
-| Las referencias HTML comienzan por `./css/`, `./js/` o `./assets/` | Sí |
-| El índice enlaza a `./nombre-app.html` | Sí |
-| La rama publicada es `main` | Sí |
-| GitHub Actions terminó en `success` | Sí |
-| Cada HTML responde con `200` | Sí |
-| Cada CSS responde con `Content-Type: text/css` | Sí |
-| Cada JS responde con `Content-Type: text/javascript` o equivalente válido | Sí |
-| Los títulos muestran tildes y ñ correctamente | Sí |
-| La consola no muestra errores de ejecución | Sí |
-| Una recarga directa conserva la aplicación | Sí |
-| No se utilizan `/apps/...` ni `/html/...` | Sí |
+- Directorio raíz: raíz del repositorio.
+- Comando de compilación: `python -m pip install -r requirements.txt && npm ci && npm run build && npm test`.
+- Directorio de salida: `dist`.
+- Python: 3.12. Node.js: 22 o superior.
 
-## 10. Procedimiento de actualización futura
+Después de subir un commit y completar el despliegue, comprueba la URL de vista previa antes del dominio público. No hace falta WordPress, PHP ni una base de datos para servir las páginas y herramientas. Los formularios y comentarios existentes conservan sus servicios externos.
 
-Para publicar una modificación, trabaja sobre `main`, modifica los archivos de la raíz o los recursos de `css/`, `js/` y `assets/`, ejecuta los validadores del proyecto y revisa `git diff --check`. No copies manualmente una aplicación a una carpeta nueva ni cambies la ubicación del HTML sin actualizar sus tres referencias principales: hoja CSS, bundle JS y favicon/assets.
+Si publicas mediante carga manual, compila y comprueba primero; después sube únicamente el contenido de dist, incluidos _redirects, _headers y 404.html. No subas archivos .env ni la raíz del repositorio.
 
-El flujo mínimo recomendado es:
+Cloudflare normaliza archivos .html a URLs sin extensión. Las herramientas inglesas se generan como directorios reales /en/nombre/index.html y se enlazan como /en/nombre/. Los enlaces antiguos .html redirigen hacia ellos. Evita volver a añadir reglas que manden estas URLs limpias a .html: pueden causar ciclos.
 
-```bash
-git checkout main
-git pull --ff-only origin main
+La página 404 se entrega mediante 404.html. No uses una regla global `/* /404.html 404`: ese código de respuesta no es una redirección admitida por Pages.
 
-python3 scripts/validar_estructura_publica.py
-python3 scripts/validacion_global.py
+## Dónde modificar cada cosa
 
-node --check js/nombre-app.js
-git diff --check
+- `nubepymesexport/`: exportación editorial española y recursos de WordPress.
+- HTML de la raíz y `js/`, `css/`, `assets/`: herramientas españolas.
+- `en/`: traducciones existentes de artículos y herramientas.
+- `content/en/`: contenido de las páginas informativas inglesas; conserva las condiciones y datos del original español.
+- `content/en/tool-ui*.json`, `scripts/build_tool_translations.py` y `js/tool-localization.js`: traducciones de la interfaz dinámica de las herramientas, con variables y datos de entrada preservados.
+- `scripts/site_routes.py`: correspondencias de idioma y rutas antiguas conocidas.
+- `scripts/build_bilingual_archives.py`: mismas selecciones de artículos y paginación en ambos idiomas.
+- `scripts/finalize_localization.py`: normalización final, selectores, etiquetas, metadatos, buscador y redirecciones.
+- `js/language-navigation.js`: navegación de elementos añadidos por JavaScript.
 
-git add -A
-git commit -m "fix: describir el cambio realizado"
-git push origin main
-```
+No edites dist para corregir contenido: se reconstruye. La compilación tampoco debe reescribir las fuentes ni la exportación original.
 
-Después del `push`, espera a que el workflow de Pages termine correctamente y prueba una URL nueva en una ventana privada o con `Ctrl + F5`. Los navegadores y algunas redes pueden conservar HTML, CSS o JavaScript anteriores en caché.
+## Comprobaciones antes de publicar
 
-## 11. Optimización de CSS y JavaScript
+`npm test` verifica el artefacto, cada pareja ES/EN, etiquetas del pie, selectores, ausencia de ciclos y todos los enlaces internos de las páginas HTML. El informe de destinos ausentes se guarda en scripts/link-audit.json. La compilación o las pruebas deben detener el despliegue si fallan.
 
-Los recursos publicados se pueden volver a optimizar de forma reproducible con `scripts/optimizar_assets.py`. El script usa CleanCSS para los 23 archivos CSS y Terser para los 23 bundles JavaScript; conserva las rutas, comprueba el número esperado de archivos y no modifica la lógica de las aplicaciones de forma manual.
+La prueba de navegador comprueba el pie inglés, las ocho páginas informativas, búsqueda y filtros del portal, las 26 herramientas inglesas, enlaces de idioma, recursos locales y el caso /en/tools/en/index.html. Los resultados de navegador se guardan en artifacts/.
 
-Ejecuta la optimización desde la raíz del repositorio:
+La publicación automática de GitHub Pages también compila, verifica y sube dist. Es un destino distinto del proyecto Cloudflare: comprueba cuál está asociado al dominio antes de publicar.
 
-```bash
-python3 scripts/optimizar_assets.py optimize
-python3 scripts/optimizar_assets.py check
-python3 scripts/validar_estructura_publica.py
-python3 scripts/validacion_global.py
-```
+## Verificación después del despliegue
 
-La optimización debe ejecutarse antes de crear el commit, nunca directamente sobre una copia aislada del hosting. Después de minificar, revisa la sintaxis con `node --check`, abre las aplicaciones principales y comprueba que no haya errores en la consola. Si una aplicación muestra únicamente el fondo, restaura el último commit funcional y corrige primero la causa JavaScript; no reemplaces el contenido por una pantalla vacía.
+Comprueba /en/, /en/tools/, /en/privacy-policy/, /en/contact/ y /en/smb-crm/. Cambia de idioma en ambas direcciones; el destino debe ser la misma página equivalente. Prueba también una página numerada del blog, una categoría y un enlace antiguo .html.
 
-La reducción del archivo original no siempre representa la reducción exacta de transferencia: GitHub Pages y otros hostings pueden aplicar gzip o Brotli automáticamente. Configura una caché larga para archivos versionados o con nombres que cambien junto con cada despliegue, pero evita cachear indefinidamente `index.html` si necesitas que los usuarios reciban rápidamente nuevas rutas:
+Si la vista previa nueva funciona pero el dominio muestra la versión anterior, revisa el despliegue asociado al dominio y su caché en Cloudflare. La configuración remota no cambia por editar el código local.
 
-| Recurso | Recomendación de caché |
-|---|---|
-| `index.html` | Revalidación frecuente o `max-age` corto |
-| `*.html` de aplicaciones | Revalidación frecuente cuando cambie la interfaz |
-| `css/*.css` | Caché larga si se publica con una nueva versión o commit |
-| `js/*.js` | Caché larga si se publica con una nueva versión o commit |
-| `assets/favicon.png` | Caché moderada o larga |
-
-Nunca subas únicamente los archivos que cambiaron. Publica la raíz completa, conserva la correspondencia entre cada HTML, su CSS y su JS, y prueba el sitio después de que el CDN termine de actualizarse.
-
-## Referencias
-
-[1]: https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site "GitHub Docs — Configuring a publishing source for your GitHub Pages site"
-
-[2]: https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages "GitHub Docs — Using custom workflows with GitHub Pages"
-
-[3]: https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/MIME_types "MDN — Media types (MIME types)"
-
-[4]: https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/meta "MDN — <meta> HTML metadata element"
+Documentación: https://developers.cloudflare.com/pages/configuration/serving-pages/ y https://developers.cloudflare.com/pages/configuration/redirects/.

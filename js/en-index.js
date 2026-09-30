@@ -14,6 +14,7 @@
     initActivity();
     initFavorites();
     initVoiceSearch();
+    initSettings();
   }
 
   // --- THEME (DARK / LIGHT MODE) ---
@@ -141,9 +142,9 @@
         }
 
         // Get category name
-        var rawText = tab.childNodes[tab.childNodes.length - 2] ? tab.childNodes[tab.childNodes.length - 2].textContent.trim() : tab.textContent.trim();
-        // Remove number from text if present
-        rawText = rawText.replace(/[0-9]/g, "").trim();
+        var label = tab.cloneNode(true);
+        label.querySelectorAll('svg, span').forEach(function (node) { node.remove(); });
+        var rawText = label.textContent.replace(/[0-9]/g, "").trim();
         activeCategory = rawText || "All";
         filterTools();
       });
@@ -300,5 +301,19 @@
   function escapeHtml(str) {
     if (!str) return "";
     return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+  }
+
+  function initSettings() {
+    var button = document.querySelector('button[aria-label="Global settings"]');
+    if (!button) return;
+    var dialog = document.createElement('dialog');
+    dialog.setAttribute('aria-labelledby', 'np-settings-title');
+    dialog.className = 'rounded-panel border border-line bg-surface p-6 text-fg';
+    dialog.innerHTML = '<h2 id="np-settings-title" class="text-lg font-bold">Portal settings</h2><p class="my-4">Your activity and favorites are saved in this browser.</p><button type="button" id="np-settings-theme" class="rounded-lg bg-cta px-4 py-2 text-white">Toggle dark mode</button><p class="my-4"><a href="/en/user-guide/" class="text-cta underline">Read the complete user guide</a></p><form method="dialog"><button class="rounded-lg border border-line px-4 py-2">Close</button></form>';
+    document.body.appendChild(dialog);
+    button.addEventListener('click', function () { dialog.showModal(); });
+    dialog.querySelector('#np-settings-theme').addEventListener('click', function () {
+      document.querySelector('header button[role="switch"]').click();
+    });
   }
 })();
