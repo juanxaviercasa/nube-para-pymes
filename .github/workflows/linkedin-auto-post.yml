@@ -20,6 +20,9 @@ permissions:
 jobs:
   publish-to-linkedin:
     runs-on: ubuntu-latest
+    env:
+      # Pausa temporal solicitada por calidad de imagen. Cambiar a 'false' para reactivar.
+      LINKEDIN_PUBLISHING_PAUSED: 'true'
 
     steps:
       - name: Checkout del repositorio
@@ -39,6 +42,7 @@ jobs:
           pip install Pillow
 
       - name: Verificar configuración de secretos
+        if: ${{ env.LINKEDIN_PUBLISHING_PAUSED != 'true' }}
         env:
           HAS_TOKEN: ${{ secrets.LINKEDIN_ACCESS_TOKEN != '' }}
           HAS_URN: ${{ secrets.LINKEDIN_ORGANIZATION_URN != '' || secrets.LINKEDIN_PERSON_URN != '' || secrets.LINKEDIN_TARGET_URN != '' }}
@@ -55,6 +59,7 @@ jobs:
           fi
 
       - name: Ejecutar motor de contenidos
+        if: ${{ env.LINKEDIN_PUBLISHING_PAUSED != 'true' || github.event.inputs.dry_run == 'true' }}
         env:
           LINKEDIN_ACCESS_TOKEN: ${{ secrets.LINKEDIN_ACCESS_TOKEN }}
           LINKEDIN_ORGANIZATION_URN: ${{ secrets.LINKEDIN_ORGANIZATION_URN }}
@@ -69,6 +74,10 @@ jobs:
             echo "[INFO] Publicando post en LinkedIn..."
             python scripts/linkedin_content_engine.py --publish
           fi
+
+      - name: Informar pausa de LinkedIn
+        if: ${{ env.LINKEDIN_PUBLISHING_PAUSED == 'true' && github.event.inputs.dry_run != 'true' }}
+        run: echo "LinkedIn está pausado temporalmente. No se publicará contenido ni se avanzará su cola."
 
       - name: Ejecutar motor de Pinterest
         env:
