@@ -86,6 +86,14 @@ def build_english_portal(dist):
     text = text.replace('href="./user-guide.html"', 'href="/en/user-guide/"')
     (dist / 'en/tools/index.html').write_text(text, encoding='utf-8')
 
+def build_legacy_portal_stubs(dist):
+    # Keep a physical fallback: production may normalize /index.html before
+    # evaluating a hosting provider's redirect rules.
+    for path in ('en/tools/en', 'herramientas/en'):
+        destination = dist / path / 'index.html'
+        destination.parent.mkdir(parents=True, exist_ok=True)
+        destination.write_text(redirect_page('/en/tools/', True), encoding='utf-8')
+
 def finalize(dist):
     from build_tool_translations import build as build_tool_translations
     build_tool_translations(dist)
@@ -107,6 +115,7 @@ def finalize(dist):
         target = dist / 'en' / name / 'index.html'
         target.parent.mkdir(parents=True, exist_ok=True)
         target.write_text(source.read_text(encoding='utf-8'), encoding='utf-8')
+    build_legacy_portal_stubs(dist)
     pairs = route_pairs(dist)
     alias_map = aliases(pairs)
     reverse = {en: es for es, en in pairs.items()}

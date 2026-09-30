@@ -45,6 +45,8 @@ check(!/src="[^\"]*\/js\/index.js/.test(portal), 'Spanish React bundle overwrite
 check(!portal.includes('./en/index.html'), 'Nested English portal link');
 check(!fs.readFileSync(path.join(root, 'herramientas/js/index.js'), 'utf8').includes('./en/index.html'), 'React generates nested English links');
 check(data.aliases['/en/tools/en/index.html'] === '/en/tools/', 'Reported broken URL has no recovery');
+check(data.aliases['/en/tools/en/'] === '/en/tools/', 'Normalized legacy portal URL has no recovery');
+check(read('/en/tools/en/').includes('content="0;url=/en/tools/"'), 'Physical legacy redirect missing');
 
 // Exercise dynamic React links, modifier-click-safe href repair, and switchers.
 const runtime = boot('/en/tools/');
