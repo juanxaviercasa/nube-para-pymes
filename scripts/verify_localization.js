@@ -40,9 +40,19 @@ for (const slug of footerPages) {
 }
 check(!/Pol(?:í|&iacute;)tica de Privacidad|Metodolog(?:í|&iacute;)a de Rese(?:ñ|&ntilde;)as/.test(home), 'Spanish footer labels on English home');
 const portal = read('/en/tools/');
+const spanishPortal = read('/herramientas/');
 check(/src="\/js\/en-index.js/.test(portal), 'English controller missing');
 check(!/src="[^\"]*\/js\/index.js/.test(portal), 'Spanish React bundle overwrites English portal');
 check(!portal.includes('./en/index.html'), 'Nested English portal link');
+check((portal.match(/np-footer-language-row/g) || []).length === 1, 'English portal has a duplicate language footer row');
+check((spanishPortal.match(/np-footer-language-row/g) || []).length === 1, 'Spanish portal has a duplicate language footer row');
+check(portal.includes('/js/directory-experience.js?v=20260930-2'), 'English portal does not cache-bust its translated result cards');
+check(!portal.includes('Abrir Herramienta') && !portal.includes('Idioma / Language:'), 'Spanish portal UI remains in the English artifact');
+check(spanishPortal.includes('/herramientas/js/portal-lang-switcher.js?v=20260930-2'), 'Spanish portal does not cache-bust the footer deduplication');
+const directoryExperience = fs.readFileSync(path.join(root, 'js/directory-experience.js'), 'utf8');
+check(directoryExperience.includes('Start with a result') && directoryExperience.includes('Set your selling price'), 'English result-card translations are missing');
+const portalSwitcher = fs.readFileSync(path.join(root, 'herramientas/js/portal-lang-switcher.js'), 'utf8');
+check(portalSwitcher.includes('languageRows.slice(1)') && portalSwitcher.includes('duplicate.remove()'), 'Footer language deduplication guard is missing');
 check(!fs.readFileSync(path.join(root, 'herramientas/js/index.js'), 'utf8').includes('./en/index.html'), 'React generates nested English links');
 check(data.aliases['/en/tools/en/index.html'] === '/en/tools/', 'Reported broken URL has no recovery');
 check(data.aliases['/en/tools/en/'] === '/en/tools/', 'Normalized legacy portal URL has no recovery');

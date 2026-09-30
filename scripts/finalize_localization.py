@@ -73,12 +73,13 @@ def build_english_portal(dist):
     text = translate_portal((ROOT / 'index.html').read_text(encoding='utf-8'))
     text = re.sub(r'<script\b[^>]*src="[^\"]*/js/index\.js[^\"]*"[^>]*></script>', '<script defer src="/js/en-index.js"></script>', text)
     text = text.replace('../assets/', '/assets/').replace('../css/', '/css/').replace('../js/', '/js/')
+    text = text.replace('/js/directory-experience.js"', '/js/directory-experience.js?v=20260930-2"')
     text = re.sub(r'<script\b[^>]*src="[^\"]*portal-lang-switcher\.js[^\"]*"[^>]*></script>', '', text)
     text = text.replace('id="tour-modal"', 'id="tour-modal" hidden')
     text = text.replace('href="./en/index.html"', 'href="/herramientas/"')
     text = re.sub(r'(<a\b[^>]*class="[^\"]*np-lang-toggle[^\"]*"[^>]*>)[\s\S]*?</a>', lambda m: set_attr(m[1], 'href', '/herramientas/') + '<span>EN</span> | <span>ES</span></a>', text)
     # Static footer language links also need to be identified as switches.
-    text = re.sub(r'<a\b[^>]*href="/herramientas/"[^>]*>English</a>', '<a class="np-footer-lang" href="/herramientas/">Español</a>', text)
+    text = re.sub(r'<a\b[^>]*href="/herramientas/"[^>]*>English</a>', '<a class="np-footer-lang" href="/herramientas/">Spanish</a>', text)
     text = text.replace('>Español</span>', '>English</span>')
     for tool in TOOLS_MAP.values():
         for old in ('./' + tool['src'], tool['src']):

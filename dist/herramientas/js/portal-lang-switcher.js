@@ -26,10 +26,22 @@
     }
 
     var footerRight = document.querySelector(".np-portal-footer-right");
-    if (footerRight && !document.getElementById("np-footer-lang-switcher")) {
+    if (footerRight) {
+      var languageRows = Array.prototype.filter.call(footerRight.children, function (child) {
+        var text = child.textContent || "";
+        return child.tagName === "DIV" && /Idioma\s*\/\s*Language|Language\s*\/\s*Idioma/i.test(text) &&
+          child.querySelector('a[href="/en/tools/"], a[href="/herramientas/"]');
+      });
+      if (languageRows.length) {
+        var existingSwitch = languageRows[0];
+        existingSwitch.id = "np-footer-lang-switcher";
+        existingSwitch.classList.add("np-footer-language-row");
+        languageRows.slice(1).forEach(function (duplicate) { duplicate.remove(); });
+        return;
+      }
       var fdiv = document.createElement("div");
       fdiv.id = "np-footer-lang-switcher";
-      fdiv.className = "flex items-center gap-2 text-xs text-fg-muted my-1";
+      fdiv.className = "np-footer-language-row flex items-center gap-2 text-xs text-fg-muted my-1";
       if (isEn) {
         fdiv.innerHTML = '<span>Language / Idioma:</span><a href="/herramientas/" class="font-semibold text-cta hover:underline">Español</a><span>·</span><span class="font-bold text-brand">English</span>';
       } else {

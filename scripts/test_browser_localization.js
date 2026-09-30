@@ -46,12 +46,25 @@ const assert = require('node:assert/strict');
       assert.equal(await page.locator('html').getAttribute('lang'), 'es');
     }
     await visit('/en/tools/');
-    assert.match(await page.locator('main').innerText(), /Tools Directory/);
+    const englishPortalText = await page.locator('main').innerText();
+    assert.match(englishPortalText, /Tools Directory/);
+    assert.doesNotMatch(englishPortalText, /Abrir Herramienta/);
+    await page.locator('.np-start-results').waitFor();
+    const resultGuide = (await page.locator('.np-start-results').innerText()).toLowerCase();
+    assert.match(resultGuide, /start with a result/);
+    assert.doesNotMatch(resultGuide, /empieza por un resultado|una necesidad concreta|cada acceso abre/);
     assert.equal(await page.locator('main article').count(), 26);
     await page.locator('header input[type=search]').fill('CRM');
     assert.equal(await page.locator('main article:visible').count(), 1);
     await page.locator('header input[type=search]').fill('');
     assert.equal(await page.locator('main article:visible').count(), 26);
+    await visit('/herramientas/');
+    await page.waitForTimeout(2200);
+    const footerLanguageRows = await page.locator('.np-portal-footer-right').evaluate(footer =>
+      [...footer.children].filter(child => /Idioma\s*\/\s*Language|Language\s*\/\s*Idioma/i.test(child.textContent || '')).length
+    );
+    assert.equal(footerLanguageRows, 1, 'Spanish portal has a duplicate language footer row');
+    await visit('/en/tools/');
     await page.getByRole('tab', {name: /Finance/}).click();
     assert.equal(await page.locator('main article:visible').count(), 5);
     await page.getByRole('tab', {name: /^All/}).click();

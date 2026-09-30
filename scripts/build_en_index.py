@@ -54,7 +54,7 @@ def translate_portal(content):
     # Note: Marketing and Legal are already English names!
 
     # 8. Button texts
-    content = content.replace('>Abrir Herramienta<', '>Open Tool<')
+    content = re.sub(r'(?<=>)(\s*)Abrir Herramienta(\s*)(?=<)', r'\1Open Tool\2', content)
     content = content.replace('Abrir Herramienta <span', 'Open Tool <span')
     content = content.replace('Agregar ', 'Add ')
     content = content.replace(' a favoritos', ' to favorites')
@@ -224,6 +224,7 @@ def translate_portal(content):
         content = content.replace(f">{es_desc}<", f">{en_desc}<")
         # Also replace within aria-labels
         content = content.replace(f"Agregar {es_title} a favoritos", f"Add {en_title} to favorites")
+        content = content.replace(f"Add {es_title} to favorites", f"Add {en_title} to favorites")
 
     # Card category badge labels inside cards
     content = re.sub(r'(<span class="mb-2 text-xs font-semibold uppercase tracking-widest text-brand">)Finanzas(</span>)', r'\1Finance\2', content)
@@ -234,6 +235,7 @@ def translate_portal(content):
     content = re.sub(r'(<span class="mb-2 text-xs font-semibold uppercase tracking-widest text-brand">)Legal y Administración(</span>)', r'\1Legal & Admin\2', content)
 
     # 10. Footer translation
+    content = content.replace('Idioma / Language:', 'Language:')
     content = content.replace('Herramientas gratuitas y locales para pequeñas empresas.', 'Free and local browser tools for small businesses.')
     content = content.replace('Guía completa de uso →', 'Complete User Guide →')
     content = content.replace('href="./guia-uso-22-apps.html"', 'href="./user-guide.html"')
