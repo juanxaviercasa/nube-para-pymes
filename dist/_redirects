@@ -175,7 +175,11 @@
 /directorio-herramientas    /herramientas/    301
 /herramientas-gratis/    /herramientas/    301
 /en/tools/en/index.html    /en/tools/    301
+/en/tools/en/    /en/tools/    301
+/en/tools/en    /en/tools/    301
 /herramientas/en/index.html    /en/tools/    301
+/herramientas/en/    /en/tools/    301
+/herramientas/en    /en/tools/    301
 /en/user-guide.html    /en/user-guide/    301
 /guia-uso/    /herramientas/guia-uso/    301
 /author/    /author/xaviercabello/    301
@@ -668,7 +672,3 @@
 /en/tools/tasks-projects-tracker    /en/tasks-projects-tracker/    301
 /en/herramientas/productividad/tareas-proyectos-pymes/    /en/tasks-projects-tracker/    301
 /en/herramientas/productividad/tareas-proyectos-pymes    /en/tasks-projects-tracker/    301
-/en/tools/en/    /en/tools/    301
-/en/tools/en    /en/tools/    301
-/herramientas/en/    /en/tools/    301
-/herramientas/en    /en/tools/    301
