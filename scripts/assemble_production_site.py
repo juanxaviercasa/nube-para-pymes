@@ -223,8 +223,8 @@ def build_all_tools():
         )
 
         # Inyectar atribución de Xavier Cabello en np-global-footer
-        author_badge = '<span class="np-global-author"> · Diseñado y Desarrollado por <a class="np-footer-author-link" href="https://juan.cabellorosas.com" target="_blank" rel="noopener" style="font-weight:700;color:#f97316;text-decoration:underline;">Xavier Cabello</a></span>'
-        if "np-global-brand" in content and "juan.cabellorosas.com" not in content:
+        author_badge = '<span class="np-global-author"> · Diseñado y Desarrollado por <a class="np-footer-author-link" href="https://xavier.cabellosalirrosas.com" target="_blank" rel="noopener" style="font-weight:700;color:#f97316;text-decoration:underline;">Xavier Cabello</a></span>'
+        if "np-global-brand" in content and "xavier.cabellosalirrosas.com" not in content:
             content = re.sub(
                 r'(<span class="np-global-brand">.*?</span>)',
                 r'\1' + author_badge,
@@ -301,7 +301,7 @@ def update_wp_directory_page():
 
 def update_global_footers():
     log("Estandarizando la firma 'Desarrollado por Xavier Cabello' en todas las páginas de WordPress...")
-    author_link = '<a href="https://juan.cabellorosas.com" target="_blank" rel="noopener" style="font-weight:700;color:inherit;text-decoration:underline;">Xavier Cabello</a>'
+    author_link = '<a href="https://xavier.cabellosalirrosas.com" target="_blank" rel="noopener" style="font-weight:700;color:inherit;text-decoration:underline;">Xavier Cabello</a>'
 
     patterns = [
         r'<div class="ast-footer-copyright"><p>&copy; 2026 (Nube para Pymes|SMB Cloud)\. (Todos los derechos reservados|All rights reserved)(\s*\|\s*(Diseñado y )?(Desarrollado|Designed and Developed) por <a [^>]+>[^<]+</a>)?\.</p>',
@@ -331,8 +331,8 @@ def update_global_footers():
                     txt = re.sub(pat, replacement, txt)
                     modified = True
             if "juan.cabellosalirrosas.com" in txt:
-                txt = txt.replace("https://juan.cabellosalirrosas.com", "https://juan.cabellorosas.com")
-                txt = txt.replace("http://juan.cabellosalirrosas.com", "https://juan.cabellorosas.com")
+                txt = txt.replace("https://juan.cabellosalirrosas.com", "https://xavier.cabellosalirrosas.com")
+                txt = txt.replace("http://juan.cabellosalirrosas.com", "https://xavier.cabellosalirrosas.com")
                 modified = True
             if modified:
                 html_file.write_text(txt, encoding="utf-8")
@@ -868,6 +868,10 @@ def main():
     sync_dynamic_metrics()
     from finalize_localization import finalize
     finalize(DIST)
+    from normalize_author_credits import normalize_author_credits
+    normalize_author_credits(DIST)
+    from integrate_ecosystem import integrate_ecosystem
+    integrate_ecosystem(DIST)
     from normalize_media_urls import normalize_media_urls
     normalize_media_urls(DIST)
     elapsed = (datetime.now() - start_time).total_seconds()

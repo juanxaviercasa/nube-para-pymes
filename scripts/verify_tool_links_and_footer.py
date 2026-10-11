@@ -57,8 +57,8 @@ def check():
             expected = f'/herramientas/{tool["cat"]}/{tool["slug"]}/'
             if expected not in txt:
                 errors.append(f"dist/herramientas/index.html no contiene enlace canónico {expected}")
-        if "juan.cabellorosas.com" not in txt:
-            errors.append("dist/herramientas/index.html no contiene juan.cabellorosas.com")
+        if "xavier.cabellosalirrosas.com" not in txt:
+            errors.append("dist/herramientas/index.html no contiene xavier.cabellosalirrosas.com")
         if "Guía completa de uso" not in txt:
             errors.append("dist/herramientas/index.html no contiene 'Guía completa de uso' en footer")
         if "InicioSobre" in txt or "usoInicio" in txt:
@@ -74,8 +74,8 @@ def check():
             expected = f'slug:"/herramientas/{tool["cat"]}/{tool["slug"]}/"'
             if expected not in txt:
                 errors.append(f"dist/herramientas/js/index.js no contiene slug {expected}")
-        if "juan.cabellorosas.com" not in txt:
-            errors.append("dist/herramientas/js/index.js no contiene juan.cabellorosas.com")
+        if "xavier.cabellosalirrosas.com" not in txt:
+            errors.append("dist/herramientas/js/index.js no contiene xavier.cabellosalirrosas.com")
         if "InicioSobre" in txt or "usoInicio" in txt:
             errors.append("dist/herramientas/js/index.js contiene enlaces pegados")
 

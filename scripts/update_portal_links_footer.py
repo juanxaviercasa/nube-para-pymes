@@ -90,7 +90,7 @@ def update_bundle_js():
         ']}),'
         '(0,K.jsxs)("div",{className:"flex flex-col items-center md:items-end text-center md:text-right gap-1 pr-0 md:pr-14",children:['
         '(0,K.jsxs)("p",{className:"text-xs sm:text-sm text-fg-muted",children:["\\xA9 ",(new Date).getFullYear()," NubeParaPymes \\xB7 Todos los derechos reservados"]}),'
-        '(0,K.jsxs)("p",{className:"text-xs sm:text-sm text-fg-muted",children:["Dise\\xF1ado y Desarrollado por ",(0,K.jsx)("a",{href:"https://juan.cabellorosas.com",target:"_blank",rel:"noopener",className:"font-bold text-cta hover:underline",children:"Xavier Cabello"})]})'
+        '(0,K.jsxs)("p",{className:"text-xs sm:text-sm text-fg-muted",children:["Dise\\xF1ado y Desarrollado por ",(0,K.jsx)("a",{href:"https://xavier.cabellosalirrosas.com",target:"_blank",rel:"noopener",className:"font-bold text-cta hover:underline",children:"Xavier Cabello"})]})'
         ']})'
         ']})})'
     )
@@ -149,7 +149,7 @@ def update_index_html():
 
             <div class="flex flex-col items-center md:items-end text-center md:text-right gap-1 pr-0 md:pr-14">
               <p class="text-xs sm:text-sm text-fg-muted">© 2026 NubeParaPymes · Todos los derechos reservados</p>
-              <p class="text-xs sm:text-sm text-fg-muted">Diseñado y Desarrollado por <a href="https://juan.cabellorosas.com" target="_blank" rel="noopener" class="font-bold text-cta hover:underline">Xavier Cabello</a></p>
+              <p class="text-xs sm:text-sm text-fg-muted">Diseñado y Desarrollado por <a href="https://xavier.cabellosalirrosas.com" target="_blank" rel="noopener" class="font-bold text-cta hover:underline">Xavier Cabello</a></p>
             </div>
           </div>
         </div>
