@@ -872,6 +872,8 @@ def main():
     normalize_author_credits(DIST)
     from integrate_ecosystem import integrate_ecosystem
     integrate_ecosystem(DIST)
+    from restore_featured_images import restore as restore_featured_images
+    restore_featured_images(DIST)
     from normalize_media_urls import normalize_media_urls
     normalize_media_urls(DIST)
     elapsed = (datetime.now() - start_time).total_seconds()

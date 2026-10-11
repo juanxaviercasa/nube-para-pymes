@@ -1,0 +1,5 @@
+{
+  "nubepymes": {"name":"Nube para Pymes","domain":"nubeparapymes.online","recipient":"nubepymesai@gmail.com","zone":"58606da4a62e639382f953056a1710a0","categories":{"software":"Elegir software","herramientas":"Ayuda con una herramienta","correccion":"Corrección editorial","servicios":"Apoyo digital","colaboracion":"Colaboración","otra":"Otra consulta"}},
+  "mundos-simulados": {"name":"Mundos Simulados","domain":"mundossimulados.online","recipient":"mundossimulados@gmail.com","zone":"1b34fb52c4f5380dd16c1218d5765b17","categories":{"escenario":"Proponer un escenario","correccion":"Corrección científica o editorial","herramientas":"Ayuda con una simulación","educacion":"Uso educativo","colaboracion":"Colaboración","otra":"Otra consulta"}},
+  "todo-lima": {"name":"Todo Lima","domain":"todolima.com","recipient":"guiatodolima@gmail.com","zone":"078ca5fe25d0a8eedd9db051c3aa2fbb","categories":{"consulta-general":"Consulta general","correccion-ficha":"Corregir una ficha","publicar-negocio":"Publicar o administrar mi negocio","colaboracion-editorial":"Colaboración editorial","servicios-digitales":"Servicios digitales","soporte-web":"Problema técnico"}}
+}
