@@ -21,6 +21,7 @@ Para probar Chrome/Chromium:
 ```bash
 npx playwright install chromium
 node scripts/test_browser_localization.js
+npm run test:images
 ```
 
 En Windows se utiliza Chrome instalado si está disponible. La variable PLAYWRIGHT_CHROMIUM_EXECUTABLE permite indicar otro ejecutable. Las pruebas no envían formularios ni publican comentarios; bloquean publicidad y servicios externos.
@@ -63,6 +64,8 @@ No edites dist para corregir contenido: se reconstruye. La compilación tampoco 
 La prueba de navegador comprueba el pie inglés, las ocho páginas informativas, búsqueda y filtros del portal, las 26 herramientas inglesas, enlaces de idioma, recursos locales y el caso /en/tools/en/index.html. Los resultados de navegador se guardan en artifacts/.
 
 La publicación automática de GitHub Pages también compila, verifica y sube dist. Es un destino distinto del proyecto Cloudflare: comprueba cuál está asociado al dominio antes de publicar.
+
+Las imágenes exportadas de WordPress se sirven desde `/wp-content/uploads/` en el mismo despliegue. `scripts/normalize_media_urls.py` corrige también `srcset`, fondos y metadatos; no deben depender del servidor de desarrollo de Pantheon. Si falta un tamaño intermedio, utiliza el original existente. La auditoría comprueba todos los destinos de imágenes del HTML y `npm run test:images` verifica su carga en Chrome en tamaños móvil y escritorio.
 
 ## Verificación después del despliegue
 

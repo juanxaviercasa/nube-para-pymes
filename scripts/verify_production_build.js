@@ -186,6 +186,30 @@ if (fs.existsSync(indexHtmlPath)) {
     check('Portada no contiene el número estático desactualizado "65"', !idxContent.includes('data-target="65"'));
 }
 
+// Browsers prefer srcset over src: validate every exported media candidate.
+const mediaIssues = new Set();
+let mediaReferences = 0;
+function verifyMedia(directory) {
+    for (const entry of fs.readdirSync(directory, {withFileTypes: true})) {
+        const file = path.join(directory, entry.name);
+        if (entry.isDirectory()) {verifyMedia(file); continue;}
+        if (!file.endsWith('.html')) continue;
+        const text = fs.readFileSync(file, 'utf8');
+        if (/(?:https?:)?\/\/(?:dev-nube-para-pymes\.pantheonsite\.io|nubeparapymes\.online)\/wp-content\/uploads\//i.test(text)) {
+            mediaIssues.add(`${path.relative(DIST, file)}: media URL still uses an absolute host`);
+        }
+        for (const match of text.matchAll(/\/wp-content\/uploads\/[^\s"'<>\\),]+/g)) {
+            const mediaPath = decodeURIComponent(match[0].split(/[?#]/)[0]);
+            if (mediaPath.includes('*')) continue; // Documentation of cache rules.
+            mediaReferences++;
+            if (!fs.existsSync(path.join(DIST, mediaPath))) mediaIssues.add(mediaPath);
+        }
+    }
+}
+verifyMedia(DIST);
+check(`${mediaReferences} referencias de imágenes locales válidas, incluidos srcset y metadatos`, mediaIssues.size === 0);
+for (const issue of mediaIssues) console.error('  Media:', issue);
+
 console.log('\n=============================================');
 if (errors.length === 0) {
     console.log('🎉 ¡AUDITORÍA SUPERADA CON ÉXITO! Todos los chequeos pasaron.');

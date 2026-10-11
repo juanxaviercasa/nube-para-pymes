@@ -145,7 +145,10 @@ def load_all_posts():
             if 'loading=' not in img_tag:
                 img_tag = img_tag.replace('class="', 'loading="lazy" class="')
         else:
-            img_tag = f'<img width="1024" height="572" src="/wp-content/uploads/2026/07/{slug}.webp" class="attachment-large size-large wp-post-image" alt="{title_clean}" itemprop="image" decoding="async" loading="lazy">'
+            image_meta = re.search(r'<meta\b[^>]*property="og:image"[^>]*content="([^"]+)"', txt)
+            if not image_meta:
+                raise ValueError(f'No featured image or og:image for {slug}')
+            img_tag = f'<img src="{image_meta[1]}" class="attachment-large size-large wp-post-image" alt="{title_clean}" itemprop="image" decoding="async" loading="lazy">'
 
         posts.append({
             "slug": slug,

@@ -7,6 +7,7 @@
     "build": "python scripts/assemble_production_site.py",
     "serve": "node scripts/preview_server.js",
     "test:browser": "node scripts/test_browser_localization.js",
+    "test:images": "node scripts/test_browser_images.js",
     "test": "node scripts/verify_production_build.js && node scripts/verify_localization.js && python scripts/audit_site_links.py"
   },
   "devDependencies": {

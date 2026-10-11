@@ -868,6 +868,8 @@ def main():
     sync_dynamic_metrics()
     from finalize_localization import finalize
     finalize(DIST)
+    from normalize_media_urls import normalize_media_urls
+    normalize_media_urls(DIST)
     elapsed = (datetime.now() - start_time).total_seconds()
     log(f"=== ENSAMBLADO COMPLETADO EXITOSAMENTE en {elapsed:.2f}s ===")
 
