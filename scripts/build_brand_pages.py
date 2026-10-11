@@ -42,7 +42,7 @@ def build(dist):
                     tag['content'] = value
             soup.head.append(BeautifulSoup('<link rel="stylesheet" href="/assets/brand-pages.css?v=20261011"/>', 'html.parser'))
             if kind == 'contact':
-                soup.body.append(BeautifulSoup('<script src="/assets/contact.js?v=20261011" defer></script>', 'html.parser'))
+                soup.body.append(BeautifulSoup('<script src="/assets/contact.js?v=20261011-2" async></script>', 'html.parser'))
             schema = soup.new_tag('script', type='application/ld+json')
             schema.string = json.dumps({'@context': 'https://schema.org', '@type': 'AboutPage' if kind == 'about' else 'ContactPage', 'name': title, 'url': 'https://nubeparapymes.online/' + route + '/', 'inLanguage': lang, 'description': description}, ensure_ascii=False)
             soup.head.append(schema)
