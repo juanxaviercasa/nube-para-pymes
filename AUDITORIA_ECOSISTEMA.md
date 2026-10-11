@@ -49,7 +49,7 @@ El archivo público contiene tres artículos. La cola tiene 179 pendientes y uno
 
 La revisión no ejecutó el publicador ni alteró el contenido de `data/blog/posts.json` o la cola. Se comprobó su conservación mediante hashes. Se corrigió el nombre del workflow: sus dos puntos sin comillas invalidaban el YAML y GitHub lo rechazaba antes de ejecutar trabajos. Los tres horarios permanecen iguales y GitHub reconoce el flujo corregido como activo; falta observar su próxima ejecución programada. Los nuevos bloques son de la plantilla; no adelantan la publicación de borradores.
 
-## Hallazgo importante pendiente en Mundos
+## Hallazgo reparado en Mundos
 
 Estas páginas públicas devolvieron HTTP 200, pero mostraban **“429 — Too Many Requests”** en lugar de un artículo:
 
@@ -61,7 +61,7 @@ Estas páginas públicas devolvieron HTTP 200, pero mostraban **“429 — Too M
 - `/mundo-gobernado-por-ia/`
 - `/ciudades-inteligentes-control/`
 
-Se excluyeron esos destinos de los nuevos enlaces. Es una exportación de una página de error, no una limitación temporal del navegador. Los cambios editoriales locales de Mundos están pendientes de publicación y no se incluyeron en el commit aislado de enlaces y créditos. La reparación de todos esos artículos requiere cerrar esa revisión editorial y validar el contenido recuperado antes de publicarlo.
+El 11 de octubre se recuperaron esas siete páginas y otras 123 con el mismo defecto desde sus Markdown publicados existentes. Se corrigió el exportador para rechazar errores HTTP y documentos de error aunque respondan HTTP 200. Las 234 entradas del catálogo público se verificaron con contenido de artículo y sin errores 429. Se comprobaron 379 referencias de imágenes locales y los siete recorridos en Chrome móvil y escritorio. Las revisiones editoriales y borradores locales se conservaron; restaurar una exportación no equivale a validar científicamente todas sus afirmaciones.
 
 ## Verificación y límites
 
@@ -73,10 +73,10 @@ Se excluyeron esos destinos de los nuevos enlaces. Es una exportación de una p�
 
 Para evaluar autosustentabilidad falta medir visitas referidas, clics de contacto, consultas cualificadas, propuestas y clientes que contratan. Un clic de WhatsApp no equivale a una venta. La analítica existente de Todo Lima depende de su configuración y consentimiento; esta revisión no confirma datos de ventas ni de atribución histórica.
 
-Próxima prioridad: completar la reparación editorial de Mundos, revisar destinos cuando se publiquen nuevas tandas y comparar semanalmente los dos recorridos comerciales. Los enlaces deben responder al tema y al siguiente paso del lector; no hace falta introducir las tres marcas en cada artículo.
+Próxima prioridad: completar la revisión editorial de las afirmaciones de Mundos, revisar destinos cuando se publiquen nuevas tandas y comparar semanalmente los dos recorridos comerciales. Los enlaces deben responder al tema y al siguiente paso del lector; no hace falta introducir las tres marcas en cada artículo.
 
 ## Estado de publicación
 
 Los cambios se confirmaron y enviaron a `main`: Nube `aa26622`, Todo Lima `d16fc30` y corrección editorial `8194ab1`, Mundos `1b6e86f`. Se verificaron en los tres dominios públicos los créditos actualizados y los recorridos modificados. Los despliegues de Nube y Mundos finalizaron correctamente.
 
-Mundos se publicó desde una copia aislada. La revisión automática rechazó sincronizar la carpeta original debido a sus cambios editoriales pendientes; esa carpeta conserva su trabajo local.
+Mundos se publicó desde una copia aislada. Después de la autorización expresa del propietario se sincronizó la carpeta original con la versión publicada, conservando byte por byte los manuscritos, borradores y archivos editoriales. Los cambios pendientes se respaldaron en `artifacts/mundos-pending-before-sync-2026-10-11.zip`. La reparación quedó publicada en `9295d88`; `049eebe` preserva archivos editoriales históricos durante la normalización de créditos. El despliegue finalizó correctamente.
