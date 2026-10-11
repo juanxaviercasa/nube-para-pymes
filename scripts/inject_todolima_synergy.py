@@ -24,7 +24,7 @@ ARTICLE_BRIDGES = {
     },
     "software-reservas-clinicas": {
         "title": "¿Tienes un consultorio médico o clínica dental en Lima?",
-        "desc": "Reducir el ausentismo de pacientes con software de citas es clave para la rentabilidad de consultorios privados en distritos como Miraflores, San Isidro o Surco. Conoce a los especialistas de salud verificados en el <a href=\"https://todolima.com/dentistas\" target=\"_blank\" rel=\"noopener\" style=\"color: #0284c7; font-weight: 700; text-decoration: underline;\">Directorio de Dentistas de Lima</a> y <a href=\"https://todolima.com/veterinarias\" target=\"_blank\" rel=\"noopener\" style=\"color: #0284c7; font-weight: 700; text-decoration: underline;\">Veterinarias de Lima</a>.",
+        "desc": "Reducir el ausentismo de pacientes con software de citas es clave para la rentabilidad de consultorios privados en distritos como Miraflores, San Isidro o Surco. Consulta las opciones de atención publicadas en el <a href=\"https://todolima.com/dentistas\" target=\"_blank\" rel=\"noopener\" style=\"color: #0284c7; font-weight: 700; text-decoration: underline;\">Directorio de Dentistas de Lima</a> y <a href=\"https://todolima.com/veterinarias\" target=\"_blank\" rel=\"noopener\" style=\"color: #0284c7; font-weight: 700; text-decoration: underline;\">Veterinarias de Lima</a>.",
         "url": "https://todolima.com/dentistas",
         "cta": "Ver Especialistas de Salud en Lima"
     },
@@ -84,7 +84,7 @@ ARTICLE_BRIDGES = {
     },
     "digitalizar-procesos-negocio-pequeno": {
         "title": "¿Tienes una pyme o comercio en Lima Metropolitana?",
-        "desc": "La digitalización empieza por tener una presencia web ultrarrápida y presencia en el mapa comercial de tu distrito. Únete a los más de 50 rubros mapeados en el <a href=\"https://todolima.com\" target=\"_blank\" rel=\"noopener\" style=\"color: #0284c7; font-weight: 700; text-decoration: underline;\">Directorio Comercial Oficial de Todo Lima</a>.",
+        "desc": "La digitalización empieza por tener una presencia web ultrarrápida y presencia en el mapa comercial de tu distrito. Únete a los más de 50 rubros mapeados en el <a href=\"https://todolima.com\" target=\"_blank\" rel=\"noopener\" style=\"color: #0284c7; font-weight: 700; text-decoration: underline;\">Directorio comercial de Todo Lima</a>.",
         "url": "https://todolima.com",
         "cta": "Publicar Negocio en Todo Lima"
     }
@@ -96,10 +96,10 @@ TOOL_BANNER_HTML = """<!-- [TODOLIMA_PARTNER_BANNER_START] -->
     <span style="font-size: 28px; line-height: 1;">📍</span>
     <div>
       <strong style="color: #38bdf8; font-size: 0.96rem; display: block; margin-bottom: 3px;">¿Tienes un negocio o comercio en Lima Metropolitana?</strong>
-      <span style="color: #94a3b8; font-size: 0.86rem; line-height: 1.4; display: block;">Publica tu ficha comercial gratis y capta clientes directos en los 43 distritos de la capital.</span>
+      <span style="color: #94a3b8; font-size: 0.86rem; line-height: 1.4; display: block;">Solicita la revisión de tu ficha y presenta ubicación, servicios y formas de contacto. La inclusión no garantiza consultas ni ventas.</span>
     </div>
   </div>
-  <a href="https://todolima.com" target="_blank" rel="noopener" style="padding: 9px 18px; background: #0284c7; hover:background: #0369a1; color: #ffffff; text-decoration: none; border-radius: 8px; font-weight: 700; font-size: 0.84rem; white-space: nowrap; transition: background 0.2s;">Publicar mi Negocio en Todo Lima →</a>
+  <a href="https://todolima.com" target="_blank" rel="noopener" style="padding: 9px 18px; background: #0284c7; hover:background: #0369a1; color: #ffffff; text-decoration: none; border-radius: 8px; font-weight: 700; font-size: 0.84rem; white-space: nowrap; transition: background 0.2s;">Solicitar revisión de mi ficha →</a>
 </div>
 <!-- [TODOLIMA_PARTNER_BANNER_END] -->
 """

@@ -7,6 +7,7 @@ import html
 import json
 import re
 import shutil
+import time
 from concurrent.futures import ThreadPoolExecutor
 from urllib.parse import urljoin, urlsplit
 from pathlib import Path
@@ -16,6 +17,22 @@ from build_en_index import translate_portal
 from localize_widgets import build as build_widgets
 from build_bilingual_archives import TAGS
 from static_wordpress_assets import prepare as prepare_wp_assets, normalize as normalize_wp_assets
+
+def write_html(path, text, encoding='utf-8'):
+    temporary = path.with_name(path.name + '.normalizing.tmp')
+    try:
+        temporary.write_text(text, encoding=encoding)
+        for attempt in range(5):
+            try:
+                temporary.replace(path)
+                return
+            except OSError:
+                if attempt == 4:
+                    raise
+                time.sleep(.2)
+    finally:
+        temporary.unlink(missing_ok=True)
+
 
 HOST = 'https://nubeparapymes.online'
 LABELS = {
@@ -156,7 +173,7 @@ def finalize(dist):
         route = route_for(file, dist)
         text = file.read_text(encoding='utf-8')
         if route in alias_map:
-            file.write_text(redirect_page(alias_map[route], route.startswith('/en/')), encoding='utf-8')
+            write_html(file, redirect_page(alias_map[route], route.startswith('/en/')))
             return
         if 'http-equiv="refresh"' in text.lower():
             return
@@ -254,7 +271,7 @@ def finalize(dist):
                 description = re.search(r'<meta\b[^>]*name=["\x27]description["\x27][^>]*>', text)
                 english_search.append({'title': html.unescape(re.sub(r'<[^>]*>', '', heading[1])).strip() if heading else route,
                                        'url': route, 'excerpt': attr(description[0], 'content') if description else '', 'type': 'page'})
-        file.write_text(text, encoding='utf-8')
+        write_html(file, text)
         if route != '/404.html' and '/wp-' not in route and 'noindex' not in text:
             sitemap_urls.append(route)
     with ThreadPoolExecutor(max_workers=8) as executor:
@@ -268,7 +285,7 @@ def finalize(dist):
         text = file.read_text(encoding='utf-8').replace('./en/index.html', '/en/tools/').replace('./guia-uso-22-apps.html', '/herramientas/guia-uso/')
         for tool in TOOLS_MAP.values():
             text = text.replace('./' + tool['src'], f'/herramientas/{tool["cat"]}/{tool["slug"]}/')
-        file.write_text(text, encoding='utf-8')
+        write_html(file, text)
 
     # Exact legacy aliases precede existing rules; no catch-all redirects.
     redirects = {}
