@@ -47,7 +47,7 @@ flowchart LR
 
 El archivo público contiene tres artículos. La cola tiene 179 pendientes y uno de sus artículos ya publicado; las otras dos publicaciones iniciales están fuera de esa cola. El workflow libera un artículo a las 08:00, 14:00 y 20:00 de Lima: tres al día, con los posibles retrasos de GitHub Actions.
 
-La revisión no ejecutó el publicador ni alteró el contenido de `data/blog/posts.json`, la cola o el workflow. Se comprobó su conservación mediante hashes. Los nuevos bloques son de la plantilla; no adelantan la publicación de borradores.
+La revisión no ejecutó el publicador ni alteró el contenido de `data/blog/posts.json` o la cola. Se comprobó su conservación mediante hashes. Se corrigió el nombre del workflow: sus dos puntos sin comillas invalidaban el YAML y GitHub lo rechazaba antes de ejecutar trabajos. Los tres horarios permanecen iguales y GitHub reconoce el flujo corregido como activo; falta observar su próxima ejecución programada. Los nuevos bloques son de la plantilla; no adelantan la publicación de borradores.
 
 ## Hallazgo importante pendiente en Mundos
 
@@ -74,3 +74,9 @@ Se excluyeron esos destinos de los nuevos enlaces. Es una exportación de una p�
 Para evaluar autosustentabilidad falta medir visitas referidas, clics de contacto, consultas cualificadas, propuestas y clientes que contratan. Un clic de WhatsApp no equivale a una venta. La analítica existente de Todo Lima depende de su configuración y consentimiento; esta revisión no confirma datos de ventas ni de atribución histórica.
 
 Próxima prioridad: completar la reparación editorial de Mundos, revisar destinos cuando se publiquen nuevas tandas y comparar semanalmente los dos recorridos comerciales. Los enlaces deben responder al tema y al siguiente paso del lector; no hace falta introducir las tres marcas en cada artículo.
+
+## Estado de publicación
+
+Los cambios se confirmaron y enviaron a `main`: Nube `aa26622`, Todo Lima `d16fc30` y corrección editorial `8194ab1`, Mundos `1b6e86f`. Se verificaron en los tres dominios públicos los créditos actualizados y los recorridos modificados. Los despliegues de Nube y Mundos finalizaron correctamente.
+
+Mundos se publicó desde una copia aislada. La revisión automática rechazó sincronizar la carpeta original debido a sus cambios editoriales pendientes; esa carpeta conserva su trabajo local.
