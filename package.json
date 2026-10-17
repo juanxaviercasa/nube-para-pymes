@@ -1,14 +1,17 @@
 {
   "name": "nube-para-pymes",
   "version": "2.0.0",
-  "description": "Sitio estático unificado y serverless para Nube para Pymes: WordPress + 26 Herramientas",
+  "description": "Sitio estÃ¡tico unificado y serverless para Nube para Pymes: WordPress + 26 Herramientas",
   "private": true,
   "scripts": {
     "build": "python scripts/assemble_production_site.py",
     "serve": "node scripts/preview_server.js",
     "test:browser": "node scripts/test_browser_localization.js",
     "test:images": "node scripts/test_browser_images.js",
-    "test": "node scripts/verify_production_build.js && node scripts/verify_localization.js && python scripts/audit_site_links.py && python scripts/verify_ecosystem.py && python scripts/verify_featured_images.py && node --test cloudflare/contact-worker.test.mjs"
+    "test": "node scripts/verify_production_build.js && node scripts/verify_localization.js && python scripts/audit_site_links.py && python scripts/verify_ecosystem.py && python scripts/verify_featured_images.py && node --test cloudflare/contact-worker.test.mjs",
+    "test:layout": "node scripts/test_browser_tool_layout.js",
+    "test:regional": "node --test scripts/test_regional_settings.cjs",
+    "test:regional:browser": "node scripts/test_browser_regional.cjs"
   },
   "devDependencies": {
     "playwright": "1.63.0"

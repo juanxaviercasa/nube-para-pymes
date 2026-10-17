@@ -288,7 +288,7 @@
   }
 
   function renderBar() {
-    const main = document.querySelector('main, .op-main, .app-main') || document.body;
+    const main = document.querySelector('main, .op-main, .app-main') || document.querySelector('#root > div') || document.body;
     if (document.querySelector('.np-demo-bar')) return;
     const bar = document.createElement('section');
     bar.className = 'np-demo-bar'; bar.id = 'np-demo-bar'; bar.setAttribute('aria-label', 'Modo de demostración local');

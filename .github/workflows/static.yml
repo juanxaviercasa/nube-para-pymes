@@ -45,6 +45,9 @@ jobs:
           npx playwright install --with-deps chromium
           npm run test:browser
           npm run test:images
+          npm run test:layout
+          npm run test:regional
+          npm run test:regional:browser
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload verified production site

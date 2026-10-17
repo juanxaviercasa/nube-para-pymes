@@ -1,0 +1,154 @@
+/* Shared branding: navy #0a192f, blue #3b82f6, orange #f97316. */
+body[data-app-id] {
+  --npp-canvas: #f4f7fc; --npp-surface: #fff; --npp-field: #edf3fb;
+  --npp-ink: #0a192f; --npp-muted: #475569; --npp-line: #cbd5e1;
+  --npp-link: #1e40af; --npp-chrome-accent: #1e40af;
+  --npp-chrome-bg: var(--npp-surface); --npp-chrome-ink: var(--npp-ink);
+  --npp-chrome-muted: var(--npp-muted); --npp-chrome-line: var(--npp-line);
+  --npp-nav-height: 65px;
+  --color-navy-950: #0a192f; --color-navy-900: #142d50;
+  --color-navy-850: #193657; --color-navy-800: #1d3a5c; --color-navy-700: #294c75;
+  --color-brand-500: #3b82f6; --color-blue-500: #3b82f6; --color-blue-mid: #3b82f6;
+  --color-cta: #f97316; --color-accent-500: #f97316; --color-flame-500: #f97316; --color-signal: #f97316;
+  margin: 0; background: var(--npp-canvas); color: var(--npp-ink);
+}
+html[data-npp-theme="dark"] body[data-app-id] {
+  --npp-canvas: #0a192f; --npp-surface: #142d50; --npp-field: #1d3a5c;
+  --npp-ink: #e8f0ff; --npp-muted: #b7c9e2; --npp-line: #48658a;
+  --npp-link: #93c5fd; --npp-chrome-accent: #93c5fd;
+  --color-blue-pale: #1d3a5c;
+}
+body[data-app-id] {
+  --color-bg: var(--npp-canvas); --color-canvas: var(--npp-canvas); --color-page: var(--npp-canvas);
+  --color-surface: var(--npp-surface); --color-panel: var(--npp-field); --color-field: var(--npp-field);
+  --color-heading: var(--npp-ink); --color-body: var(--npp-ink); --color-muted: var(--npp-muted);
+  --color-subtle: var(--npp-muted); --color-soft: var(--npp-muted);
+  --color-line: var(--npp-line); --color-navy-line: var(--npp-line); --color-border: var(--npp-line);
+  --color-ink-muted: var(--npp-muted); --color-ink-faint: var(--npp-muted);
+  --color-ink-100: var(--npp-ink); --color-ink-300: var(--npp-muted); --color-ink-400: var(--npp-muted); --color-ink-500: var(--npp-muted);
+  --canvas: var(--npp-canvas); --surface: var(--npp-surface); --surface2: var(--npp-field);
+  --field: var(--npp-field); --line: var(--npp-line); --strong: var(--npp-ink); --body: var(--npp-ink); --soft: var(--npp-muted);
+  --op-bg: var(--npp-canvas); --op-card: var(--npp-surface); --op-ink: var(--npp-ink); --op-muted: var(--npp-muted); --op-line: var(--npp-line);
+}
+/* Ink is a background token in the image converter and a print token in proformas. */
+body[data-app-id="calculadora-precios-venta-igv"], body[data-app-id="comparador-campanas-avanzado"], body[data-app-id="generador-politicas-devolucion"] { --color-ink: var(--npp-ink); }
+body[data-app-id="conversor-optimizador-imagenes"] { --color-ink: var(--npp-canvas); --color-ink-2: var(--npp-surface); --color-ink-3: var(--npp-field); }
+/* Fixed dark utility classes are legacy application UI, not the chosen theme.
+   Explicit inline document, signature, QR and palette colours are preserved. */
+html[data-npp-theme="light"] body[data-app-id] #root :is([class*="bg-navy-"], .bg-navy) { background-color: var(--npp-surface); }
+html[data-npp-theme] body[data-app-id] #root > .min-h-screen { background-color: var(--npp-canvas); color: var(--npp-ink); }
+html[data-npp-theme="light"] body[data-app-id] #root :is(.bg-white\/5, .bg-white\/10, .bg-white\/20) { background-color: var(--npp-field); }
+html[data-npp-theme="light"] body[data-app-id] #root button.rounded-full:is(.bg-white\/10, .bg-white\/20) { background-color: #94a3b8; }
+html[data-npp-theme="light"] body[data-app-id] #root :is(.text-orange-400, .text-orange-500, .text-accent-400, .text-accent-500, .text-flame-400, .text-flame-500, .text-signal, .text-ignite-500, .text-orange, .text-accent) { color: #c2410c; }
+html[data-npp-theme="light"] body[data-app-id] #root :is([class*="text-white"], .text-blue-100, .text-blue-200, [class*="text-blue-300"], [class*="text-blue-soft"], [class*="text-sky-300"], [class*="text-brand-200"], [class*="text-brand-300"], [class*="text-mist"], .text-sky, .text-mist, .text-blue-light) { color: var(--npp-ink); }
+html[data-npp-theme="light"] body[data-app-id] #root :is([class*="text-white/"], [class*="text-slate-300"], [class*="text-slate-400"], [class*="text-gray-400"], [class*="text-blue-300/"], [class*="text-blue-soft/"]) { color: var(--npp-muted); }
+html[data-npp-theme="light"] body[data-app-id] #root :is([class*="border-white/"], [class*="border-navy-"]) { border-color: var(--npp-line); }
+html[data-npp-theme="light"] body[data-app-id] #root :is(.bg-brand-500, .bg-blue-500, .bg-blue-mid, .bg-blue-900, .bg-brand-900, .bg-brand-700, .bg-royal-800, .bg-royal-600) { color: #fff; }
+html[data-npp-theme="light"] body[data-app-id] #root :is(.bg-brand-500, .bg-blue-500, .bg-blue-mid, .bg-blue-900, .bg-brand-900, .bg-brand-700, .bg-royal-800, .bg-royal-600) :is(span, svg) { color: inherit; }
+html[data-npp-theme="light"] body[data-app-id] #root :is(input, textarea, select):not([type="checkbox"]):not([type="radio"]):not([type="range"]):not([type="color"]) { background-color: #fff; color: var(--npp-ink); border-color: var(--npp-line); }
+html[data-npp-theme="light"] body[data-app-id] #root :is(input, textarea)::placeholder { color: #64748b; opacity: 1; }
+html[data-npp-theme="light"] body[data-app-id] .heatmap-editor:empty::before { color: #64748b; }
+html[data-npp-theme="dark"] body[data-app-id] #root :is(.text-navy, .text-navy-soft, .text-blue-dark, .text-blue-mid) { color: var(--npp-ink); }
+html[data-npp-theme="dark"] body[data-app-id] #root :is(.bg-navy, .bg-blue-dark) { background-color: #1e3a8a; color: #fff; }
+html[data-npp-theme="dark"] body[data-app-id] #root :is(.text-blue-pale, .text-blue-light, .text-blue) { color: #bfdbfe; }
+body[data-app-id] :is(.op-field label, .op-table td, .op-table th, .op-lane h4) { color: var(--npp-muted); }
+body[data-app-id] :is(.op-field input, .op-field textarea, .op-field select, .op-item, .op-item select, .op-button, .op-lane) { background: var(--npp-surface); color: var(--npp-ink); border-color: var(--npp-line); }
+body[data-app-id] .op-header { background: #0a192f; }
+body[data-app-id] .op-button.primary { background: #2563eb; color: #fff; }
+body[data-app-id] .op-button.danger { color: #b91c1c; }
+html[data-npp-theme="dark"] body[data-app-id] .op-button.danger { color: #fca5a5; }
+body[data-app-id] .op-table :is(th,td) { border-color: var(--npp-line); }
+[data-npp-native-theme] { display: none !important; }
+/* The palette editor renders its own component stylesheet at runtime. */
+body[data-app-id="generador-paletas-corporativas"] #root .np-palette-app { background: var(--npp-canvas); color: var(--npp-ink); }
+body[data-app-id="generador-paletas-corporativas"] #root .np-section { background: var(--npp-surface); border-color: var(--npp-line); }
+body[data-app-id="generador-paletas-corporativas"] #root :is(.np-head h1, .np-section h2) { color: var(--npp-ink); }
+body[data-app-id="generador-paletas-corporativas"] #root :is(.np-copy, .np-head p, .np-color-card label, .np-empty, .np-empty small, .np-gallery-actions code, td, th, td small) { color: var(--npp-muted); border-color: var(--npp-line); }
+body[data-app-id="generador-paletas-corporativas"] #root :is(.np-kicker, .np-gallery-actions button) { color: var(--npp-link); }
+body[data-app-id="generador-paletas-corporativas"] #root :is(.np-mode, .np-action.secondary, .np-tokens) { background: var(--npp-field); color: var(--npp-ink); border-color: var(--npp-line); }
+body[data-app-id="generador-paletas-corporativas"] #root .np-mode.active { background: #2563eb; border-color: #2563eb; color: #fff; }
+html[data-npp-theme="light"] body[data-app-id="generador-paletas-corporativas"] #root :is(.good, .np-notice) { color: #166534; }
+html[data-npp-theme="light"] body[data-app-id="generador-paletas-corporativas"] #root .bad { color: #b91c1c; }
+.npp-tool-nav, .npp-tool-bridge { box-sizing: border-box; font: 400 14px/1.6 Inter, system-ui, sans-serif; color: var(--npp-chrome-ink); }
+.npp-tool-nav { position: sticky; top: 0; z-index: 40; background: var(--npp-chrome-bg); border-bottom: 1px solid var(--npp-chrome-line); }
+.npp-tool-nav-inner { max-width: 1280px; min-height: 64px; margin: auto; padding: 10px 24px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.npp-tool-nav a { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; color: inherit; text-decoration: none; border-radius: 8px; padding: 6px 10px; }
+.npp-tool-nav a:hover { background: color-mix(in srgb, var(--npp-chrome-accent) 12%, transparent); }
+.npp-tool-back { font-weight: 750; }
+.npp-tool-back > span { font-size: 21px; }
+.npp-tool-nav-links { display: flex; align-items: center; gap: 12px; }
+.npp-tool-nav .npp-tool-business { font-weight: 650; color: var(--npp-chrome-accent); }
+.npp-tool-nav a:focus-visible, .npp-tool-bridge a:focus-visible { outline: 3px solid #38bdf8; outline-offset: 3px; }
+.npp-tool-bridge { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 24px; width: min(1200px, calc(100% - 48px)); margin: 40px auto 32px; padding: clamp(24px, 3vw, 36px); border: 1px solid var(--npp-chrome-line); border-top: 4px solid #f97316; border-radius: 20px; background: var(--npp-chrome-bg); box-shadow: 0 12px 32px #10223f0a; text-align: left; }
+.npp-tool-bridge-copy { flex: 1 1 440px; min-width: 0; }
+.npp-tool-eyebrow { display: block; color: var(--npp-chrome-accent); font-size: 12px; font-weight: 750; letter-spacing: .04em; margin-bottom: 8px; }
+.npp-tool-bridge h2 { font-size: clamp(20px, 2.3vw, 26px); line-height: 1.3; font-weight: 750; margin: 0 0 12px; color: var(--npp-chrome-ink); }
+.npp-tool-bridge p { margin: 0; max-width: 65ch; color: var(--npp-chrome-muted); font-size: 15px; line-height: 1.7; }
+.npp-tool-bridge-action { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 48px; max-width: 100%; padding: 12px 20px; background: #f97316; border: 1px solid #f97316; color: #0a192f; border-radius: 10px; font-weight: 750; text-decoration: none; text-align: center; overflow-wrap: anywhere; }
+.npp-tool-bridge-action:hover { background: #fb923c; }
+/* Added demo UI must span the layout, not consume a form/preview column. */
+body[data-app-id] .np-demo-bar, body[data-app-id] .np-demo-status { grid-column: 1 / -1; min-width: 0; }
+body[data-app-id] .np-demo-status:empty { display: none; }
+/* Native result headings already describe these panels. Floating duplicate
+   labels get clipped by document previews and collide with adjacent cards. */
+body[data-app-id] .np-demo-result::before { content: none; }
+body[data-app-id] .np-demo-bar { width: 100%; max-width: 1280px; margin-inline: auto; }
+body[data-app-id] #root > div > .np-demo-bar { width: calc(100% - 40px); margin-top: 24px; }
+body[data-npp-scheme="dark"] .np-demo-bar { background: #142d50; border-color: #48658a; border-left-color: #fb923c; color: #f1f5f9; box-shadow: none; }
+body[data-npp-scheme="dark"] .np-demo-copy p, body[data-npp-scheme="dark"] .np-demo-status { color: #c3d0e2; }
+body[data-npp-scheme="dark"] .np-demo-eyebrow { color: #fdba74; }
+body[data-npp-scheme="dark"] .np-demo-status[data-state="good"] { color: #86efac; }
+body[data-npp-scheme="dark"] .np-demo-status[data-state="warning"] { color: #fdba74; }
+body[data-app-id] .np-global-footer, body[data-app-id] .np-global-footer.op-footer { width: min(1200px, calc(100% - 48px)); padding: 24px 0 100px; gap: 12px; color: var(--npp-chrome-muted); }
+body[data-app-id] .np-global-disclaimer { color: inherit; font-size: 12px; line-height: 1.7; }
+body[data-app-id] .np-global-footer a:not(.np-footer-link) { color: var(--npp-chrome-accent); }
+body[data-app-id] .np-footer-link { min-height: 40px; font-size: 12px; }
+body[data-app-id] :is(.op-grid, .op-form) > *, body[data-app-id] #root :is(.grid, .flex) > :is(div, section, article, form, header, aside) { min-width: 0; }
+body[data-app-id] :is(.op-field, .op-field input, .op-field select, .op-field textarea) { min-width: 0; }
+body[data-app-id] :is(.op-grid, .op-card) + :is(.op-grid, .op-card) { margin-top: 24px; }
+body[data-app-id] .op-form { gap: 18px; }
+body[data-app-id] .op-field { gap: 8px; }
+body[data-app-id] :is(.op-header, .op-brand, .op-intro) > div { min-width: 0; }
+body[data-app-id] .op-header { flex-wrap: wrap; }
+body[data-app-id] .op-nav { justify-content: flex-start; }
+body[data-app-id] :is(.op-card, .op-item) :is(h3, h4, strong, small) { overflow-wrap: anywhere; }
+body[data-app-id] #root label { overflow-wrap: anywhere; }
+body[data-app-id] .npp-table-scroll { max-width: 100%; min-width: 0; overflow-x: auto; overscroll-behavior-x: contain; }
+body[data-app-id] .npp-table-scroll:focus-visible { outline: 3px solid #38bdf8; outline-offset: 3px; }
+body[data-app-id] #root header.sticky { top: var(--npp-nav-height); }
+@media (min-width: 1024px) and (max-width: 1279px) {
+  /* Leave six-column quote items enough room before adding the preview alongside. */
+  body[data-app-id="generador-cotizaciones"] #root main > [class*="lg:grid-cols-"] { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 767px) {
+  .npp-tool-nav-inner { padding: 8px 12px; gap: 8px; flex-wrap: wrap; }
+  .npp-tool-nav a { font-size: 13px; padding: 4px 6px; }
+  .npp-tool-nav-links { gap: 8px; }
+  .npp-tool-bridge { width: calc(100% - 32px); margin-block: 32px; gap: 20px; }
+  .npp-tool-bridge-action { width: 100%; }
+  body[data-app-id] .np-global-footer, body[data-app-id] .np-global-footer.op-footer { width: calc(100% - 32px); }
+  body[data-app-id] .np-demo-actions { flex: 1 1 100%; min-width: 0; }
+  body[data-app-id] .np-demo-button { min-width: 0; min-height: 44px; white-space: normal; }
+  body[data-app-id] .np-demo-bar { padding: 18px; gap: 16px; }
+  body[data-app-id] #root .npp-text-control { height: auto; min-height: 40px; white-space: normal; overflow-wrap: anywhere; }
+  body[data-app-id] #root input:not([type="checkbox"]):not([type="radio"]):not([type="range"]):not([type="color"]), body[data-app-id] #root select, body[data-app-id] .op-field :is(input, select) { min-height: 44px; font-size: 16px; }
+  body[data-app-id] .op-main { width: calc(100% - 32px); padding-bottom: 32px; }
+  body[data-app-id] .op-card { padding: 20px; }
+  body[data-app-id] .op-button { min-height: 44px; white-space: normal; }
+  body[data-app-id] .op-form { gap: 18px; }
+  body[data-app-id] .op-form.cols-2, body[data-app-id] .op-form.cols-3 { grid-template-columns: minmax(0, 1fr); }
+  body[data-app-id] .op-pipeline { grid-template-columns: repeat(4, minmax(240px, 82vw)); padding-bottom: 12px; }
+  body[data-app-id] #root .npp-mobile-tabs { flex-wrap: wrap; gap: 8px; overflow: visible; }
+  body[data-app-id] #root .npp-mobile-tabs > button { flex: 1 1 130px; justify-content: center; }
+}
+@media (max-width: 370px) {
+  .npp-tool-nav-links { flex: 1 1 100%; justify-content: space-between; }
+  body[data-app-id] #root .grid.grid-cols-3:has(> button) { grid-template-columns: minmax(0, 1fr); }
+}
+@media print {
+  .npp-tool-nav, .npp-tool-bridge, .np-demo-bar, .np-demo-status { display: none !important; }
+}
+
+.npp-tool-nav button { display: inline-flex; align-items: center; justify-content: center; min-height: 40px; padding: 6px 12px; border: 1px solid var(--npp-line); border-radius: 8px; background: var(--npp-field); color: var(--npp-ink); font: inherit; font-weight: 650; cursor: pointer; }
+.npp-tool-nav button:focus-visible { outline: 3px solid #3b82f6; outline-offset: 3px; }
+@media(max-width:600px) { .npp-tool-nav-inner { flex-wrap: wrap; } .npp-tool-nav-links { flex: 1 1 100%; justify-content: space-between; flex-wrap: wrap; } }
