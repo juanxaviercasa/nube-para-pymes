@@ -195,6 +195,17 @@
         "<h3>" + howTitle + "</h3><ol class=\"np-help-steps\">" + (config.quick || []).map(function (step) { return "<li>" + escapeHtml(step) + "</li>"; }).join("") + "</ol>" +
         "<h3>" + tipTitle + "</h3><p>" + escapeHtml(config.tip) + "</p>" +
         "<div class=\"np-help-actions\"><button class=\"np-help-action\" type=\"button\" data-help-action=\"tour\">" + tourBtn + "</button><a class=\"np-help-link\" href=\"" + escapeHtml(guideUrl) + "\">" + guideBtn + "</a></div></div></section>";
+      var illustrated = window.NP_ILLUSTRATED_TUTORIAL;
+      if (illustrated && /^https:\/\/todolima\.com\/herramientas\/[a-z0-9-]+$/.test(illustrated.url)) {
+        var visualLink = document.createElement("a");
+        visualLink.className = "np-help-link";
+        visualLink.href = illustrated.url;
+        visualLink.target = "_blank";
+        visualLink.rel = "noopener noreferrer";
+        visualLink.textContent = illustrated.label + (isEn ? " (new tab)" : " (otra pestaña)");
+        visualLink.dataset.nppTutorialHelp = "true";
+        backdrop.querySelector(".np-help-actions").appendChild(visualLink);
+      }
       backdrop.addEventListener("click", function (event) {
         if (event.target === backdrop || event.target.getAttribute("data-help-action") === "close") closePanel(backdrop);
         if (event.target.getAttribute("data-help-action") === "tour") { closePanel(backdrop); startTour(); }

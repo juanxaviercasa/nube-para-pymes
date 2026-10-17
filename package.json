@@ -11,7 +11,8 @@
     "test": "node scripts/verify_production_build.js && node scripts/verify_localization.js && python scripts/audit_site_links.py && python scripts/verify_ecosystem.py && python scripts/verify_featured_images.py && node --test cloudflare/contact-worker.test.mjs",
     "test:layout": "node scripts/test_browser_tool_layout.js",
     "test:regional": "node --test scripts/test_regional_settings.cjs",
-    "test:regional:browser": "node scripts/test_browser_regional.cjs"
+    "test:regional:browser": "node scripts/test_browser_regional.cjs",
+    "test:tutorials": "node scripts/test_illustrated_tutorials.cjs"
   },
   "devDependencies": {
     "playwright": "1.63.0"

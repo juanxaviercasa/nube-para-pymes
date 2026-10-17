@@ -1,0 +1,765 @@
+{
+  "version": 1,
+  "tools": [
+    {
+      "slug": "calculadora-precios-venta-igv",
+      "name": "Calculadora de Precios de Venta con IGV",
+      "toolUrl": "https://nubeparapymes.online/herramientas/finanzas/calculadora-precios-venta-igv/",
+      "tutorialUrl": "https://todolima.com/herramientas/calculadora-precios-venta-igv",
+      "steps": [
+        {
+          "number": 1,
+          "title": "Selecciona la moneda e ingresa el costo unitario real",
+          "url": "https://todolima.com/herramientas/calculadora-precios-venta-igv#tutorial-paso-1",
+          "image": "https://todolima.com/images/tutoriales/calculadora-precios-venta-igv-1.webp",
+          "alt": "Calculadora de Precios de Venta con IGV, paso 1: Costo del producto. Captura de la interfaz de Nube para Pymes.",
+          "capturedAt": "2026-10-17"
+        },
+        {
+          "number": 2,
+          "title": "Define tu margen de ganancia neto sobre la venta",
+          "url": "https://todolima.com/herramientas/calculadora-precios-venta-igv#tutorial-paso-2",
+          "image": "https://todolima.com/images/tutoriales/calculadora-precios-venta-igv-2.webp",
+          "alt": "Calculadora de Precios de Venta con IGV, paso 2: Margen de ganancia deseado. Captura de la interfaz de Nube para Pymes.",
+          "capturedAt": "2026-10-17"
+        },
+        {
+          "number": 3,
+          "title": "Evalúa precios de la competencia con Margen Inverso (Goal Seek)",
+          "url": "https://todolima.com/herramientas/calculadora-precios-venta-igv#tutorial-paso-3",
+          "image": "https://todolima.com/images/tutoriales/calculadora-precios-venta-igv-3.webp",
+          "alt": "Calculadora de Precios de Venta con IGV, paso 3: Margen Inverso. Captura de la interfaz de Nube para Pymes.",
+          "capturedAt": "2026-10-17"
+        },
+        {
+          "number": 4,
+          "title": "Carga tu catálogo y simula alzas de proveedores en Comparador",
+          "url": "https://todolima.com/herramientas/calculadora-precios-venta-igv#tutorial-paso-4",
+          "image": "https://todolima.com/images/tutoriales/calculadora-precios-venta-igv-4.webp",
+          "alt": "Calculadora de Precios de Venta con IGV, paso 4: Comparador. Captura de la interfaz de Nube para Pymes.",
+          "capturedAt": "2026-10-17"
+        },
+        {
+          "number": 5,
+          "title": "Arma un paquete promocional en Kits y exporta tu hoja de precios",
+          "url": "https://todolima.com/herramientas/calculadora-precios-venta-igv#tutorial-paso-5",
+          "image": "https://todolima.com/images/tutoriales/calculadora-precios-venta-igv-5.webp",
+          "alt": "Calculadora de Precios de Venta con IGV, paso 5: Kits. Captura de la interfaz de Nube para Pymes.",
+          "capturedAt": "2026-10-17"
+        }
+      ]
+    },
+    {
+      "slug": "calculadora-sobrecostos-laborales",
+      "name": "Calculadora de Sobrecostos Laborales",
+      "toolUrl": "https://nubeparapymes.online/herramientas/finanzas/calculadora-sobrecostos-laborales/",
+      "tutorialUrl": "https://todolima.com/herramientas/calculadora-sobrecostos-laborales",
+      "steps": [
+        {
+          "number": 1,
+          "title": "Configura la moneda, el tipo de cambio y el horizonte (Mensual o Anual)",
+          "url": "https://todolima.com/herramientas/calculadora-sobrecostos-laborales#tutorial-paso-1",
+          "image": "https://todolima.com/images/tutoriales/calculadora-sobrecostos-laborales-1.webp",
+          "alt": "Calculadora de Sobrecostos Laborales, paso 1: Vista Mensual. Captura de la interfaz de Nube para Pymes.",
+          "capturedAt": "2026-10-17"
+        },
+        {
+          "number": 2,
+          "title": "Registra a un trabajador en el formulario \"Agregar empleado\"",
+          "url": "https://todolima.com/herramientas/calculadora-sobrecostos-laborales#tutorial-paso-2",
+          "image": "https://todolima.com/images/tutoriales/calculadora-sobrecostos-laborales-2.webp",
+          "alt": "Calculadora de Sobrecostos Laborales, paso 2: Agregar empleado. Captura de la interfaz de Nube para Pymes.",
+          "capturedAt": "2026-10-17"
+        },
+        {
+          "number": 3,
+          "title": "Configura seguro de salud, sistema de pensiones, horas extras y asignación familiar",
+          "url": "https://todolima.com/herramientas/calculadora-sobrecostos-laborales#tutorial-paso-3",
+          "image": "https://todolima.com/images/tutoriales/calculadora-sobrecostos-laborales-3.webp",
+          "alt": "Calculadora de Sobrecostos Laborales, paso 3: TIPO DE SEGURO. Captura de la interfaz de Nube para Pymes.",
+          "capturedAt": "2026-10-17"
+        },
+        {
+          "number": 4,
+          "title": "Pulsa \"Agregar\" o utiliza \"Importar CSV\" para cargar toda tu empresa",
+          "url": "https://todolima.com/herramientas/calculadora-sobrecostos-laborales#tutorial-paso-4",
+          "image": "https://todolima.com/images/tutoriales/calculadora-sobrecostos-laborales-4.webp",
+          "alt": "Calculadora de Sobrecostos Laborales, paso 4: Agregar. Captura de la interfaz de Nube para Pymes.",
+          "capturedAt": "2026-10-17"
+        },
+        {
+          "number": 5,
+          "title": "Compara el presupuesto anual por departamento y descarga el reporte en PDF",
+          "url": "https://todolima.com/herramientas/calculadora-sobrecostos-laborales#tutorial-paso-5",
+          "image": "https://todolima.com/images/tutoriales/calculadora-sobrecostos-laborales-5.webp",
+          "alt": "Calculadora de Sobrecostos Laborales, paso 5: COSTO TOTAL EMPLEADOR. Captura de la interfaz de Nube para Pymes.",
+          "capturedAt": "2026-10-17"
+        }
+      ]
+    },
+    {
+      "slug": "calculadora-prestamos-amortizaciones",
+      "name": "Calculadora de Préstamos y Amortizaciones",
+      "toolUrl": "https://nubeparapymes.online/herramientas/finanzas/calculadora-prestamos-amortizaciones/",
+      "tutorialUrl": "https://todolima.com/herramientas/calculadora-prestamos-amortizaciones",
+      "steps": [
+        {
+          "number": 1,
+          "title": "Ingresa el monto del crédito, la tasa anual y el plazo en meses",
+          "url": "https://todolima.com/herramientas/calculadora-prestamos-amortizaciones#tutorial-paso-1",
+          "image": "https://todolima.com/images/tutoriales/calculadora-prestamos-amortizaciones-1.webp",
+          "alt": "Calculadora de Préstamos y Amortizaciones, paso 1: Configura tu crédito. Captura de la interfaz de Nube para Pymes.",
+          "capturedAt": "2026-10-17"
+        },
+        {
+          "number": 2,
+          "title": "Prueba el impacto del Periodo de Gracia antes de aceptarlo en el banco",
+          "url": "https://todolima.com/herramientas/calculadora-prestamos-amortizaciones#tutorial-paso-2",
+          "image": "https://todolima.com/images/tutoriales/calculadora-prestamos-amortizaciones-2.webp",
+          "alt": "Calculadora de Préstamos y Amortizaciones, paso 2: Periodo de gracia. Captura de la interfaz de Nube para Pymes.",
+          "capturedAt": "2026-10-17"
+        },
+        {
+          "number": 3,
+          "title": "Compara dos propuestas bancarias con \"Guardar A\" y \"Guardar B\"",
+          "url": "https://todolima.com/herramientas/calculadora-prestamos-amortizaciones#tutorial-paso-3",
+          "image": "https://todolima.com/images/tutoriales/calculadora-prestamos-amortizaciones-3.webp",
+          "alt": "Calculadora de Préstamos y Amortizaciones, paso 3: Comparar escenarios. Captura de la interfaz de Nube para Pymes.",
+          "capturedAt": "2026-10-17"
+        },
+        {
+          "number": 4,
+          "title": "Valida si tu negocio puede pagar la cuota en el \"Perfilador de capacidad de pago\"",
+          "url": "https://todolima.com/herramientas/calculadora-prestamos-amortizaciones#tutorial-paso-4",
+          "image": "https://todolima.com/images/tutoriales/calculadora-prestamos-amortizaciones-4.webp",
+          "alt": "Calculadora de Préstamos y Amortizaciones, paso 4: Perfilador de capacidad de pago. Captura de la interfaz de Nube para Pymes.",
+          "capturedAt": "2026-10-17"
+        },
+        {
+          "number": 5,
+          "title": "Simula prepagos en la columna \"Abono extra\" y descarga el cronograma en PDF o CSV",
+          "url": "https://todolima.com/herramientas/calculadora-prestamos-amortizaciones#tutorial-paso-5",
+          "image": "https://todolima.com/images/tutoriales/calculadora-prestamos-amortizaciones-5.webp",
+          "alt": "Calculadora de Préstamos y Amortizaciones, paso 5: Tabla de amortización. Captura de la interfaz de Nube para Pymes.",
+          "capturedAt": "2026-10-17"
+        }
+      ]
+    },
+    {
+      "slug": "flujo-caja-pymes",
+      "name": "Flujo de Caja para Pymes",
+      "toolUrl": "https://nubeparapymes.online/herramientas/finanzas/flujo-caja-pymes/",
+      "tutorialUrl": "https://todolima.com/herramientas/flujo-caja-pymes",
+      "steps": [
+        {
+          "number": 1,
+          "title": "Registra tus cobros y ventas ejecutadas como \"Ingreso\" + \"Pagado / cobrado\"",
+          "url": "https://todolima.com/herramientas/flujo-caja-pymes#tutorial-paso-1",
+          "image": "https://todolima.com/images/tutoriales/flujo-caja-pymes-1.webp",
+          "alt": "Flujo de Caja para Pymes, paso 1: Nuevo movimiento. Captura de la interfaz de Nube para Pymes.",
+          "capturedAt": "2026-10-17"
+        },
+        {
+          "number": 2,
+          "title": "Carga las facturas al crédito como \"Ingreso\" + \"Pendiente\" con fecha de vencimiento",
+          "url": "https://todolima.com/herramientas/flujo-caja-pymes#tutorial-paso-2",
+          "image": "https://todolima.com/images/tutoriales/flujo-caja-pymes-2.webp",
+          "alt": "Flujo de Caja para Pymes, paso 2: Fecha de vencimiento. Captura de la interfaz de Nube para Pymes.",
+          "capturedAt": "2026-10-17"
+        },
+        {
+          "number": 3,
+          "title": "Programa tus costos fijos, proveedores y tributos como \"Egreso\"",
+          "url": "https://todolima.com/herramientas/flujo-caja-pymes#tutorial-paso-3",
+          "image": "https://todolima.com/images/tutoriales/flujo-caja-pymes-3.webp",
+          "alt": "Flujo de Caja para Pymes, paso 3: Categoría. Captura de la interfaz de Nube para Pymes.",
+          "capturedAt": "2026-10-17"
+        },
+        {
+          "number": 4,
+          "title": "Filtra tus \"Pendientes\" cada mañana y actualiza el estado al cobrar o pagar",
+          "url": "https://todolima.com/herramientas/flujo-caja-pymes#tutorial-paso-4",
+          "image": "https://todolima.com/images/tutoriales/flujo-caja-pymes-4.webp",
+          "alt": "Flujo de Caja para Pymes, paso 4: Movimientos y vencimientos. Captura de la interfaz de Nube para Pymes.",
+          "capturedAt": "2026-10-17"
+        },
+        {
+          "number": 5,
+          "title": "Descarga tu copia de seguridad con \"Respaldo JSON\"",
+          "url": "https://todolima.com/herramientas/flujo-caja-pymes#tutorial-paso-5",
+          "image": "https://todolima.com/images/tutoriales/flujo-caja-pymes-5.webp",
+          "alt": "Flujo de Caja para Pymes, paso 5: Respaldo JSON. Captura de la interfaz de Nube para Pymes.",
+          "capturedAt": "2026-10-17"
+        }
+      ]
+    },
+    {
+      "slug": "generador-codigos-qr",
+      "name": "Generador de Códigos QR para Negocios",
+      "toolUrl": "https://nubeparapymes.online/herramientas/ventas/generador-codigos-qr/",
+      "tutorialUrl": "https://todolima.com/herramientas/generador-codigos-qr",
+      "steps": [
+        {
+          "number": 1,
+          "title": "Selecciona \"PE +51\" e ingresa tu número de WhatsApp Business",
+          "url": "https://todolima.com/herramientas/generador-codigos-qr#tutorial-paso-1",
+          "image": "https://todolima.com/images/tutoriales/generador-codigos-qr-1.webp",
+          "alt": "Generador de Códigos QR para Negocios, paso 1: Número de WhatsApp. Captura de la interfaz de Nube para Pymes.",
+          "capturedAt": "2026-10-17"
+        },
+        {
+          "number": 2,
+          "title": "Redacta tu \"Mensaje predefinido\" cuidando el contador 0 / 600",
+          "url": "https://todolima.com/herramientas/generador-codigos-qr#tutorial-paso-2",
+          "image": "https://todolima.com/images/tutoriales/generador-codigos-qr-2.webp",
+          "alt": "Generador de Códigos QR para Negocios, paso 2: Mensaje predefinido. Captura de la interfaz de Nube para Pymes.",
+          "capturedAt": "2026-10-17"
+        },
+        {
+          "number": 3,
+          "title": "Agrega etiquetas de origen en \"Parámetros de rastreo (UTM)\"",
+          "url": "https://todolima.com/herramientas/generador-codigos-qr#tutorial-paso-3",
+          "image": "https://todolima.com/images/tutoriales/generador-codigos-qr-3.webp",
+          "alt": "Generador de Códigos QR para Negocios, paso 3: Parámetros de rastreo (UTM). Captura de la interfaz de Nube para Pymes.",
+          "capturedAt": "2026-10-17"
+        },
+        {
+          "number": 4,
+          "title": "Personaliza el \"Estilo del QR\" y activa el \"Icono de chat al centro\"",
+          "url": "https://todolima.com/herramientas/generador-codigos-qr#tutorial-paso-4",
+          "image": "https://todolima.com/images/tutoriales/generador-codigos-qr-4.webp",
+          "alt": "Generador de Códigos QR para Negocios, paso 4: ESTILO DEL QR. Captura de la interfaz de Nube para Pymes.",
+          "capturedAt": "2026-10-17"
+        },
+        {
+          "number": 5,
+          "title": "Copia tu enlace `wa.me` y descarga el archivo PNG para imprenta",
+          "url": "https://todolima.com/herramientas/generador-codigos-qr#tutorial-paso-5",
+          "image": "https://todolima.com/images/tutoriales/generador-codigos-qr-5.webp",
+          "alt": "Generador de Códigos QR para Negocios, paso 5: Tu enlace generado. Captura de la interfaz de Nube para Pymes.",
+          "capturedAt": "2026-10-17"
+        }
+      ]
+    },
+    {
+      "slug": "calculadora-flete-envio-local",
+      "name": "Calculadora de Flete y Envío Local",
+      "toolUrl": "https://nubeparapymes.online/herramientas/operaciones/calculadora-flete-envio-local/",
+      "tutorialUrl": "https://todolima.com/herramientas/calculadora-flete-envio-local",
+      "steps": [
+        {
+          "number": 1,
+          "title": "Ingresa las dimensiones (Largo, Ancho, Alto) y el Peso real del paquete",
+          "url": "https://todolima.com/herramientas/calculadora-flete-envio-local#tutorial-paso-1",
+          "image": "https://todolima.com/images/tutoriales/calculadora-flete-envio-local-1.webp",
+          "alt": "Calculadora de Flete y Envío Local, paso 1: Datos del paquete. Captura de la interfaz de Nube para Pymes.",
+          "capturedAt": "2026-10-17"
+        },
+        {
+          "number": 2,
+          "title": "Configura las paradas de tu ruta (hasta 5) y asigna su zona en el mapa",
+          "url": "https://todolima.com/herramientas/calculadora-flete-envio-local#tutorial-paso-2",
+          "image": "https://todolima.com/images/tutoriales/calculadora-flete-envio-local-2.webp",
+          "alt": "Calculadora de Flete y Envío Local, paso 2: Paradas de la ruta. Captura de la interfaz de Nube para Pymes.",
+          "capturedAt": "2026-10-17"
+        },
+        {
+          "number": 3,
+          "title": "Compara \"Envío Estándar\" vs. \"Envío Express\" y guarda la cotización",
+          "url": "https://todolima.com/herramientas/calculadora-flete-envio-local#tutorial-paso-3",
+          "image": "https://todolima.com/images/tutoriales/calculadora-flete-envio-local-3.webp",
+          "alt": "Calculadora de Flete y Envío Local, paso 3: Cotización de ruta. Captura de la interfaz de Nube para Pymes.",
+          "capturedAt": "2026-10-17"
+        },
+        {
+          "number": 4,
+          "title": "Completa los datos del cliente y genera el \"Manifiesto de envío\" térmico",
+          "url": "https://todolima.com/herramientas/calculadora-flete-envio-local#tutorial-paso-4",
+          "image": "https://todolima.com/images/tutoriales/calculadora-flete-envio-local-4.webp",
+          "alt": "Calculadora de Flete y Envío Local, paso 4: Manifiesto de envío. Captura de la interfaz de Nube para Pymes.",
+          "capturedAt": "2026-10-17"
+        }
+      ]
+    },
+    {
+      "slug": "creador-facturas-proforma",
+      "name": "Creador de Facturas Proforma",
+      "toolUrl": "https://nubeparapymes.online/herramientas/ventas/creador-facturas-proforma/",
+      "tutorialUrl": "https://todolima.com/herramientas/creador-facturas-proforma",
+      "steps": [
+        {
+          "number": 1,
+          "title": "Configura los \"Datos del Emisor\", sube tu logotipo y selecciona al cliente",
+          "url": "https://todolima.com/herramientas/creador-facturas-proforma#tutorial-paso-1",
+          "image": "https://todolima.com/images/tutoriales/creador-facturas-proforma-1.webp",
+          "alt": "Creador de Facturas Proforma, paso 1: DATOS DEL EMISOR. Captura de la interfaz de Nube para Pymes.",
+          "capturedAt": "2026-10-17"
+        },
+        {
+          "number": 2,
+          "title": "Elige la moneda (\"S/ Sol\"), el impuesto (18%) y activa el \"Conversor de Divisas\" si vendes bimoneda",
+          "url": "https://todolima.com/herramientas/creador-facturas-proforma#tutorial-paso-2",
+          "image": "https://todolima.com/images/tutoriales/creador-facturas-proforma-2.webp",
+          "alt": "Creador de Facturas Proforma, paso 2: DETALLES DEL DOCUMENTO. Captura de la interfaz de Nube para Pymes.",
+          "capturedAt": "2026-10-17"
+        },
+        {
+          "number": 3,
+          "title": "Agrega los productos en \"Elementos\" y guárdalos en tu Catálogo local",
+          "url": "https://todolima.com/herramientas/creador-facturas-proforma#tutorial-paso-3",
+          "image": "https://todolima.com/images/tutoriales/creador-facturas-proforma-3.webp",
+          "alt": "Creador de Facturas Proforma, paso 3: ÍTEMS. Captura de la interfaz de Nube para Pymes.",
+          "capturedAt": "2026-10-17"
+        },
+        {
+          "number": 4,
+          "title": "Activa el \"Pago rápido (Código QR)\" con Yape, Plin o PayPal",
+          "url": "https://todolima.com/herramientas/creador-facturas-proforma#tutorial-paso-4",
+          "image": "https://todolima.com/images/tutoriales/creador-facturas-proforma-4.webp",
+          "alt": "Creador de Facturas Proforma, paso 4: PAGO RÁPIDO (CÓDIGO QR). Captura de la interfaz de Nube para Pymes.",
+          "capturedAt": "2026-10-17"
+        },
+        {
+          "number": 5,
+          "title": "Elige la plantilla (\"Minimalista\" o \"Corporativo\"), guarda en Historial y descarga el PDF",
+          "url": "https://todolima.com/herramientas/creador-facturas-proforma#tutorial-paso-5",
+          "image": "https://todolima.com/images/tutoriales/creador-facturas-proforma-5.webp",
+          "alt": "Creador de Facturas Proforma, paso 5: DISEÑO DE PLANTILLA. Captura de la interfaz de Nube para Pymes.",
+          "capturedAt": "2026-10-17"
+        }
+      ]
+    },
+    {
+      "slug": "generador-cotizaciones",
+      "name": "Generador de Cotizaciones Comerciales",
+      "toolUrl": "https://nubeparapymes.online/herramientas/ventas/generador-cotizaciones/",
+      "tutorialUrl": "https://todolima.com/herramientas/generador-cotizaciones",
+      "steps": [
+        {
+          "number": 1,
+          "title": "Completa los datos de tu empresa, RUC, cliente y fechas de vigencia",
+          "url": "https://todolima.com/herramientas/generador-cotizaciones#tutorial-paso-1",
+          "image": "https://todolima.com/images/tutoriales/generador-cotizaciones-1.webp",
+          "alt": "Generador de Cotizaciones Comerciales, paso 1: Datos de la Cotización. Captura de la interfaz de Nube para Pymes.",
+          "capturedAt": "2026-10-17"
+        },
+        {
+          "number": 2,
+          "title": "Configura la moneda (\"Soles S/\" o \"Dólares $\") y las Condiciones de Pago",
+          "url": "https://todolima.com/herramientas/generador-cotizaciones#tutorial-paso-2",
+          "image": "https://todolima.com/images/tutoriales/generador-cotizaciones-2.webp",
+          "alt": "Generador de Cotizaciones Comerciales, paso 2: CONDICIONES DE PAGO. Captura de la interfaz de Nube para Pymes.",
+          "capturedAt": "2026-10-17"
+        },
+        {
+          "number": 3,
+          "title": "Añade las partidas en \"Ítems / Servicios\" y aplica descuentos por línea si corresponde",
+          "url": "https://todolima.com/herramientas/generador-cotizaciones#tutorial-paso-3",
+          "image": "https://todolima.com/images/tutoriales/generador-cotizaciones-3.webp",
+          "alt": "Generador de Cotizaciones Comerciales, paso 3: Ítems / Servicios. Captura de la interfaz de Nube para Pymes.",
+          "capturedAt": "2026-10-17"
+        },
+        {
+          "number": 4,
+          "title": "Activa \"Aplicar Detracción\" cuando cotices servicios sujetos al SPOT de SUNAT",
+          "url": "https://todolima.com/herramientas/generador-cotizaciones#tutorial-paso-4",
+          "image": "https://todolima.com/images/tutoriales/generador-cotizaciones-4.webp",
+          "alt": "Generador de Cotizaciones Comerciales, paso 4: Aplicar Detracción. Captura de la interfaz de Nube para Pymes.",
+          "capturedAt": "2026-10-17"
+        },
+        {
+          "number": 5,
+          "title": "Elige \"Plantilla Clásica\" o \"Plantilla Moderna\", descarga el PDF y respalda tu base",
+          "url": "https://todolima.com/herramientas/generador-cotizaciones#tutorial-paso-5",
+          "image": "https://todolima.com/images/tutoriales/generador-cotizaciones-5.webp",
+          "alt": "Generador de Cotizaciones Comerciales, paso 5: PREVISUALIZACIÓN. Captura de la interfaz de Nube para Pymes.",
+          "capturedAt": "2026-10-17"
+        }
+      ]
+    },
+    {
+      "slug": "crm-pymes",
+      "name": "CRM Ligero para Pymes",
+      "toolUrl": "https://nubeparapymes.online/herramientas/ventas/crm-pymes/",
+      "tutorialUrl": "https://todolima.com/herramientas/crm-pymes",
+      "steps": [
+        {
+          "number": 1,
+          "title": "Registra primero al cliente o empresa en el formulario \"Nuevo contacto\"",
+          "url": "https://todolima.com/herramientas/crm-pymes#tutorial-paso-1",
+          "image": "https://todolima.com/images/tutoriales/crm-pymes-1.webp",
+          "alt": "CRM Ligero para Pymes, paso 1: Nuevo contacto. Captura de la interfaz de Nube para Pymes.",
+          "capturedAt": "2026-10-17"
+        },
+        {
+          "number": 2,
+          "title": "Crea el negocio potencial en \"Nueva oportunidad\" y vincúlalo al contacto",
+          "url": "https://todolima.com/herramientas/crm-pymes#tutorial-paso-2",
+          "image": "https://todolima.com/images/tutoriales/crm-pymes-2.webp",
+          "alt": "CRM Ligero para Pymes, paso 2: Nueva oportunidad. Captura de la interfaz de Nube para Pymes.",
+          "capturedAt": "2026-10-17"
+        },
+        {
+          "number": 3,
+          "title": "Asigna la \"Etapa\", la \"Probabilidad (%)\" y programa la fecha de \"Próxima acción\"",
+          "url": "https://todolima.com/herramientas/crm-pymes#tutorial-paso-3",
+          "image": "https://todolima.com/images/tutoriales/crm-pymes-3.webp",
+          "alt": "CRM Ligero para Pymes, paso 3: Probabilidad (%). Captura de la interfaz de Nube para Pymes.",
+          "capturedAt": "2026-10-17"
+        },
+        {
+          "number": 4,
+          "title": "Revisa cada mañana el KPI \"Seguimientos vencidos\" y mueve las etapas en el Pipeline",
+          "url": "https://todolima.com/herramientas/crm-pymes#tutorial-paso-4",
+          "image": "https://todolima.com/images/tutoriales/crm-pymes-4.webp",
+          "alt": "CRM Ligero para Pymes, paso 4: Pipeline comercial. Captura de la interfaz de Nube para Pymes.",
+          "capturedAt": "2026-10-17"
+        },
+        {
+          "number": 5,
+          "title": "Exporta semanalmente tu cartera con el botón \"Respaldo JSON\"",
+          "url": "https://todolima.com/herramientas/crm-pymes#tutorial-paso-5",
+          "image": "https://todolima.com/images/tutoriales/crm-pymes-5.webp",
+          "alt": "CRM Ligero para Pymes, paso 5: Respaldo JSON. Captura de la interfaz de Nube para Pymes.",
+          "capturedAt": "2026-10-17"
+        }
+      ]
+    },
+    {
+      "slug": "generador-contratos-servicios",
+      "name": "Generador de Contratos de Prestación de Servicios",
+      "toolUrl": "https://nubeparapymes.online/herramientas/legal/generador-contratos-servicios/",
+      "tutorialUrl": "https://todolima.com/herramientas/generador-contratos-servicios",
+      "steps": [
+        {
+          "number": 1,
+          "title": "Selecciona la plantilla (\"Contrato de Servicios\" o \"Acuerdo NDA\")",
+          "url": "https://todolima.com/herramientas/generador-contratos-servicios#tutorial-paso-1",
+          "image": "https://todolima.com/images/tutoriales/generador-contratos-servicios-1.webp",
+          "alt": "Generador de Contratos de Prestación de Servicios, paso 1: Tipo de documento. Captura de la interfaz de Nube para Pymes.",
+          "capturedAt": "2026-10-17"
+        },
+        {
+          "number": 2,
+          "title": "Completa los datos de \"EL CONTRATISTA\" y \"EL CLIENTE\"",
+          "url": "https://todolima.com/herramientas/generador-contratos-servicios#tutorial-paso-2",
+          "image": "https://todolima.com/images/tutoriales/generador-contratos-servicios-2.webp",
+          "alt": "Generador de Contratos de Prestación de Servicios, paso 2: Datos del Contratista. Captura de la interfaz de Nube para Pymes.",
+          "capturedAt": "2026-10-17"
+        },
+        {
+          "number": 3,
+          "title": "Detalla el alcance en \"Descripción del servicio\" y fija las Condiciones de pago",
+          "url": "https://todolima.com/herramientas/generador-contratos-servicios#tutorial-paso-3",
+          "image": "https://todolima.com/images/tutoriales/generador-contratos-servicios-3.webp",
+          "alt": "Generador de Contratos de Prestación de Servicios, paso 3: Detalles del Servicio. Captura de la interfaz de Nube para Pymes.",
+          "capturedAt": "2026-10-17"
+        },
+        {
+          "number": 4,
+          "title": "Agrega cláusulas específicas con \"Añadir cláusula personalizada\"",
+          "url": "https://todolima.com/herramientas/generador-contratos-servicios#tutorial-paso-4",
+          "image": "https://todolima.com/images/tutoriales/generador-contratos-servicios-4.webp",
+          "alt": "Generador de Contratos de Prestación de Servicios, paso 4: Cláusulas personalizadas. Captura de la interfaz de Nube para Pymes.",
+          "capturedAt": "2026-10-17"
+        },
+        {
+          "number": 5,
+          "title": "Dibuja tu firma en el lienzo digital y descarga el PDF en formato A4",
+          "url": "https://todolima.com/herramientas/generador-contratos-servicios#tutorial-paso-5",
+          "image": "https://todolima.com/images/tutoriales/generador-contratos-servicios-5.webp",
+          "alt": "Generador de Contratos de Prestación de Servicios, paso 5: Firma digital. Captura de la interfaz de Nube para Pymes.",
+          "capturedAt": "2026-10-17"
+        }
+      ]
+    },
+    {
+      "slug": "generador-politicas-devolucion",
+      "name": "Generador de Políticas de Devolución",
+      "toolUrl": "https://nubeparapymes.online/herramientas/legal/generador-politicas-devolucion/",
+      "tutorialUrl": "https://todolima.com/herramientas/generador-politicas-devolucion",
+      "steps": [
+        {
+          "number": 1,
+          "title": "Elige el tipo de producto",
+          "url": "https://todolima.com/herramientas/generador-politicas-devolucion#tutorial-paso-1",
+          "image": "https://todolima.com/images/tutoriales/generador-politicas-devolucion-1.webp",
+          "alt": "Generador de Políticas de Devolución, paso 1: 01 — ¿QUÉ VENDES?. Captura de la interfaz de Nube para Pymes.",
+          "capturedAt": "2026-10-17"
+        },
+        {
+          "number": 2,
+          "title": "Identifica tu tienda y el plazo",
+          "url": "https://todolima.com/herramientas/generador-politicas-devolucion#tutorial-paso-2",
+          "image": "https://todolima.com/images/tutoriales/generador-politicas-devolucion-2.webp",
+          "alt": "Generador de Políticas de Devolución, paso 2: Nombre de la tienda. Captura de la interfaz de Nube para Pymes.",
+          "capturedAt": "2026-10-17"
+        },
+        {
+          "number": 3,
+          "title": "Indica la condición del empaque",
+          "url": "https://todolima.com/herramientas/generador-politicas-devolucion#tutorial-paso-3",
+          "image": "https://todolima.com/images/tutoriales/generador-politicas-devolucion-3.webp",
+          "alt": "Generador de Políticas de Devolución, paso 3: Condición del empaque. Captura de la interfaz de Nube para Pymes.",
+          "capturedAt": "2026-10-17"
+        },
+        {
+          "number": 4,
+          "title": "Prepara la vista de tu política",
+          "url": "https://todolima.com/herramientas/generador-politicas-devolucion#tutorial-paso-4",
+          "image": "https://todolima.com/images/tutoriales/generador-politicas-devolucion-4.webp",
+          "alt": "Generador de Políticas de Devolución, paso 4: Generar política. Captura de la interfaz de Nube para Pymes.",
+          "capturedAt": "2026-10-17"
+        },
+        {
+          "number": 5,
+          "title": "Revisa la vista y las condiciones de exportación",
+          "url": "https://todolima.com/herramientas/generador-politicas-devolucion#tutorial-paso-5",
+          "image": "https://todolima.com/images/tutoriales/generador-politicas-devolucion-5.webp",
+          "alt": "Generador de Políticas de Devolución, paso 5: Desbloquear. Captura de la interfaz de Nube para Pymes.",
+          "capturedAt": "2026-10-17"
+        }
+      ]
+    },
+    {
+      "slug": "generador-politicas-terminos",
+      "name": "Generador de Políticas de Privacidad y Términos",
+      "toolUrl": "https://nubeparapymes.online/herramientas/legal/generador-politicas-terminos/",
+      "tutorialUrl": "https://todolima.com/herramientas/generador-politicas-terminos",
+      "steps": [
+        {
+          "number": 1,
+          "title": "Identifica la empresa y su web",
+          "url": "https://todolima.com/herramientas/generador-politicas-terminos#tutorial-paso-1",
+          "image": "https://todolima.com/images/tutoriales/generador-politicas-terminos-1.webp",
+          "alt": "Generador de Políticas de Privacidad y Términos, paso 1: Nombre de la empresa. Captura de la interfaz de Nube para Pymes.",
+          "capturedAt": "2026-10-17"
+        },
+        {
+          "number": 2,
+          "title": "Añade datos fiscales y tipo de sitio",
+          "url": "https://todolima.com/herramientas/generador-politicas-terminos#tutorial-paso-2",
+          "image": "https://todolima.com/images/tutoriales/generador-politicas-terminos-2.webp",
+          "alt": "Generador de Políticas de Privacidad y Términos, paso 2: Identificación fiscal. Captura de la interfaz de Nube para Pymes.",
+          "capturedAt": "2026-10-17"
+        },
+        {
+          "number": 3,
+          "title": "Describe el tratamiento de información",
+          "url": "https://todolima.com/herramientas/generador-politicas-terminos#tutorial-paso-3",
+          "image": "https://todolima.com/images/tutoriales/generador-politicas-terminos-3.webp",
+          "alt": "Generador de Políticas de Privacidad y Términos, paso 3: Cumplimiento legal. Captura de la interfaz de Nube para Pymes.",
+          "capturedAt": "2026-10-17"
+        },
+        {
+          "number": 4,
+          "title": "Compara los documentos en la vista previa",
+          "url": "https://todolima.com/herramientas/generador-politicas-terminos#tutorial-paso-4",
+          "image": "https://todolima.com/images/tutoriales/generador-politicas-terminos-4.webp",
+          "alt": "Generador de Políticas de Privacidad y Términos, paso 4: Privacidad. Captura de la interfaz de Nube para Pymes.",
+          "capturedAt": "2026-10-17"
+        },
+        {
+          "number": 5,
+          "title": "Revisa el borrador antes de generarlo",
+          "url": "https://todolima.com/herramientas/generador-politicas-terminos#tutorial-paso-5",
+          "image": "https://todolima.com/images/tutoriales/generador-politicas-terminos-5.webp",
+          "alt": "Generador de Políticas de Privacidad y Términos, paso 5: Generar documentos. Captura de la interfaz de Nube para Pymes.",
+          "capturedAt": "2026-10-17"
+        }
+      ]
+    },
+    {
+      "slug": "auditor-seo-basico",
+      "name": "Auditor Básico de SEO On-Page",
+      "toolUrl": "https://nubeparapymes.online/herramientas/marketing/auditor-seo-basico/",
+      "tutorialUrl": "https://todolima.com/herramientas/auditor-seo-basico",
+      "steps": [
+        {
+          "number": 1,
+          "title": "Ingresa la URL o completa manualmente las metaetiquetas de tu página",
+          "url": "https://todolima.com/herramientas/auditor-seo-basico#tutorial-paso-1",
+          "image": "https://todolima.com/images/tutoriales/auditor-seo-basico-1.webp",
+          "alt": "Auditor Básico de SEO On-Page, paso 1: Extracción automática. Captura de la interfaz de Nube para Pymes.",
+          "capturedAt": "2026-10-17"
+        },
+        {
+          "number": 2,
+          "title": "Optimiza la longitud del Meta Título (30–60) y Meta Descripción (70–160)",
+          "url": "https://todolima.com/herramientas/auditor-seo-basico#tutorial-paso-2",
+          "image": "https://todolima.com/images/tutoriales/auditor-seo-basico-2.webp",
+          "alt": "Auditor Básico de SEO On-Page, paso 2: Meta Title. Captura de la interfaz de Nube para Pymes.",
+          "capturedAt": "2026-10-17"
+        },
+        {
+          "number": 3,
+          "title": "Usa el botón \"Mejorar con IA\" para recibir títulos y descripciones de alto CTR",
+          "url": "https://todolima.com/herramientas/auditor-seo-basico#tutorial-paso-3",
+          "image": "https://todolima.com/images/tutoriales/auditor-seo-basico-3.webp",
+          "alt": "Auditor Básico de SEO On-Page, paso 3: Mejorar con IA. Captura de la interfaz de Nube para Pymes.",
+          "capturedAt": "2026-10-17"
+        },
+        {
+          "number": 4,
+          "title": "Configura las etiquetas Open Graph y pega tu texto en Legibilidad",
+          "url": "https://todolima.com/herramientas/auditor-seo-basico#tutorial-paso-4",
+          "image": "https://todolima.com/images/tutoriales/auditor-seo-basico-4.webp",
+          "alt": "Auditor Básico de SEO On-Page, paso 4: Open Graph. Captura de la interfaz de Nube para Pymes.",
+          "capturedAt": "2026-10-17"
+        },
+        {
+          "number": 5,
+          "title": "Compara tu página contra un competidor y exporta la lista de tareas en PDF",
+          "url": "https://todolima.com/herramientas/auditor-seo-basico#tutorial-paso-5",
+          "image": "https://todolima.com/images/tutoriales/auditor-seo-basico-5.webp",
+          "alt": "Auditor Básico de SEO On-Page, paso 5: Comparador SEO. Captura de la interfaz de Nube para Pymes.",
+          "capturedAt": "2026-10-17"
+        }
+      ]
+    },
+    {
+      "slug": "conversor-optimizador-imagenes",
+      "name": "Conversor y Optimizador de Imágenes WebP",
+      "toolUrl": "https://nubeparapymes.online/herramientas/productividad/conversor-optimizador-imagenes/",
+      "tutorialUrl": "https://todolima.com/herramientas/conversor-optimizador-imagenes",
+      "steps": [
+        {
+          "number": 1,
+          "title": "Arrastra tus fotografías al área de trabajo de WebP Forge",
+          "url": "https://todolima.com/herramientas/conversor-optimizador-imagenes#tutorial-paso-1",
+          "image": "https://todolima.com/images/tutoriales/conversor-optimizador-imagenes-1.webp",
+          "alt": "Conversor y Optimizador de Imágenes WebP, paso 1: Arrastra tus imágenes o haz clic. Captura de la interfaz de Nube para Pymes.",
+          "capturedAt": "2026-10-17"
+        },
+        {
+          "number": 2,
+          "title": "Ajusta la \"Calidad global\" o activa \"Tamaño objetivo (KB)\"",
+          "url": "https://todolima.com/herramientas/conversor-optimizador-imagenes#tutorial-paso-2",
+          "image": "https://todolima.com/images/tutoriales/conversor-optimizador-imagenes-2.webp",
+          "alt": "Conversor y Optimizador de Imágenes WebP, paso 2: Calidad global. Captura de la interfaz de Nube para Pymes.",
+          "capturedAt": "2026-10-17"
+        },
+        {
+          "number": 3,
+          "title": "Reescala las dimensiones si las fotos son gigantescas",
+          "url": "https://todolima.com/herramientas/conversor-optimizador-imagenes#tutorial-paso-3",
+          "image": "https://todolima.com/images/tutoriales/conversor-optimizador-imagenes-3.webp",
+          "alt": "Conversor y Optimizador de Imágenes WebP, paso 3: Recortar y redimensionar. Captura de la interfaz de Nube para Pymes.",
+          "capturedAt": "2026-10-17"
+        },
+        {
+          "number": 4,
+          "title": "Agrega tu \"Marca de agua\" corporativa si deseas proteger tus fotos",
+          "url": "https://todolima.com/herramientas/conversor-optimizador-imagenes#tutorial-paso-4",
+          "image": "https://todolima.com/images/tutoriales/conversor-optimizador-imagenes-4.webp",
+          "alt": "Conversor y Optimizador de Imágenes WebP, paso 4: Marca de agua (opcional). Captura de la interfaz de Nube para Pymes.",
+          "capturedAt": "2026-10-17"
+        },
+        {
+          "number": 5,
+          "title": "Compara el \"Antes vs. Después\" y descarga todo en un archivo .ZIP",
+          "url": "https://todolima.com/herramientas/conversor-optimizador-imagenes#tutorial-paso-5",
+          "image": "https://todolima.com/images/tutoriales/conversor-optimizador-imagenes-5.webp",
+          "alt": "Conversor y Optimizador de Imágenes WebP, paso 5: Descargar ZIP. Captura de la interfaz de Nube para Pymes.",
+          "capturedAt": "2026-10-17"
+        }
+      ]
+    },
+    {
+      "slug": "analizador-titulares",
+      "name": "Analizador de Titulares Comerciales",
+      "toolUrl": "https://nubeparapymes.online/herramientas/marketing/analizador-titulares/",
+      "tutorialUrl": "https://todolima.com/herramientas/analizador-titulares",
+      "steps": [
+        {
+          "number": 1,
+          "title": "Escribe tu titular borrador en la pestaña \"Analizador\"",
+          "url": "https://todolima.com/herramientas/analizador-titulares#tutorial-paso-1",
+          "image": "https://todolima.com/images/tutoriales/analizador-titulares-1.webp",
+          "alt": "Analizador de Titulares Comerciales, paso 1: Escribe tu titular. Captura de la interfaz de Nube para Pymes.",
+          "capturedAt": "2026-10-17"
+        },
+        {
+          "number": 2,
+          "title": "Revisa los 4 contadores y añade un número o palabra poderosa",
+          "url": "https://todolima.com/herramientas/analizador-titulares#tutorial-paso-2",
+          "image": "https://todolima.com/images/tutoriales/analizador-titulares-2.webp",
+          "alt": "Analizador de Titulares Comerciales, paso 2: CARACTERES. Captura de la interfaz de Nube para Pymes.",
+          "capturedAt": "2026-10-17"
+        },
+        {
+          "number": 3,
+          "title": "Revisa la \"Huella emocional\" para alinear el mensaje con tu objetivo",
+          "url": "https://todolima.com/herramientas/analizador-titulares#tutorial-paso-3",
+          "image": "https://todolima.com/images/tutoriales/analizador-titulares-3.webp",
+          "alt": "Analizador de Titulares Comerciales, paso 3: HUELLA EMOCIONAL. Captura de la interfaz de Nube para Pymes.",
+          "capturedAt": "2026-10-17"
+        },
+        {
+          "number": 4,
+          "title": "Verifica la vista previa en Google móvil y redes sociales",
+          "url": "https://todolima.com/herramientas/analizador-titulares#tutorial-paso-4",
+          "image": "https://todolima.com/images/tutoriales/analizador-titulares-4.webp",
+          "alt": "Analizador de Titulares Comerciales, paso 4: Google. Captura de la interfaz de Nube para Pymes.",
+          "capturedAt": "2026-10-17"
+        },
+        {
+          "number": 5,
+          "title": "Compara dos finalistas en la pestaña \"Test A/B\" con modelo bayesiano",
+          "url": "https://todolima.com/herramientas/analizador-titulares#tutorial-paso-5",
+          "image": "https://todolima.com/images/tutoriales/analizador-titulares-5.webp",
+          "alt": "Analizador de Titulares Comerciales, paso 5: Test A/B. Captura de la interfaz de Nube para Pymes.",
+          "capturedAt": "2026-10-17"
+        }
+      ]
+    },
+    {
+      "slug": "generador-paletas-corporativas",
+      "name": "Generador de Paletas Corporativas de Color",
+      "toolUrl": "https://nubeparapymes.online/herramientas/productividad/generador-paletas-corporativas/",
+      "tutorialUrl": "https://todolima.com/herramientas/generador-paletas-corporativas",
+      "steps": [
+        {
+          "number": 1,
+          "title": "Edita los colores de tu paleta",
+          "url": "https://todolima.com/herramientas/generador-paletas-corporativas#tutorial-paso-1",
+          "image": "https://todolima.com/images/tutoriales/generador-paletas-corporativas-1.webp",
+          "alt": "Generador de Paletas Corporativas de Color, paso 1: Tu combinación de colores. Captura de la interfaz de Nube para Pymes.",
+          "capturedAt": "2026-10-17"
+        },
+        {
+          "number": 2,
+          "title": "Explora una nueva combinación",
+          "url": "https://todolima.com/herramientas/generador-paletas-corporativas#tutorial-paso-2",
+          "image": "https://todolima.com/images/tutoriales/generador-paletas-corporativas-2.webp",
+          "alt": "Generador de Paletas Corporativas de Color, paso 2: Generar combinación. Captura de la interfaz de Nube para Pymes.",
+          "capturedAt": "2026-10-17"
+        },
+        {
+          "number": 3,
+          "title": "Contrasta la combinación en la vista de ejemplo",
+          "url": "https://todolima.com/herramientas/generador-paletas-corporativas#tutorial-paso-3",
+          "image": "https://todolima.com/images/tutoriales/generador-paletas-corporativas-3.webp",
+          "alt": "Generador de Paletas Corporativas de Color, paso 3: Matriz de contraste cruzado. Captura de la interfaz de Nube para Pymes.",
+          "capturedAt": "2026-10-17"
+        },
+        {
+          "number": 4,
+          "title": "Explora las simulaciones de percepción del color",
+          "url": "https://todolima.com/herramientas/generador-paletas-corporativas#tutorial-paso-4",
+          "image": "https://todolima.com/images/tutoriales/generador-paletas-corporativas-4.webp",
+          "alt": "Generador de Paletas Corporativas de Color, paso 4: Deuteranopía. Captura de la interfaz de Nube para Pymes.",
+          "capturedAt": "2026-10-17"
+        },
+        {
+          "number": 5,
+          "title": "Lleva la paleta a tu proyecto",
+          "url": "https://todolima.com/herramientas/generador-paletas-corporativas#tutorial-paso-5",
+          "image": "https://todolima.com/images/tutoriales/generador-paletas-corporativas-5.webp",
+          "alt": "Generador de Paletas Corporativas de Color, paso 5: Descargar CSS. Captura de la interfaz de Nube para Pymes.",
+          "capturedAt": "2026-10-17"
+        }
+      ]
+    }
+  ]
+}

@@ -876,6 +876,8 @@ def main():
     restore_featured_images(DIST)
     from normalize_media_urls import normalize_media_urls
     normalize_media_urls(DIST)
+    from integrate_illustrated_tutorials import integrate as integrate_illustrated_tutorials
+    integrate_illustrated_tutorials(DIST)
     elapsed = (datetime.now() - start_time).total_seconds()
     log(f"=== ENSAMBLADO COMPLETADO EXITOSAMENTE en {elapsed:.2f}s ===")
 
