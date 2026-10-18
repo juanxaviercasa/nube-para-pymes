@@ -15,6 +15,10 @@ const assert = require('node:assert/strict');
   console.log('Chrome ready');
   // Third-party ads and analytics are not needed to verify local navigation.
   await context.route('**/*', route => new URL(route.request().url()).origin === base ? route.continue() : route.abort());
+  // Static preview has no Cloudflare Worker. Model only its public disabled settings; never send a form.
+  await context.route('**/api/contact', route => route.request().method() === 'GET'
+    ? route.fulfill({status:200, contentType:'application/json', body:JSON.stringify({configured:false, enabled:false, siteKey:''})})
+    : route.abort());
   const page = await context.newPage();
   const errors = [];
   const dynamicLinks = new Set();
@@ -46,7 +50,7 @@ const assert = require('node:assert/strict');
       assert.equal(await page.locator('html').getAttribute('lang'), 'es');
     }
     await visit('/en/tools/');
-    const englishPortalText = await page.locator('main').innerText();
+    const englishPortalText = await page.locator('main:visible').innerText();
     assert.match(englishPortalText, /Tools Directory/);
     assert.doesNotMatch(englishPortalText, /Abrir Herramienta/);
     await page.locator('.np-start-results').waitFor();
