@@ -15,7 +15,7 @@
   function randomColor() { return `#${Math.floor(Math.random() * 0x1000000).toString(16).padStart(6, '0').toUpperCase()}`; }
   function lum(v) { const c = hex(v).slice(1).match(/.{2}/g).map(x => parseInt(x, 16) / 255).map(x => x <= .03928 ? x / 12.92 : ((x + .055) / 1.055) ** 2.4); return .2126 * c[0] + .7152 * c[1] + .0722 * c[2]; }
   function ratio(a, b) { const x = lum(a), y = lum(b); return (Math.max(x, y) + .05) / (Math.min(x, y) + .05); }
-  function textColor(v) { return lum(v) > .45 ? '#172033' : '#FFFFFF'; }
+  function textColor(v) { const l=lum(v); return (l+.05)/(.05) >= 1.05/(l+.05) ? '#000000' : '#FFFFFF'; }
   function esc(v) { return String(v).replace(/[&<>'"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[c])); }
   function filter() { return state.mode === 'deuteranopia' ? 'saturate(.72) hue-rotate(18deg)' : state.mode === 'protanopia' ? 'saturate(.68) hue-rotate(-18deg)' : state.mode === 'tritanopia' ? 'saturate(.78) hue-rotate(42deg)' : 'none'; }
   function tokens() { return `:root {\n  --color-base: ${state.colors[0]};\n${state.colors.slice(1).map((c, i) => `  --color-color-${i + 2}: ${c};`).join('\n')}\n}`; }

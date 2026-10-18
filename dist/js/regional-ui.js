@@ -9,10 +9,26 @@
   let dialog, form, launch, source, taxRows, editor;
   const legal = ['generador-contratos-servicios','generador-politicas-devolucion','generador-politicas-terminos'];
   const payroll = document.body.dataset.appId === 'calculadora-sobrecostos-laborales';
-  let returnFocus;
+  let returnFocus, previousScroll = 0, previousTitle = '', pushed = false;
+  function closeView(back = false) {
+    if (!dialog || dialog.hidden) return;
+    dialog.hidden = true; document.body.classList.remove('npp-region-editing'); document.title = previousTitle;
+    if (!back && pushed) history.back();
+    else if (!back) { const u=new URL(location.href);u.searchParams.delete('configuracion');history.replaceState({},'',u); }
+    pushed=false;scrollTo(0,previousScroll);returnFocus?.focus({preventScroll:true});
+  }
+  function openView() {
+    previousScroll=scrollY;previousTitle=document.title;
+    const u=new URL(location.href);
+    if(u.searchParams.get('configuracion')!=='regional'){u.searchParams.set('configuracion','regional');history.pushState({nppRegional:true},'',u);pushed=true;}
+    document.title=tr('Configuración regional | Nube para Pymes','Regional settings | Nube para Pymes');
+    document.body.classList.add('npp-region-editing');dialog.hidden=false;scrollTo(0,0);
+  }
+  window.addEventListener('popstate',()=>{if(new URL(location.href).searchParams.get('configuracion')==='regional')show();else closeView(true);});
+  document.addEventListener('keydown',e=>{if(e.key==='Escape'&&dialog&&!dialog.hidden)closeView();});
   function renderSummary() {
     if (!launch) return;
-    launch.textContent = profileName(R.get());
+    launch.textContent = tr('Cambiar país y moneda', 'Change country and currency') + ' · ' + profileName(R.get());
     const note = document.querySelector('.npp-region-summary');
     if (note) note.textContent = tr('Cálculo actual: ', 'Current calculation: ') + profileName(R.active()) + ' · ' + R.taxLabel() + ' · ' + tr(R.active().priceMode === 'included' ? 'Impuesto incluido' : 'Impuesto añadido', R.active().priceMode === 'included' ? 'Tax included' : 'Tax added');
     if (note && payroll) note.textContent = tr('Cálculo laboral: Perú. Usa los controles propios de moneda y tipo de cambio de esta herramienta; los impuestos de venta de la configuración regional no se aplican a la planilla.', 'Payroll calculation: Peru. Use this tool’s own currency and exchange-rate controls; regional sales taxes do not apply to payroll.');
@@ -70,7 +86,7 @@
       }
     }
     form.querySelector('[data-region-message]').textContent='';
-    dialog.showModal(); form.elements.country.focus();
+    openView(); dialog.querySelector("h1").focus();
   }
   function save(apply) {
     if (!form.reportValidity()) return;
@@ -90,21 +106,21 @@
       const overrides=Object.fromEntries([...editor.querySelectorAll('[data-tax-item]')].map(input=>[input.dataset.taxItem,input.value===''?null:Number(input.value)]));
       R.getDocument()?.setTaxes?.(overrides);
     }
-    dialog.close();renderSummary();
+    closeView();renderSummary();
     const status=document.querySelector('[data-region-status]');
     if(status) status.textContent=apply?tr('Configuración aplicada al cálculo actual. No se convirtieron importes.','Settings applied to this calculation. No amounts were converted.'):tr('Preferencias guardadas para nuevos cálculos. El cálculo abierto mantiene su configuración.','Preferences saved for new calculations. The open calculation keeps its settings.');
   }
   function init() {
     const nav=document.querySelector('.npp-tool-nav-links') || document.querySelector('header');
     if (!nav || document.querySelector('[data-region-open]')) return;
-    const css=document.createElement('link');css.rel='stylesheet';css.href=new URL('../css/regional-settings.css',document.querySelector('script[data-npp-regional-ui]').src).href;document.head.append(css);
-    launch=document.createElement('button');launch.type='button';launch.className='npp-region-open';launch.dataset.regionOpen='';launch.setAttribute('aria-haspopup','dialog');launch.setAttribute('aria-label',tr('País, moneda e impuestos','Country, currency and taxes'));launch.onclick=show;nav.append(launch);
+    const css=document.createElement('link');css.rel='stylesheet';css.href=new URL('../css/regional-settings.css',document.querySelector('script[data-npp-regional-ui]').src).href+'?v=20261017-visual-2';document.head.append(css);
+    launch=document.createElement('button');launch.type='button';launch.className='npp-region-open';launch.dataset.regionOpen='';launch.setAttribute('aria-label',tr('Cambiar país, moneda e impuestos','Change country, currency and taxes'));launch.onclick=show;nav.append(launch);
     if(document.body.dataset.appId) {
       const block=document.createElement('section');block.className='npp-region-bar';block.setAttribute('aria-label',tr('Configuración regional','Regional settings'));block.innerHTML='<p class="npp-region-summary"></p><p data-region-jurisdiction hidden></p><p data-region-status role="status"></p>';
       const anchor=document.querySelector('.npp-tool-nav');if(anchor)anchor.after(block);
     }
-    dialog=document.createElement('dialog');dialog.className='npp-region-dialog';dialog.setAttribute('aria-labelledby','npp-region-title');
-    dialog.innerHTML=`<form><div class="npp-region-heading"><h2 id="npp-region-title">${tr('País, moneda e impuestos','Country, currency and taxes')}</h2><button type="button" data-region-close aria-label="${tr('Cerrar','Close')}">×</button></div>
+    dialog=document.createElement('main');dialog.hidden=true;dialog.className='npp-region-dialog npp-region-page';dialog.setAttribute('aria-labelledby','npp-region-title');
+    dialog.innerHTML=`<form><div class="npp-region-heading"><h1 tabindex="-1" id="npp-region-title">${tr('País, moneda e impuestos','Country, currency and taxes')}</h1><button type="button" data-region-close>${tr('Volver a la herramienta','Back to tool')}</button></div>
       <p>${tr('El idioma se elige por separado. Los importes guardados mantienen su moneda; no se realiza conversión automática.','Language is selected separately. Saved amounts keep their currency; no automatic conversion is performed.')}</p>
       <div class="npp-region-grid"><label>${tr('País','Country')}<select name="country">${Object.entries(R.countries).map(([code,c])=>`<option value="${code}">${c.name[en?1:0]}</option>`).join('')}</select></label>
       <label data-province>${tr('Provincia de ejemplo','Province example')}<select name="region"><option value="">${tr('Introducir tasas manualmente','Enter rates manually')}</option><option value="ON">Ontario · HST 13%</option><option value="NS">Nova Scotia · HST 14%</option><option value="MB">Manitoba · GST 5% + PST 7%</option></select></label>
@@ -124,10 +140,11 @@
     }
     form.elements.country.onchange=()=>{form.elements.region.value='';preset();};form.elements.region.onchange=preset;
     form.querySelector('[data-add-tax]').onclick=()=>{if(taxRows.children.length<5)row();};
-    form.querySelector('[data-region-close]').onclick=()=>dialog.close();form.querySelector('[data-save-defaults]').onclick=()=>save(false);form.onsubmit=e=>{e.preventDefault();save(true);};
-    dialog.addEventListener('close',()=>returnFocus?.focus());
+    form.querySelector('[data-region-close]').onclick=()=>closeView();form.querySelector('[data-save-defaults]').onclick=()=>save(false);form.onsubmit=e=>{e.preventDefault();save(true);};
+
     window.addEventListener('npp:region-saved',renderSummary);window.addEventListener('npp:region-apply',renderSummary);window.addEventListener('npp:document-region',renderSummary);
     renderSummary();
+    if(new URL(location.href).searchParams.get("configuracion")==="regional")show();
   }
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init,{once:true});else init();
 })();

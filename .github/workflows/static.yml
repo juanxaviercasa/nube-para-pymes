@@ -45,6 +45,7 @@ jobs:
           npx playwright install --with-deps chromium
           npm run test:browser
           npm run test:tutorials
+          npm run test:visual-repair
           npm run test:images
           npm run test:layout
           npm run test:regional

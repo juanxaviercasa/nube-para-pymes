@@ -40,7 +40,9 @@ const {createServer} = require('./preview_server');
    }
    for(const portal of ['/herramientas/','/en/tools/']){
     await p.goto(base+portal,{waitUntil:'networkidle'});
-    assert.equal(await p.locator('[data-npp-tutorial-card]').count(),16);
+    assert.equal(await p.locator('article [data-npp-tutorial-card]').count(),26);
+    assert.equal(await p.locator('.np-start-results__grid > *').count(),6);
+    assert.equal(await p.locator('[data-npp-tutorial-card]:not(article [data-npp-tutorial-card])').count(),0);
     assert.equal(await p.locator('a[href*="todolima.com/herramientas/undefined"]').count(),0);
    }
   }

@@ -69,6 +69,6 @@ const assert=require('node:assert/strict');
   fs.mkdirSync('artifacts/regional',{recursive:true});
   await visit('/herramientas/finanzas/calculadora-precios-venta-igv/');await country('CA');await page.locator('[name=region]').selectOption('MB');await page.screenshot({path:'artifacts/regional/settings-mobile.png'});
   fs.writeFileSync('artifacts/regional/browser-errors.json',JSON.stringify(errors,null,2));
-  assert.deepEqual(errors,[]);console.log('PASS: regional defaults, explicit tax entry, live calculator update, ledger protection, 52 routes and mobile dialog.');
+  assert.deepEqual(errors,[]);console.log('PASS: regional defaults, explicit tax entry, live calculator update, ledger protection, 52 routes and mobile settings page.');
  }finally{await b.close();await new Promise(r=>server.close(r));}
 })().catch(e=>{console.error(e);process.exitCode=1});

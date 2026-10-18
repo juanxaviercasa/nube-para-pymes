@@ -16,3 +16,17 @@ La prueba específica cubre las 32 rutas ES/EN, las 16 correspondencias, ambos c
 - Capturas de revisión en `artifacts/tutoriales/` (salida local excluida de Git). No se envían formularios ni datos externos durante las pruebas.
 
 Los enlaces externos abren otra pestaña con `noopener noreferrer`. El catálogo vuelve a aplicar los enlaces tras sus actualizaciones de React, sin consultar servicios externos. Las pruebas no constituyen una certificación integral de accesibilidad.
+
+## Corrección visual del catálogo y las preferencias
+
+Las 26 tarjetas incluyen «Ver tutorial» en una zona de acciones consistente. Las 16 guías ilustradas abren Todo Lima; las otras diez abren la sección correspondiente de la guía propia de Nube. No se insertan enlaces junto a los bloques de inicio rápido ni como hijos sueltos de la cuadrícula.
+
+La preferencia regional se abre como una vista de página `?configuracion=regional`, con el scroll del documento, encabezado y botón de regreso. El cálculo permanece montado y oculto mientras se editan las preferencias; volver o aplicar mantiene los valores introducidos. El acceso explica «Cambiar país y moneda» y muestra la preferencia vigente.
+
+La reparación del modo claro cubre variantes de color con transparencia de las herramientas heredadas. Botones azules, avisos, etiquetas y texto secundario reciben colores legibles; las muestras de Chroma eligen blanco o negro según el contraste calculado. Los documentos y colores editados por el usuario conservan su contenido.
+
+Pruebas: `npm run test:visual-repair`, `npm run test:tutorials`, `npm run test:regional:browser` y `npm run audit:contrast`. Evidencia local en `artifacts/visual-repair/`. La medición automática es una comprobación de estados revisados y no certifica accesibilidad integral.
+
+### Resultado de validación de la reparación
+
+Build completo aprobado (649 s), con sincronización final de los estilos compartidos. `npm test` aprobó producción, 5.673 comprobaciones de idiomas, 25.112 enlaces internos sin destinos faltantes, imágenes, ecosistema y contacto. Ocho pruebas regionales unitarias y el recorrido regional de 52 rutas en navegador aprobados. La nueva prueba visual aprobó 26 acciones consistentes, cuadrícula de seis accesos intacta, página de configuración sin scroll interno y conservación del costo al cambiar país. La auditoría de los estados iniciales en modo claro reportó cero incidencias en 26 herramientas; excluye contenido editable del usuario, gráficos y fondos con degradados. No constituye una certificación integral de accesibilidad.

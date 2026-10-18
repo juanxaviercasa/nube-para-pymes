@@ -12,7 +12,9 @@
     "test:layout": "node scripts/test_browser_tool_layout.js",
     "test:regional": "node --test scripts/test_regional_settings.cjs",
     "test:regional:browser": "node scripts/test_browser_regional.cjs",
-    "test:tutorials": "node scripts/test_illustrated_tutorials.cjs"
+    "test:tutorials": "node scripts/test_illustrated_tutorials.cjs",
+    "test:visual-repair": "node scripts/test_visual_repair.cjs",
+    "audit:contrast": "node scripts/audit_light_contrast.cjs"
   },
   "devDependencies": {
     "playwright": "1.63.0"

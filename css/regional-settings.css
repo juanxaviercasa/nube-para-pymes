@@ -6,3 +6,12 @@
 .dark .npp-region-dialog{--npp-surface:#142d50;--npp-field:#1d3a5c;--npp-ink:#e8f0ff;--npp-line:#48658a;--npp-link:#93c5fd}.npp-region-dialog fieldset{border:1px solid var(--npp-line,#cbd5e1);padding:16px;border-radius:12px}.npp-region-dialog legend{padding:0 6px;font-weight:650}
 @media(max-width:600px){.npp-region-dialog{padding:20px}.npp-region-grid{grid-template-columns:minmax(0,1fr)}.npp-tax-row{gap:8px}.npp-tool-nav-links{flex-wrap:wrap}.npp-region-open{flex:1 1 100%}}
 @media print{.npp-region-bar,.npp-region-open,.npp-region-dialog{display:none!important}}
+
+body.npp-region-editing> :not(.npp-region-page):not(script):not(style):not(link){display:none!important}
+.npp-region-page[hidden]{display:none!important}
+.npp-region-page{position:static;width:min(1100px,100%);max-height:none!important;overflow:visible!important;min-height:100dvh;margin:0 auto;padding:clamp(16px,4vw,48px);border:0;border-radius:0;background:var(--npp-canvas,#f4f7fc)}
+.npp-region-page form{padding:clamp(20px,3vw,36px);border:1px solid var(--npp-line,#cbd5e1);border-radius:18px;background:var(--npp-surface,#fff)}
+.npp-region-page h1{font-size:clamp(25px,4vw,36px);line-height:1.2;margin:0;font-weight:750;color:inherit}
+.npp-region-page .npp-region-grid{gap:20px 28px;margin:24px 0}
+.npp-region-page .npp-region-heading{align-items:center;flex-wrap:wrap}
+@media(max-width:600px){.npp-region-page .npp-region-heading{align-items:start;flex-direction:column}.npp-region-page .npp-region-grid{grid-template-columns:1fr}}

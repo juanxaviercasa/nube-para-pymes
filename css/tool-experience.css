@@ -152,3 +152,36 @@ body[data-app-id] #root header.sticky { top: var(--npp-nav-height); }
 .npp-tool-nav button { display: inline-flex; align-items: center; justify-content: center; min-height: 40px; padding: 6px 12px; border: 1px solid var(--npp-line); border-radius: 8px; background: var(--npp-field); color: var(--npp-ink); font: inherit; font-weight: 650; cursor: pointer; }
 .npp-tool-nav button:focus-visible { outline: 3px solid #3b82f6; outline-offset: 3px; }
 @media(max-width:600px) { .npp-tool-nav-inner { flex-wrap: wrap; } .npp-tool-nav-links { flex: 1 1 100%; justify-content: space-between; flex-wrap: wrap; } }
+
+/* Light-theme typography: include opacity variants emitted by legacy apps. */
+html[data-npp-theme="light"] body[data-app-id] #root :is([class*="text-blue-light"],[class*="text-blue-pale"],[class*="text-blue-50"],[class*="text-blue-100"],[class*="text-blue-200"],[class*="text-sky"],[class*="text-brand-200"],[class*="text-brand-300"],.text-slate-200){color:#334155}
+html[data-npp-theme="light"] body[data-app-id] #root :is(.text-blue-mid,.text-blue-500,.text-brand-400,.text-brand-500){color:#1d4ed8}
+html[data-npp-theme="light"] body[data-app-id] #root :is(.text-cta,.text-accent-strong,.text-orange,.text-orange-400,.text-orange-500){color:#9a3412}
+html[data-npp-theme="light"] body[data-app-id] #root :is(.text-ok,.text-strong,.text-status-published){color:#166534}
+html[data-npp-theme="light"] body[data-app-id] #root .text-bad{color:#b91c1c}
+html[data-npp-theme="light"] body[data-app-id] #root :is(.bg-brand-500,.bg-blue-500,.bg-blue-mid){background-color:#1d4ed8;color:#fff}
+html[data-npp-theme="light"] body[data-app-id] #root :is(.bg-brand-500,.bg-blue-500,.bg-blue-mid,.bg-blue-dark) :is(span,svg){color:inherit}
+html[data-npp-theme="light"] body[data-app-id] #root .bg-blue-dark{background:#e2e8f0;color:#0f172a}
+html[data-npp-theme="light"] body[data-app-id] #root .bg-blue-dark .text-white{color:#0f172a}
+html[data-npp-theme="light"] body[data-app-id] #root header[class*="bg-"]{background-color:#fff;color:#0f172a}
+body[data-app-id] .np-demo-button.primary{background:#c2410c!important;color:#fff!important;border-color:#c2410c!important}
+body[data-app-id="generador-paletas-corporativas"] #root .good-action{background:#047857;color:#fff}
+html[data-npp-theme="light"] body[data-app-id] #root .doc-var{color:#9a3412}
+
+html[data-npp-theme="light"] body[data-app-id] #root [class*="bg-blue-900/"]{background-color:#e2e8f0;color:#0f172a}
+html[data-npp-theme="light"] body[data-app-id="organizador-matriz-contenidos"] #root .rounded-full{color:#334155}
+html[data-npp-theme="light"] body[data-app-id="auditor-seo-basico"] #root th{color:#334155}
+html[data-npp-theme="light"] body[data-app-id="calculadora-prestamos-amortizaciones"] #root .font-display.text-base{color:#334155}
+html[data-npp-theme="light"] body[data-app-id="creador-facturas-proforma"] #root .text-slate-500{color:#475569}
+html[data-npp-theme="light"] body[data-app-id="generador-cotizaciones"] #root button:has(.hidden.sm\:inline){background-color:#e2e8f0;color:#0f172a}
+html[data-npp-theme="light"] body[data-app-id] .op-lane h4 span{color:#475569}
+
+html[data-npp-theme="light"] body[data-app-id="auditor-seo-basico"] #root button.bg-brand-500{color:#fff}
+html[data-npp-theme="light"] body[data-app-id="auditor-seo-basico"] #root button.bg-accent{background:#c2410c;color:#fff}
+html[data-npp-theme="light"] body[data-app-id="auditor-seo-basico"] #root th[style*="color"]{color:#334155!important}
+html[data-npp-theme="light"] body[data-app-id="organizador-matriz-contenidos"] #root .rounded-full[style*="color"]{color:#334155!important}
+html[data-npp-theme="light"] body[data-app-id="calculadora-prestamos-amortizaciones"] #root .font-display.text-base[style*="color"]{color:#334155!important}
+
+html[data-npp-theme="light"] body[data-app-id="auditor-seo-basico"] #root [class*="text-gray-400"]{color:#475569}
+
+html[data-npp-theme="light"] body[data-app-id="auditor-seo-basico"] #root [class*="text-[#9ca3af]"]{color:#475569}
